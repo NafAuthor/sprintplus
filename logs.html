@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <title>Logs</title>
+    <link rel="icon" href="Images & Icons/Logo.ico">
+    <link href="https://fonts.cdnfonts.com/css/garet" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@500&family=Encode+Sans+SC:wght@600&family=Fira+Sans:wght@500&family=Heebo&family=Josefin+Sans:wght@600&family=Kanit:wght@300&family=Lato:wght@700&family=Poppins&family=Roboto:wght@300;400&family=Rubik+Distressed&family=Source+Sans+Pro&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="logs.css">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Encode+Sans+SC:wght@600&family=Fira+Sans:wght@500&family=Kanit:wght@300&family=Poppins&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,700,0,0" />
+  </head>
+  <body>
+    <div class="Title" id="p-title">
+      <img src="Images & Icons/Sprint + Enhance your creativity.png" id="logo">
+        <div class="param" onclick="OpenSprint()">
+            <span class="material-symbols-outlined">
+                logout
+                </span>
+            Sprint+
+        </div>
+        <div class="param" onclick="OpenDev()">
+            <span class="material-symbols-outlined">
+                contacts
+            </span>
+            Developer
+        </div>
+        <div class="param">
+            <span class="material-symbols-outlined">
+                more
+            </span>
+            More
+        </div>
+        <div class="param">
+            <span class="material-symbols-outlined">
+                question_mark
+            </span>
+            FAQ
+        </div>
+    </div>
+    <div class="developer-note">
+        Hello! Welcome!<br><br>
+        For of all, thank you very much. You chose Sprint+ between 
+        a large amount of websites, and for that, I thank you. 
+        You are here in my lobby, let's say my playground. You may
+        go trough a lot of things from my universe: I hope you'll like it!<br><br>
+        I created this website for me to work on my writing projects, because
+        the 
+        <a href="https://nanowrimo.org/" target="_blank" style="color:white;text-decoration: none;">
+        NanoWrimo one</a>
+        didn't please me enough, even if it's a really good and helpful tool.<br><br>
+        I wanted to create something for me, to improve my coding skills and to
+        feel pleased in my writing trip. And so, Sprint+ was created  <br><br>
+        If you have any questions or request, you can hit the "Developement" button right 
+        above! I'd be happy to meet you, and to take some of your feedbacks.<br><br>
+        Love,<br>
+        Naf.
+    </div>
+    <div class="logs">
+        <div class="log">
+            <div class="l-t">
+                3/5/2023
+            </div>
+            <div class="l">
+                * Updated merge<br>
+                * Updated download<br>
+                * Security enforcement on the two datas functions<br>
+                * UIs redesign<br>
+                * Created logs page<br>
+            </div>
+        </div>
+    </div>
+    <div class="c-palace">
+        <img src="Images & Icons/cp.png" onclick="LaunchSong()">
+    </div>
+    <div class="swingrowers" onclick="Sgrw()">
+        <img src="Images & Icons/swingrowers.png" >
+    </div>
+
+    <script>
+        let isMedia = false;
+        var media;
+        function LaunchSong() {
+            let songs = [
+            "BWID.mp3",
+            "CTTR.mp3",
+            "DSN.mp3",
+            "F.mp3",
+            'Roi.mp3',
+            "Russian.mp3",
+            "Shuniji.mp3"
+        ]
+        if (isMedia) media.pause();
+
+            media = new Audio(`Songs/${songs[Math.floor(Math.random() * songs.length)]}`);
+            
+            media.volume = 0.2;
+            media.play();
+            isMedia=true;
+        }
+
+        function OpenSprint() {
+            window.open('https://bit.ly/sprplus','_blank').focus();
+        }
+
+        function OpenDev() {
+            window.open('https://www.instagram.com/naf_author/','_blank').focus();
+        }
+
+        function Sgrw() {
+            window.open('https://music.youtube.com/channel/UC2DnEvodsLSR402ivVwbAsQ?feature=share','_blank').focus();
+        }
+    </script>
+  </body>
+
+</html>
