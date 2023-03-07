@@ -75,13 +75,15 @@ body a {
     max-height: 100%;
 }
 .img-content {
-    width: 100%;
-    height: 100%;
+    width:23%;
+
     display: flex;
-    flex-direction: row;
-    
-    justify-content:center;
-    align-items: center;
+    flex-direction: column;
+    z-index: -1;
+
+    right:50;
+    opacity: 0.9;
+    position:absolute;
 }
 .Base {
     position: absolute;
@@ -94,6 +96,7 @@ body a {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    background-color: #24335a;
 }
 .prm-vs-bs, .prm-bs-cl {
     height: 35px;
@@ -152,52 +155,13 @@ body a {
     transform: scale(1.3);
 }
 
-.palette-charge {
-    width: 145px;
-    position: absolute;
-    height: 50%;
-    left: 50px;
-    bottom:8px;
-    z-index: 5;
-    border-radius: 5px;
-    background-color: #24335a;
-    display: flex;
-    visibility: hidden;
-}
-.palette-charge #hexplace {
-    width: 70px;
-    height: 100%;
-    background-color: #24335a;
-    outline: none;
-    border:none;
-    color:white;
-    padding-left: 10px;
-    border: 1px solid #2c3f70;
-    border-radius: 5px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
 
-.palette-charge #apply {
-    width: 60px;
-    height: 80%;
-    background-color: #2c3f70;
-    outline: none;
-    border:none;
-    color:white;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    margin-top: auto;
-    margin-bottom: auto;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .all-contain {
     width: 100%;
     z-index: 10;
-
+    background-color: #24335a;
     height: 55px;
     display: flex;
     flex-direction: row;
@@ -248,3 +212,291 @@ body a {
     font-size: 20px;
 
 }
+
+
+/*
+            <div class="f-more">
+              <div class="f-m-d">
+                Looking for a feat?
+              </div>
+              <button onclick="window.open('https://www.instagram.com/naf_author/',target='_blank')">
+                Contact our team
+              </button>
+            </div>
+*/
+
+.f-more {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-more-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.utilities {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 65px;
+}
+.featuring {
+    background-color: rgba(44, 63, 112,0.3);
+    border-radius: 10px;
+    padding: 10px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.f-f {
+    overflow-y: scroll;
+    height: 300px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.f-t {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.featured {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 5px;
+}
+.ft-t {
+    font-size: 17px;
+    font-weight: 600;
+
+}
+.ft-d {
+    padding: 10px;
+    text-align: justify;
+}
+
+.f-f button {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    border-radius: 5px;
+    border:none;
+    cursor:pointer;
+    color:white;
+    background-color: #2c3f70;
+    border: 2px solid #2c3f70;
+}
+.f-f button:hover {
+    border: 2px solid white;
+}
+
+#contactteam {
+    width: 90%;
+    background-color: #68511c ;
+    border: 2px solid #68511c;
+}
+#contactteam:hover {
+    border: 2px solid white;
+}
+
+
+.m-m-i {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    width: 35%;
+    background-color: rgba(44, 63, 112,0.3);
+    border-radius: 10px;
+}
+.m-m-td {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 300px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+/*
+                <div class="alert">
+                  <div class="c-m">
+                      ${cm[Math.floor((Math.random() * cm.length))]}
+                  </div>
+                  <div class="c-d-c">
+                    You didn't work on « ${g.name} » today!
+                  </div>
+                </div>
+*/
+
+.alert {
+    width: 90%;
+    background-color: #2c3f70;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 5px;
+    border-radius: 5px;
+}
+.c-m {
+    font-size: 17px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.c-m span {
+    transform: rotate(-20deg);
+}
+.c-d-c {
+    border: 2px solid #2c3f70;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
+.c-d-c:hover {
+    border: 2px solid white;
+}
+
+
+.nothing-to-see-here {
+
+    padding: 5px;
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.3;
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+}
+
+
+/*
+        <div class="more">
+          <div class="mor-t" title="Want your story to be there? Contact our team.">
+            Our favorite stories
+          </div>
+          <div class="mor-st">
+            <div class="st">
+              <div class="st-t">
+                FR - Nous, et le monde
+              </div>
+              <div class="st-o">
+                <span class="material-symbols-outlined">
+                  open_in_new
+                  </span>
+              </div>
+            </div>
+          </div>
+*/
+.more {
+    height: 100px;
+    width: 65%;
+    padding: 10px;
+
+    gap: 10px;
+    background-color: rgba(44, 63, 112,0.3);
+    border-radius: 10px;
+}
+.mor-st {
+    width: 99%;
+    padding: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+.st {
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    height: 30px;
+    align-items: center;
+    gap: 10px;
+    background-color: #2c3f70;
+    padding-left: 20px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+.st-o {
+    margin-left: auto;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+.st-l {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+.mor-t {
+    padding-bottom:10px;
+    cursor:help;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+
+::-webkit-scrollbar {
+
+    width: 10px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: rgba(44, 63, 112,0.9);
+      border-radius: 2px;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 5px;
+    
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: white;
+    }

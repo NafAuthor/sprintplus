@@ -1,14 +1,18 @@
+
 let Pannel_Status = false;
 let customGoal = false;
 let customGoalName;
 let InCharge;
 
 function OpenFolder(el) {
-  document.getElementById('Main').innerHTML="";
   let id = el.id;
   id = id.replace('pj-open-','');
   let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
-  console.log(pj); 
+
+  Pannel_Status=false;
+
+
+  console.log(" IS PANNEL STATUS"); 
   let d = new Date(pj.created_on * 1000);
   let N = pj.name;
   InCharge = pj.name;
@@ -25,19 +29,34 @@ function OpenFolder(el) {
 
 
   document.getElementById('Main').innerHTML = `
-  <div class="pj-board-parent" >
-    <div class="pj-b-content">
-      <div class="pj-b-c">
-        <img src="${pj.cover}">
+  <div class="pj-board-parent">
+    <div class="pj-b-g">
+      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeCover(this)">
+        <span class="material-symbols-outlined"> imagesmode </span> Edit cover
       </div>
+      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeName(this)">
+        <span class="material-symbols-outlined"> edit </span> Edit name
+      </div>
+      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeDesc(this)">
+        <span class="material-symbols-outlined"> document_scanner </span> Edit desc.
+      </div>
+      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeFiles(this)">
+        <span class="material-symbols-outlined"> note </span> Edit files
+      </div>
+      <div class="pj-b-g-param">
+        <span class="material-symbols-outlined"> all_inclusive </span> Edit time
+      </div>
+      <div class="pj-b-g-param" onclick="TriggerSecurity(this);" id="${pj.name}" style="color:#4DB399">
+        <span class="material-symbols-outlined"> security </span> Security
+      </div>
+      <div onclick='DeleteProject(this);' class="pj-b-g-param" id="${pj.name}" style="color:#EA3C12">
+        <span class="material-symbols-outlined"> delete </span> Delete
+      </div>
+    </div>
+    <div class="pj-b-content" id="pj-b-content">
       <div class="pj-b-i">
+        <div class="pj-i-c">
         <div class="pj-b-i-t"> ${pj.name} </div>
-        <div class="-pj-b-i-i" style="font-size: 12px;">
-          <span class="material-symbols-outlined"> line_start </span> Created on ${d.toUTCString()}
-        </div>
-        <div class="-pj-b-i-i" style="font-size: 12px;">
-          <span class="material-symbols-outlined"> timer </span> Start on ${pj.start} - End on ${pj.end}
-        </div>
         <div class="-pj-b-i-i">
           <span class="material-symbols-outlined"> article </span> ${pj.type}
         </div>
@@ -45,71 +64,37 @@ function OpenFolder(el) {
           <span class="material-symbols-outlined"> description </span> ${pj.desc}
         </div>
         <div class="-pj-b-i-i">
-          <span class="material-symbols-outlined"> pending </span> <a target = "_blank" href="${pj.more}">More content</a>
+          <span class="material-symbols-outlined"> pending </span>
+          <a target="_blank" href="${pj.more}">More content</a>
+        </div>
+        </div>
+        <div class="pj-b-c">
+        <img src="${pj.cover}">
         </div>
       </div>
-      <div class="pj-b-p"></div>
-    </div>
-    <div class="pj-sp-s"></div>
-    <div class="pj-b-goals" id="pj-b-goals">
-      <div class="pj-b-g-b">
-      <button onclick="ModifyAddGoal('${pj.name}');">
-      <span class="material-symbols-outlined">
-        add
-      </span>
-      Create a new goal
-    </button>
-      </div>
-      <div class="pj-b-g-c" id="pj-b-g-c">
 
+      <div class="pj-b-p">
+        <div class="pj-b-goals" id="pj-b-goals">
+          <div class="pj-b-g-b" id="pj-b-g-b">
+            <button onclick="ModifyAddGoal('${pj.name}');">
+              <span class="material-symbols-outlined"> add </span> New goal </button>
+          </div>
+        <div class="pj-b-g-c" id="pj-b-g-c"></div>
+        </div>
+        <div class="pj-mi">
+        <div class="-pj-b-i-i" style="font-size: 12px;">
+          <span class="material-symbols-outlined"> line_start </span> Created on ${d.toUTCString()}
+        </div>
+        <div class="-pj-b-i-i" style="font-size: 12px;">
+          <span class="material-symbols-outlined"> timer </span> Start on ${pj.start} - End on ${pj.end}
+        </div>
+        <div class="-pj-b-i-i" style="font-size: 12px;">
+          <span class="material-symbols-outlined"> info </span> Delete one goal to create a new goal
+        </div>
+        </div>
       </div>
     </div>
-    <div class="pj-sp-s"></div>
-    
-    <div class="pj-b-g" >
-        <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeCover(this)">
-        <span class="material-symbols-outlined"  >
-        imagesmode
-        </span>
-        Edit cover
-    </div>
-      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeName(this)">
-          <span class="material-symbols-outlined" >
-          edit
-          </span>
-          Edit name
-      </div>
-      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeDesc(this)" >
-          <span class="material-symbols-outlined">
-          document_scanner
-          </span>
-          Edit desc.
-      </div>
-      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeFiles(this)"  >
-          <span class="material-symbols-outlined"  >
-          note
-          </span>
-          Edit files
-      </div>
-      <div class="pj-b-g-param">
-          <span class="material-symbols-outlined">
-          all_inclusive
-          </span>
-          Edit time
-      </div>
-      <div class="pj-b-g-param" onclick="TriggerSecurity(this);" id="${pj.name}" style="color:#4DB399">
-      <span class="material-symbols-outlined" >
-      security
-      </span>
-      Security
-    </div>
-      <div onclick='DeleteProject(this);' class="pj-b-g-param" id="${pj.name}" style="color:#EA3C12">
-          <span class="material-symbols-outlined" >
-          delete
-          </span>
-          Delete
-      </div>
-    </div>
+
   </div>
   `;
   ActualizeGoals()
@@ -118,15 +103,41 @@ function OpenFolder(el) {
 
 }
 
-function ChangeName(el) {
-  let id = el.id;
-  console.log(id)
-  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
-  console.log(pj);
-  console.log('^ PROJECT')
-  let cv = prompt('Enter a new name:');
-  if (cv) {
-    console.log(cv)
+function ChangeName() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+  document.getElementById('pj-b-content').innerHTML = `
+    <div class="mdf-b">
+      <div class="mdf-t">
+        Modify the name of your project
+      </div>
+      <div class="mdf-i">
+        You are about to modify the name of your project.<br>
+        To proceed, please enter name (must not contain « project » or « goal »).<br>
+        You will still be able to modify it later.
+      </div>
+      <input type="text" id="enter-content">
+      <button onclick="SaveName()">
+        <span class="material-symbols-outlined">
+        sync_saved_locally
+        </span>
+        Confirm
+
+      </button>
+      <button id="cancel" onclick="Cancel()">
+        <span class="material-symbols-outlined">
+        close
+        </span>
+        Cancel
+      </button>
+    </div>
+  `;
+}
+function SaveName() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
+  let cv = document.getElementById('enter-content').value;
+
+  if (cv && cv.toLowerCase().includes('goal')!=true && cv.toLowerCase().includes('project')!=true) {
     for (let i = 0; i < 2; i++) {
       let g = JSON.parse(localStorage.getItem(`${pj.name}-goal-${i}`));
       if (g) {
@@ -140,58 +151,156 @@ function ChangeName(el) {
     localStorage.setItem(`Project : ${cv}`,JSON.stringify(pj));
     OpenFolder({id:`pj-open-${cv}`})
     localStorage.removeItem(`Project : ${backup}`);
-
+  } else {
+    document.getElementById('enter-content').style.border="2px solid red";
   }
 }
 
-function ChangeCover(el) {
-  let id = el.id;
-  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
-  let cv = prompt('Enter a new link for your cover (https://drive.google.com/uc?id=[File ID])');
-  if (cv) {
+
+function ChangeCover() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+  document.getElementById('pj-b-content').innerHTML = `
+    <div class="mdf-b">
+      <div class="mdf-t">
+        Modify your cover
+      </div>
+      <div class="mdf-i">
+        You are about to modify the cover of your project.<br>
+        To proceed, please enter a link to a cover (A4 image type).
+      </div>
+      <input type="text" id="enter-content">
+      <button onclick="SaveCover()">
+        <span class="material-symbols-outlined">
+        sync_saved_locally
+        </span>
+        Confirm
+
+      </button>
+      <button id="cancel" onclick="Cancel()">
+        <span class="material-symbols-outlined">
+        close
+        </span>
+        Cancel
+      </button>
+    </div>
+  `;
+}
+function SaveCover() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
+  let cv = document.getElementById('enter-content').value;
+  console.log(cv)
+  if (isValidUrl(cv)) {
     pj.cover = cv;
+    localStorage.setItem(`Project : ${pj.name}`,JSON.stringify(pj));
+    OpenFolder({id:`pj-open-${pj.name}`})
+  } else {
+    document.getElementById('enter-content').style.border="2px solid red";
   }
-  localStorage.setItem(`Project : ${id}`,JSON.stringify(pj));
-  OpenFolder({id:`pj-open-${id}`})
 }
 
+function ChangeDesc() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+  document.getElementById('pj-b-content').innerHTML = `
+    <div class="mdf-b">
+      <div class="mdf-t">
+        Modify the description of your project
+      </div>
+      <div class="mdf-i">
+        You are about to modify the description of your project.<br>
+        To proceed, please enter a description to your project. 
+        Please do not make it too long.<br>
+        You will still be able to modify it later.
+      </div>
+      <input type="text" id="enter-content">
+      <button onclick="SaveDesc()">
+        <span class="material-symbols-outlined">
+        sync_saved_locally
+        </span>
+        Confirm
+      </button>
+      <button id="cancel" onclick="Cancel()">
+        <span class="material-symbols-outlined">
+        close
+        </span>
+        Cancel
+      </button>
+    </div>
+  `;
+}
+function SaveDesc() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
 
-function ChangeDesc(el) {
-  let id = el.id;
-  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
-  let cv = prompt('Enter a new description:');
+  let cv = document.getElementById('enter-content').value;
+
   if (cv) {
     pj.desc = cv;
+    localStorage.setItem(`Project : ${id}`,JSON.stringify(pj));
+    OpenFolder({id:`pj-open-${id}`})
+  } else {
+    document.getElementById('enter-content').style.border="2px solid red";
   }
-
-  localStorage.setItem(`Project : ${id}`,JSON.stringify(pj));
-  OpenFolder({id:`pj-open-${id}`})
 }
+function ChangeFiles() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+  document.getElementById('pj-b-content').innerHTML = `
+    <div class="mdf-b">
+      <div class="mdf-t">
+        Modify additional content
+      </div>
+      <div class="mdf-i">
+        You are about to modify the additional content of your project.<br>
+        To proceed, please enter a link to a file of yours on the internet that reffers to your project.
+      </div>
+      <input type="text" id="enter-content">
+      <button onclick="SaveFiles()">
+        <span class="material-symbols-outlined">
+        sync_saved_locally
+        </span>
+        Confirm
 
-function ChangeFiles(el) {
-  let id = el.id;
-  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
-  let cv = prompt('Enter new file content:');
-  if (cv) {
+      </button>
+      <button id="cancel" onclick="Cancel()">
+        <span class="material-symbols-outlined">
+        close
+        </span>
+        Cancel
+      </button>
+    </div>
+  `;
+}
+function Cancel() {
+  OpenFolder({id:`pj-open-${InCharge}`})
+}
+function SaveFiles() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
+  let cv = document.getElementById('enter-content').value;
+  console.log(cv)
+  if (isValidUrl(cv)) {
     pj.more = cv;
+    localStorage.setItem(`Project : ${pj.name}`,JSON.stringify(pj));
+    OpenFolder({id:`pj-open-${pj.name}`})
+  } else {
+    document.getElementById('enter-content').style.border="2px solid red";
   }
-
-  localStorage.setItem(`Project : ${id}`,JSON.stringify(pj));
-  OpenFolder({id:`pj-open-${id}`})
 }
+
 
 function ActualizeGoals() {
   const items = {...localStorage};
   let Content = [];
+  let z = 0;
   for (let o of Object.entries(items)) {
     if (o[0].includes("goal") && o[0].includes(InCharge)) {
+      z++;
       let GoalNumber = o[0].split('')[o[0].split('').length -1]
       let Goal = JSON.parse(localStorage.getItem(o[0]));
-      GoalNumber=parseInt(GoalNumber)
+      GoalNumber=parseInt(GoalNumber);
       Content.push({[GoalNumber]:`
       <div class="goal-nb-${GoalNumber + 1 }-${Goal.name}" id="pj-b-gg">
         <div class="pj-b-gg-t">
-          <div class="pj-b-gg-t-t">${GoalNumber + 1} - ${Goal.name}</div>
+          <div class="pj-b-gg-t-t">${Goal.name}</div>
           <div class="RingGoal" onclick="RingGoal(this);" id="${InCharge}-goal-${GoalNumber}">
           <button>
           <span class="material-symbols-outlined">
@@ -236,6 +345,7 @@ function ActualizeGoals() {
 
     }
   }
+
   Content.sort( function( a , b){
     let c = Object.values(a);
     let d = Object.values(b);
@@ -250,6 +360,9 @@ function ActualizeGoals() {
       document.getElementById('pj-b-g-c').innerHTML+=o;
     }
   }
+  if (z==2) {
+    document.getElementById('pj-b-g-b').innerHTML="";
+  }
 }
 
 
@@ -258,7 +371,8 @@ function RingGoal(el) {
   let g = JSON.parse(localStorage.getItem(id));
   if (confirm(`${!g.started ? "Start" : "Stop"} the goal?`)) {
     if (!g.started) {
-      g.started_on = Date.now()
+      g.started_on = new Date()
+      g.started_on.setHours(0,0,0,0)
     }
     g.started =!g.started;
   }
@@ -367,6 +481,7 @@ function ModifyAddGoal(n) {
 
 function ProjectShowUp() {
   InCharge;
+  Pannel_Status=false;
   const items = {...localStorage};
   var size = Object.keys(items).length;
   
@@ -431,32 +546,69 @@ function ProjectShowUp() {
               </div>
             </div>
 */
-function DeleteProject(el) {
-  let id = el.id;
-  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
-  console.log(pj);
+function DeleteProject() {
+  document.getElementById('pj-b-content').innerHTML = `
+  <div class="mdf-b">
+    <div class="mdf-t">
+      Delete project
+    </div>
+    <div class="mdf-i">
+      You are about to delete project. <br>
+      This action can't be undone. If you're not sure, please download yoru datas before deleting your project. <br>
+      Enter in the following inputs the password of your project, and the password of your account.
+    </div>
+    <input type="text" id="enter-content-0">
+    <input type="text" id="enter-content-1">
+    <button onclick="confirmdel()">
+      <span class="material-symbols-outlined">
+      sync_saved_locally
+      </span>
+      Confirm
+    </button>
+    <button id="cancel" onclick="Cancel()">
+      <span class="material-symbols-outlined">
+      close
+      </span>
+      Cancel
+    </button>
+  </div>
+`;
 
-  Prompt_Del = function() {
-    if (prompt("Enter your password to confirm:") == pj.password) {
-      localStorage.removeItem(`Project : ${id}`);
+
+}
+
+let confirmdel = function() {
+  let p = document.getElementById('enter-content-0');
+  let p1 = document.getElementById('enter-content-1');
+
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+  let user = JSON.parse(localStorage.getItem(`user`));
+
+  if (p.value==pj.password && p1.value==user.password) {
+      localStorage.removeItem(`Project : ${InCharge}`);
       for (let i = 0; i < 2; i++) {
         if (localStorage.getItem(`${pj.name}-goal-${i}`)) {
           localStorage.removeItem(`${pj.name}-goal-${i}`)
         }
       }
-      alert(`Removed your ${id} project.`);
       ProjectShowUp();
-    } else {
-      alert('Wrong password. Action canceled.')
-    }
+  } else {
+      if (p.value!=pj.password) {
+          document.getElementById(`enter-content-0`).style.border = "2px solid red";
+      } else {
+          document.getElementById(`enter-content-0`).style.border = "2px solid green";
+      }
+      if (p1.value!=user.password ) {
+          document.getElementById(`enter-content-1`).style.border = "2px solid red";
+      } 
   }
-  if (confirm("Deleting a project removes it permanently. Are you sure?")) {
-    Prompt_Del();
-  }
+
 }
+
 function Project() {
+  console.log(Pannel_Status + " is pannel status")
     if (
-        !Pannel_Status
+        !Pannel_Status === true
     ) {
         document.getElementById('Main').innerHTML = Project_form;
     } else {
@@ -465,6 +617,17 @@ function Project() {
     Pannel_Status = !Pannel_Status;
 }
 let Name;
+const isValidUrl = urlString=> {
+  var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
+  '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
+return !!urlPattern.test(urlString);
+}
+
+
 function CreateProject() {
     let name = document.getElementById('name').value;
     let type = document.getElementById('type').value;
@@ -473,6 +636,47 @@ function CreateProject() {
     let end = document.getElementById('end').value;
     let more = document.getElementById('more').value;
     let cover = document.getElementById('cover').value;
+
+
+    let check = ["name","type","about","start","end","more","cover"];
+    let o =0;
+    for (let i = 0; i < check.length; i++) {
+      console.log(document.getElementById(check[i]).value)
+      if (document.getElementById(check[i]).value.length<=0) {
+        document.getElementById(check[i]).style.border="2px solid red";
+        o++;
+      } else {
+        document.getElementById(check[i]).style.border="2px solid #24335a";
+      }
+      if (check[i] == "more" || check[i]=="cover") {
+        if (!isValidUrl(document.getElementById(check[i]).value)) {
+          document.getElementById(check[i]).style.border="2px solid red";
+          o++;
+        } else {
+          document.getElementById(check[i]).style.border="2px solid #24335a";
+        }
+      }
+    }
+//#24335a
+      console.log(start,end)
+      let s = new Date(start);
+       s = s.getTime();
+       let e = new Date(end);
+       e = e.getTime();
+      if (e < s) {
+        o++;
+        document.getElementById("start").style.border="2px solid red";
+        document.getElementById("end").style.border="2px solid red";
+  
+      } else {
+        document.getElementById("start").style.border="2px solid #24335a";
+        document.getElementById("end").style.border="2px solid #24335a";
+  
+      }
+
+    if (o>0) {
+      return;
+    }
     Name = name;
     let Project = {
         name : name,
@@ -524,7 +728,7 @@ function CreateProject() {
                 <span class="material-symbols-outlined">
                 pin_drop
                 </span>
-                ${more}
+                <a href="${more}" target="_blank">More content</a>
             </div>
             </div>
         </div>
@@ -658,9 +862,10 @@ function Save() {
     </div>
   </div>
   `;
-  Name="";
   create=0;
-  OpenFolder({id:`pj-open-${Name}`})
+  OpenFolder({id:`pj-open-${Name}`});
+  Name="";
+
  }
 
 function Rem() {
@@ -744,8 +949,6 @@ function Back(c) {
         </div>
         <select id="type">
           <option name="WP">Writing project</option>
-          <option name="EP">Editing project</option>
-          <option name="CP">Coding project</option>
         </select>
       </div>
       <div class="p-d"id="p-bx">
@@ -778,9 +981,9 @@ function Back(c) {
           <span class="material-symbols-outlined">
             edit_note
             </span>
-          Add some informations...
+          Add a link to your project
         </div>
-        <textarea id="more"></textarea>
+        <input type="text" id="more">
       </div>
       <div class="p-d-p"id="p-bx">
         <div class="p-d-p-t" id="form-title">

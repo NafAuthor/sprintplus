@@ -16,14 +16,16 @@
     <link rel="stylesheet" href="CSS Files/new_goal.css">
     <link rel="stylesheet" href="goal_management.css">
     <link rel="stylesheet" href="CSS Files/download.css">
+    <link rel="stylesheet" href="welcome.css">
+    <link rel="stylesheet" href="CSS Files/informations.css">
 
-    <script type="text/javascript" src="Scripts/palette.js"></script>
     <script type="text/javascript" src="Scripts/Download.js"></script>
     <script type="text/javascript" src="Scripts/projects.js"></script>
     <script type="text/javascript" src="Scripts/save_content.js"></script>
     <script type="text/javascript" src="Scripts/security.js"></script>
     <script type="text/javascript" src="goal_management.js"></script>
     <script type="text/javascript" src="Scripts/menu.js"></script>
+    <script type="text/javascript" src="Scripts/informations.js"></script>
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -38,16 +40,16 @@
     <div class="Logs">
       <a href="logs.html" target="_blank">
         <span class="material-symbols-outlined">
-          hub
+          help
         </span>
-        Logs
+        Infos
       </a>
     </div>
     <div class="Title" id="p-title">
       <img src="Images & Icons/Sprint + Enhance your creativity.png" id="logo">
-      <a>Welcome back. We were waiting for you.</a>
+      <a id="p-p-title"></a>
     </div>
-    <div class="all-contain">
+    <div class="all-contain" id="all-contain">
       <div class="all-c-p"  onclick="Menu()">
         <span class="material-symbols-outlined">
           home
@@ -132,13 +134,222 @@
     <div class="Main" id="Main">
 
       <div class="img-content">
-        <img src = "Images & Icons/Page d'accueil/2.png" style="height:100%">
-        <img src = "Images & Icons/Page d'accueil/1.png" style="height:100%">
+        <img src = "Images & Icons/Page d'accueil/Important informations.png" style="height:100%">
+      </div>
+      <div class="main-more-content">
+        <div class="utilities">
+          <div class="featuring">
+            <div class="f-t">
+              <span class="material-symbols-outlined">
+                groups
+                </span>
+              Sprint+ is featuring...
+            </div>
+            <div class="f-f">
+            
+              <div class="f-more">
+                <div class="f-m-d">
+                  Looking for a feat?
+                </div>
+                <button id="contactteam" onclick="window.open('https://www.instagram.com/naf_author/',target='_blank')">
+                  Contact our team
+                </button>
+              </div>
+            </div>
+            
+          </div>
+          <div class="m-m-i">
+            <div class="f-t">
+              <span class="material-symbols-outlined">
+                feed
+                </span>
+              What's going on?
+            </div>
+            <div class="m-m-td" id="m-m-td">
+            </div>
+          </div>
+        </div>
+        <div class="more">
+          <div class="mor-t" title="Want your story to be there? Contact our team.">
+            <span class="material-symbols-outlined">
+              auto_awesome
+              </span>
+            Our favorite stories
+          </div>
+          <div class="mor-st">
+            <div class="st" >
+              <div class="st-l">
+                FR
+              </div>
+              <div class="st-t">
+                Nous, et le monde
+              </div>
+              <div class="st-o">
+                <span class="material-symbols-outlined"onclick="window.open('https://www.wattpad.com/1320458753-nous-et-le-monde-chapitre-1')">
+                  open_in_new
+                  </span>
+                  <span class="material-symbols-outlined" onclick="window.open('https://www.wattpad.com/user/NafAuteur')">
+                    face
+                    </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <script>
 
+
+      if (!localStorage.getItem('user')) {
+        document.getElementById('all-contain').innerHTML="";
+        document.getElementById('p-p-title').innerHTML = "Welcome to Sprint+!"
+        document.getElementById('Main').innerHTML = `
+          <div class="welcome-f">
+            <div class="w-t">
+            Welcome, dear writer!
+            </div>
+            <div class="w-info">
+              You are about to register yourself into Sprint+.<br><br>
+              First, you must know that this website is a project made
+              by a private person.<br>
+              None of your datas are used by us or any other person.
+              All your datas are stored in your browser, and are 
+              known only by you and your browser.<br><br>We do not sell,
+              use, lookup, save, or see any of your datas.<br<br>In
+              this way, all the passwords you will set will have a 
+              minimal amount of security: anyone with a bit of coding 
+              experience will be able to find your passwords. However,
+              keep in mind that this doesn't change anything to the point
+              of the website, and will not affect in any way your use of 
+              Sprint+, because no one would steal your progress.
+              <br><br>
+              Sprint+ and our team are not responsible of any corruption
+              due to a tricky modification of your datas on your side. 
+              You are responsible of the way you modify your datas.
+              <br><br>
+              For more informations, see at the right (top) of the main menu page.
+              <br><br>
+              Now, please, complete some informations about you, so we 
+              can setup your whole session.<br><br><br>
+              <div class="q">
+                <div class="q-t">
+                  What is your name?
+                </div>
+                <input type="text" id="name">
+                <div class="q-t" >
+                  Enter a secure password (5 characters min.)
+                </div>
+                <input type="text"id="password">
+              </div>
+            </div>
+            <button id="go" onclick="GoFor()">
+              Let's go!
+            </button>
+          </div>
+        `;
+      } else {
+        mainMenuShowUp()
+      }
+      function GoFor() {
+        let user = {};
+        let password = document.getElementById('password');
+        let name = document.getElementById('name');
+        if (password.value.length <=5 || password.value.includes('"') || password.value.includes("'") ) {
+          password.style.border = "2px solid red";
+        } else {
+          user["password"]=password.value;
+        }
+        if (!name.value.length) {
+          name.style.border = "2px solid red";
+        } else {
+          user["name"]=name.value;
+        }
+        if (user['name'] && user['password']) {
+          user['checkup'] = true;
+          localStorage.setItem('user',JSON.stringify(user));
+          mainMenuShowUp();
+        }
+      }
+      function mainMenuShowUp() {
+        let goaled = false;
+        document.getElementById('Main').innerHTML=Main;
+        document.getElementById('all-contain').innerHTML=all_contain;
+        let sentences = [
+          `Welcome back ${JSON.parse(localStorage.getItem('user')).name}. We were waiting for you!`,
+          `Nice to see you again ${JSON.parse(localStorage.getItem('user')).name}!`,
+          `We missed you, ${JSON.parse(localStorage.getItem('user')).name}. So cool for you to be there!`,
+          `Be confident, ${JSON.parse(localStorage.getItem('user')).name}!`,
+          `More people than what you think loves you, ${JSON.parse(localStorage.getItem('user')).name}!`,
+          `Create great things, ${JSON.parse(localStorage.getItem('user')).name}!`,
+          `${JSON.parse(localStorage.getItem('user')).name}, you're a creator of worlds!`,
+          `It is time for you to make people dream big, ${JSON.parse(localStorage.getItem('user')).name}!`,
+          `You're the reason why people like to read, ${JSON.parse(localStorage.getItem('user')).name}!`,
+          `Be proud of you, because you deserve it, ${JSON.parse(localStorage.getItem('user')).name}!`,
+
+        ]
+        document.getElementById('p-p-title').innerHTML = sentences[Math.floor(Math.random()*sentences.length)];
+        let items = {...localStorage};
+        for (let [k,v] of Object.entries(items)) {
+          if (k.includes('goal')) {
+            let g = JSON.parse(v);
+            let start = new Date(g.started_on);
+            let today = new Date(); 
+
+            const diffTime = Math.abs(today - start);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+            let cm = [
+              "What's that?",
+              "Oh no!",
+              "Hurry!",
+              "What am I seeing?!",
+              "That ain't true!",
+              "What?!"
+            ]
+            let calc;
+            if (diffDays>0) {
+              calc = diffDays-1;
+            }
+            if ((!g.updates[diffDays] || g.updates[diffDays]<=g.updates[calc]) && g.started === true ) {
+              document.getElementById('m-m-td').innerHTML+=`
+                <div class="alert">
+                  <div class="c-m">
+                    <span class="material-symbols-outlined">
+                  notifications_active
+                  </span>
+                      ${cm[Math.floor((Math.random() * cm.length))]}
+                  </div>
+                  <div class="c-d-c" onclick="GoalsShowUp()">
+                    You didn't work on « ${g.name} » today!
+                  </div>
+                </div>
+              `;
+              goaled=true;
+              console.log("GOALED IS "+ goaled);
+            }
+          }
+        }
+        checkIfGoals(goaled);
+      }
+      function checkIfGoals(g) {
+        console.log(g)
+
+        if (!g) {
+
+          document.getElementById('m-m-td').innerHTML+=`
+            <div class="nothing-to-see-here">
+              Nothing to work on for today.<br>
+              You made it, <br>
+              you deserve a reward.<br>
+              Take care of yourself, please.<br>
+              <br>
+              Love,<br>
+              Sprint+ team.
+            </div>
+          `;
+        }
+      }
     </script> 
   </body>
 

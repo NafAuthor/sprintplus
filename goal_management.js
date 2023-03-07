@@ -4,30 +4,38 @@ let Goal_name = "";
 
 function UpdateGoal() {
     let el = document.getElementById('select-pj-goal');
+    let number = document.getElementById('g-c-s-u-p').value;
     var text = el.options[el.selectedIndex].text;
-    let pj = JSON.parse(localStorage.getItem(`Project : ${text}`));
-    let goal = JSON.parse(localStorage.getItem(`${pj.name}-goal-${parseInt(GoalItem)}`));
-    console.log(goal)
-    goal.words = parseInt(goal.words) + parseInt(document.getElementById('g-c-s-u-p').value);
-    
-    let start = new Date(goal.started_on);
-    let today = new Date();
+    if (isNaN(number)) {
+      el.style.border="2x solid red;"
+    } else {
+      let pj = JSON.parse(localStorage.getItem(`Project : ${text}`));
+      InCharge = pj.name;
+      let goal = JSON.parse(localStorage.getItem(`${pj.name}-goal-${parseInt(GoalItem)}`));
+      goal.words = parseInt(goal.words) + parseInt(document.getElementById('g-c-s-u-p').value);
+      Current_goal = `_${GoalItem+1}`;
+      let start = new Date(goal.started_on);
+      let today = new Date();
+  
+      const diffTime = Math.abs(today - start);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+      console.log(diffTime + " milliseconds");
+      console.log(diffDays + " days");
+      goal.updates[diffDays] = goal.words;
+      localStorage.setItem(`${pj.name}-goal-${parseInt(GoalItem)}`,JSON.stringify(goal))
+  
+  
+      document.getElementById('g-c-s-u-p').value = "";
+  
+      DrawCurve();
+    }
 
-    const diffTime = Math.abs(today - start);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    console.log(diffTime + " milliseconds");
-    console.log(diffDays + " days");
-    goal.updates[diffDays] = goal.words;
-    localStorage.setItem(`${pj.name}-goal-${parseInt(GoalItem)}`,JSON.stringify(goal))
-
-
-    document.getElementById('g-c-s-u-p').value = "";
-
-    DrawCurve()
 }
 
 
 function GoalsShowUp() {
+  Pannel_Status=false;
+
     document.getElementById('Main').innerHTML = `
     <div class="g-parent">
     <div class="g-child-selector">
@@ -130,6 +138,8 @@ function GoalsShowUp() {
             `;
         }
     }
+
+
     
 }
 
@@ -389,7 +399,7 @@ words: 2500
 
   ctx.font = "25px serif";
   let g = Math.round((done_today*100)/For_Today);
-  if (g === NaN || g == null) {
+  if (isNaN(g) || g == null) {
     g = 0;
   }
   ctx.fillText(`${g > 100 ? "100%+":g+"%"}`, g>100?95:g>10?110:115, 140);

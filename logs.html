@@ -23,6 +23,12 @@
   <body>
     <div class="Title" id="p-title">
       <img src="Images & Icons/Sprint + Enhance your creativity.png" id="logo">
+        <div class="param" onclick="window.open('help.html')">
+            <span class="material-symbols-outlined">
+                more
+            </span>
+            Help
+        </div>
         <div class="param" onclick="OpenSprint()">
             <span class="material-symbols-outlined">
                 logout
@@ -37,36 +43,65 @@
         </div>
         <div class="param">
             <span class="material-symbols-outlined">
-                more
-            </span>
-            More
-        </div>
-        <div class="param">
-            <span class="material-symbols-outlined">
                 question_mark
             </span>
             FAQ
         </div>
     </div>
-    <div class="developer-note">
-        Hello! Welcome!<br><br>
-        First of all, thank you very much. You chose Sprint+ between 
-        a large amount of websites, and for that, I thank you. 
-        You are here in my lobby, let's say my playground. You may
-        go trough a lot of things from my universe: I hope you'll like it!<br><br>
-        I created this website for me to work on my writing projects, because
-        the 
-        <a href="https://nanowrimo.org/" target="_blank" style="color:white;text-decoration: none;">
-        NanoWrimo one</a>
-        didn't please me enough, even if it's a really good and helpful tool.<br><br>
-        I wanted to create something for me, to improve my coding skills and to
-        feel pleased in my writing trip. And so, Sprint+ was created.  <br><br>
-        If you have any questions or request, you can hit the "Developer" button right 
-        above! I'd be happy to meet you, and to take some of your feedbacks.<br><br>
-        Love,<br>
-        Naf.
-    </div>
     <div class="logs">
+        <div class="log-h">
+            <div class="l-t">
+                <span class="material-symbols-outlined">
+                    waving_hand
+                    </span>
+                Hey there!
+            </div>
+            <div class="l">
+                Hello! Welcome!<br><br>
+                First of all, thank you very much. You chose Sprint+ between 
+                a large amount of websites, and for that, I thank you. 
+                You are here in my lobby, let's say my playground. You may
+                go trough a lot of things from my universe: I hope you'll like it!<br><br>
+                I created this website for me to work on my writing projects, because
+                the 
+                <a href="https://nanowrimo.org/" target="_blank" style="color:white;text-decoration: none;">
+                NanoWrimo one</a>
+                didn't please me enough, even if it's a really good and helpful tool.<br><br>
+                I wanted to create something for me, to improve my coding skills and to
+                feel pleased in my writing trip. And so, Sprint+ was created.  <br><br>
+                If you have any questions or request, you can hit the "Developer" button right 
+                above! I'd be happy to meet you, and to take some of your feedbacks.<br><br>
+                Love,<br>
+                Naf.
+            </div>
+        </div>
+        <div class="log-separator"></div>
+        <div class="log-d">
+            <div class="l-t">
+                <span class="material-symbols-outlined">
+                    analytics
+                    </span>
+                About your datas
+            </div>
+            <div class="l">
+                None of your datas are used by us or any other person.
+                All your datas are stored in your browser, and are 
+                known only by you and your browser.<br><br>We do not sell,
+                use, lookup, save, or see any of your datas.<br<br>In
+                this way, all the passwords you will set will have a 
+                minimal amount of security: anyone with a bit of coding 
+                experience will be able to find your passwords. However,
+                keep in mind that this doesn't change anything to the point
+                of the website, and will not affect in any way your use of 
+                Sprint+, because no one would steal your progress.
+                <br><br>
+                Sprint+ and our team are not responsible of any corruption
+                due to a tricky modification of your datas on your side. 
+                You are responsible of the way you modify your datas.
+                <br><br>
+            </div>
+        </div>
+        <div class="log-separator"></div>
         <div class="log-c">
             <div class="l-t">
                 <span class="material-symbols-outlined">
@@ -78,6 +113,7 @@
                 * Goal: delete<br>
                 * Goal : edit<br>
                 * Goal: stop<br>
+                * Add badge rewards!<br>
                 * BetterUI<br>
                 * ToDo Lists<br>
                 * Inspiration<br>
@@ -86,8 +122,25 @@
                 * Saved content<br>
                 * Original password setup<br>
                 * Welcome pannel<br>
+                * Make sure projects names don't include "goal"<br>
                 * Beautify new project section<br>
                 * Force checkup for links, dates, covers, etc in the creation or modifications sections<br>
+                * A section for you to organize your ideas<br>
+            </div>
+        </div>
+        <div class="log-separator"></div>
+        <div class="log">
+            <div class="l-t">
+                3/7/2023
+            </div>
+            <div class="l">
+                * Better UI applied on some sections.<br>
+                * New main menu<br>
+                * New user welcome<br>
+                * Datas merging & download<br>
+                * Original password setup<br>
+                * Project & goal names do not accept ", ', "goal" or "project" anymore<br>
+                * ForceCheckUp applied to the major part of the fields<br>
             </div>
         </div>
         <div class="log">
@@ -133,7 +186,7 @@
         }
 
         function OpenSprint() {
-            window.open('https://bit.ly/sprplus','_blank').focus();
+            window.open('https://bit.ly/spriplus','_blank').focus();
         }
 
         function OpenDev() {

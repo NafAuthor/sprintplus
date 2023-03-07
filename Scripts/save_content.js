@@ -59,9 +59,9 @@ let Project_form = `
       <span class="material-symbols-outlined">
         edit_note
         </span>
-      Add some informations...
-    </div>
-    <textarea id="more"></textarea>
+        Add a link to your project
+        </div>
+        <input type="text" id="more">
   </div>
   <div class="p-d-p"id="p-bx">
     <div class="p-d-p-t" id="form-title">
@@ -258,3 +258,171 @@ let Goal = `
   </div>
 </div>
 `
+
+let all_contain = `
+<div class="all-c-p"  onclick="Menu()">
+<span class="material-symbols-outlined">
+  home
+</span>
+<div class="all-c-p-d">
+  Home
+</div>
+</div>
+<div class="all-c-p"  onclick="GoalsShowUp()">
+<span class="material-symbols-outlined">
+  monitoring
+</span>
+<div class="all-c-p-d">
+  Progress
+</div>
+</div>
+<div class="all-c-p" onclick="ProjectShowUp()">
+<span class="material-symbols-outlined">
+  folder
+  </span>
+<div class="all-c-p-d">
+  Projects
+</div>
+</div>
+<div class="all-c-p">
+<span class="material-symbols-outlined">
+  pending_actions
+  </span>
+<div class="all-c-p-d">
+  To-Do
+</div>
+</div>
+<div class="all-c-p">
+<span class="material-symbols-outlined">
+  tips_and_updates
+  </span>
+<div class="all-c-p-d">
+  Inspiration
+</div>
+</div>
+<div class="all-c-p">
+<span class="material-symbols-outlined">
+  edit_note
+  </span>
+<div class="all-c-p-d">
+  Notes
+</div>
+</div>
+<div class="all-c-p">
+<span class="material-symbols-outlined">
+  manage_accounts
+  </span>
+  <div class="all-c-p-d">
+    Informations
+  </div>
+</div>
+<div class="all-c-p">
+<span class="material-symbols-outlined">
+  bookmark
+</span>
+<div class="all-c-p-d">
+  Saved
+</div>
+</div>
+<div class="all-c-p" onclick="Download()">
+<span class="material-symbols-outlined">
+  download
+  </span>
+<div class="all-c-p-d" >
+  Download
+</div>
+</div>
+<div class="all-c-p" onclick="Merge()">
+<span class="material-symbols-outlined">
+  upload
+  </span>
+<div class="all-c-p-d" >
+  Merge
+</div>
+</div>`;
+
+
+let featured = `
+<div class="featured">
+                <div class="ft-t">
+                  L'académie d'écriture
+                </div>
+                <div class="ft-d">
+                  A french discord server full of nice people who like to write 
+                  diverse type of stories! If you're seeking for a cool community,
+                  with gentle writers to help you, do not hesitate anymore!
+                </div>
+                <button>
+                  Join this discord server
+                </button>
+              </div>
+`;
+
+
+let Main = `
+<div class="img-content">
+<img src = "Images & Icons/Page d'accueil/Important informations.png" style="height:100%">
+</div>
+<div class="main-more-content">
+<div class="utilities">
+  <div class="featuring">
+    <div class="f-t">
+      <span class="material-symbols-outlined">
+        groups
+        </span>
+      Sprint+ is featuring...
+    </div>
+    <div class="f-f">
+      
+      <div class="f-more">
+        <div class="f-m-d">
+          Looking for a feat?
+        </div>
+        <button id="contactteam" onclick="window.open('https://www.instagram.com/naf_author/',target='_blank')">
+          Contact our team
+        </button>
+      </div>
+    </div>
+    
+  </div>
+  <div class="m-m-i">
+    <div class="f-t">
+      <span class="material-symbols-outlined">
+        feed
+        </span>
+      What's going on?
+    </div>
+    <div class="m-m-td" id="m-m-td">
+    </div>
+  </div>
+</div>
+<div class="more">
+  <div class="mor-t" title="Want your story to be there? Contact our team.">
+    <span class="material-symbols-outlined">
+      auto_awesome
+      </span>
+    Our favorite stories
+  </div>
+  <div class="mor-st">
+    <div class="st" >
+      <div class="st-l">
+        FR
+      </div>
+      <div class="st-t">
+        Nous, et le monde
+      </div>
+      <div class="st-o">
+        <span class="material-symbols-outlined"onclick="window.open('https://www.wattpad.com/1320458753-nous-et-le-monde-chapitre-1')">
+          open_in_new
+          </span>
+          <span class="material-symbols-outlined" onclick="window.open('https://www.wattpad.com/user/NafAuteur')">
+            face
+            </span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+`;
+
+let goaled = false;

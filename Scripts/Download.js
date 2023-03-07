@@ -1,6 +1,7 @@
-let password = "a4512c";
+let password = JSON.parse(localStorage.getItem('user')).password;
 
 function DownloadItem() {
+    Pannel_Status=false;
     const link = document.createElement("a");
     let items = {...localStorage};
     let content={};
@@ -15,18 +16,18 @@ function DownloadItem() {
         content[`${key}`] = value;
     }
     let informations = `
-Welcome. You requested a download of your Sprint+ datas.
-We found in your localstorage ${stats[0]} project(s) and ${stats[1]} goal(s). If this is incorrect, please try to download your datas again.
-\n
-To merge your datas on a new session (digital tool), follow the instructions:\n
-- Copy the string below, without removing any characters\n
-- On your new digital tool, click "Merge" (bottom-right of the screen)\n
-- Paste the content in the prompt box at the top of your screen\n
-\n
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-${JSON.stringify(content)}
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    `;
+        Welcome. You requested a download of your Sprint+ datas.
+        We found in your localstorage ${stats[0]} project(s) and ${stats[1]} goal(s). If this is incorrect, please try to download your datas again.
+        \n
+        To merge your datas on a new session (digital tool), follow the instructions:\n
+        - Copy the string below, without removing any characters\n
+        - On your new digital tool, click "Merge" (bottom-right of the screen)\n
+        - Paste the content in the prompt box at the top of your screen\n
+        \n
+        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        ${JSON.stringify(content)}
+        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            `;
     const file = new Blob([informations], { type: 'text/plain' });
     link.href = URL.createObjectURL(file);
     link.download = "DATAS - Sprint+";
@@ -101,6 +102,7 @@ function DownloadConfirm() {
 
 
 function Merge() {
+    Pannel_Status=false;
     document.getElementById('Main').innerHTML = `
         <div class="AlertBox">
             <div class="ab-title">
@@ -156,6 +158,17 @@ function DataMergingPasswords() {
                     </div>
                 </div>
             `;
+        } else if (key==="user") {
+            document.getElementById('ab-infos').innerHTML+=`
+                <div class="ab-pj" >
+                    <div class="pj-name">
+                        Session password:
+                    </div>
+                    <div class="pj-p" >
+                        <input type="text" id="user">
+                    </div>
+                </div>
+            `;
         }
     }
 }
@@ -163,9 +176,9 @@ function DataMergingPasswords() {
 function DataConfirm() {
     let items = {...localStorage};
     for (let [key,value] of Object.entries(items)) {
-        if (key.includes("Project") && document.getElementById(JSON.parse(value).name)) {
-            console.log(document.getElementById(JSON.parse(value).name))
-            if (document.getElementById(JSON.parse(value).name).value != JSON.parse(value).password) {
+        if (key.includes("Project") && document.getElementById(JSON.parse(value).name) ||key === "user") {
+            console.log(key)
+            if ((key!="user" && document.getElementById(JSON.parse(value).name).value != JSON.parse(value).password) || (key === "user" && document.getElementById("user").value != JSON.parse(value).password )) {
                 document.getElementById('Main').innerHTML = `
                 <div class="AlertBox">
                     <div class="ab-title">
