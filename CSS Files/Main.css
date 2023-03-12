@@ -526,3 +526,9 @@ body a {
     ::-webkit-scrollbar-thumb:hover {
         background: white;
     }
+.welcome-f {
+    background-color: #68511c;
+    padding: 15px;
+    background-color: #19284d;
+    border-radius: 10px;
+}

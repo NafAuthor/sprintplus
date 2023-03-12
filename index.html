@@ -196,7 +196,7 @@
 
 
       if (!localStorage.getItem('user')) {
-        document.getElementById('all-contain').innerHTML="";
+        document.getElementById('all-contain').style.visibility="hidden";
         document.getElementById('p-p-title').innerHTML = "Welcome to Sprint+!"
         document.getElementById('Main').innerHTML = `
           <div class="welcome-f">
@@ -230,11 +230,11 @@
                 <div class="q-t">
                   What is your name?
                 </div>
-                <input type="text" id="name">
+                <input type="text" id="name" style="background-color:rgba(31, 48, 92, 0.7)">
                 <div class="q-t" >
-                  Enter a secure password (5 characters min.)
+                  Enter a secure password (6 characters min.)
                 </div>
-                <input type="text"id="password">
+                <input type="text"id="password" style="background-color:rgba(31, 48, 92, 0.7)">
               </div>
             </div>
             <button id="go" onclick="GoFor()">
@@ -269,6 +269,7 @@
         let goaled = false;
         document.getElementById('Main').innerHTML=Main;
         document.getElementById('all-contain').innerHTML=all_contain;
+        document.getElementById('all-contain').style.visibility="visible";
         let sentences = [
           `Welcome back ${JSON.parse(localStorage.getItem('user')).name}. We were waiting for you!`,
           `Nice to see you again ${JSON.parse(localStorage.getItem('user')).name}!`,

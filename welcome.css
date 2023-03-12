@@ -44,8 +44,8 @@
     cursor: pointer;
     font-size: 25px;
     color:white;
-    background-color: #2c3f70;
-    border: 2px solid #2c3f70;
+    background-color: rgba(31, 48, 92, 0.7);
+    border: 2px solid rgba(31, 48, 92, 0.7);
 }
 #go:hover {
     border: 2px solid white;
