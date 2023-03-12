@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="CSS Files/download.css">
     <link rel="stylesheet" href="welcome.css">
     <link rel="stylesheet" href="CSS Files/informations.css">
+    <link rel="stylesheet" href="CSS Files/inspiration.css">
 
     <script type="text/javascript" src="Scripts/Download.js"></script>
     <script type="text/javascript" src="Scripts/projects.js"></script>
@@ -26,6 +27,7 @@
     <script type="text/javascript" src="goal_management.js"></script>
     <script type="text/javascript" src="Scripts/menu.js"></script>
     <script type="text/javascript" src="Scripts/informations.js"></script>
+    <script type="text/javascript" src="Scripts/inspiration.js"></script>
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -46,7 +48,7 @@
       </a>
     </div>
     <div class="Title" id="p-title">
-      <img src="Images & Icons/Sprint + Enhance your creativity.png" id="logo">
+      <img src="Images & Icons/Logo.ico" id="logo">
       <a id="p-p-title"></a>
     </div>
     <div class="all-contain" id="all-contain">
@@ -82,7 +84,7 @@
           To-Do
         </div>
       </div>
-      <div class="all-c-p">
+      <div class="all-c-p" onclick="OpenInspiration()">
         <span class="material-symbols-outlined">
           tips_and_updates
           </span>
@@ -98,21 +100,13 @@
           Notes
         </div>
       </div>
-      <div class="all-c-p">
+      <div class="all-c-p" onclick="OpenInfos()">
         <span class="material-symbols-outlined">
           manage_accounts
           </span>
           <div class="all-c-p-d">
-            Informations
+            Account
           </div>
-      </div>
-      <div class="all-c-p">
-        <span class="material-symbols-outlined">
-          bookmark
-        </span>
-        <div class="all-c-p-d">
-          Saved
-        </div>
       </div>
       <div class="all-c-p" onclick="Download()">
         <span class="material-symbols-outlined">
@@ -151,7 +145,7 @@
                 <div class="f-m-d">
                   Looking for a feat?
                 </div>
-                <button id="contactteam" onclick="window.open('https://www.instagram.com/naf_author/',target='_blank')">
+                <button id="contactteam" onclick="window.open('https://discord.gg/72tACSk8Jd',target='_blank')">
                   Contact our team
                 </button>
               </div>
@@ -311,7 +305,8 @@
             if (diffDays>0) {
               calc = diffDays-1;
             }
-            if ((!g.updates[diffDays] || g.updates[diffDays]<=g.updates[calc]) && g.started === true ) {
+          
+            if (((!g.updates[diffDays] || g.updates[diffDays]<=g.updates[calc])) && g.started === true ) {
               document.getElementById('m-m-td').innerHTML+=`
                 <div class="alert">
                   <div class="c-m">

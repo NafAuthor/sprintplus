@@ -292,7 +292,7 @@ let all_contain = `
   To-Do
 </div>
 </div>
-<div class="all-c-p">
+<div class="all-c-p" onclick="OpenInspiration()">
 <span class="material-symbols-outlined">
   tips_and_updates
   </span>
@@ -308,21 +308,13 @@ let all_contain = `
   Notes
 </div>
 </div>
-<div class="all-c-p">
+<div class="all-c-p" onclick="OpenInfos()">
 <span class="material-symbols-outlined">
   manage_accounts
   </span>
   <div class="all-c-p-d">
-    Informations
+    Account
   </div>
-</div>
-<div class="all-c-p">
-<span class="material-symbols-outlined">
-  bookmark
-</span>
-<div class="all-c-p-d">
-  Saved
-</div>
 </div>
 <div class="all-c-p" onclick="Download()">
 <span class="material-symbols-outlined">
@@ -373,7 +365,6 @@ let Main = `
       Sprint+ is featuring...
     </div>
     <div class="f-f">
-      
       <div class="f-more">
         <div class="f-m-d">
           Looking for a feat?

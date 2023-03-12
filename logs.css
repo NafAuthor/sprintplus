@@ -138,8 +138,6 @@ body {
 
 .logs::before {    
     content: "";
-    background-image: url("Images\ &\ Icons/nacchan.png");
-    background-repeat: no-repeat;
     background-position: 50%;
     position: absolute;
     top: 120px;

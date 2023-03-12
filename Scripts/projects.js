@@ -478,7 +478,6 @@ function ModifyAddGoal(n) {
 
 
 
-
 function ProjectShowUp() {
   InCharge;
   Pannel_Status=false;
@@ -508,24 +507,26 @@ function ProjectShowUp() {
       }
       document.getElementById('pj-ctnt').innerHTML+=`
       <div class="pj-new">
-        <div class="pj-new-ttl"> ${item.name} </div>
-          <div class="pj-${item.name}" id="pj-whl">
-          <div class="pj-infos" id="pj-child">
-          <div class="pj-open">
-            <button onclick="OpenFolder(this);" class="material-symbols-outlined" style="font-size:50px;cursor:pointer;" id="pj-open-${item.name}"> folder_open </button>
+      <div class="pj-${item.name}" id="pj-whl">
+        <div class="pj-infos" id="pj-child">
+          <div class="pj-new-ttl"> ${item.name} </div>
+          <div class="pj-open" id="pj-open-${item.name}" onclick="OpenFolder(this);">
+            <button class="material-symbols-outlined" style="font-size:50px;cursor:pointer;"> folder_open </button>
             <div class="pj-open-desc"> Open project </div>
-          </div>
+
+            </div>
           <div class="pj-param">
             <div class="pj-param-contan">
               <button class="material-symbols-outlined" id="pj-param"> star </button>
+              <button class="material-symbols-outlined" id="pj-param"> hide_source </button>
             </div>
           </div>
         </div>
-            <div class="pj-slct-img">
-            <img src="${item.cover}" class="pj-cover">
-          </div>
+        <div class="pj-slct-img">
+          <img src="${item.cover}" class="pj-cover">
         </div>
       </div>
+    </div>
       `;
     }
   }
@@ -687,7 +688,8 @@ function CreateProject() {
         more : more,
         cover : cover,
         created_on : Date.now(),
-        password: password
+        password: password,
+        inspi:[]
     }
     localStorage.setItem(`Project : ${name}`, JSON.stringify(Project));
     let Tracker = document.getElementById('tracker');

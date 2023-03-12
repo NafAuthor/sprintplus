@@ -6,9 +6,12 @@ function UpdateGoal() {
     let el = document.getElementById('select-pj-goal');
     let number = document.getElementById('g-c-s-u-p').value;
     var text = el.options[el.selectedIndex].text;
-    if (isNaN(number)) {
-      el.style.border="2x solid red;"
+    if (isNaN(number) 
+    || (parseInt(number)==0) || 
+    !localStorage.getItem(`Project : ${text}`)) {
+      document.getElementById('update_empty').innerHTML = "Error: wrong value or no selected goal."
     } else {
+      document.getElementById('update_empty').innerHTML = ""
       let pj = JSON.parse(localStorage.getItem(`Project : ${text}`));
       InCharge = pj.name;
       let goal = JSON.parse(localStorage.getItem(`${pj.name}-goal-${parseInt(GoalItem)}`));
@@ -31,16 +34,21 @@ function UpdateGoal() {
     }
 
 }
+setTimeout(()=>{GoalsShowUp()},20)
 
 
 function GoalsShowUp() {
   Pannel_Status=false;
+
 
     document.getElementById('Main').innerHTML = `
     <div class="g-parent">
     <div class="g-child-selector">
       <div class="g-c-s-container">
         <div class="g-c-s-c-t">
+        <span class="material-symbols-outlined">
+        bookmark
+        </span>
           Select a project
         </div>
         <div class="g-c-s-c-p">
@@ -49,82 +57,83 @@ function GoalsShowUp() {
           </select>
         </div>
         <div class="g-c-s-c-t">
+        <span class="material-symbols-outlined">
+        beenhere
+        </span>
           Select a goal
         </div>
         <div class="g-c-s-c-g">
-          <div class="img-c">
-            <img src="" id="img-c">
-          </div>
           <div class="g-c" id="g-c">
           </div>
         </div>
+
       </div>
-      <div class="g-c-s-separator"></div>
       <div class="g-c-s-updt">
+      <div class="g-c-s-updt-t">
+        Goal update
+      </div>
         <div class="g-c-s-u-inbox">
           <div class="g-c-s-u-p">
-            Words written
-            <input type="number" id="g-c-s-u-p">
+            <input placeholder="Words written" type="number" id="g-c-s-u-p">
           </div>
-
         </div>
         <div class="g-c-s-u-u">
           <button onclick="UpdateGoal()">
             <span class="material-symbols-outlined">
-              thumb_up
-              </span>
-              Update 
+              add
+              </span> 
           </button>
+          <div id="update_empty"></div>
         </div>
       </div>
-      <div class="g-c-s-separator"></div>
       <div class="g-c-s-management">
           <div class="g-c-s-m-c">
-              <button>
-              <span class="material-symbols-outlined">
+          <div id="error-no-goal">Error: no goal selected</div>
+          <div class="g-c-s-m-c-t">
+          Goal management
+        </div>
+        <button onclick="DelGoalStats()" class="DelToActualize">
+        <span class="material-symbols-outlined">
                 delete
                 </span>
-              Delete
+              <p>Delete the goal</p>
             </button>
             <button>
-              <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined">
                 edit
                 </span>
-              Edit
-            </button>
-            <button>
-              <span class="material-symbols-outlined">
+                <p>Edit the goal</p>
+                </button>
+                <button onclick="StopGoal()">
+                <span class="material-symbols-outlined">
                 block
                 </span>
-              Stop
-            </button>
-          </div>
-          <div class="g-c-s-m-s"></div>
-          <div class="g-c-s-m-c">
+                <p>Stop the goal</p>
+                </button>
               <button onclick="OpenStats()">
               <span class="material-symbols-outlined">
               analytics
               </span>
-              Stats
+              <p>Goal statistics</p>
             </button>
             <button onclick="DrawCurve()">
               <span class="material-symbols-outlined" >
               monitoring
               </span>
-              Progress
+              <p>Goal progress</p>
             </button>
             <button onclick="DownloadCanvas()">
               <span class="material-symbols-outlined">
                 chart_data
                 </span>
-              Download
-            </button>
+                <p>Download board</p>
+                </button>
           </div>
       </div>
     </div>
     <div class="huge-separator"></div>
     <div class="child-viewer">
-      <canvas id="pjcurve" width="980" height="500" style="background-color: #24335a;"></canvas>
+      <canvas id="pjcurve" width="980" height="500" style="background-color: rgba(26,41,80,0.3);"></canvas>
     </div>
   </div>
     `;
@@ -143,9 +152,37 @@ function GoalsShowUp() {
     
 }
 
+function StopGoal() {
+  let g = JSON.parse(localStorage.getItem(document.getElementsByClassName('DelToActualize').id));
+  if (g) {
+      g.started = false;
+      localStorage.setItem(document.getElementsByClassName('DelToActualize').id,JSON.stringify(g))
+      GoalsShowUp();
+      document.getElementsByClassName('DelToActualize').id = '';
+
+  } else {
+    document.getElementById('error-no-goal').style.visibility = 'visible';
+
+  }
+}
+
+function DelGoalStats() {
+  if (localStorage.getItem(document.getElementsByClassName('DelToActualize').id)) {
+    console.log('UNSETID' + document.getElementsByClassName('DelToActualize').id)
+      localStorage.removeItem(document.getElementsByClassName('DelToActualize').id);
+      GoalsShowUp();
+      document.getElementsByClassName('DelToActualize').id = '';
+
+  } else {
+    document.getElementById('error-no-goal').style.visibility = 'visible';
+
+  }
+}
+
 
 function DownloadCanvas() {
   let canvas = document.getElementById('pjcurve');
+  document.getElementById('error-no-goal').style.visibility = 'hidden';
   var image = canvas.toDataURL();
   // Create a link
   var aDownloadLink = document.createElement('a');
@@ -159,16 +196,21 @@ function DownloadCanvas() {
 
 
 function FixGoal(el) {
+  document.getElementById('error-no-goal').style.visibility = 'hidden';
     if (Current_goal!=el.id) {
-        document.getElementById(el.id).style.color = "rgba(23, 169, 31, 0.8)";
+        document.getElementById(el.id).style.borderColor = "rgba(23, 169, 31, 0.8)";
         Current_goal = el.id;
         GoalItem = parseInt(el.id.replace("_",""))-1;
+        document.getElementsByClassName('DelToActualize').id = `${InCharge}-goal-${parseInt(el.id.replace('_',''))-1}`;
+        console.log('SETID ' + document.getElementsByClassName('DelToActualize').id)
     } else {
         Current_goal="_3";
-        document.getElementById(el.id).style.color = "white";
+        document.getElementById(el.id).style.borderColor = "";
+        document.getElementsByClassName('DelToActualize').id = '';
+        console.log('UNSETID')
         GoalItem = 0;
     }
-    document.getElementById(el.id === "_1" ? "_2" : "_1").style.color = "white";
+    document.getElementById(el.id === "_1" ? "_2" : "_1").style.borderColor = "";
 
 }
 
@@ -179,7 +221,6 @@ function GoalSelect() {
     let pj = JSON.parse(localStorage.getItem(`Project : ${text}`));
     InCharge = pj.name;
 
-    document.getElementById('img-c').src = pj.cover;
 
     document.getElementById('g-c').innerHTML="";
 
@@ -215,7 +256,14 @@ function u() {
 
 
 function DrawCurve() {
+  if (  document.getElementById('update_empty')) {
+    document.getElementById('update_empty').innerHTML = "";
+  }
     let goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
+    if (!goal) {
+      document.getElementById('error-no-goal').style.visibility = 'visible';
+      return;
+    }
     let daysUntil = goal.duration;
     let MaxWords = parseInt(goal.amount_of_words);
     let updates = goal.updates;
@@ -286,7 +334,14 @@ function DrawCurve() {
 
 function OpenStats() {
   let goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
-  
+  if (  document.getElementById('update_empty')) {
+    document.getElementById('update_empty').innerHTML = ""
+
+  }
+  if (!goal) {
+    document.getElementById('error-no-goal').style.visibility = 'visible';
+    return;
+  }
   /*
 amount_of_words: "30000"
 details: "Plus sur le drive nafauthor@gmail.com"
@@ -300,8 +355,6 @@ words: 2500
   let today = new Date();
   const diffTime = Math.abs(today - start);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-  console.log(diffTime + " milliseconds");
-  console.log(diffDays + " days");
 
   let daysUntil = diffDays;
   let MaxWords = parseInt(goal.amount_of_words);
@@ -379,7 +432,7 @@ words: 2500
     ctx.fillStyle = "rgba(255, 183, 0, 1)";
     if (s!=0) {
       if (i<strike) {
-        ctx.fillStyle = "green";
+        ctx.style = "green";
       }
     }
     ctx.fill();
@@ -432,7 +485,6 @@ words: 2500
   ctx.font = '25px Material Icons';
   ctx.fillText('timelapse',710,290);
   ctx.fillText('inventory_2',710,325);
-  ctx.fillText('list_alt',710,360);
   ctx.stroke()
 
   ctx.font = "20px serif";
@@ -453,10 +505,6 @@ words: 2500
   } else {
     details[0]=goal.details.split('');
   }
-  ctx.font = "20px serif";
-  ctx.fillText(`${details[0].join('')}`,745,355);
-  ctx.fillText(`${details[1].join('')}`,745,380);
-
 
 
   ctx.beginPath();
@@ -478,7 +526,7 @@ words: 2500
   ctx.strokeStyle = 'rgba(255, 183, 0, 1)';
   ctx.stroke();
 
-
+  console.log(c_words, MaxWords)
   ctx.beginPath();
   ctx.arc(130, 350, 50, 0, (((c_words*100)/MaxWords)*6.28)/100);
   ctx.lineWidth = 2;

@@ -156,37 +156,13 @@
             </div>
         </div>
     </div>
-    <div class="c-palace">
-        <img src="Images & Icons/cp.png" onclick="LaunchSong()">
-    </div>
-    <div class="swingrowers" onclick="Sgrw()">
-        <img src="Images & Icons/swingrowers.png" >
-    </div>
+
 
     <script>
-        let isMedia = false;
-        var media;
-        function LaunchSong() {
-            let songs = [
-            "BWID.mp3",
-            "CTTR.mp3",
-            "DSN.mp3",
-            "F.mp3",
-            'Roi.mp3',
-            "Russian.mp3",
-            "Shuniji.mp3"
-        ]
-        if (isMedia) media.pause();
 
-            media = new Audio(`Songs/${songs[Math.floor(Math.random() * songs.length)]}`);
-            
-            media.volume = 0.2;
-            media.play();
-            isMedia=true;
-        }
 
         function OpenSprint() {
-            window.open('https://bit.ly/spriplus','_blank').focus();
+            window.open('https://bit.ly/spriplus').focus();
         }
 
         function OpenDev() {
