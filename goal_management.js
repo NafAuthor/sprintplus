@@ -34,7 +34,6 @@ function UpdateGoal() {
     }
 
 }
-setTimeout(()=>{GoalsShowUp()},20)
 
 
 function GoalsShowUp() {
