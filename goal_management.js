@@ -136,6 +136,7 @@ function GoalsShowUp() {
     </div>
   </div>
     `;
+    let v = 0;
     const items = { ...localStorage };
     console.log(items)
     for (let item of Object.values(items)) {
@@ -144,6 +145,12 @@ function GoalsShowUp() {
             document.getElementById('select-pj-goal').innerHTML+=`
             <option>${i.name}</option>
             `;
+            if ( v===0 ){
+              document.getElementById('select-pj-goal').value =  i.name;
+              document.getElementById('select-pj-goal').onchange();
+              
+              v = 1;
+          }
         }
     }
 

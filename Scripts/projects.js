@@ -1,34 +1,35 @@
-
 let Pannel_Status = false;
 let customGoal = false;
 let customGoalName;
 let InCharge;
 
 function OpenFolder(el) {
-  let id = el.id;
-  id = id.replace('pj-open-','');
-  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
+    let id = el.id;
+    id = id.replace('pj-open-', '');
+    let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
 
-  Pannel_Status=false;
+    Pannel_Status = false;
 
 
-  console.log(" IS PANNEL STATUS"); 
-  let d = new Date(pj.created_on * 1000);
-  let N = pj.name;
-  InCharge = pj.name;
-  let fullN = N.split('')
-  for (let i =0;i<fullN.length; i++) {
-    if (fullN[i] == "'") {
-      fullN[i] = "¨";
-    } else if (fullN[i] == '"') {
-      fullN[i] = "^";
+    console.log(" IS PANNEL STATUS");
+    let d = new Date(pj.created_on * 1000);
+    let N = pj.name;
+    InCharge = pj.name;
+    let fullN = N.split('')
+    for (let i = 0; i < fullN.length; i++) {
+        if (fullN[i] == "'") {
+            fullN[i] = "¨";
+        } else if (fullN[i] == '"') {
+            fullN[i] = "^";
+        }
     }
-  }
-  fullN = JSON.stringify({"name":fullN})
+    fullN = JSON.stringify({
+        "name": fullN
+    })
 
 
 
-  document.getElementById('Main').innerHTML = `
+    document.getElementById('Main').innerHTML = `
   <div class="pj-board-parent">
     <div class="pj-b-g">
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeCover(this)">
@@ -97,15 +98,15 @@ function OpenFolder(el) {
 
   </div>
   `;
-  ActualizeGoals()
+    ActualizeGoals()
 
 
 
 }
 
 function ChangeName() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
-  document.getElementById('pj-b-content').innerHTML = `
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
         Modify the name of your project
@@ -132,34 +133,37 @@ function ChangeName() {
     </div>
   `;
 }
+
 function SaveName() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
 
-  let cv = document.getElementById('enter-content').value;
+    let cv = document.getElementById('enter-content').value;
 
-  if (cv && cv.toLowerCase().includes('goal')!=true && cv.toLowerCase().includes('project')!=true) {
-    for (let i = 0; i < 2; i++) {
-      let g = JSON.parse(localStorage.getItem(`${pj.name}-goal-${i}`));
-      if (g) {
-        console.log('Goal in')
-        localStorage.setItem(`${cv}-goal-${i}`, JSON.stringify(g));
-        localStorage.removeItem(`${pj.name}-goal-${i}`);
-      }
+    if (cv && cv.toLowerCase().includes('goal') != true && cv.toLowerCase().includes('project') != true) {
+        for (let i = 0; i < 2; i++) {
+            let g = JSON.parse(localStorage.getItem(`${pj.name}-goal-${i}`));
+            if (g) {
+                console.log('Goal in')
+                localStorage.setItem(`${cv}-goal-${i}`, JSON.stringify(g));
+                localStorage.removeItem(`${pj.name}-goal-${i}`);
+            }
+        }
+        let backup = pj.name;
+        pj.name = cv;
+        localStorage.setItem(`Project : ${cv}`, JSON.stringify(pj));
+        OpenFolder({
+            id: `pj-open-${cv}`
+        })
+        localStorage.removeItem(`Project : ${backup}`);
+    } else {
+        document.getElementById('enter-content').style.border = "2px solid red";
     }
-    let backup = pj.name;
-    pj.name = cv;
-    localStorage.setItem(`Project : ${cv}`,JSON.stringify(pj));
-    OpenFolder({id:`pj-open-${cv}`})
-    localStorage.removeItem(`Project : ${backup}`);
-  } else {
-    document.getElementById('enter-content').style.border="2px solid red";
-  }
 }
 
 
 function ChangeCover() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
-  document.getElementById('pj-b-content').innerHTML = `
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
         Modify your cover
@@ -185,23 +189,26 @@ function ChangeCover() {
     </div>
   `;
 }
-function SaveCover() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
 
-  let cv = document.getElementById('enter-content').value;
-  console.log(cv)
-  if (isValidUrl(cv)) {
-    pj.cover = cv;
-    localStorage.setItem(`Project : ${pj.name}`,JSON.stringify(pj));
-    OpenFolder({id:`pj-open-${pj.name}`})
-  } else {
-    document.getElementById('enter-content').style.border="2px solid red";
-  }
+function SaveCover() {
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
+    let cv = document.getElementById('enter-content').value;
+    console.log(cv)
+    if (isValidUrl(cv)) {
+        pj.cover = cv;
+        localStorage.setItem(`Project : ${pj.name}`, JSON.stringify(pj));
+        OpenFolder({
+            id: `pj-open-${pj.name}`
+        })
+    } else {
+        document.getElementById('enter-content').style.border = "2px solid red";
+    }
 }
 
 function ChangeDesc() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
-  document.getElementById('pj-b-content').innerHTML = `
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
         Modify the description of your project
@@ -228,22 +235,26 @@ function ChangeDesc() {
     </div>
   `;
 }
+
 function SaveDesc() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
 
-  let cv = document.getElementById('enter-content').value;
+    let cv = document.getElementById('enter-content').value;
 
-  if (cv) {
-    pj.desc = cv;
-    localStorage.setItem(`Project : ${id}`,JSON.stringify(pj));
-    OpenFolder({id:`pj-open-${id}`})
-  } else {
-    document.getElementById('enter-content').style.border="2px solid red";
-  }
+    if (cv) {
+        pj.desc = cv;
+        localStorage.setItem(`Project : ${id}`, JSON.stringify(pj));
+        OpenFolder({
+            id: `pj-open-${id}`
+        })
+    } else {
+        document.getElementById('enter-content').style.border = "2px solid red";
+    }
 }
+
 function ChangeFiles() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
-  document.getElementById('pj-b-content').innerHTML = `
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
         Modify additional content
@@ -269,35 +280,44 @@ function ChangeFiles() {
     </div>
   `;
 }
-function Cancel() {
-  OpenFolder({id:`pj-open-${InCharge}`})
-}
-function SaveFiles() {
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
 
-  let cv = document.getElementById('enter-content').value;
-  console.log(cv)
-  if (isValidUrl(cv)) {
-    pj.more = cv;
-    localStorage.setItem(`Project : ${pj.name}`,JSON.stringify(pj));
-    OpenFolder({id:`pj-open-${pj.name}`})
-  } else {
-    document.getElementById('enter-content').style.border="2px solid red";
-  }
+function Cancel() {
+    OpenFolder({
+        id: `pj-open-${InCharge}`
+    })
+}
+
+function SaveFiles() {
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
+    let cv = document.getElementById('enter-content').value;
+    console.log(cv)
+    if (isValidUrl(cv)) {
+        pj.more = cv;
+        localStorage.setItem(`Project : ${pj.name}`, JSON.stringify(pj));
+        OpenFolder({
+            id: `pj-open-${pj.name}`
+        })
+    } else {
+        document.getElementById('enter-content').style.border = "2px solid red";
+    }
 }
 
 
 function ActualizeGoals() {
-  const items = {...localStorage};
-  let Content = [];
-  let z = 0;
-  for (let o of Object.entries(items)) {
-    if (o[0].includes("goal") && o[0].includes(InCharge)) {
-      z++;
-      let GoalNumber = o[0].split('')[o[0].split('').length -1]
-      let Goal = JSON.parse(localStorage.getItem(o[0]));
-      GoalNumber=parseInt(GoalNumber);
-      Content.push({[GoalNumber]:`
+    const items = {
+        ...localStorage
+    };
+    let Content = [];
+    let z = 0;
+    for (let o of Object.entries(items)) {
+        if (o[0].includes("goal") && o[0].includes(InCharge)) {
+            z++;
+            let GoalNumber = o[0].split('')[o[0].split('').length - 1]
+            let Goal = JSON.parse(localStorage.getItem(o[0]));
+            GoalNumber = parseInt(GoalNumber);
+            Content.push({
+                [GoalNumber]: `
       <div class="goal-nb-${GoalNumber + 1 }-${Goal.name}" id="pj-b-gg">
         <div class="pj-b-gg-t">
           <div class="pj-b-gg-t-t">${Goal.name}</div>
@@ -341,150 +361,162 @@ function ActualizeGoals() {
         </div>
         </div>
       </div>
-    `})
+    `
+            })
 
+        }
     }
-  }
 
-  Content.sort( function( a , b){
-    let c = Object.values(a);
-    let d = Object.values(b);
+    Content.sort(function(a, b) {
+        let c = Object.values(a);
+        let d = Object.values(b);
 
-    if(c > d) return 1;
-    if(c < d) return -1;
-    return 0;
-  });
-  console.log(Content)
-  for (let j = 0; j < Content.length; j++) {
-    for (let o of Object.values(Content[j])) {
-      document.getElementById('pj-b-g-c').innerHTML+=o;
+        if (c > d) return 1;
+        if (c < d) return -1;
+        return 0;
+    });
+    console.log(Content)
+    for (let j = 0; j < Content.length; j++) {
+        for (let o of Object.values(Content[j])) {
+            document.getElementById('pj-b-g-c').innerHTML += o;
+        }
     }
-  }
-  if (z==2) {
-    document.getElementById('pj-b-g-b').innerHTML="";
-  }
+    if (z == 2) {
+        document.getElementById('pj-b-g-b').innerHTML = "";
+    }
 }
 
 
 function RingGoal(el) {
-  let id = el.id;
-  let g = JSON.parse(localStorage.getItem(id));
-  if (confirm(`${!g.started ? "Start" : "Stop"} the goal?`)) {
-    if (!g.started) {
-      g.started_on = new Date()
-      g.started_on.setHours(0,0,0,0)
+    let id = el.id;
+    let g = JSON.parse(localStorage.getItem(id));
+    if (confirm(`${!g.started ? "Start" : "Stop"} the goal?`)) {
+        if (!g.started) {
+            g.started_on = new Date()
+            g.started_on.setHours(0, 0, 0, 0)
+        }
+        g.started = !g.started;
     }
-    g.started =!g.started;
-  }
-  localStorage.setItem(id,JSON.stringify(g))
+    localStorage.setItem(id, JSON.stringify(g))
 
 }
 
 function DelGoal(g) {
-  console.log(g.id)
-  if (confirm('Do you really want to delete this goal?')) {
-    localStorage.removeItem(g.id);
-    OpenFolder({id:`pj-open-${InCharge}`})
-  }
+    console.log(g.id)
+    if (confirm('Do you really want to delete this goal?')) {
+        localStorage.removeItem(g.id);
+        OpenFolder({
+            id: `pj-open-${InCharge}`
+        })
+    }
 }
 
 let NewAddGoal = 0;
+
 function ModifyAddGoal(n) {
-  customGoal = true;
-  console.log(n)
-  if (NewAddGoal <= 0) {
-    NewAddGoal=1;
-    let CG = 0;
-    for (let i=0;i<2; i++) {
-      if (localStorage.getItem(`${customGoal ? n: Name}-goal-${i}`)) {
-        CG++;
-      }
+    customGoal = true;
+    console.log(n)
+    if (NewAddGoal <= 0) {
+        NewAddGoal = 1;
+        let CG = 0;
+        for (let i = 0; i < 2; i++) {
+            if (localStorage.getItem(`${customGoal ? n: Name}-goal-${i}`)) {
+                CG++;
+            }
+        }
+        console.log(CG)
+        if (CG >= 2) {
+            alert('Already too much goals (2 max.)');
+            return;
+        } else {
+            console.log("Creategoal")
+
+            function AskName() {
+                let name = prompt('What is the name of your goal?');
+                if (name.split('').length > 50) {
+                    alert('Too much caracters. (50 max)');
+                    AskName();
+                } else {
+                    return name;
+                }
+            }
+
+            function HowMuchDays() {
+                let HMD = prompt('How many days will it last?');
+                if (isNaN(HMD)) {
+                    alert('Wrong number value');
+                    HowMuchDays();
+                } else {
+                    return HMD;
+                }
+            }
+
+            function HowMuchWords() {
+                let HMD = prompt('How many words do you wish to write?');
+                if (isNaN(HMD)) {
+                    alert('Wrong number value');
+                    HowMuchDays();
+                } else {
+                    return HMD;
+                }
+            }
+
+            function AskDesc() {
+                let Desc = prompt('Add a description to your goal...');
+                if (Desc.split('').length > 250) {
+                    alert('Too much caracters. (250 max)');
+                    AskName();
+                } else {
+                    return Desc;
+                }
+            }
+            let N = AskName();
+            let HMD = HowMuchDays();
+            let HMW = HowMuchWords();
+            let D = AskDesc();
+            let g = {
+                name: N,
+                duration: HMD,
+                details: D,
+                amount_of_words: HMW,
+                words: 0,
+                started: false,
+                started_on: "",
+                updates: {}
+            }
+            for (let i = 0; i < 2; i++) {
+                if (!localStorage.getItem(`${customGoal ? n: Name}-goal-${i}`)) {
+                    localStorage.setItem(
+                        `${customGoal ? n: Name}-goal-${i}`,
+                        JSON.stringify(
+                            g
+                        )
+                    );
+                    document.getElementById('Main').innerHTML = "";
+                    OpenFolder({
+                        id: `pj-open-${n}`
+                    });
+                    NewAddGoal = 0;
+                    customGoal = false;
+                    customGoalName = "";
+                    return;
+                }
+            }
+        }
     }
-    console.log(CG)
-    if (CG >= 2) {
-      alert('Already too much goals (2 max.)');
-      return;
-    } else { 
-      console.log("Creategoal")
-      function AskName() {
-        let name = prompt('What is the name of your goal?');
-        if (name.split('').length > 50) {
-          alert('Too much caracters. (50 max)');
-          AskName();
-        } else {
-          return name;
-        }
-      }
-      function HowMuchDays() {
-        let HMD = prompt('How many days will it last?');
-        if (isNaN(HMD)) {
-          alert('Wrong number value');
-          HowMuchDays();
-        } else {
-          return HMD;
-        }
-      }
-      function HowMuchWords() {
-        let HMD = prompt('How many words do you wish to write?');
-        if (isNaN(HMD)) {
-          alert('Wrong number value');
-          HowMuchDays();
-        } else {
-          return HMD;
-        }
-      }
-      function AskDesc() {
-        let Desc = prompt('Add a description to your goal...');
-        if (Desc.split('').length > 250) {
-          alert('Too much caracters. (250 max)');
-          AskName();
-        } else {
-          return Desc;
-        }
-      }
-      let N = AskName();
-      let HMD = HowMuchDays();
-      let HMW = HowMuchWords();
-      let D = AskDesc();
-      let g = {
-        name : N,
-        duration : HMD,
-        details : D,
-        amount_of_words : HMW,
-        words: 0,
-        started : false,
-        started_on : "",
-        updates: {}
-      }
-      for (let i=0;i<2; i++) {
-        if (!localStorage.getItem(`${customGoal ? n: Name}-goal-${i}`)) {
-          localStorage.setItem(
-            `${customGoal ? n: Name}-goal-${i}`,
-            JSON.stringify(
-              g
-            )
-          );
-          document.getElementById('Main').innerHTML = "";
-          OpenFolder({id:`pj-open-${n}`});
-          NewAddGoal=0;
-          customGoal = false;
-          customGoalName = "";
-          return;
-        }
-      }
-    }
-  }
 }
 
 
 
 function ProjectShowUp() {
-  InCharge;
-  Pannel_Status=false;
-  const items = {...localStorage};
-  var size = Object.keys(items).length;
-  
-  document.getElementById('Main').innerHTML = `
+    InCharge;
+    Pannel_Status = false;
+    const items = {
+        ...localStorage
+    };
+    var size = Object.keys(items).length;
+
+    document.getElementById('Main').innerHTML = `
   <div class="pj-ctnt" id="pj-ctnt">
   <div class="pj-new-pj">
   <button onclick="Project()">
@@ -496,16 +528,16 @@ function ProjectShowUp() {
 </div>
   </div>
   `;
-  for (let o of Object.entries(items)) {
-    if (o[0].includes("Project")) {
-      console.log('Project detected.\nLoading...');
-      let item = JSON.parse(o[1]);
-      console.log(item)
-      console.log(`Project « ${item.name} » found.`)
-      if (item.cover === null) {
-        item.cover = "https://drive.google.com/uc?id=1AH5bmT04YgAPoQjATPxTLq2C0mv7la1O"
-      }
-      document.getElementById('pj-ctnt').innerHTML+=`
+    for (let o of Object.entries(items)) {
+        if (o[0].includes("Project")) {
+            console.log('Project detected.\nLoading...');
+            let item = JSON.parse(o[1]);
+            console.log(item)
+            console.log(`Project « ${item.name} » found.`)
+            if (item.cover === null) {
+                item.cover = "https://drive.google.com/uc?id=1AH5bmT04YgAPoQjATPxTLq2C0mv7la1O"
+            }
+            document.getElementById('pj-ctnt').innerHTML += `
       <div class="pj-new">
       <div class="pj-${item.name}" id="pj-whl">
         <div class="pj-infos" id="pj-child">
@@ -528,8 +560,8 @@ function ProjectShowUp() {
       </div>
     </div>
       `;
+        }
     }
-  }
 }
 /*
             <div class="pj-infos" id="pj-child">
@@ -548,7 +580,7 @@ function ProjectShowUp() {
             </div>
 */
 function DeleteProject() {
-  document.getElementById('pj-b-content').innerHTML = `
+    document.getElementById('pj-b-content').innerHTML = `
   <div class="mdf-b">
     <div class="mdf-t">
       Delete project
@@ -579,35 +611,35 @@ function DeleteProject() {
 }
 
 let confirmdel = function() {
-  let p = document.getElementById('enter-content-0');
-  let p1 = document.getElementById('enter-content-1');
+    let p = document.getElementById('enter-content-0');
+    let p1 = document.getElementById('enter-content-1');
 
-  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
-  let user = JSON.parse(localStorage.getItem(`user`));
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    let user = JSON.parse(localStorage.getItem(`user`));
 
-  if (p.value==pj.password && p1.value==user.password) {
-      localStorage.removeItem(`Project : ${InCharge}`);
-      for (let i = 0; i < 2; i++) {
-        if (localStorage.getItem(`${pj.name}-goal-${i}`)) {
-          localStorage.removeItem(`${pj.name}-goal-${i}`)
+    if (p.value == pj.password && p1.value == user.password) {
+        localStorage.removeItem(`Project : ${InCharge}`);
+        for (let i = 0; i < 2; i++) {
+            if (localStorage.getItem(`${pj.name}-goal-${i}`)) {
+                localStorage.removeItem(`${pj.name}-goal-${i}`)
+            }
         }
-      }
-      ProjectShowUp();
-  } else {
-      if (p.value!=pj.password) {
-          document.getElementById(`enter-content-0`).style.border = "2px solid red";
-      } else {
-          document.getElementById(`enter-content-0`).style.border = "2px solid green";
-      }
-      if (p1.value!=user.password ) {
-          document.getElementById(`enter-content-1`).style.border = "2px solid red";
-      } 
-  }
+        ProjectShowUp();
+    } else {
+        if (p.value != pj.password) {
+            document.getElementById(`enter-content-0`).style.border = "2px solid red";
+        } else {
+            document.getElementById(`enter-content-0`).style.border = "2px solid green";
+        }
+        if (p1.value != user.password) {
+            document.getElementById(`enter-content-1`).style.border = "2px solid red";
+        }
+    }
 
 }
 
 function Project() {
-  console.log(Pannel_Status + " is pannel status")
+    console.log(Pannel_Status + " is pannel status")
     if (
         !Pannel_Status === true
     ) {
@@ -618,14 +650,14 @@ function Project() {
     Pannel_Status = !Pannel_Status;
 }
 let Name;
-const isValidUrl = urlString=> {
-  var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
-  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
-  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
-  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
-  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
-  '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
-return !!urlPattern.test(urlString);
+const isValidUrl = urlString => {
+    var urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
+    return !!urlPattern.test(urlString);
 }
 
 
@@ -639,61 +671,61 @@ function CreateProject() {
     let cover = document.getElementById('cover').value;
 
 
-    let check = ["name","type","about","start","end","more","cover"];
-    let o =0;
+    let check = ["name", "type", "about", "start", "end", "more", "cover"];
+    let o = 0;
     for (let i = 0; i < check.length; i++) {
-      console.log(document.getElementById(check[i]).value)
-      if (document.getElementById(check[i]).value.length<=0) {
-        document.getElementById(check[i]).style.border="2px solid red";
-        o++;
-      } else {
-        document.getElementById(check[i]).style.border="2px solid #24335a";
-      }
-      if (check[i] == "more" || check[i]=="cover") {
-        if (!isValidUrl(document.getElementById(check[i]).value)) {
-          document.getElementById(check[i]).style.border="2px solid red";
-          o++;
+        console.log(document.getElementById(check[i]).value)
+        if (document.getElementById(check[i]).value.length <= 0) {
+            document.getElementById(check[i]).style.border = "2px solid red";
+            o++;
         } else {
-          document.getElementById(check[i]).style.border="2px solid #24335a";
+            document.getElementById(check[i]).style.border = "2px solid #24335a";
         }
-      }
+        if (check[i] == "more" || check[i] == "cover") {
+            if (!isValidUrl(document.getElementById(check[i]).value)) {
+                document.getElementById(check[i]).style.border = "2px solid red";
+                o++;
+            } else {
+                document.getElementById(check[i]).style.border = "2px solid #24335a";
+            }
+        }
     }
-//#24335a
-      console.log(start,end)
-      let s = new Date(start);
-       s = s.getTime();
-       let e = new Date(end);
-       e = e.getTime();
-      if (e < s) {
+    //#24335a
+    console.log(start, end)
+    let s = new Date(start);
+    s = s.getTime();
+    let e = new Date(end);
+    e = e.getTime();
+    if (e < s) {
         o++;
-        document.getElementById("start").style.border="2px solid red";
-        document.getElementById("end").style.border="2px solid red";
-  
-      } else {
-        document.getElementById("start").style.border="2px solid #24335a";
-        document.getElementById("end").style.border="2px solid #24335a";
-  
-      }
+        document.getElementById("start").style.border = "2px solid red";
+        document.getElementById("end").style.border = "2px solid red";
 
-    if (o>0) {
-      return;
+    } else {
+        document.getElementById("start").style.border = "2px solid #24335a";
+        document.getElementById("end").style.border = "2px solid #24335a";
+
+    }
+
+    if (o > 0) {
+        return;
     }
     Name = name;
     let Project = {
-        name : name,
-        type : type,
-        desc : desc,
-        start : start,
-        end :  end,
-        more : more,
-        cover : cover,
-        created_on : Date.now(),
+        name: name,
+        type: type,
+        desc: desc,
+        start: start,
+        end: end,
+        more: more,
+        cover: cover,
+        created_on: Date.now(),
         password: password,
-        inspi:[]
+        inspi: []
     }
     localStorage.setItem(`Project : ${name}`, JSON.stringify(Project));
     let Tracker = document.getElementById('tracker');
-    Tracker.src="/Images & Icons/2.png";
+    Tracker.src = "/Images & Icons/2.png";
 
     document.getElementById('Main').innerHTML = `
             <div class="following">
@@ -753,8 +785,9 @@ function CreateProject() {
 }
 
 let create = 0;
+
 function ContinueToGoal() {
-  document.getElementById('Main').innerHTML = `
+    document.getElementById('Main').innerHTML = `
   <div class="following">
   <img id="tracker" src="Images & Icons/3.png" >
 </div>
@@ -776,10 +809,11 @@ function ContinueToGoal() {
   </div>
   `
 }
+
 function CreateGoal() {
-  if (create === 0) {
-    create = 1;
-    document.getElementById('goals-container').innerHTML+=`
+    if (create === 0) {
+        create = 1;
+        document.getElementById('goals-container').innerHTML += `
     <div class="g-b-new">
       <div class="g-b-n-t">
         <div class="g-b-n-t-t">
@@ -835,13 +869,14 @@ function CreateGoal() {
 }
 
 let quotes = [
-  "Let our advance worrying become advance thinking and planning.",
-  "If you don't know where you are going. How can you expect to get there?",
-  "Plans are worthless. Planning is essential.",
-  "A good plan today is better than a perfect plan tomorrow." 
+    "Let our advance worrying become advance thinking and planning.",
+    "If you don't know where you are going. How can you expect to get there?",
+    "Plans are worthless. Planning is essential.",
+    "A good plan today is better than a perfect plan tomorrow."
 ]
+
 function Save() {
-  document.getElementById('Main').innerHTML=`
+    document.getElementById('Main').innerHTML = `
   <div class="following">
   <img id="tracker" src="Images & Icons/4.png" >
 </div>
@@ -864,59 +899,66 @@ function Save() {
     </div>
   </div>
   `;
-  create=0;
-  OpenFolder({id:`pj-open-${Name}`});
-  Name="";
+    create = 0;
+    OpenFolder({
+        id: `pj-open-${Name}`
+    });
+    Name = "";
 
- }
+}
 
 function Rem() {
-  document.getElementById('Main').innerHTML=''
+    document.getElementById('Main').innerHTML = ''
 }
+
 function Goal_Save() {
-  let goal_name = document.getElementById('goal-name').value;
-  let duration = document.getElementById('goal-duration').value;
-  let details = document.getElementById('goal-details').value;
-  let words = document.getElementById('words-amount').value;
+    let goal_name = document.getElementById('goal-name').value;
+    let duration = document.getElementById('goal-duration').value;
+    let details = document.getElementById('goal-details').value;
+    let words = document.getElementById('words-amount').value;
 
-  
-  let g = {
-    name : goal_name,
-    duration : duration,
-    details : details,
-    amount_of_words : words,
-    words: 0,
-    started : false,
-    started_on : "",
-    updates : {}
 
-  }
+    let g = {
+        name: goal_name,
+        duration: duration,
+        details: details,
+        amount_of_words: words,
+        words: 0,
+        started: false,
+        started_on: "",
+        updates: {}
 
-  for (let i=0;i<2; i++) {
-    if (!localStorage.getItem(`${customGoal ? customGoalName: Name}-goal-${i}`)) {
-      localStorage.setItem(
-        `${customGoal ? customGoalName: Name}-goal-${i}`,
-        JSON.stringify(
-          g
-        )
-      );
-      if (!customGoal) {
-        Save();
-      } else {
-         document.getElementById('Main').innerHTML = "";
-         OpenFolder({id:`pj-open-${InCharge}`})
-         NewAddGoal=0;
-
-      }
-      customGoal = false;
-      customGoalName = "";
-      return;
     }
-  }
-  alert('Error: cannot create a new goal (2 goals already created).');
-  document.getElementById('Main').innerHTML = "";
-  OpenFolder({id:`pj-open-${InCharge}`})
-  NewAddGoal=0;
+
+    for (let i = 0; i < 2; i++) {
+        if (!localStorage.getItem(`${customGoal ? customGoalName: Name}-goal-${i}`)) {
+            localStorage.setItem(
+                `${customGoal ? customGoalName: Name}-goal-${i}`,
+                JSON.stringify(
+                    g
+                )
+            );
+            if (!customGoal) {
+                Save();
+            } else {
+                document.getElementById('Main').innerHTML = "";
+                OpenFolder({
+                    id: `pj-open-${InCharge}`
+                })
+                NewAddGoal = 0;
+
+            }
+            customGoal = false;
+            customGoalName = "";
+            return;
+        }
+    }
+    alert('Error: cannot create a new goal (2 goals already created).');
+    document.getElementById('Main').innerHTML = "";
+    OpenFolder({
+        id: `pj-open-${InCharge}`
+    })
+    NewAddGoal = 0;
 }
 
 
@@ -1004,10 +1046,10 @@ function Back(c) {
     </div>
     `;
     document.getElementById('name').value = c.name;
-    document.getElementById('type').value= c.type;
-    document.getElementById('about').value= c.desc;
-    document.getElementById('start').value= c.start;
-    document.getElementById('end').value= c.end;
-    document.getElementById('more').value= c.more;
-    document.getElementById('cover').value= c.cover;
+    document.getElementById('type').value = c.type;
+    document.getElementById('about').value = c.desc;
+    document.getElementById('start').value = c.start;
+    document.getElementById('end').value = c.end;
+    document.getElementById('more').value = c.more;
+    document.getElementById('cover').value = c.cover;
 }

@@ -399,8 +399,15 @@ body a {
     flex-direction: row;
     gap: 10px;
 }
+@keyframes rotateSpan {
+    0% { transform: rotate(20deg); }
+    50% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+
+  }
 .c-m span {
-    transform: rotate(-20deg);
+    animation: 1s infinite rotateSpan; 
+    color:red;
 }
 .c-d-c {
     border: 2px solid rgba(31, 48, 92, 0.7);

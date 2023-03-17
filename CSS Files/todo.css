@@ -1,0 +1,495 @@
+.td-m-c {
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+/*
+           <div class="alertAcceptedTask">
+                <div class="alertAcceptedTaskContent">
+                    You did it! Your task is done.
+                </div>
+                <div class="alertAcceptedTaskCancel">
+                    Cancel
+                </div>
+            </div>
+*/
+.alertAcceptedTaskCancel {
+    cursor: pointer;
+    font-style: italic;
+    color:rgb(242, 202, 202);
+}
+.alertAcceptedTask {
+    top: 6;
+    position:absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #19284d;
+    width: fit-content;
+    left:0;right:0;margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+.td-p-c {
+    width: 20%;
+    height: 55%;
+    padding: 10px;
+    background-color: #19284d;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: scroll;
+}
+
+
+.td-p-c-t {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    font-size: 15px;
+}
+
+.td-p-c-slct-p, .td-p-c-s-t {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100px;
+    width: 100%;
+}
+
+.td-p-c-slct-p-i {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.td-p-c-slct-p-i select {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgba(31, 48, 92, 0.7);
+    height: 35px;
+    border: 2px solid rgba(31, 48, 92, 0.7);
+    color:white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.td-p-c-slct-p-i select:hover {
+    border: 2px solid white;
+}
+
+.td-p-c-add-t {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.td-p-c-add-t button {
+    border-radius: 10px;
+    background-color: rgba(31, 48, 92, 0.7);
+    border: 2px solid rgba(31, 48, 92, 0.7);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    width: 100%;
+    height: 35px;
+    color:white;
+    border:none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.td-p-c-add-t button:hover {
+    border: 2px solid white;
+}
+.td-c-td-c {
+    height: fit-content;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    width: 100%;
+}
+.td-content {
+    width: 80%;
+    background-color: #19284d;
+    height: 90%;
+    overflow-y: scroll;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    gap:10px;
+    max-height: 90%;
+}
+
+
+.td-c-title-separator {
+    margin-top: 20px;
+    width: 100%;
+    height: 30px;
+    color:rgba(255,255,255,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+}
+
+.td-c-t-s {
+    width: 90%;
+    height: 2px;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+.td-c-t-t {
+    position:absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #19284d;
+    border-radius: 80px;
+}
+
+#undonetext {
+    color:rgba(192, 47, 47, 1);
+}
+#undoneseparator {
+    background-color:rgba(192, 47, 47, 0.4);
+}
+
+
+
+.todo-all-contain {
+    width: 70%;
+    background-color: rgba(31, 48, 92, 0.7);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position:relative;
+    border-radius: 10px;
+    margin-bottom: 5px;
+
+}
+.todo {
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.todo-name {
+    width: 90%;
+
+}
+
+.todo-more, .todo-check {
+    padding: 2px;
+    background-color: #19284d;
+    border-radius: 20%;
+    cursor:pointer;
+}
+.todo-more:hover, .todo-check:hover {
+    background-color: white;
+    color:#19284d;
+}
+
+.todo-more-content {
+    width: 50px;
+    display: flex;
+    padding-top: 5px;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+    position: absolute;
+    top:40px;
+    right:0;
+    z-index: 20;
+    background-color: #19284d;
+    visibility: hidden;
+}
+.todo-more-content-p {
+    border: 1px solid rgba(31, 48, 92, 0.7);
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.todo-more-content-p:hover {
+    background-color: white;
+    color:#19284d;
+    border-color:rgba(255, 255, 255,0.8);
+}
+
+.tododesc {
+    width: 90%;
+    background-color: #19284d;
+    text-align: justify;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    position: absolute;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.descTime {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    font-size: 12px;
+}
+
+/*
+        <div class="tdn-form">
+            <div class="tdn-f-t">
+                Create a new task
+            </div>
+            <div class="td-n-p">
+                <div class="td-n-p-t">
+                    <span class="material-symbols-outlined">
+                    task
+                    </span>
+                    Task name (150ch.)
+                </div>
+                <input type="text">
+            </div>
+            <div class="td-n-p">
+                <div class="td-n-p-t">
+                    <span class="material-symbols-outlined">
+                    description
+                    </span>
+                    Task description (500ch.)
+                </div>
+                <textarea style="width:90%;height:100px"></textarea>
+            </div>
+            <div class="td-n-p">
+                <div class="td-n-p-t">
+                <span class="material-symbols-outlined">
+                event
+                </span>
+                    Task date
+                </div>
+                <input type="date">
+            </div>
+            <div class="td-n-p">
+                <div class="td-n-p-t">
+                <span class="material-symbols-outlined">
+                task_alt
+                </span>
+                    Repeat the task
+                </div>
+                <div class="choice">
+                    <div id="repeat1">
+                        <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                        </span>
+                        Yes
+                    </div>
+                    <div id="repeat2">
+                        <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                        </span>
+                        No
+                    </div>
+                </div>
+            </div>
+                <div class="td-n-p">
+                    <div class="td-n-p-t">
+                        <span class="material-symbols-outlined">
+                        notifications
+                        </span>
+                        Alert a day before
+                    </div>
+                    <div class="choice">
+                        <div id="alert1">
+                            <span class="material-symbols-outlined">
+                            check_box_outline_blank
+                            </span>
+                            Yes
+                        </div>
+                        <div id="alert2">
+                            <span class="material-symbols-outlined">
+                            check_box_outline_blank
+                            </span>
+                            No
+                        </div>
+                    </div>
+                </div>
+                <div class="td-n-p">
+                    <div class="td-n-p-t">
+                        <span class="material-symbols-outlined">
+                        delete
+                        </span>
+                        Delete if undone
+                    </div>
+                    <div class="choice">
+                        <div id="alert1">
+                            <span class="material-symbols-outlined">
+                            check_box_outline_blank
+                            </span>
+                            Yes
+                        </div>
+                        <div id="alert2">
+                            <span class="material-symbols-outlined">
+                            check_box_outline_blank
+                            </span>
+                            No
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+*/
+
+.MainContent {
+    width: 95%;
+    height: 95%;
+    padding: 10px;
+    overflow-y: scroll;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.choicecheck {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+}
+.choicecheck span {
+    border-radius: 20%;
+    cursor: pointer;
+}
+.choicecheck span:hover {
+    background-color: white;
+    color:#19284d;
+}
+.choice {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.td-n-p {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.td-n-p-t {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+}
+.tdn-form input, .tdn-form textarea {
+    width: 80%;
+    background-color: rgba(31, 48, 92, 0.7);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 25px;
+    color:white;
+}
+#date {
+    width: 20%;
+}
+.tdn-form textarea {
+    padding: 10px;
+}
+.tdn-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-bottom: auto;
+    gap: 20px;
+    border-radius: 5px;
+}
+
+.validate_button {
+    width: 150px;
+    height: 50px;
+    background-color: rgba(31, 48, 92, 0.7);
+    color:white;
+    border:none;
+    margin-left: auto;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-right: auto;
+    border: 2px solid rgba(31, 48, 92, 0.7);
+    cursor: pointer;
+}
+.validate_button:hover {
+    border: 2px solid white;
+}
+
+.tdn-f-t {
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+    background-color: #19284d;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#alertMessageTask {
+    bottom:-10;
+    margin-left: auto;
+    margin-right: auto;
+    left:0;
+    right:0;
+    position: absolute;
+    width: fit-content;
+    font-size: 12px;
+    color:red;
+    visibility: hidden;
+}

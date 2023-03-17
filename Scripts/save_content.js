@@ -26,7 +26,6 @@ let Project_form = `
     <select id="type">
       <option name="WP">Writing project</option>
       <option name="EP">Editing project</option>
-      <option name="CP">Coding project</option>
     </select>
   </div>
   <div class="p-d"id="p-bx">
@@ -284,8 +283,8 @@ let all_contain = `
   Projects
 </div>
 </div>
-<div class="all-c-p">
-<span class="material-symbols-outlined">
+<div class="all-c-p" onclick="ShowUpToDo()">
+<span class="material-symbols-outlined" >
   pending_actions
   </span>
 <div class="all-c-p-d">
@@ -306,6 +305,14 @@ let all_contain = `
   </span>
 <div class="all-c-p-d">
   Notes
+</div>
+</div>
+<div class="all-c-p">
+<span class="material-symbols-outlined">
+  auto_stories
+  </span>
+<div class="all-c-p-d">
+  Writing
 </div>
 </div>
 <div class="all-c-p" onclick="OpenInfos()">

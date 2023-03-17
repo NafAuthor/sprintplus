@@ -12,7 +12,6 @@ function OpenInspiration() {
         Choose a project </div>
         <div class="c-p-c">
           <select id="c-p-c" onchange="Board.OnProject()">
-            <option></option>
           </select>
         </div>
       </div>
@@ -40,6 +39,7 @@ function OpenInspiration() {
     </div>
 
     `;
+    let v = 0;
     let items = {... localStorage};
     for (let [n,k] of Object.entries(items)) {
         let K = JSON.parse(k);
@@ -48,7 +48,12 @@ function OpenInspiration() {
                 <option>
                     ${K.name}
                 </option>
-            `
+            `;
+            if ( v===0 ){
+                document.getElementById('c-p-c').value =  K.name;
+                document.getElementById('c-p-c').onchange();
+                v = 1;
+            }
         }
     }
 }
