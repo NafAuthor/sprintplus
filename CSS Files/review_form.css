@@ -1,10 +1,12 @@
 .Review-form {
     width: 100%;
     height: 80%;
-    border-radius: 5px;
     display: flex;
     flex-direction: row;
-    gap: 0px;
+    background-color: #19284d;
+    border-radius: 10px;
+    border: 2px solid white;
+    position:relative;
 }
 
 .r-f-pic {
@@ -16,6 +18,11 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(30, 47, 92,0.5);
+    border-radius: 5px;
 }
 .r-f-pic img {
     max-width:100%;
@@ -26,17 +33,28 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 80%;
+    width: 100%;
     height: 100%;
+    padding: 10px;
+    padding-top: 30px;
 }
 
 .r-f-t {
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    top:-15;
+    left:210;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+    position:absolute;
+    background-color: #19284d;
+
 }
 
 .buttons {
@@ -46,21 +64,25 @@
     gap:10px;
     height: 55px;
 }
-
+.buttons button:hover {
+    border: 2px solid white;
+}
 .buttons button {
     width: 140px;
     border-radius: 5px;
-    background-color: #2c3f70;
+    background-color: #19284d;
     border:none;
     outline:none;
     cursor: pointer;
     display: flex;
     flex-direction: row;
+
     gap: 5px;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     color:white;
+    border: 2px solid #19284d;
 }
 
 .r-f-1 {

@@ -22,6 +22,9 @@
     background-color: #1a2950;
     padding: 10px;
     border-radius:10px;
+    margin:auto;
+    top:0;
+    bottom:0;
 }
 .c-p {
     display: flex;

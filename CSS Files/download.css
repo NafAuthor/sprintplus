@@ -46,6 +46,7 @@
     line-height: 25px;
     border-radius: 5px;
     padding: 10px;
+    overflow-y: scroll;
 }
 .AlertBox button {
     margin-top: 10px;

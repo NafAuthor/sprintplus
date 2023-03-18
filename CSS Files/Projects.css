@@ -33,13 +33,37 @@
         <div class="pj-new-ttl"> ${item.name} </div>
 
 */
+#folder-open {
+    position: absolute;
+    visibility: hidden;
+}
+.pj-open:hover #folder {
+    position: absolute;
+    visibility: hidden;
+}
+.pj-open:hover #folder-open {
+    position: relative;
+    visibility: visible;
+}
 
 
+
+.pj-slct-img img {
+    border-radius: 5px;
+    border: 2px solid #2c3f70;
+
+}
 .pj-slct-img {
-    height: 100%;
+    height: fit-content;
     position:absolute;
-    right:0;
-    top:5;
+    right:3;
+    width: 26%;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .pj-cover {
     max-width: 95%;
@@ -64,15 +88,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 2px solid #19284d;
+    border: 1px solid #2c3f70;
     cursor:pointer;
+    background-color: #24335a;
 
-    border-radius: 10px;;
+    border-radius: 10px;
 }
+
+
 .pj-open button {
     width: 50%;
     height: 100%;
-    background-color: #19284d;
+    background-color: #24335a;
     border:none;
     display: flex;
     align-items: center;
@@ -80,7 +107,7 @@
     color:white;
 }
 .pj-open:hover {
-    border: 2px solid white;
+    border: 1px solid white;
 }
 
 .pj-open-desc {
@@ -90,40 +117,41 @@
 .pj-param {
     position:absolute;
     bottom:0;
+    left:0;
     width: 50%;
     height:50px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 11px;
-}
-#pj-param {
-    cursor: pointer;
-    font-size: 95%;
-}
-.pj-param-contan {
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    padding-left: 10px;
+    gap: 5px;
 }
 
-.pj-param-contan button {
-    width: 100%;
-    height: 100%;
-    background-color: #24335a;
-    border:none;
+.pj-param-contan {
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
+
+}
+
+.pj-param-contan span {
+    padding: 5px;
+    cursor: pointer;
+    font-size: 95%;
+    display: flex;
+    width: 25px;
+    height: 25px;
+    background-color: #24335a;
+    border:none;
+    border-radius: 25%;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
     color:white;
 }
-.pj-param-contan button:hover {
+.pj-param-contan span:hover {
     background-color: rgba(223, 223, 223,0.3);
 }
 
@@ -132,9 +160,12 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
-    padding-bottom: 50px;
     margin-left:auto;
     margin-right: auto;
+    overflow-y: scroll;
+    background-color: #19284d;
+    padding: 10px;
+    border-radius: 10px;
 }
 .following {
     width: 90px;
@@ -163,7 +194,6 @@
 #p-bx {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 10px;
 }
 #form-title {
@@ -175,7 +205,7 @@
 }
 
 .pj-form input {
-    background-color: #2c3f70;
+    background-color: #24335a;
     border:none;
     outline: none;
     width: 80%;
@@ -190,7 +220,7 @@
     margin-bottom: auto;
 }
 .pj-form select {
-    background-color: #2c3f70;
+    background-color: #24335a;
     border:none;
     outline: none;
     width: 80%;
@@ -212,6 +242,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
+    background-color: #24335a;
 
 }
 
@@ -227,7 +258,7 @@
     height: 100%;
     font-size: 30px;
     border-radius: 5px;
-    background: #2c3f70;
+    background-color: #24335a;
     color:white;
     border:none;
     cursor: pointer;
@@ -282,37 +313,101 @@
 .pj-push {
     width: 100%;
 }
-.pj-new-pj{
-    width: 200px;
+/*
+  <div class="pj-ctnt" id="pj-ctnt">
+  <div class="pj-ctnt-opt">
+    <button onclick="Project()">
+    <span class="material-symbols-outlined">
+      add
+      </span>
+      New project
+    </button>
+    <div class="pj-ctnt-select">
+      <div class="pj-ctn-select-title">
+        <span class="material-symbols-outlined">
+        filter_alt
+        </span>
+        Filter projects
+      </div>
+      <select>
+        <option>All</option>
+        <option>Starred</option>
+        <option>Sleeping</option>
+      </select>
+    </div>
+    </div>
+  </div>
+*/
+.pj-ctn-select-title{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+.pj-ctnt-select select {
+    width: 150px;
+    height: 30px;
+    outline:none;
+    color:white;
+    background-color: #19284d;
+    border:1px solid #2c3f70;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.pj-ctnt-select select:hover {
+    border:1px solid white;
+}
+.pj-ctnt-select {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border:1px solid white;
+    border-style: solid none solid none;
+    height: 100%;
+}
+
+.pj-ctnt-opt{
+    background-color: #19284d;
+    width: 80%;
+    border-radius: 10px;
     height: 50px;
     border-radius: 5px;
     position:absolute;
     top:0;
     left:0;
     right:0;
-  
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px;
     margin-left: auto;
     margin-right: auto;
+
 }
-.pj-new-pj button {
-    width: 100%;
+.pj-ctnt-opt button {
+    width: 180px;
     height: 100%;
     display: flex;
     align-items: center;
     background-color: #19284d;
-    border: 2px solid #19284d;
+    border:1px solid white;
+    border-style: solid none solid none;
     color:white;
     cursor: pointer;
-    border:none;
     outline:none;
     justify-content: center;
-    border-radius: 5px;
     font-size: 15px;
     gap: 5px;
 }
-.pj-new-pj button:hover {
-    border: 2px solid white;
+.pj-ctnt-opt button:hover {
+    border: 1px solid white;
 }
+
 .pj-ctnt {
     padding-top: 80px;
     display:flex;
@@ -323,6 +418,7 @@
     gap: 20px;
     flex-flow: wrap;
     position:relative;
+    padding-bottom: 50px;
 }
 
 
@@ -336,7 +432,6 @@
 Project view:
 */
 .pj-board-parent {
-    background-color: #2c3f70;
     width: 85%;
     height: 95%;
     border-radius: 10px;
@@ -344,7 +439,7 @@ Project view:
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 50px;
 }
 
 .pj-b-c {
@@ -367,11 +462,25 @@ Project view:
 
 }
 .pj-mi {
-    width: 100%;
-    height: 50px;
+    width: 95%;
+    left: 0;
+    right:0;
+    margin:auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    position:absolute;
+    bottom:10;
+    background-color: rgba(30, 47, 92,0.5);
+    justify-content: center;
+    gap: 30px;
+}
+.pj-mi-c {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+}
+.pj-b-p {
+    width: 100%;
 }
 .pj-b-c img {
     max-width: 100%;
@@ -380,17 +489,19 @@ Project view:
 }
 .pj-b-content {
     margin-top: 30px;
-    background-color: #24335a;
+    background-color: #19284d;
+    border: 2px solid white;
     display: flex;
     flex-direction: column;
     width: 80%;
+    position:relative;
     margin-top: auto;
     margin-bottom: auto;
     margin: auto;
     height: 90%;
     padding: 10px;
-    gap: 10px;
     border-radius: 10px;
+    padding-top: 15px;
 }
 
 .pj-b-i {
@@ -399,8 +510,7 @@ Project view:
     padding-right: 20px;
     display: flex;
     flex-direction: row;
-    gap: 10px;
-    height: 60%;
+    padding-bottom:20px;
 }
 .pj-b-i-c {
     display: flex;
@@ -408,28 +518,74 @@ Project view:
     gap: 10px;
 }
 .pj-b-i-t {
-    width: 100%;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size: 25px;
-    
-}
+    position: absolute;
+    border-radius:10px;
+    top:-12;
+    left:10;
+    background-color: #19284d;
 
+}
+.-pj-b-i-i-desc {
+    background-color: #17981b;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(30, 47, 92,0.5);
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.-pj-b-i-i-desc span {
+    width: fit-content;
+}
+.-pj-b-i-i-c {
+    text-align: justify;
+    padding-right: 10px;
+}
 .-pj-b-i-i {
-    width: 90%;
+    width: fit-content;
     display: flex;
     flex-direction: row;
     gap: 15px;
     align-items: center;
     text-align: justify;
+    background-color:rgba(30, 47, 92,0.5);
+    padding: 5px;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+#containLink {
+    position: relative;
+}
+@keyframes slidein {
+    0% { width: 0px; }
+    50%   { width:110px; }
+    100% {width: 0px;}
+  }
+#a-link-goes {
+    width: 110px;
+    background-color: white;
+    height: 2px;
+    position:absolute;
+    left: 45;
+    bottom:5;
+    animation: 4s infinite slidein;
+}
+.-pj-b-i-i a {
+    font-style: italic;
+    color:white;
 }
 .pj-b-g {
-    width: 10%;
+    width: 20%;
     height: 80%;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin-left: 5px;
     gap: 20px;
-    justify-content: center;
     align-items: center;
 }
 .pj-sp-s {
@@ -442,10 +598,9 @@ Project view:
 
 }
 
+
 .pj-b-g-param {
     display: flex;
-    margin-left:auto;
-    margin-right: auto;
     flex-direction: row;
     height: 40px;
     gap: 5px;
@@ -453,18 +608,42 @@ Project view:
     align-items: center;
     border: 2px solid #24335a;
     border-radius: 5px;
-    width: 100%;
+    width: 50%;
+    min-width: 40px;
     cursor: pointer;
-    transition: 0.2s;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.pj-b-g-param:hover {
+.pj-b-g-param-title {
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    gap: 10px;
+    position:absolute;
+    top:-12;
+    z-index: 20;
+    background-color: #19284d;
+}
+
+
+.pj-b-g-param:hover  {
     border: 2px solid white;
-    width: 100%;
-    height: 50px;
+    width: 50%;
+}
+.pj-b-g-param:hover p {
+    visibility: visible;
+    position: relative;
 }
 
 .pj-b-goals {
-    width: 90%;
+    width: 95%;
     height: 100px;
     display: flex;
     border-radius: 10px;
@@ -474,7 +653,18 @@ Project view:
     padding-left: 50px;
 
 }
-
+.pj-b-g-p {
+    position:relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #19284d;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding-top: 17px;
+}
 .pj-b-g-b button {
     width: 100%;
     height: 100%;
@@ -482,9 +672,9 @@ Project view:
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #24335a;
+    background-color: #19284d;
     color:white;
-    border: 2px solid #2c3f70;
+    border: 2px solid #24335a;
     border-radius: 10px;
     cursor: pointer;
     gap:10px;
@@ -522,7 +712,7 @@ Project view:
     border:none;
     outline:none;
     color:white;
-    height: 80px;
+    height: 80px; 
     border-radius: 5px;
     padding: 5px;
 
@@ -563,31 +753,19 @@ Project view:
     margin-right: auto;
     display: flex;
     height: 100%;
-    border:2px solid #2c3f70;
+    border:2px solid #24335a;
     flex-direction: column;
     gap: 5px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    cursor: pointer;
+    padding: 5px;
     border-radius: 10px;
 }
-#pj-b-gg:hover .pj-b-gg-t-t {
-    visibility: hidden;
-    position: absolute;
-    top:0;
-    right:0;
-}
-#pj-b-gg:hover {
-    border: 2px solid white;
-}
+
 
 .pj-b-gg-d {
-    width: 100%;
+    width: fit-content;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     font-size: 10px;
 
@@ -622,41 +800,52 @@ Project view:
     border-radius: 5px;
     cursor: pointer;
 }
-.RingGoal button  {
-    background-color: #17981b;
+@keyframes RingGoalAnimation {
+    0% { transform: rotate(20deg); }
+    50% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+  }
+
+.RingGoal span {
+    animation: RingGoalAnimation 3s infinite;
 
 }
+.RingGoal button  {
+    background-color: #19284d;
+}
 .DelGoal button {
-    background-color: #981717;
+    background-color: #19284d;
 }
 .DelGoal button:hover, .RingGoal button:hover {
     border:2px solid white;
 
 }
 ::-webkit-scrollbar {
-
-width: 10px;
+    cursor:pointer;
+    width: 15px;
 }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #24335a;
+      border-radius: 2px;
+      cursor: pointer;
+      padding: 1px;
+    }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #9ba8a1;
-  border-radius: 5px;
-}
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #24335a;
+        cursor: pointer;
+        border: 1px solid #2c3f70;
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #f0e9da;
-    border-radius: 5px;
-
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #9ba8a1;
-}
-
-
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #19284d;
+        border: 1px solid #2c3f70;
+    }
 
 /*
     <div class="mdf-b">
@@ -688,12 +877,12 @@ width: 10px;
 .mdf-b input {
     width: 50%;
     color:white;
-    background-color: #2c3f70;
+    background-color: rgba(30, 47, 92,0.5);
     border:none;
     outline:none;
     height: 30px;
     border-radius: 5px;
-    border: 2px solid #2c3f70;
+    border: 2px solid #19284d;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -703,7 +892,7 @@ width: 10px;
 .mdf-b button {
     width: 20%;
     color:white;
-    background-color: #2c3f70;
+    background-color: #19284d;
     border:none;
     outline:none;
     height: 30px;
@@ -714,8 +903,74 @@ width: 10px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 2px solid #2c3f70
+    border: 2px solid rgba(30, 47, 92,0.5)
 }
 .mdf-b button:hover {
     border: 2px solid white;
+}
+
+
+
+.ifo {
+    position:absolute;
+    font-size: 15px;
+    top:-20;
+    background-color: #19284d;
+    padding: 5px;
+    border-radius: 10px;
+    left:5;
+}
+.g-b-n-t {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.g-b-n-t-t {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border:1px solid white;
+    padding: 10px;
+    position:relative;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+.g-b-n-t-t input {
+    width: 50%;
+    background-color: #24335a;
+    height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    border:none;
+    color:white;
+}
+.g-b-n-t-t input[type=number] {
+    width: 20%;
+    background-color: #24335a;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    border:none;
+    color:white;
+    text-align: center;
+}
+.g-b-n-t-t textarea {
+    width: 100%;
+    background-color: #24335a;
+    height: 81px;
+    padding: 10px;
+    border-radius: 5px;
+    border:none;
+    color:white;
+
+}
+
+#AlertMissingContent {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color:red;
+    visibility: hidden;
+    position:absolute;
 }

@@ -30,6 +30,14 @@ body {
     font-family: 'Garet', sans-serif;
 
 }
+#SprintPlusLogo {
+    z-index: -2;
+    position:absolute;
+    opacity: 0.1;
+    width: 50%;
+    margin:auto;
+    left:0;right:0;bottom:0;top:5;
+}
 
 .Title {
     width: 95%;
@@ -60,6 +68,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     align-items: center;
+    position:relative;
+
 }
 .theme-divider {
     background-color: rgb(255, 255, 255);
@@ -83,7 +93,6 @@ body a {
 }
 .img-content {
     width:23%;
-
     display: flex;
     flex-direction: column;
     z-index: -1;
@@ -469,9 +478,36 @@ body a {
     height: 55%;
     display: flex;
     flex-direction: column;
-    gap: 5px
+    gap: 5px;
+    position:relative;
+}
+/*
+    <div class="fancybar" id="NousEtLeMonde"></div>
+
+*/
+
+@keyframes TransFormUI {
+    0% { width: 0px; }
+    100% { width: 100%; }
+
+    
+  }
+.fancybar {
+    width: 30px;
+    height: 99%;
+    position:absolute;
+    bottom:0;
+    left:0;
+    animation: 4s infinite alternate TransFormUI;
+    border-radius: 2px;
+    opacity:0.3;
+}
+#NousEtLeMonde {
+    background-color: #F9A602;
+
 }
 .st {
+    position:relative;
     display: flex;
     width: 90%;
     flex-direction: row;
@@ -512,26 +548,34 @@ body a {
 
 
 ::-webkit-scrollbar {
-
-    width: 10px;
-    }
-    
+    cursor:pointer;
+    width: 15px;
+    border-radius: 10px;
+}
     /* Track */
     ::-webkit-scrollbar-track {
-      background: rgba(44, 63, 112,0.9);
+      background: #24335a;
       border-radius: 2px;
+      cursor: pointer;
+      padding: 1px;    border-radius: 10px;
+
     }
+
     
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        background: white;
-        border-radius: 5px;
-    
+        background: #24335a;
+        cursor: pointer;
+        border: 1px solid #2c3f70;
+        border-radius: 10px;
+
     }
     
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background: white;
+        background: #19284d;
+        border: 1px solid #2c3f70;    border-radius: 10px;
+
     }
 .welcome-f {
     background-color: #68511c;

@@ -403,6 +403,7 @@ let Main = `
   </div>
   <div class="mor-st">
     <div class="st" >
+    <div class="fancybar" id="NousEtLeMonde"></div>
       <div class="st-l">
         FR
       </div>

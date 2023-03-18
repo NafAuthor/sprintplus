@@ -12,7 +12,7 @@ function OpenFolder(el) {
 
 
     console.log(" IS PANNEL STATUS");
-    let d = new Date(pj.created_on * 1000);
+    let d = new Date(pj.created_on);
     let N = pj.name;
     InCharge = pj.name;
     let fullN = N.split('')
@@ -32,27 +32,39 @@ function OpenFolder(el) {
     document.getElementById('Main').innerHTML = `
   <div class="pj-board-parent">
     <div class="pj-b-g">
+    <div class="pj-b-g-p">
+      <div class="pj-b-g-param-title">
+      <span class="material-symbols-outlined"> info </span>
+      Project details
+      </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeCover(this)">
-        <span class="material-symbols-outlined"> imagesmode </span> Edit cover
+        <span class="material-symbols-outlined"> imagesmode </span><p> Edit cover</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeName(this)">
-        <span class="material-symbols-outlined"> edit </span> Edit name
+        <span class="material-symbols-outlined"> edit </span> <p>Edit name</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeDesc(this)">
-        <span class="material-symbols-outlined"> document_scanner </span> Edit desc.
+        <span class="material-symbols-outlined"> document_scanner </span> <p>Edit desc.</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeFiles(this)">
-        <span class="material-symbols-outlined"> note </span> Edit files
+        <span class="material-symbols-outlined"> note </span> <p>Edit files</p>
       </div>
-      <div class="pj-b-g-param">
-        <span class="material-symbols-outlined"> all_inclusive </span> Edit time
+      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeTime(this)">
+        <span class="material-symbols-outlined"> all_inclusive </span> <p>Edit time</p>
+      </div>
+    </div>
+    <div class="pj-b-g-p">
+      <div class="pj-b-g-param-title">
+      <span class="material-symbols-outlined"> warning </span>
+      Sensitive area
       </div>
       <div class="pj-b-g-param" onclick="TriggerSecurity(this);" id="${pj.name}" style="color:#4DB399">
-        <span class="material-symbols-outlined"> security </span> Security
+        <span class="material-symbols-outlined"> security </span> <p>Security</p>
       </div>
       <div onclick='DeleteProject(this);' class="pj-b-g-param" id="${pj.name}" style="color:#EA3C12">
-        <span class="material-symbols-outlined"> delete </span> Delete
+        <span class="material-symbols-outlined"> delete </span> <p>Delete</p>
       </div>
+    </div>
     </div>
     <div class="pj-b-content" id="pj-b-content">
       <div class="pj-b-i">
@@ -61,12 +73,16 @@ function OpenFolder(el) {
         <div class="-pj-b-i-i">
           <span class="material-symbols-outlined"> article </span> ${pj.type}
         </div>
-        <div class="-pj-b-i-i">
-          <span class="material-symbols-outlined"> description </span> ${pj.desc}
-        </div>
-        <div class="-pj-b-i-i">
+        <div class="-pj-b-i-i" id="containLink">
           <span class="material-symbols-outlined"> pending </span>
-          <a target="_blank" href="${pj.more}">More content</a>
+          <a target="_blank" href="${pj.more}">Linked content</a>
+          <div id="a-link-goes"></div>
+          </div>
+        <div class="-pj-b-i-i-desc">
+          <span class="material-symbols-outlined"> description </span>
+          <div class="-pj-b-i-i-c">
+          ${pj.desc}
+          </div>
         </div>
         </div>
         <div class="pj-b-c">
@@ -83,29 +99,82 @@ function OpenFolder(el) {
         <div class="pj-b-g-c" id="pj-b-g-c"></div>
         </div>
         <div class="pj-mi">
-        <div class="-pj-b-i-i" style="font-size: 12px;">
-          <span class="material-symbols-outlined"> line_start </span> Created on ${d.toUTCString()}
-        </div>
-        <div class="-pj-b-i-i" style="font-size: 12px;">
-          <span class="material-symbols-outlined"> timer </span> Start on ${pj.start} - End on ${pj.end}
-        </div>
-        <div class="-pj-b-i-i" style="font-size: 12px;">
-          <span class="material-symbols-outlined"> info </span> Delete one goal to create a new goal
-        </div>
+          <div class="pj-mi-c">
+            <div class="-pj-b-i-i" style="font-size: 12px;">
+              <span class="material-symbols-outlined"> line_start </span> Created on ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}
+            </div>
+            <div class="-pj-b-i-i" style="font-size: 12px;">
+              <span class="material-symbols-outlined"> timer </span> Start on ${pj.start} - End on ${pj.end}
+            </div>
+          </div>
+          <div class="pj-mi-c">
+            <div class="-pj-b-i-i" style="font-size: 12px;">
+              <span class="material-symbols-outlined"> cognition </span>  ${pj.inspi ? pj.inspi.length : "No"} elements inspires this project
+            </div>
+            <div class="-pj-b-i-i" style="font-size: 12px;">
+              <span class="material-symbols-outlined"> timer </span> ${pj.tasks ? pj.tasks.length : "No"} tasks made for this project
+            </div>
+          </div>
+          <div class="pj-mi-c">
+            <div class="-pj-b-i-i" style="font-size: 12px;">
+              <span class="material-symbols-outlined"> star </span> This project is ${pj.star ? "starry" : "not starry"}
+            </div>
+            <div class="-pj-b-i-i" style="font-size: 12px;">
+              <span class="material-symbols-outlined"> hide_source </span> This project is ${pj.backed ? "sleepy" : "not sleepy"}
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
   `;
+  let items = {...localStorage} ;
+  let g= 0;
+  for (let [i,k] of Object.entries(items)) {
+    if (i.includes('goal') && i.includes(pj.name)) {
+      g++
+    }
+  }
+  if (g===2) {
+    document.getElementById('pj-b-g-b').remove()
+  }
     ActualizeGoals()
 
 
 
 }
 
+function ChangeTime() {
+  document.getElementById('pj-b-content').innerHTML = `
+  <div class="mdf-b">
+    <div class="mdf-t">
+      Modify the end date of your project
+    </div>
+    <div class="mdf-i">
+      You are about to modify the end date of your project.<br>
+      To proceed, please enter a date.<br>
+      You will still be able to modify it later.
+    </div>
+    <input type="date" id="enter-content">
+    <button onclick="SaveDate()">
+      <span class="material-symbols-outlined">
+      sync_saved_locally
+      </span>
+      Confirm
+
+    </button>
+    <button id="cancel" onclick="Cancel()">
+      <span class="material-symbols-outlined">
+      close
+      </span>
+      Cancel
+    </button>
+  </div>
+`;
+}
+
 function ChangeName() {
-    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
     document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
@@ -133,6 +202,24 @@ function ChangeName() {
     </div>
   `;
 }
+function SaveDate() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
+  let cv = document.getElementById('enter-content').value;
+  let d = new Date();
+  let c = new Date(cv);
+  console.log(c,d,cv)
+  if (isNaN(c) != true && d<c) {
+      pj.end = cv;
+      localStorage.setItem(`Project : ${pj.name}`, JSON.stringify(pj));
+      OpenFolder({
+          id: `pj-open-${pj.name}`
+      })
+  } else {
+      document.getElementById('enter-content').style.border = "2px solid red";
+  }
+}
+
 
 function SaveName() {
     let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
@@ -342,13 +429,13 @@ function ActualizeGoals() {
             <span class="material-symbols-outlined">
             alarm_smart_wake
             </span>
-            ${Goal.duration}d
+            ${Goal.duration} days long
           </div>
           <div class="pj-b-gg-d">
             <span class="material-symbols-outlined">
             chart_data
             </span>
-            ${Goal.amount_of_words}w
+            ${Goal.amount_of_words} words long
           </div>
         </div>
         <div class="pj-b-gg-d-2">
@@ -429,140 +516,182 @@ function ModifyAddGoal(n) {
             alert('Already too much goals (2 max.)');
             return;
         } else {
-            console.log("Creategoal")
-
-            function AskName() {
-                let name = prompt('What is the name of your goal?');
-                if (name.split('').length > 50) {
-                    alert('Too much caracters. (50 max)');
-                    AskName();
-                } else {
-                    return name;
-                }
-            }
-
-            function HowMuchDays() {
-                let HMD = prompt('How many days will it last?');
-                if (isNaN(HMD)) {
-                    alert('Wrong number value');
-                    HowMuchDays();
-                } else {
-                    return HMD;
-                }
-            }
-
-            function HowMuchWords() {
-                let HMD = prompt('How many words do you wish to write?');
-                if (isNaN(HMD)) {
-                    alert('Wrong number value');
-                    HowMuchDays();
-                } else {
-                    return HMD;
-                }
-            }
-
-            function AskDesc() {
-                let Desc = prompt('Add a description to your goal...');
-                if (Desc.split('').length > 250) {
-                    alert('Too much caracters. (250 max)');
-                    AskName();
-                } else {
-                    return Desc;
-                }
-            }
-            let N = AskName();
-            let HMD = HowMuchDays();
-            let HMW = HowMuchWords();
-            let D = AskDesc();
-            let g = {
-                name: N,
-                duration: HMD,
-                details: D,
-                amount_of_words: HMW,
-                words: 0,
-                started: false,
-                started_on: "",
-                updates: {}
-            }
-            for (let i = 0; i < 2; i++) {
-                if (!localStorage.getItem(`${customGoal ? n: Name}-goal-${i}`)) {
-                    localStorage.setItem(
-                        `${customGoal ? n: Name}-goal-${i}`,
-                        JSON.stringify(
-                            g
-                        )
-                    );
-                    document.getElementById('Main').innerHTML = "";
-                    OpenFolder({
-                        id: `pj-open-${n}`
-                    });
-                    NewAddGoal = 0;
-                    customGoal = false;
-                    customGoalName = "";
-                    return;
-                }
-            }
+            document.getElementById('pj-b-content').innerHTML = `
+              <div class="g-b-new">
+                <div class="g-b-n-t">
+                  <div class="g-b-n-t-t">
+                    <div class="ifo">
+                      <span class="material-symbols-outlined">
+                        history_edu
+                        </span>
+                        Goal name (50ch.)
+                    </div>
+                    <input id="goal-name" maxlength="50">
+                  </div>
+                  <div class="g-b-n-t-t">
+                    <div class="ifo">
+                      <span class="material-symbols-outlined">
+                        timer
+                        </span>
+                        Duration
+                    </div>
+                    <input type="number" id = "goal-duration" max="999" value="15">
+                  </div>
+                  <div class="g-b-n-t-t">
+                  <div class="ifo">
+                    <span class="material-symbols-outlined">
+                      flag
+                      </span>
+                      Describe your goal (200ch.)
+                  </div>
+                  <textarea id="goal-details"  maxlength="200"></textarea>
+                </div>
+                <div class="g-b-n-t-t">
+                  <div class="ifo">
+                    <span class="material-symbols-outlined">
+                      numbers
+                      </span>
+                      Amount of words
+                  </div>
+                  <input type="number" min = 1000 id="words-amount" value="1000">
+                </div>
+                  <div class="goal-save">
+              
+                    <button onclick='Goal_Save();'>
+                        Create goal
+                    </button>
+                  </div>
+                  <div id="AlertMissingContent">
+                    Error: your form is wrongly completed.<br>
+                    Make sure there is a duration for your project,
+                    a name and an amount of words to reach.
+                  </div>
+                </div>
+              </div>`;
         }
     }
 }
 
+function FilterRedirect() {
+  FilterProjects(document.getElementById("FilterProject").value);
+}
 
-
-function ProjectShowUp() {
-    InCharge;
-    Pannel_Status = false;
-    const items = {
+function FilterProjects(type) {
+      const items = {
         ...localStorage
     };
     var size = Object.keys(items).length;
-
-    document.getElementById('Main').innerHTML = `
-  <div class="pj-ctnt" id="pj-ctnt">
-  <div class="pj-new-pj">
-  <button onclick="Project()">
-    <span class="material-symbols-outlined">
-      add
-      </span>
-      New project
-  </button>
-</div>
-  </div>
-  `;
+    let PJNEW = document.querySelectorAll('.pj-new');
+    for (let i=0;i  < PJNEW.length; i++) {
+      PJNEW[i].remove();
+    }
+    let PJS = [];
     for (let o of Object.entries(items)) {
-        if (o[0].includes("Project")) {
-            console.log('Project detected.\nLoading...');
-            let item = JSON.parse(o[1]);
-            console.log(item)
-            console.log(`Project « ${item.name} » found.`)
-            if (item.cover === null) {
-                item.cover = "https://drive.google.com/uc?id=1AH5bmT04YgAPoQjATPxTLq2C0mv7la1O"
-            }
-            document.getElementById('pj-ctnt').innerHTML += `
-      <div class="pj-new">
-      <div class="pj-${item.name}" id="pj-whl">
-        <div class="pj-infos" id="pj-child">
-          <div class="pj-new-ttl"> ${item.name} </div>
-          <div class="pj-open" id="pj-open-${item.name}" onclick="OpenFolder(this);">
-            <button class="material-symbols-outlined" style="font-size:50px;cursor:pointer;"> folder_open </button>
-            <div class="pj-open-desc"> Open project </div>
-
+      if (o[0].includes("Project")) {
+          PJS.push(JSON.parse(o[1]))
+      }
+    }
+    PJS.sort(function(a,b){return b.star- a.star});
+    for (let o of PJS) {
+          let item = o;
+          if (item.cover === null) {
+              item.cover = "https://drive.google.com/uc?id=1AH5bmT04YgAPoQjATPxTLq2C0mv7la1O"
+          }
+          let WTA = `
+          <div class="pj-new">
+            <div class="pj-${item.name}" id="pj-whl">
+              <div class="pj-infos" id="pj-child">
+                <div class="pj-new-ttl"> ${item.name} </div>
+                <div class="pj-open" id="pj-open-${item.name}" onclick="OpenFolder(this);">
+                  <button class="material-symbols-outlined" style="font-size:50px;cursor:pointer;" id="folder"> folder </button>
+                  <button class="material-symbols-outlined" style="font-size:50px;cursor:pointer;" id="folder-open"> folder_open </button>
+                  <div class="pj-open-desc"> Open project </div></div>
+                <div class="pj-param">
+                  <div class="pj-param-contan">
+                    <span class="material-symbols-outlined" onclick="ChangeStatusStar(this)" id="${item.name}"
+                      style="border:1px solid ${item.star ? 'yellow' : '#2c3f70'}"
+                      > star </span>
+                    <span class="material-symbols-outlined" id="${item.name}" onclick="ChangeStatusBack(this)"
+                    style="border:1px solid ${item.backed ? 'white' : '#2c3f70'}"
+                    > hide_source </span>
+                  </div>
+                </div>
+              </div>
+              <div class="pj-slct-img">
+                <img src="${item.cover}" class="pj-cover">
+              </div>
             </div>
-          <div class="pj-param">
-            <div class="pj-param-contan">
-              <button class="material-symbols-outlined" id="pj-param"> star </button>
-              <button class="material-symbols-outlined" id="pj-param"> hide_source </button>
-            </div>
+        </div>`;
+        let ct = document.getElementById("FilterProject").value;
+        if (
+          type == "All" ||
+          (type=="Starred" && item.star) ||
+          (type=="Sleeping" && item.backed)
+        ) {
+          document.getElementById('pj-ctnt').innerHTML += WTA;
+          document.getElementById("FilterProject").value = ct;
+        }
+  }
+}
+function ProjectShowUp() {
+    InCharge;
+    Pannel_Status = false;
+    document.getElementById('Main').innerHTML = `
+    <div class="pj-ctnt" id="pj-ctnt">
+      <div class="pj-ctnt-opt">
+        <button onclick="Project()">
+        <span class="material-symbols-outlined">
+          add
+          </span>
+          New project
+        </button>
+        <div class="pj-ctnt-select">
+          <div class="pj-ctn-select-title">
+            <span class="material-symbols-outlined">
+            filter_alt
+            </span>
+            Filter projects
           </div>
-        </div>
-        <div class="pj-slct-img">
-          <img src="${item.cover}" class="pj-cover">
+          <select id="FilterProject" onchange="FilterRedirect()">
+            <option>All</option>
+            <option>Starred</option>
+            <option>Sleeping</option>
+          </select>
         </div>
       </div>
     </div>
-      `;
-        }
-    }
+  `;
+  FilterProjects('All');
 }
+function ChangeStatusBack(el) {
+  let id = el.id;
+  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
+  if (!pj.backed) {
+    pj.backed = true;
+  } else {
+    pj.backed = !pj.backed;
+  }
+  pj.star = false;
+  localStorage.setItem(`Project : ${id}`,JSON.stringify(pj))
+  ProjectShowUp();
+
+}
+
+function ChangeStatusStar(el) {
+  let id = el.id;
+  let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
+  if (!pj.star) {
+    pj.star = true;
+  } else {
+    pj.star = !pj.star;
+  }
+  pj.backed = false;
+  localStorage.setItem(`Project : ${id}`,JSON.stringify(pj))
+  ProjectShowUp();
+
+}
+
+
 /*
             <div class="pj-infos" id="pj-child">
               <div class="pj-open">
@@ -721,7 +850,9 @@ function CreateProject() {
         cover: cover,
         created_on: Date.now(),
         password: password,
-        inspi: []
+        inspi: [],
+        star : false,
+        backed : false
     }
     localStorage.setItem(`Project : ${name}`, JSON.stringify(Project));
     let Tracker = document.getElementById('tracker');
@@ -773,7 +904,7 @@ function CreateProject() {
         </span>
         Back
         </button>
-        <button onclick="ContinueToGoal()">
+        <button onclick="Save()">
           Continue
           <span class="material-symbols-outlined">
           arrow_forward
@@ -786,33 +917,12 @@ function CreateProject() {
 
 let create = 0;
 
-function ContinueToGoal() {
-    document.getElementById('Main').innerHTML = `
-  <div class="following">
-  <img id="tracker" src="Images & Icons/3.png" >
-</div>
-  <div class="goals-container" id="goals-container">
-  <div class="g-b">
-    <button onclick="CreateGoal()">
-      <span class="material-symbols-outlined">
-        add
-      </span>
-      Create a new goal
-    </button>
-    <button onclick='Save()'>
-      <span class="material-symbols-outlined">
-        cancel
-      </span>
-      Ignore this option
-    </button>
-  </div>
-  </div>
-  `
-}
+
 
 function CreateGoal() {
     if (create === 0) {
         create = 1;
+
         document.getElementById('goals-container').innerHTML += `
     <div class="g-b-new">
       <div class="g-b-n-t">
@@ -918,47 +1028,52 @@ function Goal_Save() {
     let words = document.getElementById('words-amount').value;
 
 
-    let g = {
-        name: goal_name,
-        duration: duration,
-        details: details,
-        amount_of_words: words,
-        words: 0,
-        started: false,
-        started_on: "",
-        updates: {}
+    if (goal_name.length > 1 && isNaN(duration) === false && details.length && isNaN(words) === false) {
+        let g = {
+          name: goal_name,
+          duration: duration,
+          details: details,
+          amount_of_words: words,
+          words: 0,
+          started: false,
+          started_on: "",
+          updates: {}
+      }
+
+      for (let i = 0; i < 2; i++) {
+          if (!localStorage.getItem(`${InCharge}-goal-${i}`)) {
+              localStorage.setItem(
+                  `${InCharge}-goal-${i}`,
+                  JSON.stringify(
+                      g
+                  )
+              );
+              if (!customGoal) {
+                  Save();
+              } else {
+                  document.getElementById('Main').innerHTML = "";
+                  OpenFolder({
+                      id: `pj-open-${InCharge}`
+                  })
+                  NewAddGoal = 0;
+
+              }
+              customGoal = false;
+              customGoalName = "";
+              return;
+          }
+      }
+      alert('Error: cannot create a new goal (2 goals already created).');
+      document.getElementById('Main').innerHTML = "";
+      OpenFolder({
+          id: `pj-open-${InCharge}`
+      })
+      NewAddGoal = 0;
+    } else {
+      document.getElementById('AlertMissingContent').style.visibility = "visible";
+      document.getElementById('AlertMissingContent').style.position = "relative";
 
     }
-
-    for (let i = 0; i < 2; i++) {
-        if (!localStorage.getItem(`${customGoal ? customGoalName: Name}-goal-${i}`)) {
-            localStorage.setItem(
-                `${customGoal ? customGoalName: Name}-goal-${i}`,
-                JSON.stringify(
-                    g
-                )
-            );
-            if (!customGoal) {
-                Save();
-            } else {
-                document.getElementById('Main').innerHTML = "";
-                OpenFolder({
-                    id: `pj-open-${InCharge}`
-                })
-                NewAddGoal = 0;
-
-            }
-            customGoal = false;
-            customGoalName = "";
-            return;
-        }
-    }
-    alert('Error: cannot create a new goal (2 goals already created).');
-    document.getElementById('Main').innerHTML = "";
-    OpenFolder({
-        id: `pj-open-${InCharge}`
-    })
-    NewAddGoal = 0;
 }
 
 

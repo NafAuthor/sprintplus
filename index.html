@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,700,0,0" />
   </head>
   <body>
+    <img src="Images & Icons/Logo.ico" id="SprintPlusLogo">
     <div class="Logs">
       <a href="logs.html" target="_blank">
         <span class="material-symbols-outlined">
@@ -296,7 +297,6 @@
               "That ain't true!",
               "What?!"
             ]
-        today = today.setHours(0,0,0,0)
         for (let [k,v] of Object.entries(items)) {
           if (k.includes('goal')) {
             let g = JSON.parse(v);
@@ -310,7 +310,7 @@
             if (diffDays>0) {
               calc = diffDays-1;
             }
-          
+            console.log(diffDays)
             if (((!g.updates[diffDays] || g.updates[diffDays]<=g.updates[calc])) && g.started === true ) {
               document.getElementById('m-m-td').innerHTML+=`
                 <div class="alert">
@@ -320,7 +320,7 @@
                   </span>
                       ${cm[Math.floor((Math.random() * cm.length))]}
                   </div>
-                  <div class="c-d-c" onclick="ShowUpToDo()">
+                  <div class="c-d-c" onclick="GoalsShowUp()">
                     You didn't work on « ${g.name} » today!
                   </div>
                 </div>
