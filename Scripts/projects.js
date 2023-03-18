@@ -93,7 +93,7 @@ function OpenFolder(el) {
       <div class="pj-b-p">
         <div class="pj-b-goals" id="pj-b-goals">
           <div class="pj-b-g-b" id="pj-b-g-b">
-            <button onclick="ModifyAddGoal('${pj.name}');">
+            <button onclick="ModifyAddGoal();">
               <span class="material-symbols-outlined"> add </span> New goal </button>
           </div>
         <div class="pj-b-g-c" id="pj-b-g-c"></div>
@@ -500,9 +500,10 @@ function DelGoal(g) {
 
 let NewAddGoal = 0;
 
-function ModifyAddGoal(n) {
+function ModifyAddGoal() {
     customGoal = true;
     console.log(n)
+    let n = InCharge;
     if (NewAddGoal <= 0) {
         NewAddGoal = 1;
         let CG = 0;
