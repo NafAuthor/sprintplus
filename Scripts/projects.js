@@ -502,7 +502,6 @@ let NewAddGoal = 0;
 
 function ModifyAddGoal() {
     customGoal = true;
-    console.log(n)
     let n = InCharge;
     if (NewAddGoal <= 0) {
         NewAddGoal = 1;
