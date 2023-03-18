@@ -331,7 +331,7 @@ function SaveDesc() {
         pj.desc = cv;
         localStorage.setItem(`Project : ${InCharge}`, JSON.stringify(pj));
         OpenFolder({
-            id: `pj-open-${id}`
+            id: `pj-open-${InCharge}`
         })
     } else {
         document.getElementById('enter-content').style.border = "2px solid red";
