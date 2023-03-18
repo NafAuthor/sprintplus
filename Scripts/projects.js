@@ -294,7 +294,6 @@ function SaveCover() {
 }
 
 function ChangeDesc() {
-    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
     document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
@@ -330,7 +329,7 @@ function SaveDesc() {
 
     if (cv) {
         pj.desc = cv;
-        localStorage.setItem(`Project : ${id}`, JSON.stringify(pj));
+        localStorage.setItem(`Project : ${InCharge}`, JSON.stringify(pj));
         OpenFolder({
             id: `pj-open-${id}`
         })
