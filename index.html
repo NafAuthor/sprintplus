@@ -225,23 +225,30 @@
               due to a tricky modification of your datas on your side. 
               You are responsible of the way you modify your datas.
               <br><br>
-              For more informations, see at the right (top) of the main menu page.
+              For more informations, click on the button at the right (top) of the main menu page.
               <br><br>
               Now, please, complete some informations about you, so we 
               can setup your whole session.<br><br><br>
               <div class="q">
+              <div class="q-q">
                 <div class="q-t">
                   What is your name?
                 </div>
-                <input type="text" id="name" style="background-color:rgba(31, 48, 92, 0.7)">
+                <input autocomplete="off" type="text" id="name" style="background-color:rgba(31, 48, 92, 0.7)">
+              </div>
+              <div class="q-q">
                 <div class="q-t" >
                   Enter a secure password (6 characters min.)
                 </div>
-                <input type="text"id="password" style="background-color:rgba(31, 48, 92, 0.7)">
+                <input autocomplete="off" type="text"id="password" style="background-color:rgba(31, 48, 92, 0.7)">
+              </div>
               </div>
             </div>
             <button id="go" onclick="GoFor()">
-              Let's go!
+              Create a session
+              <span class="material-symbols-outlined">
+              login
+              </span>
             </button>
           </div>
         `;

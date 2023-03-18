@@ -425,3 +425,61 @@ let Main = `
 `;
 
 let goaled = false;
+
+
+
+function OpenWelcome() {
+  document.getElementById('p-p-title').innerHTML = "Welcome to Sprint+!"
+  document.getElementById('Main').innerHTML = `
+    <div class="welcome-f">
+      <div class="w-t">
+      Welcome, dear writer!
+      </div>
+      <div class="w-info">
+        You are about to register yourself into Sprint+.<br><br>
+        First, you must know that this website is a project made
+        by a private person.<br>
+        None of your datas are used by us or any other person.
+        All your datas are stored in your browser, and are 
+        known only by you and your browser.<br><br>We do not sell,
+        use, lookup, save, or see any of your datas.<br<br>In
+        this way, all the passwords you will set will have a 
+        minimal amount of security: anyone with a bit of coding 
+        experience will be able to find your passwords. However,
+        keep in mind that this doesn't change anything to the point
+        of the website, and will not affect in any way your use of 
+        Sprint+, because no one would steal your progress.
+        <br><br>
+        Sprint+ and our team are not responsible of any corruption
+        due to a tricky modification of your datas on your side. 
+        You are responsible of the way you modify your datas.
+        <br><br>
+        For more informations, click on the button at the right (top) of the main menu page.
+        <br><br>
+        Now, please, complete some informations about you, so we 
+        can setup your whole session.<br><br><br>
+        <div class="q">
+        <div class="q-q">
+          <div class="q-t">
+            What is your name?
+          </div>
+          <input autocomplete="off" type="text" id="name" style="background-color:rgba(31, 48, 92, 0.7)">
+        </div>
+        <div class="q-q">
+          <div class="q-t" >
+            Enter a secure password (6 characters min.)
+          </div>
+          <input autocomplete="off" type="text"id="password" style="background-color:rgba(31, 48, 92, 0.7)">
+        </div>
+        </div>
+      </div>
+      <button id="go" onclick="GoFor()">
+        Create a session
+        <span class="material-symbols-outlined">
+        login
+        </span>
+      </button>
+    </div>
+  `;
+}
+

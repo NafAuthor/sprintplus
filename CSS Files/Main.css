@@ -582,4 +582,24 @@ body a {
     padding: 15px;
     background-color: #19284d;
     border-radius: 10px;
+    overflow-y: scroll;
+}
+
+.q-q {
+    margin-top: 10px;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 10px;
+    position:relative;
+    padding-top: 20px;
+}
+
+.q-t {
+    position: absolute;
+    top:-15;
+    padding: 5px;
+    background-color: #19284d;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
 }
