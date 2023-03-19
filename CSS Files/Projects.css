@@ -999,9 +999,15 @@ Project view:
     .pj-board-parent {
         margin-top: 200px;
         display: flex;
+        width: fit-content;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
-        gap: 10px;
-        height: fit-content;
+        gap: 0px;
     }
     .pj-b-g {
         width: 100%;
@@ -1012,12 +1018,12 @@ Project view:
     .pj-b-g-p {
         width: fit-content;
         align-items: center;
+        min-width: 180px;
         justify-content: center;
         height: 50px;
         display: flex;
         flex-direction: row;
     }
-    
     .pj-b-g-param{
         padding: 5px;
         width: 25px;
@@ -1029,7 +1035,9 @@ Project view:
     }
     .pj-b-content {
         width: 100%;
-        height: 80%;
+        height: 70%;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
     .pj-b-i-t {
         position:relative;
@@ -1089,11 +1097,11 @@ Project view:
     }
     .RingGoal {
         position:absolute;
-        right:10;
+        right:50;
     }
     .DelGoal {
         position:absolute;
-        right:50;
+        right:10;
     }
     .-pj-b-i-i {
         font-size: 11px;
