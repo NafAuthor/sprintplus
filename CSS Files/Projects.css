@@ -1029,7 +1029,10 @@ Project view:
     }
     .pj-b-content {
         width: 100%;
-        height: 650px;
+        height: 80%;
+    }
+    .pj-b-i-t {
+        position:relative;
     }
     .pj-b-c {
         width: 20%;
@@ -1117,6 +1120,10 @@ Project view:
     }
     .mdf-b input {
         width: 100%;
+    }
+    .pj-mi {
+        position:absolute;
+        visibility: hidden;
     }
 }
 
