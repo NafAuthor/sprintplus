@@ -714,7 +714,7 @@ function DeleteProject() {
       Delete project
     </div>
     <div class="mdf-i">
-      You are about to delete project. <br>
+      You are about to delete your project. <br>
       This action can't be undone. If you're not sure, please download yoru datas before deleting your project. <br>
       Enter in the following inputs the password of your project, and the password of your account.
     </div>

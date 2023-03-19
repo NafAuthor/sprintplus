@@ -449,9 +449,9 @@ Project view:
     height: 250px;
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-left: auto;
     margin-right: 15px;
+    
 }
 .pj-i-c {
     display: flex;
@@ -561,11 +561,15 @@ Project view:
 #containLink {
     position: relative;
 }
+:root {
+    --slidein_size: 110px;
+  }
 @keyframes slidein {
     0% { width: 0px; }
-    50%   { width:110px; }
+    50%   { width:var(--slidein_size); }
     100% {width: 0px;}
   }
+
 #a-link-goes {
     width: 110px;
     background-color: white;
@@ -974,4 +978,148 @@ Project view:
     color:red;
     visibility: hidden;
     position:absolute;
+}
+
+
+@media screen and (320px <= width <= 420px) {
+    .pj-ctnt {
+        width: 100%;
+        height: 100%;
+        margin-top: 100px;
+    }
+    .pj-ctnt-opt {
+        width: 100%;
+    }
+    .pj-new {
+        width: 95%;
+    }
+    .pj-slct-img {
+        right: 10px;
+    }
+    .pj-board-parent {
+        margin-top: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: fit-content;
+    }
+    .pj-b-g {
+        width: 100%;
+        display: flex;
+        height: fit-content;
+        flex-direction: column;
+    }
+    .pj-b-g-p {
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .pj-b-g-param{
+        padding: 5px;
+        width: 25px;
+        height: 25px;
+    }
+    .pj-b-g-param p {
+        visibility: hidden;
+        position:absolute;
+    }
+    .pj-b-content {
+        width: 100%;
+        height: 650px;
+    }
+    .pj-b-c {
+        width: 20%;
+        display: flex;
+        margin-top: 0px;
+        margin-right: 20px;
+    }
+    .-pj-b-i-i-c {
+        font-size: 12px;
+
+    }
+    .pj-i-c {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .pj-b-p {
+        width: 100%;
+        height: fit-content;        
+        padding: none;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin:none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pj-b-goals{
+        width: 100%;
+        position:relative;
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: fit-content;
+    }
+    .pj-b-g-b{
+        position:absolute;
+        left:0;
+        top:0;
+    }
+    .pj-b-g-c {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    #pj-b-gg {
+        width: 350px;
+        margin-left: -20px;
+        position:relative;
+    }
+    .pj-b-gg-t-t {
+        width: fit-content;
+    }
+    .RingGoal {
+        position:absolute;
+        right:10;
+    }
+    .DelGoal {
+        position:absolute;
+        right:50;
+    }
+    .-pj-b-i-i {
+        font-size: 11px;
+        text-align: left;
+    }
+    :root {
+        --slidein_size: 75px;
+      }
+    .mdf-b {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+    .mdf-t {
+        text-align: center;
+    }
+    .mdf-b button {
+        width: 200px;
+        height: 50px;
+        font-size: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .mdf-b input {
+        width: 100%;
+    }
+}
+
+.mdf-i {
+    text-align: justify;
 }

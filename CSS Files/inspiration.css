@@ -14,7 +14,8 @@
 
 .insp-i {
     width: 20%;
-    height: 80%;
+    height: fit-content;
+    max-height: 90%;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -57,6 +58,7 @@
     align-items: center;
     gap: 15px;
     transition: 0.5s;
+    overflow-x: hidden;
 }
 .i-b button img {
     width: 20px;
@@ -197,13 +199,11 @@
     padding: 0;
     margin: 15px 10px;
     border-radius: var(--card_border_radius);
-    background-color: red;
 }
 
 
 #alert-img, #alert-quote, #alert-music,  #alert-link {
     font-size: 10px;
-    color:red;
 }
 
 .newlink {
@@ -275,4 +275,10 @@
     width: 30px;
     bottom:2;
     right: 2;
+}
+
+
+@media screen and (320px <= width <= 420px) {
+
+
 }
