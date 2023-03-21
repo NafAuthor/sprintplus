@@ -9,7 +9,7 @@ function ShowUpToDo() {
                     <span class="material-symbols-outlined">
                         bookmark
                         </span>
-                        Select a project
+                        <p>Select a project</p>
                     </div>
                     <div class="td-p-c-slct-p-i">
                         <select id="td-p-c-slct-p-i" onchange="ChangeTasks()">
@@ -21,7 +21,7 @@ function ShowUpToDo() {
                         <span class="material-symbols-outlined">
                         sort
                         </span>
-                        Sort tasks
+                        <p>Sort tasks</p>
                     </div>
                     <div class="td-p-c-slct-p-i">
                         <select id="td-p-c-slct-p-s" onchange='ChangeSort()'>
@@ -32,20 +32,20 @@ function ShowUpToDo() {
                         </select>
                     </div>
                 </div>
-                <div class="td-p-c-add-t">
+                <div class="td-p-c-add-t" id="NewTask">
                     <button onclick="openNewTask()">
                     <span class="material-symbols-outlined">
                     add
                     </span>
-                    New task
+                    <p>New task</p>
                     </button>
                 </div>
-                <div class="td-p-c-add-t">
+                <div class="td-p-c-add-t" id="openTask">
                     <button onclick="window.open('taskslogs.html')">
                     <span class="material-symbols-outlined">
                     open_in_new
                     </span>
-                    Your logs
+                    <p>Your logs</p>
                     </button>
                 </div>
             </div>
@@ -372,7 +372,7 @@ function openNewTask() {
                     </span>
                     Task name (100ch.)
                 </div>
-                <input type="text" maxlength="100" id="taskname">
+                <input type="text" maxlength="100" id="taskname" autocomplete="off">
             </div>
             <div class="td-n-p">
                 <div class="td-n-p-t">

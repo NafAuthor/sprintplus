@@ -344,14 +344,13 @@ let all_contain = `
 let featured = `
 <div class="featured">
                 <div class="ft-t">
-                  L'académie d'écriture
+                  Sprint+ Support Server
                 </div>
                 <div class="ft-d">
-                  A french discord server full of nice people who like to write 
-                  diverse type of stories! If you're seeking for a cool community,
-                  with gentle writers to help you, do not hesitate anymore!
+                  Looking for suggestions? Want to report bugs?<br>
+                  Join Sprint+ Discord server to stay tuned about exciting news!
                 </div>
-                <button>
+                <button onclick="window.open('https://discord.gg/72tACSk8Jd')">
                   Join this discord server
                 </button>
               </div>
@@ -372,6 +371,18 @@ let Main = `
       Sprint+ is featuring...
     </div>
     <div class="f-f">
+    <div class="featured">
+    <div class="ft-t">
+      Sprint+ Support Server
+    </div>
+    <div class="ft-d">
+      Looking for suggestions? Want to report bugs?<br>
+      Join Sprint+ Discord server to stay tuned about exciting news!
+    </div>
+    <button onclick="window.open('https://discord.gg/72tACSk8Jd')">
+      Join this discord server
+    </button>
+  </div>
       <div class="f-more">
         <div class="f-m-d">
           Looking for a feat?

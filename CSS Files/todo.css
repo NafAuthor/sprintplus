@@ -47,7 +47,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 
@@ -130,7 +130,7 @@
     width: 80%;
     background-color: #19284d;
     height: 90%;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -378,7 +378,7 @@
     width: 95%;
     height: 95%;
     padding: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-left: auto;
     margin-right: auto;
 }
@@ -492,4 +492,58 @@
     font-size: 12px;
     color:red;
     visibility: hidden;
+}
+
+
+@media screen and (320px <= width <= 420px) {
+    .td-m-c {
+        flex-direction: column;
+    }
+    .td-p-c {
+        flex-direction: column;
+        width: 90%;
+        height: 150px;
+        position:relative;
+        overflow-y: hidden;
+    }
+    .td-p-c-t p {
+        position: absolute;
+        visibility: hidden;
+    }
+    .td-p-c-slct-p, .td-p-c-s-t {
+        flex-direction: row;
+        justify-content: none;
+        gap:10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .td-p-c-slct-p-i {
+        width: 50%;
+        margin-right: auto;
+        margin-left: unset;
+    }
+    .td-p-c-slct-p-i select, .td-p-c-slct-p-s select {
+        margin-right: auto;
+        width: 100%;
+    }
+    .td-p-c-add-t {
+        position:absolute;
+        right:10;
+        top:15;
+        width: fit-content;
+    }
+    .td-p-c-add-t button {
+        height: 50px;
+        width: 50px;
+    }
+    .td-p-c-add-t button p {
+        visibility:hidden ;
+        position:absolute;
+    }
+    #openTask {
+        top: 85;
+    }
+    .td-content {
+        width: 95%;
+    }
 }

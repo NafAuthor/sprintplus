@@ -1,7 +1,7 @@
 .insp {
     width: 90%;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: flex;
     flex-direction: row;
     font-size: 20px;
@@ -181,7 +181,7 @@
     --card_width: 250px;
     --row_increment: 380px;
     --card_border_radius: 5px;
-    
+    --card_width_media: 10px;
 }
 
 .insp-c {
@@ -249,7 +249,7 @@
 }
 
 .d-c-i-q, .d-c-i-p {
-    width:250px;
+    width:var(--card_width);
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
@@ -279,6 +279,92 @@
 
 
 @media screen and (320px <= width <= 420px) {
+    .Main {
+        overflow-x: hidden;
+    }
+    .insp {
+        flex-direction: column;
+        width: 100%;
+        overflow-x: hidden;
+        gap: 30px;
+        overflow-y: hidden;
+    }
+    .insp-i {
+        flex-direction: column;
+        position:relative;
+        width: 100%;
+        gap: 0px;
+    }
+    .c-p-c {
+        width: 50%;
+    }
 
-
+    .i-b button p {
+        visibility: hidden;
+        position:absolute;
+    }
+    .i-b button {
+        width: 45px;
+        height: 45px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .i-t {
+        align-items: center;
+    }
+    .i-b {
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+    }
+    .i-b button img {
+        width: 40px;
+        height: 40px;
+    }
+    .insp-i-i {
+        position:absolute;
+        visibility: hidden;
+    }
+    .c-p {
+        flex-direction: row;
+        align-items: center;
+    }
+    .c-p-t p, .insp-add {
+        visibility: hidden;
+        position:absolute;
+    }
+    .insp-c {
+        margin-left: unset;
+        margin-right: unset;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, var(--card_width_media));
+        row-gap: 5px;
+        column-gap: 235px;
+        justify-content: start;
+        overflow-y: scroll;
+    }
+    .insp-c {
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .insp-c::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+    .insp-c img {
+        padding: 0;
+        margin: 15px 10px;
+        border-radius: var(--card_border_radius);
+    }
+    .d-c-i-q, .d-c-i-p {
+        width:100px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 5px;
+        background-color:#1a2950;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

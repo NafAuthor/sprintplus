@@ -9,9 +9,9 @@ function TriggerSecurity() {
         If no password has been set yet, your password is the password of your account. <br>
         Enter in the following inputs the password of your project, and your new password (5 characters min., no " or '), two times.
       </div>
-      <input type="text" id="enter-content-0">
-      <input type="text" id="enter-content-1">
-      <input type="text" id="enter-content-2">
+      <input type="text" id="enter-content-0" autocomplete="off">
+      <input type="text" id="enter-content-1" autocomplete="off">
+      <input type="text" id="enter-content-2" autocomplete="off">
 
       <button onclick="confirmsecurity()">
         <span class="material-symbols-outlined">

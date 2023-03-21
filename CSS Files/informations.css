@@ -9,7 +9,7 @@
     padding-bottom: 50px;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     gap: 20px;
     position: relative;
 }
@@ -176,4 +176,13 @@
 }
 .ifo-bt-b button:hover {
     border: 2px solid white;
+}
+
+
+@media screen and (320px <= width <= 420px) {
+    .ifo-m {
+        width: 80%;
+        height: 100%;
+    }
+
 }

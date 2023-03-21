@@ -295,7 +295,7 @@ body a {
     gap: 15px;
 }
 .f-f {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 300px;
     padding-right: 10px;
     padding-top: 10px;
@@ -375,7 +375,7 @@ body a {
     gap: 10px;
     margin-top: 30px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 300px;
     padding-left: 10px;
     padding-bottom: 10px;
@@ -475,7 +475,7 @@ body a {
 .mor-st {
     width: 99%;
     padding: 5px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     height: 55%;
     display: flex;
@@ -552,14 +552,13 @@ body a {
 ::-webkit-scrollbar {
     cursor:pointer;
     width: 15px;
-    border-radius: 10px;
 }
     /* Track */
     ::-webkit-scrollbar-track {
-      background: #24335a;
+      background: #2c3f70;
       border-radius: 2px;
       cursor: pointer;
-      padding: 1px;    border-radius: 10px;
+      padding: 1px;  
 
     }
 
@@ -584,7 +583,7 @@ body a {
     padding: 15px;
     background-color: #19284d;
     border-radius: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .q-q {
@@ -634,11 +633,12 @@ body a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 120%;
-        height: 80%;
+        width: 130%;
+        height: 100%;
         text-align: center;
         display: flex;
         gap:150px;
+        margin: auto;
     }
     .more {
         height: 20%;
@@ -651,10 +651,10 @@ body a {
         position:absolute;
     }
     #p-title {
-        width:125%;
-        margin-left: -8px;
+        width:130%;
         padding: 5px;
         margin-top: -10px;
+        margin-left: -10px;
         padding-left: 10px;
         padding-right: 10px;
         height: 50px;

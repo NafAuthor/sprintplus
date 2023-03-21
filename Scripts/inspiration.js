@@ -9,7 +9,8 @@ function OpenInspiration() {
         <span class="material-symbols-outlined">
         bookmark_add
         </span>
-        Choose a project </div>
+        <p>Choose a project</p>
+        </div>
         <div class="c-p-c">
           <select id="c-p-c" onchange="Board.OnProject()">
           </select>
@@ -17,7 +18,7 @@ function OpenInspiration() {
       </div>
       <div class="insp-i-m">
         <div class="i-t" onclick="whts_f()">
-          <span id="insp-i-m-t" class="material-symbols-outlined"> expand_more </span> Where to search
+          <span id="insp-i-m-t" class="material-symbols-outlined"> expand_more </span> <p>Where to search</p>
         </div>
         <div class="i-b" id="i-b"></div>
       </div>
@@ -29,7 +30,7 @@ function OpenInspiration() {
       </div>
       <div class="insp-i-i">
         <div class="insp-i-i-t" onclick="wts_m()">
-          <span id="insp-i-i-t" class="material-symbols-outlined"> expand_more </span> What to search
+          <span id="insp-i-i-t" class="material-symbols-outlined"> expand_more </span> <p>What to search</p>
         </div>
         <div class="insp-i-i-m" id="insp-i-i-m"></div>
       </div>
@@ -148,7 +149,6 @@ let Board = {
                     let IMG = document.createElement('img');
                     IMG.src=content;
                     IMG.style.maxWidth = `100%`;
-                    IMG.style.maxHeight = `100%`;
 
                     let container = document.createElement('div');
                     container.className="d-c-i-p"
@@ -409,19 +409,19 @@ let whsthtml = `
 `;
 let addedhtml = `
     <div class="inspt-add-i" id="inspt-add-b-c">
-    <input type="text" placeholder="Image link" id="insp-img-add">
+    <input type="text" placeholder="Image link" id="insp-img-add" autocomplete="off">
         <button onclick="Board.ImagePlus()">
         <span class="material-symbols-outlined"> add </span></button>
     </div>
     <div id="alert-img"></div>
     <div class="inspt-add-q"id="inspt-add-b-c">
-    <input type="text" placeholder="Text (250 cr.)" id="insp-quote-add" maxlength='250'>
+    <input type="text" placeholder="Text (250 cr.)" id="insp-quote-add" maxlength='250' autocomplete="off">
         <button onclick="Board.QuotePlus()">
         <span class="material-symbols-outlined"> add </span></button>
     </div>
     <div id="alert-quote"></div>
     <div class="inspt-add-l"id="inspt-add-b-c">
-    <input type="text" placeholder="Link"  id="insp-link-add">
+    <input type="text" placeholder="Link"  id="insp-link-add" autocomplete="off">
         <button  onclick="Board.LinkPlus()">
         <span class="material-symbols-outlined"> add </span></button>
     </div>

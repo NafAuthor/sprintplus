@@ -7,13 +7,15 @@ function DownloadItem() {
     let content={};
     let stats = [0,0]
     for (let [key,value] of Object.entries(items)) {
-        value = JSON.parse(value);
-        if (key.includes("Project")) {
-            stats[0]++;
-        } else if (key.includes("goal")) {
-            stats[1]++;
+        if (key.includes('Project') || key.includes('goal') || key.includes('user')) {
+            value = JSON.parse(value);
+            if (key.includes("Project")) {
+                stats[0]++;
+            } else if (key.includes("goal")) {
+                stats[1]++;
+            }
+            content[`${key}`] = value;
         }
-        content[`${key}`] = value;
     }
     let informations = `
         Welcome. You requested a download of your Sprint+ datas.
@@ -50,7 +52,7 @@ function Download() {
                 about datas merging.
             </div>
             <div class="pj-p" >
-            <input type="text" id="dwps">
+            <input type="text" id="dwps"autocomplete="off">
             </div>
             <button onclick="DownloadConfirm()">
             Confirm the download
@@ -154,7 +156,7 @@ function DataMergingPasswords() {
                         ${JSON.parse(value).name}
                     </div>
                     <div class="pj-p" >
-                        <input type="text" id="${JSON.parse(value).name}">
+                        <input type="text" id="${JSON.parse(value).name}"autocomplete="off">
                     </div>
                 </div>
             `;
@@ -165,7 +167,7 @@ function DataMergingPasswords() {
                         Session password:
                     </div>
                     <div class="pj-p" >
-                        <input type="text" id="user">
+                        <input type="text" id="user"autocomplete="off">
                     </div>
                 </div>
             `;
@@ -213,7 +215,7 @@ function DataConfirm() {
             
         </div>
         <div class="pj-p">
-        <input type="text" id="datas">
+        <input type="text" id="datas"autocomplete="off">
         </div>
         <button onclick="DataMerge()">
             Merge my datas

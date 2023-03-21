@@ -4,6 +4,8 @@ let customGoalName;
 let InCharge;
 
 function OpenFolder(el) {
+  customGoal=false;
+  NewAddGoal=0;
     let id = el.id;
     id = id.replace('pj-open-', '');
     let pj = JSON.parse(localStorage.getItem(`Project : ${id}`));
@@ -156,7 +158,7 @@ function ChangeTime() {
       To proceed, please enter a date.<br>
       You will still be able to modify it later.
     </div>
-    <input type="date" id="enter-content">
+    <input type="date" id="enter-content" >
     <button onclick="SaveDate()">
       <span class="material-symbols-outlined">
       sync_saved_locally
@@ -185,7 +187,7 @@ function ChangeName() {
         To proceed, please enter name (must not contain « project » or « goal »).<br>
         You will still be able to modify it later.
       </div>
-      <input type="text" id="enter-content">
+      <input type="text" id="enter-content" autocomplete="off">
       <button onclick="SaveName()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -259,7 +261,7 @@ function ChangeCover() {
         You are about to modify the cover of your project.<br>
         To proceed, please enter a link to a cover (A4 image type).
       </div>
-      <input type="text" id="enter-content">
+      <input type="text" id="enter-content" autocomplete="off">
       <button onclick="SaveCover()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -305,7 +307,7 @@ function ChangeDesc() {
         Please do not make it too long.<br>
         You will still be able to modify it later.
       </div>
-      <input type="text" id="enter-content">
+      <input type="text" id="enter-content" autocomplete="off">
       <button onclick="SaveDesc()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -349,7 +351,7 @@ function ChangeFiles() {
         You are about to modify the additional content of your project.<br>
         To proceed, please enter a link to a file of yours on the internet that reffers to your project.
       </div>
-      <input type="text" id="enter-content">
+      <input type="text" id="enter-content" autocomplete="off">
       <button onclick="SaveFiles()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -516,57 +518,39 @@ function ModifyAddGoal() {
             return;
         } else {
             document.getElementById('pj-b-content').innerHTML = `
-              <div class="g-b-new">
-                <div class="g-b-n-t">
-                  <div class="g-b-n-t-t">
-                    <div class="ifo">
-                      <span class="material-symbols-outlined">
-                        history_edu
-                        </span>
-                        Goal name (50ch.)
-                    </div>
-                    <input id="goal-name" maxlength="50">
-                  </div>
-                  <div class="g-b-n-t-t">
-                    <div class="ifo">
-                      <span class="material-symbols-outlined">
-                        timer
-                        </span>
-                        Duration
-                    </div>
-                    <input type="number" id = "goal-duration" max="999" value="15">
-                  </div>
-                  <div class="g-b-n-t-t">
+            <div class="g-b-new">
+              <div class="g-b-n-t">
+                <div class="g-b-n-t-t">
                   <div class="ifo">
-                    <span class="material-symbols-outlined">
-                      flag
-                      </span>
-                      Describe your goal (200ch.)
+                    <span class="material-symbols-outlined"> history_edu </span> Goal name (50ch.)
                   </div>
-                  <textarea id="goal-details"  maxlength="200"></textarea>
+                  <input type="text" id="goal-name" maxlength="50" autocomplete="off">
                 </div>
                 <div class="g-b-n-t-t">
                   <div class="ifo">
-                    <span class="material-symbols-outlined">
-                      numbers
-                      </span>
-                      Amount of words
+                    <span class="material-symbols-outlined"> timer </span> Duration
                   </div>
-                  <input type="number" min = 1000 id="words-amount" value="1000">
+                  <input type="number" id="goal-duration" max="999" value="15">
                 </div>
-                  <div class="goal-save">
-              
-                    <button onclick='Goal_Save();'>
-                        Create goal
-                    </button>
+                <div class="g-b-n-t-t">
+                  <div class="ifo">
+                    <span class="material-symbols-outlined"> flag </span> Describe your goal (200ch.)
                   </div>
-                  <div id="AlertMissingContent">
-                    Error: your form is wrongly completed.<br>
-                    Make sure there is a duration for your project,
-                    a name and an amount of words to reach.
-                  </div>
+                  <textarea id="goal-details" maxlength="200"></textarea>
                 </div>
-              </div>`;
+                <div class="g-b-n-t-t">
+                  <div class="ifo">
+                    <span class="material-symbols-outlined"> numbers </span> Amount of words
+                  </div>
+                  <input type="number" min=1000 id="words-amount" value="1000">
+                </div>
+                <div class="goal-save">
+                  <button onclick='Goal_Save();'> Create goal </button>
+                </div>
+                <div id="AlertMissingContent"> Error: your form is wrongly completed. <br> Make sure there is a duration for your project, a name and an amount of words to reach. </div>
+              </div>
+          </div>
+          `;
         }
     }
 }
@@ -932,7 +916,7 @@ function CreateGoal() {
               </span>
               Goal name
           </div>
-          <input id="goal-name" maxlength="20">
+          <input type="text" id="goal-name" maxlength="20" autocomplete="off">
         </div>
         <div class="g-b-n-t-t">
           <div class="ifo">
@@ -1096,7 +1080,7 @@ function Back(c) {
             </span>
           Give your project a name
         </div>
-        <input type="text" id="name">
+        <input type="text" id="name" autocomplete="off">
       </div>
       <div class="p-t"id="p-bx">
         <div class="p-t-t"id="form-title">
@@ -1132,7 +1116,7 @@ function Back(c) {
             </span>
           When will your project end?
         </div>
-        <input type="date" id="end">
+        <input type="date" id="end" >
       </div>
       <div class="p-d-i"id="p-bx">
         <div class="p-d-i-t" id="form-title">
@@ -1141,7 +1125,7 @@ function Back(c) {
             </span>
           Add a link to your project
         </div>
-        <input type="text" id="more">
+        <input type="text" id="more" autocomplete="off">
       </div>
       <div class="p-d-p"id="p-bx">
         <div class="p-d-p-t" id="form-title">
@@ -1150,7 +1134,7 @@ function Back(c) {
             </span>
           Add a cover (link, A4)
         </div>
-        <input type="text" id="cover">
+        <input type="text" id="cover" autocomplete="off">
       </div>
       <div class="n-p-s">
         <button type="button" onclick="CreateProject()">
