@@ -73,7 +73,7 @@
 
 @media screen and (320px <= width <= 420px) {
     .AlertBox {
-        width: 90%;
+        width: 100%;
     }
 
 }

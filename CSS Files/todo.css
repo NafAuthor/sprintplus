@@ -127,6 +127,7 @@
     width: 100%;
 }
 .td-content {
+    border-radius: 10px;
     width: 80%;
     background-color: #19284d;
     height: 90%;

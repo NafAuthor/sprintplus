@@ -68,3 +68,14 @@
     border: 2px solid white;
 
 }
+
+
+@media screen and (320px <= width <= 420px) {
+
+    .welcome-f {
+        width: 90%;
+        padding: 10px;
+        border-radius: 10px;
+
+    }
+}
