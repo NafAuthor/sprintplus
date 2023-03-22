@@ -699,7 +699,7 @@ Project view:
 }
 .pj-b-goals  {
     margin-top: 20px;
-    width: 50%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -818,9 +818,7 @@ Project view:
     animation: RingGoalAnimation 3s infinite;
 
 }
-.RingGoal button  {
-    background-color: #19284d;
-}
+
 .DelGoal button {
     background-color: #19284d;
 }

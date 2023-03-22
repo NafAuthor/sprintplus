@@ -409,8 +409,8 @@ function ActualizeGoals() {
       <div class="goal-nb-${GoalNumber + 1 }-${Goal.name}" id="pj-b-gg">
         <div class="pj-b-gg-t">
           <div class="pj-b-gg-t-t">${Goal.name}</div>
-          <div class="RingGoal" onclick="RingGoal(this);" id="${InCharge}-goal-${GoalNumber}">
-          <button>
+          <div class="RingGoal" onclick="RingGoal(this);" id="${InCharge}-goal-${GoalNumber}" >
+          <button style="background-color:${Goal.started ? "#98C379":"#E06C75"}">
           <span class="material-symbols-outlined">
           notifications_active
           </span>          
@@ -478,15 +478,15 @@ function ActualizeGoals() {
 function RingGoal(el) {
     let id = el.id;
     let g = JSON.parse(localStorage.getItem(id));
-    if (confirm(`${!g.started ? "Start" : "Stop"} the goal?`)) {
         if (!g.started) {
             g.started_on = new Date()
             g.started_on.setHours(0, 0, 0, 0)
         }
         g.started = !g.started;
-    }
     localStorage.setItem(id, JSON.stringify(g))
-
+    OpenFolder({
+      id: `pj-open-${InCharge}`
+    })
 }
 
 function DelGoal(g) {

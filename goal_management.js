@@ -44,28 +44,31 @@ function GoalsShowUp() {
     <div class="g-parent">
     <div class="g-child-selector">
       <div class="g-c-s-container">
-        <div class="g-c-s-c-t">
-        <span class="material-symbols-outlined">
-        bookmark
-        </span>
-          Select a project
-        </div>
-        <div class="g-c-s-c-p">
-          <select id="select-pj-goal" onchange="GoalSelect()">
-            <option></option>
-          </select>
-        </div>
-        <div class="g-c-s-c-t">
-        <span class="material-symbols-outlined">
-        beenhere
-        </span>
-          Select a goal
-        </div>
-        <div class="g-c-s-c-g">
-          <div class="g-c" id="g-c">
+        <div class="g-c-s-c-C">
+          <div class="g-c-s-c-t">
+            <span class="material-symbols-outlined">
+            bookmark
+            </span>
+              <p>Select a project</p>
+          </div>
+          <div class="g-c-s-c-p">
+            <select id="select-pj-goal" onchange="GoalSelect()">
+              <option></option>
+            </select>
           </div>
         </div>
-
+        <div class="g-c-s-c-C">
+          <div class="g-c-s-c-t">
+            <span class="material-symbols-outlined">
+            beenhere
+            </span>
+            <p>Select a goal</p>
+          </div>
+          <div class="g-c-s-c-g">
+            <div class="g-c" id="g-c">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="g-c-s-updt">
       <div class="g-c-s-updt-t">
@@ -135,7 +138,19 @@ function GoalsShowUp() {
       <canvas id="pjcurve" width="980" height="500" style="background-color: rgba(26,41,80,0.3);"></canvas>
     </div>
   </div>
-    `;
+    `;//rgba(26,41,80,0.3)
+    var w = window.innerWidth;
+    var canvas = document.getElementById('pjcurve');
+    w = (w*390)/525;
+    if (w>=320 && w<=420) {
+      var h = (w*500)/980;
+      canvas.width  = w;
+      canvas.height = h;
+    } else {
+      canvas.width  = 980;
+      canvas.height = 500;
+    }
+
     let v = 0;
     const items = { ...localStorage };
     console.log(items)
@@ -157,6 +172,10 @@ function GoalsShowUp() {
 
     
 }
+
+setTimeout(()=>{
+  GoalsShowUp()
+},20)
 
 function StopGoal() {
   let g = JSON.parse(localStorage.getItem(document.getElementsByClassName('DelToActualize').id));
@@ -258,8 +277,17 @@ function u() {
 }
 
 
-
-
+function GetWidth(a) {
+  var w = window.innerWidth;
+  w = (w*390)/525;
+  return (a*w)/980;
+}
+function GetHeight(a) {
+  var w = window.innerWidth;
+  w = (w*390)/525;
+  h= (w*500)/980;
+  return (h*a)/500 ;
+}
 
 function DrawCurve() {
   if (  document.getElementById('update_empty')) {
@@ -280,21 +308,22 @@ function DrawCurve() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#CDE";
     
-    ctx.fillRect(100, 390, 700, 2);
-    ctx.fillRect(100, 80, 2, 310 );
+    ctx.fillRect(GetWidth(100), GetHeight(390), GetWidth(700), 2);
+    ctx.fillRect(GetWidth(100), GetHeight(80), 2, GetHeight(310));
+
     ctx.font = "15px serif";
-    ctx.fillText("Words (K)", 80, 70);
-    ctx.fillText("Time (D)", 790, 380);
+    ctx.fillText("Words (K)", GetWidth(80), GetHeight(70));
+    ctx.fillText("Time (D)", GetWidth(790), GetHeight(380));
 
 
     for (let i = 0; i < 11;i+=(daysUntil/(daysUntil/10))/10) {
       console.log(i*(daysUntil/10))
-        ctx.fillText(Math.floor(i*(daysUntil/10)),97+i*60, 415);
-        ctx.fillRect(100+i*60, 390, 2, 8);
+        ctx.fillText(Math.floor(i*(daysUntil/10)),GetWidth(97+i*60), GetHeight(415+(500-canvas.height)/8));
+        ctx.fillRect(GetWidth(100+i*60), GetHeight(390), 2, 8);
     }
     for (let i = 0; i < 11; i+=1) {
-        ctx.fillText(Math.floor((i*((MaxWords/10)/1000))),65, 395+i*-30);
-        ctx.fillRect(92, 90+i*30, 8, 2);
+        ctx.fillText(Math.floor((i*((MaxWords/10)/1000))),GetWidth(((canvas.width*76)/980)), GetHeight(395+i*-30));
+        ctx.fillRect(GetWidth(92), GetHeight(90+i*30), 8, 2);
     }
     function DrawCircle(ctx, x,y) {
       ctx.beginPath();
@@ -308,12 +337,12 @@ function DrawCurve() {
 
 
 
-    let lastx = 100;
-    let lasty = 390;
+    let lastx = GetWidth(100);
+    let lasty = GetHeight(390);
     for (let update of Object.keys(updates)) {
       console.log(updates[update])
-      let x = 100 + (update*60)/(daysUntil/10);
-      let y = 390 - ((updates[update]/1000)*29.5)/((MaxWords/10)/1000);
+      let x = GetWidth(100) + (update*GetWidth(50))/(daysUntil/10);
+      let y = GetHeight(390) - ((updates[update]/1000)*GetHeight(29.5))/((MaxWords/10)/1000);
 
 
       ctx.beginPath();
@@ -330,10 +359,10 @@ function DrawCurve() {
       
     }
     ctx.fillStyle = '#CDE';
-    ctx.fillText(`Sprint+ Generated`,10, 490);
-    ctx.fillText(`A tool made by https://www.instagram.com/naf_author/`,625, 490);
-    ctx.font = "25px serif"
-    ctx.fillText(`${goal.name}: write ${MaxWords} words in ${daysUntil} days`, 300, 50);
+    ctx.fillText(`Sprint+ Generated`,GetWidth(10), GetHeight(490));
+    //ctx.fillText(`A tool made by https://www.instagram.com/naf_author/`,GetWidth(625), GetHeight(490));
+    //ctx.font = "25px serif"
+    //ctx.fillText(`${goal.name}: write ${MaxWords} words in ${daysUntil} days`, GetWidth(300), GetHeight(50));
 
 }
 

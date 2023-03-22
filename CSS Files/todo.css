@@ -546,5 +546,14 @@
     }
     .td-content {
         width: 95%;
+        border: 1.5px solid white;
+        border-radius: 10px;
+    }
+    .MainContent {
+        width: 100%;
+        height: 100%;
     }
 }
+
+
+

@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: row;
     font-size: 20px;
+    gap:0px;
 }
 .c-p-t {
     display: flex;
@@ -14,18 +15,14 @@
 
 .insp-i {
     width: 20%;
-    height: fit-content;
-    max-height: 90%;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    position:absolute;
+    gap: 0px;
     background-color: #1a2950;
     padding: 10px;
     border-radius:10px;
     margin:auto;
-    top:0;
-    bottom:0;
 }
 .c-p {
     display: flex;
@@ -44,6 +41,7 @@
     flex-direction: column;
     gap: 5px;
     width: 100%;
+    padding-bottom: 10px;;
 }
 .i-b button {
     width: 100%;
@@ -59,6 +57,7 @@
     gap: 15px;
     transition: 0.5s;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 .i-b button img {
     width: 20px;
@@ -86,6 +85,7 @@
     outline:none;
     padding-left: 5px;
     padding-right: 5px;
+    margin-top: -15px;
     border-radius: 5px;
     transition: 0.2s;
 }
@@ -100,11 +100,18 @@
     flex-direction: column;
     gap: 10px;
 }
-.insp-i-i-t, .i-t, .inspt-add-t {
+.c-p-t {
+    align-items: center;
+}
+.insp-i-m, i.nsp-add, .insp-i-i {
+    margin-top: 10px;;
+}
+.insp-i-i-t, .i-t, .inspt-add-t  {
     display: flex;
     flex-direction: row;
     gap: 10px;
     cursor: pointer;
+    align-items: center;
 }
 
 
@@ -116,6 +123,7 @@
     text-align: justify;
     font-size: 12px;
     font-family: Garet, serif;
+    margin-top: -20px;
 }
 
 
@@ -185,15 +193,19 @@
 }
 
 .insp-c {
-    margin-left: 25%;
     width: 80%;
-    height: 100%;
+    height: 90%;
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--card_width));
     row-gap: 10px;
     column-gap: 10px;
     grid-auto-rows: fit-content(1px);    
     justify-content: center;
+    overflow-y: auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin: auto;
+    margin-left: 10px;
 }
 .insp-c img {
     padding: 0;
@@ -292,8 +304,9 @@
     .insp-i {
         flex-direction: column;
         position:relative;
-        width: 100%;
+        width: 90%;
         gap: 0px;
+        height: fit-content;
     }
     .c-p-c {
         width: 50%;
@@ -309,14 +322,19 @@
         align-items: center;
         display: flex;
         justify-content: center;
+        border-radius: 50%;
+        padding: 20px;
     }
     .i-t {
         align-items: center;
+        margin-top: -10px;
+        -webkit-tap-highlight-color: transparent;
     }
     .i-b {
         flex-direction: row;
         gap: 20px;
         justify-content: center;
+        margin-top: -10px;
     }
     .i-b button img {
         width: 40px;
@@ -327,23 +345,33 @@
         visibility: hidden;
     }
     .c-p {
+        width: 100%;
+        height: 50px;
         flex-direction: row;
         align-items: center;
+    }
+    .c-p-c {
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
     }
     .c-p-t p, .insp-add {
         visibility: hidden;
         position:absolute;
     }
     .insp-c {
-        margin-left: unset;
-        margin-right: unset;
-        width: 100%;
+        width: 96%;
         display: grid;
         grid-template-columns: repeat(auto-fill, var(--card_width_media));
         row-gap: 5px;
         column-gap: 235px;
         justify-content: start;
         overflow-y: scroll;
+        margin:auto;
+        margin-left: 2.2%;
+        border: 1.5px solid white;
+        border-radius: 10px;
     }
     .insp-c {
         -ms-overflow-style: none;  /* Internet Explorer 10+ */
