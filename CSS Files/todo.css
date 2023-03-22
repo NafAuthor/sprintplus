@@ -499,6 +499,7 @@
 @media screen and (320px <= width <= 420px) {
     .td-m-c {
         flex-direction: column;
+
     }
     .td-p-c {
         flex-direction: column;
@@ -553,6 +554,7 @@
         width: 100%;
         height: 100%;
     }
+
 }
 
 

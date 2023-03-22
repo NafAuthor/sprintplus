@@ -361,16 +361,14 @@
         position:absolute;
     }
     .insp-c {
-        width: 96%;
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fill, var(--card_width_media));
-        row-gap: 5px;
-        column-gap: 235px;
+        row-gap: 1px;
+        column-gap: 232px;
         justify-content: start;
         overflow-y: scroll;
         margin:auto;
-        margin-left: 2.2%;
-        border: 1.5px solid white;
         border-radius: 10px;
     }
     .insp-c {
