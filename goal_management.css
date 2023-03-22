@@ -8,29 +8,34 @@
 }
 
 .g-child-selector {
-    width: 250px;
+    width: 80%;
     height: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1a2950;
-    padding: 12px;
-    padding-top: unset;
+    background-color: unset;
     position:relative;
-    gap: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    gap:130px;
+    justify-content: center;
 }
 
 .g-c-s-container {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     height: fit-content;
+    background-color: #1a2950;
+    border-radius: 10px;
+    padding: 10px;    border: 1px solid white;
+
 }
 .g-c-s-updt-t {
     position:absolute;
     top:-12;
-    font-size: 12px;
+    font-size: 15px;
     left:5;
     padding: 5px;
     padding-left: 10px;
@@ -39,19 +44,22 @@
     border-radius: 5px;
 }
 .g-c-s-updt {
-    position:relative;
-    width: 99%;
-    height: 10%;
-    padding: 5px;
+    background-color: #1a2950;
+    position:absolute;
+    width: 30%;
+    height: fit-content;
     display: flex;
+    left:0;
+    top:80;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px;  
-    position: relative;
     border: 1px solid white;
-    border-radius: 5px;
-    
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index: 100;
 }
 .g-c-s-u-inbox {
     height: 30px;
@@ -86,14 +94,15 @@
     cursor: pointer;
 }
 .g-c-s-u-p {
-    width: 85%;
-    height: 50px;
+    width: 100%;
+    height: 60px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    outline:none;
 }
 .g-c-s-u-p input::placeholder{
     color:rgba(255, 255, 255,0.7);
@@ -105,7 +114,9 @@
     border-radius: 5px;
     padding: 5px;
     color:white;
-    height: 30px;
+    width: 100%;
+    height: 35px;
+    outline:none;
 }
 
 .g-c-s-u-u button:hover span {
@@ -159,10 +170,10 @@
 }
 .g-c-s-m-c-t {
     position: absolute;
-    font-size: 12px;
+    font-size: 15px;
     border-radius: 10px;
     top:-12px;
-    left:0;
+    left:10;
     background-color: #1a2950;
     padding: 5px;
     padding-left: 10px;
@@ -170,38 +181,25 @@
 
 }
 .g-c-s-m-c {
+    background-color: #1a2950;
     position:relative;
     width: 85%;
     display: flex;
     gap: 10px;
     flex-direction: column;
-    position:absolute;
-    bottom:10;
     border: 1px solid white;
     padding: 10px;
     border-radius: 5px;
 }
-.g-c-s-m-c button p {
-    visibility: hidden;
-    position:absolute;
-}
-.g-c-s-m-c button:hover p {
-    visibility: visible;
-    left:50;
-    transition-delay:0.25s;
 
-}
-.g-c-s-m-c button:hover {
-    width: 200px;
-    height:40px;
 
-}
 
 .g-c-s-m-c button {
-    transition: 0.5s;
     position:relative;
     height: 40px;
-    width: 45px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -214,15 +212,15 @@
     border-radius: 5px;
     border: 2px solid white;
     cursor: pointer;
-    border-style: none none none solid;
+    border-style: none solid none solid;
+    transition: 0.2s;
+}
+.g-c-s-m-c button:hover {
+    border-style: solid solid solid solid;
 
 }
 
-.g-c-s-m-c button span {
-    position:absolute;
-    left: 10;
-    font-size: 25px;
-}
+
 .g-c-s-separator {
     width: 100%;
     height:1px;
@@ -268,6 +266,9 @@
     flex-direction: column;
     height: fit-content;
     margin-top: -20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 .g-c-s-c-t {
     margin-top: 10px;
@@ -279,29 +280,286 @@
     
 }
 .child-viewer {
-    width: fit-content;
-    height: fit-content;
+    width: 80%;
+    height: 100%;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1a2950;
+    background-color: unset;
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 10px;
+    visibility: hidden;
+    position:absolute;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 #error-no-goal {
     color:red;
     font-size: 12px;
     visibility: hidden;
+    margin-left: auto;
+
+    margin-right: auto;
 }
 
 
+
+
+.c-v-c {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 20px;
+    overflow: auto;
+    background-color: unset;
+}
+.contain_infos {
+    background-color: #1a2950;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    border: 2px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 10px;
+    position:relative;
+}
+.c-v-content-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.c-v-c-t {
+    width: fit-content;
+    border: 2px solid white;
+    text-align: center;
+    font-size: 25px;
+    position:absolute;
+    background-color: #1a2950;
+    padding: 5px;
+    left:10;top:-20;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+}
+.c-v-c-s {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position:relative;
+}
+.c-v-c-s-t {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.bar {
+    height: 30px;
+    width: 90%;
+    background-color: #24335a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #1a2950;
+    position:relative;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.bar-hover {
+    height: 30px;
+    background-color:#FFC55C;
+    position:absolute;
+    z-index: 10;
+    left:0;
+    border-radius: 5px;
+}
+#contentinfostatshiddentoday, #contentinfoswholehidden {
+    visibility: hidden;
+    position:absolute;
+}
+#todaybar:hover #contentinfostatstoday , #wholebar:hover #contentinfoswhole    {
+    visibility: hidden;
+    position:absolute;
+}
+
+.contentinfostats, .contentinfostatshidden {
+    z-index: 10;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #1a2950;
+    border-radius: 10px;
+}
+
+#todaybar:hover #contentinfostatshiddentoday,#wholebar:hover #contentinfoswholehidden  {
+    visibility: visible;
+    position:relative;
+}
+
+.content-infos {
+    width: 95%;
+    height: 25%;
+    background-color: #1a2950;
+
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+.content-infos-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+    justify-content: center;
+    padding-left: 20px;
+}
+.content-infos-infos div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.strikeBallContent {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    position:relative;
+}
+.strikeBall {
+    width: 20px;
+    height: 20px;
+    background-color: #24335a;
+    border-radius: 50%;
+    border: 2px solid white;
+    z-index: 2;
+}
+
+.strikebar {
+    width: 80%;
+    background-color: #24335a;
+    height: 10px;
+    position:absolute;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.openContainer {
+    position:absolute;
+    top:20;
+    left:10;
+}
+
+.content-info-updates {
+    width: 200px;
+    height: 100%;
+    background-color: #24335a;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow-y: auto;    
+    border: 2px solid white;
+    border-style: none none none solid;
+    border-radius: 0px 10px 10px 0px;
+}
+.content-info-updates {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.content-info-updates::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.content-desc {
+    width: 95%;
+    height: fit-content;
+    text-align: justify;
+    font-style: italic;
+
+    justify-content: unset;
+    align-items: unset;
+}
+.content-infos-infos {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.content-infos-infos::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.update {
+    display: flex;
+    flex-direction: row;
+    background-color: #1a2950;
+    align-items: center;
+    position:relative;
+    height: fit-content;
+    padding: 5px;
+    gap: 10px;
+    border: 2px solid #24335a;
+    border-style: solid none solid none;
+}
+.updateday, .updatecount, .updateday {
+    border:1px solid white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;;
+}
+.updatedel {
+    position:absolute;
+    right:5;
+}
+
+
+
+#content-infos-update, .content-info-updates {
+    background-color: #1a2950;
+}
 @media screen and (320px <= width <= 420px) {
     .g-parent {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap:0px;
     }
     .huge-separator {
         position:absolute;
@@ -347,6 +605,7 @@
     #error-no-goal {
         position:absolute;
         bottom:6;
+        font-size: 15px;
     }
     .g-c-s-m-c-t {
         position:absolute;
@@ -360,33 +619,30 @@
         width: 80%;
         margin-left: auto;
         margin-right: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 60px);
-        row-gap: 0px;
-        column-gap: 0px;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
         overflow-y: hidden;
-        height: 120px;
+
+        height: fit-content;
         justify-content: space-evenly;
         justify-items: center;
         align-content: space-evenly;
         align-items: center;
+        padding-bottom: 30px;
 
     }
     .g-c-s-m-c button, .g-c-s-m-c button:hover {
-        width: 50px;
+        width: 80%;
         height: 50px;
         border:none;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-    }
-    .g-c-s-m-c button p,.g-c-s-m-c button:hover p {
-        visibility: hidden;
-        position:absolute;
+        text-align: center;
     }
     #_1, #_2 {
         font-size: 20px;
@@ -395,10 +651,64 @@
         width: fit-content;
         height: fit-content;
         gap: 20px;
-        padding: 50px;
+        padding: 10px;
+        padding-top: 15px;
+        width: 30%;
+        background-color: rgba(0,0,0,0);
     }
     .g-c-s-updt {
-        padding-top: 10px;
+        padding-top: 20px;
         padding-bottom: 10px;
+    }
+    .child-viewer {
+        height:90%;
+        margin-top: 70px;;
+        border-radius: 10px;
+        background-color: rgba(0,0,0,0);
+
+    }
+    .c-v-c {
+        width: 40%;
+        height: 100%;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        border-radius: 10px;
+    }
+    .content-infos {
+        height: 40%;
+        position:relative
+    }
+    .content-infos-infos {
+        justify-content: center;
+        width: 100%;
+        overflow-y: auto;
+        height: 70%;
+    }
+    .content-stats {
+        align-items: start;
+        justify-content: start;
+        text-align: start;
+    }
+    .content-info-updates {
+        position:absolute;
+        height: 30%;
+        width: 100%;
+        bottom:0;
+        border:2px solid white;
+        margin-top: auto;
+        margin-bottom: auto;
+        border-style:solid none none none;
+        border-radius: 0px 0px 10px 10px;
+    }
+    .strikeBallContent {
+        gap: 15px;
+    }
+    .g-c-s-updt {
+        width: 250px;
+        right:0;
+        top:unset;
+        bottom:-90;
+        left:0;
+        margin:auto;
     }
 }

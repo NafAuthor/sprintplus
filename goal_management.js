@@ -30,19 +30,38 @@ function UpdateGoal() {
   
       document.getElementById('g-c-s-u-p').value = "";
   
-      DrawCurve();
+      OpenStats()
     }
 
 }
 
-
+function ShowUpOPT() {
+  let s = document.getElementById('g-child-selector');
+  let c = document.getElementById('child-viewer');
+  if (s.style.visibility ==="visible") {
+    s.style.visibility ="hidden";
+    s.style.position="absolute";
+    c.style.visibility="visible";
+    c.style.position="relative";
+  } else {
+    c.style.visibility ="hidden";
+    c.style.position="absolute";
+    s.style.visibility="visible";
+    s.style.position="relative";
+  }
+}
 function GoalsShowUp() {
   Pannel_Status=false;
 
 
     document.getElementById('Main').innerHTML = `
     <div class="g-parent">
-    <div class="g-child-selector">
+    <div class="openContainer">
+    <span class="material-symbols-outlined" onclick="ShowUpOPT()">
+    settings
+    </span>
+    </div>
+    <div class="g-child-selector" id="g-child-selector">
       <div class="g-c-s-container">
         <div class="g-c-s-c-C">
           <div class="g-c-s-c-t">
@@ -134,22 +153,11 @@ function GoalsShowUp() {
       </div>
     </div>
     <div class="huge-separator"></div>
-    <div class="child-viewer">
-      <canvas id="pjcurve" width="980" height="500" style="background-color: rgba(26,41,80,0.3);"></canvas>
+    <div class="child-viewer" id="child-viewer">
     </div>
   </div>
     `;//rgba(26,41,80,0.3)
-    var w = window.innerWidth;
-    var canvas = document.getElementById('pjcurve');
-    w = (w*390)/525;
-    if (w>=320 && w<=420) {
-      var h = (w*500)/980;
-      canvas.width  = w;
-      canvas.height = h;
-    } else {
-      canvas.width  = 980;
-      canvas.height = 500;
-    }
+
 
     let v = 0;
     const items = { ...localStorage };
@@ -172,7 +180,6 @@ function GoalsShowUp() {
 
     
 }
-
 
 
 function StopGoal() {
@@ -288,9 +295,23 @@ function GetHeight(a) {
 }
 
 function DrawCurve() {
+  document.getElementById('child-viewer').innerHTML=`<canvas id="pjcurve" width="980" height="500" style="background-color: rgba(26,41,80,0.3);"></canvas> `;
+  var w = window.innerWidth;
+  var canvas = document.getElementById('pjcurve');
+  w = (w*390)/525;
+  if (w>=320 && w<=420) {
+    var h = (w*500)/980;
+    canvas.width  = w;
+    canvas.height = h;
+  } else {
+    canvas.width  = 980;
+    canvas.height = 500;
+  }
   if (  document.getElementById('update_empty')) {
     document.getElementById('update_empty').innerHTML = "";
   }
+  ShowUpOPT()
+
     let goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
     if (!goal) {
       document.getElementById('error-no-goal').style.visibility = 'visible';
@@ -365,6 +386,10 @@ function DrawCurve() {
 }
 
 
+
+
+
+
 function OpenStats() {
   let goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
   if (  document.getElementById('update_empty')) {
@@ -375,6 +400,8 @@ function OpenStats() {
     document.getElementById('error-no-goal').style.visibility = 'visible';
     return;
   }
+  ShowUpOPT()
+
   /*
 amount_of_words: "30000"
 details: "Plus sur le drive nafauthor@gmail.com"
@@ -384,49 +411,180 @@ started_on: 1677925986433
 updates
 words: 2500
 */
-  let start = new Date(goal.started_on);
-  let today = new Date();
-  const diffTime = Math.abs(today - start);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+  let Time = parseInt(goal.duration);
+  let Start = new Date(goal.started_on);
+  let Ends = new Date(Start.getTime()+86400000*Time);
+  let WhatDayToday = new Date();
 
-  let daysUntil = diffDays;
+  WhatDayToday.setHours(0,0,0,0);
+  Start.setHours(0,0,0,0);
+  Ends.setHours(0,0,0,0);
+
+  let Today = WhatDayToday.getTime() - Start.getTime();
+  console.log(Today)
+
   let MaxWords = parseInt(goal.amount_of_words);
-  let c_words = goal.words;
-  let words = MaxWords-c_words;
-  let For_Today = Math.round(words/(goal.duration-daysUntil));
-  console.log(diffDays)
-  let done_today = goal.updates[diffDays];
-  console.log(For_Today);
-  let s = 0;
-  let ts = 0;
-  let ts2 = 0;
-  let m = [0,0];
-  for (let update of Object.keys(goal.updates)) {
-    m[0]++;
-  }
-  for (let update of Object.keys(goal.updates)) {
-    let u = parseInt(update);
-    m[1]++;
-    console.log(`Day N°${u}. Searching for day N°${u+1}`)
-    if (goal.updates[u+1] || m[0]==m[1]) {
-      console.log(`Element N°${u} is coordinated with element N°${u+1}`)
-      s++;
-      ts2++;
-      if (ts2 > ts) {
-        ts = ts2;
-      }
-      console.log(ts2)
-     } else  {
-      console.log(`Element N°${u} is not coordinated`)
-      s = 0;
-      ts2=0;
-     }
-  }
-  let total_strike = ts2;
-  let strike = s >7?7:s;
+  let Words = goal.words;
+  let NeededWords = MaxWords - Words;
+  let TimeUntil = Time - Today;
+  let WordsForToday = Math.round(NeededWords/TimeUntil);
 
-  var canvas = document.getElementById("pjcurve");
-  var ctx = canvas.getContext("2d");
+  let WordsWritten = [];
+  let StrikedBefore = 0;
+  let StrikeCount = 0;
+
+  for (let [key,value] of Object.entries(goal.updates)) {
+      WordsWritten.push(value);
+      if (key-1!=StrikedBefore) {
+        StrikeCount=0;
+      }
+      StrikeCount++;
+      StrikedBefore=key;
+  }
+  
+  if(!WordsWritten[Today]) {
+    WordsWritten[Today]=0;
+  }
+
+  let ProgressToday = Math.round((WordsWritten[Today]*100)/WordsForToday);
+  let ProgressOverall = Math.round((Words*100)/MaxWords);
+
+  document.getElementById('child-viewer').innerHTML=`
+    <div class="c-v-c">
+      <div class="contain_infos">
+      <div class="c-v-c-t">
+        ${goal.name}
+      </div>
+        <div class="c-v-content-stats" id="c-v-content-stats">
+          <div class="c-v-c-s">
+            <div class="c-v-c-s-t">
+              <span class="material-symbols-outlined">
+              calendar_today
+              </span>
+              Todays progress
+            </div>
+            <div class="bar" id="todaybar">
+              <div class="bar-hover" id="bartoday"></div>
+              <div class="contentinfostats" id="contentinfostatstoday">
+                ${ProgressToday > 100 ? "100%+":ProgressToday+"%"}
+              </div>
+              <div class="contentinfostatshidden" id="contentinfostatshiddentoday">
+              ${WordsWritten[Today]+" / "+WordsForToday} words
+              </div>
+            </div>
+
+          </div>
+          <div class="c-v-c-s">
+              <div class="c-v-c-s-t">
+              <span class="material-symbols-outlined">
+              clock_loader_60
+              </span>
+              Overall progress
+            </div>
+            <div class="bar" id="wholebar">
+              <div class="bar-hover" id="barwhole"></div>
+              <div class="contentinfostats" id="contentinfoswhole">
+              ${ProgressOverall > 100 ? "100%+":ProgressOverall+"%"}
+              </div>
+              <div class="contentinfostatshidden" id="contentinfoswholehidden">
+                ${Words} / ${MaxWords} words
+              </div>
+            </div>
+          </div>
+          <div class="c-v-c-s">
+              <div class="c-v-c-s-t">
+                <span class="material-symbols-outlined">
+                speed
+                </span>
+                Strike
+              </div>
+              <div class="strikeDays">
+                Your strike is ${StrikeCount} day${StrikeCount>1?"s":""} long
+              </div>
+              <div class="strikeBallContent">
+                <div class="strikeBall" id="strikeBall1"></div>
+                <div class="strikeBall" id="strikeBall2"></div>
+                <div class="strikeBall" id="strikeBall3"></div>
+                <div class="strikeBall" id="strikeBall4"></div>
+                <div class="strikeBall" id="strikeBall5"></div>
+                <div class="strikeBall" id="strikeBall6"></div>
+                <div class="strikeBall" id="strikeBall7"></div>
+                <div class="strikebar"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-infos">
+          <div class="content-infos-infos">
+              <div class="content-desc">
+              <span class="material-symbols-outlined">
+              description
+              </span>
+              ${goal.details}
+            </div>
+            <div class="content-stats">
+              <span class="material-symbols-outlined">
+              percent
+              </span>
+              Objective : ${MaxWords} words
+            </div>
+            <div class="content-stats">
+              <span class="material-symbols-outlined">
+              timer
+              </span>
+              Ends in ${TimeUntil} days (${
+                Ends.getDate()>9?Ends.getDate():"0"+Ends.getDate()
+              }/${
+                Ends.getMonth()+1>9?Ends.getMonth()+1:"0"+(Ends.getMonth()+1)
+              }/${Ends.getFullYear()})
+            </div>
+          </div>
+          <div class="content-info-updates" id="content-info-updates">
+
+          </div>
+      </div>
+    </div>
+  `;  
+  if (StrikeCount>7) StrikeCount=7;
+  let Content = document.getElementById('c-v-content-stats');
+  document.getElementById('bartoday').style.width = (Content.offsetWidth*ProgressToday)/100+"px";
+  document.getElementById('barwhole').style.width = (Content.offsetWidth*ProgressOverall)/100+"px";
+  for (let i = 1; i < StrikeCount+1; i++) {
+    document.getElementById(`strikeBall${i}`).style.backgroundColor="FFC55C"
+  }
+
+
+  for (let [key,value] of Object.entries(goal.updates)) {
+      document.getElementById('content-info-updates').innerHTML+=`
+        <div class="update">
+          <div class="updateday">
+            Day ${key}
+          </div>
+          <div class="updatecount">
+            ${value}
+          </div>
+          <div class="updatedel" id="${key}" onclick="DelUpdate(this)">
+            <span class="material-symbols-outlined" style="cursor:pointer">
+            delete
+            </span>
+          </div>
+        </div>
+      `;
+  }
+}
+
+function DelUpdate(el) {
+  let goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
+    console.log('e')
+    goal.words-=goal.updates[parseInt(el.id)]
+    delete goal.updates[parseInt(el.id)]
+    console.log(goal)
+    localStorage.setItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`,JSON.stringify(goal))
+    OpenStats();
+    return;
+}
+
+/*var ctx = canvas.getContext("2d");
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
@@ -573,7 +731,4 @@ words: 2500
   ctx.fillText(`A tool made by https://www.instagram.com/naf_author/`,625, 490);
 
 
-
-
-}
-
+*/

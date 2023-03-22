@@ -606,7 +606,17 @@ body a {
 }
 
 
-
+.openContainer {
+    background-color: #19284d;
+    border-radius: 50%;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+    cursor:pointer;
+}
 
 @media screen and (320px <= width <= 420px) {
     body {
@@ -634,7 +644,8 @@ body a {
         align-items: center;
         justify-content: center;
         width: 130%;
-        height: 100%;
+        height: fit-content;
+        max-height: 120%;
         text-align: center;
         display: flex;
         gap:150px;
