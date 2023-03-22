@@ -173,9 +173,7 @@ function GoalsShowUp() {
     
 }
 
-setTimeout(()=>{
-  GoalsShowUp()
-},20)
+
 
 function StopGoal() {
   let g = JSON.parse(localStorage.getItem(document.getElementsByClassName('DelToActualize').id));
