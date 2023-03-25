@@ -100,33 +100,33 @@ function OpenFolder(el) {
           </div>
         <div class="pj-b-g-c" id="pj-b-g-c"></div>
         </div>
-        <div class="pj-mi">
-          <div class="pj-mi-c">
-            <div class="-pj-b-i-i" style="font-size: 12px;">
-              <span class="material-symbols-outlined"> line_start </span> Created on ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}
-            </div>
-            <div class="-pj-b-i-i" style="font-size: 12px;">
-              <span class="material-symbols-outlined"> timer </span> Start on ${pj.start} - End on ${pj.end}
-            </div>
-          </div>
-          <div class="pj-mi-c">
-            <div class="-pj-b-i-i" style="font-size: 12px;">
-              <span class="material-symbols-outlined"> cognition </span>  ${pj.inspi ? pj.inspi.length : "No"} elements inspires this project
-            </div>
-            <div class="-pj-b-i-i" style="font-size: 12px;">
-              <span class="material-symbols-outlined"> timer </span> ${pj.tasks ? pj.tasks.length : "No"} tasks made for this project
-            </div>
-          </div>
-          <div class="pj-mi-c">
-            <div class="-pj-b-i-i" style="font-size: 12px;">
-              <span class="material-symbols-outlined"> star </span> This project is ${pj.star ? "starry" : "not starry"}
-            </div>
-            <div class="-pj-b-i-i" style="font-size: 12px;">
-              <span class="material-symbols-outlined"> hide_source </span> This project is ${pj.backed ? "sleepy" : "not sleepy"}
-            </div>
-          </div>
+      </div>
+      <div class="pj-mi">
+      <div class="pj-mi-c">
+        <div class="-pj-b-i-i" style="font-size: 12px;"  id="PJRIGHT">
+          <span class="material-symbols-outlined"> line_start </span> Created on ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}
+        </div>
+        <div class="-pj-b-i-i" style="font-size: 12px;"id="PJLEFT">
+          <span class="material-symbols-outlined"> timer </span> Start on ${pj.start} - End on ${pj.end}
         </div>
       </div>
+      <div class="pj-mi-c">
+        <div class="-pj-b-i-i" style="font-size: 12px;" id="PJRIGHT"> 
+          <span class="material-symbols-outlined"> cognition </span>  ${pj.inspi ? pj.inspi.length : "No"} elements inspires this project
+        </div>
+        <div class="-pj-b-i-i" style="font-size: 12px;"id="PJLEFT">
+          <span class="material-symbols-outlined"> timer </span> ${pj.tasks ? pj.tasks.length : "No"} tasks made for this project
+        </div>
+      </div>
+      <div class="pj-mi-c">
+        <div class="-pj-b-i-i" style="font-size: 12px;"  id="PJRIGHT">
+          <span class="material-symbols-outlined"> star </span> This project is ${pj.star ? "starry" : "not starry"}
+        </div>
+        <div class="-pj-b-i-i" style="font-size: 12px;"  id="PJLEFT">
+          <span class="material-symbols-outlined"> hide_source </span> This project is ${pj.backed ? "sleepy" : "not sleepy"}
+        </div>
+      </div>
+    </div>
     </div>
 
   </div>

@@ -420,14 +420,38 @@ words: 2500
   Start.setHours(0,0,0,0);
   Ends.setHours(0,0,0,0);
 
-  let Today = WhatDayToday.getTime() - Start.getTime();
-  console.log(Today)
+
+
+  let Today = new Date();
+  Today.setHours(0,0,0,0)
+  console.log('Starting day is ' + Start);
+  let ClockSet = false;
+  for (let i = 0; i < Time; i++) {
+    let d =Start.getTime() + 86400000*i;
+    d = new Date(d);
+    console.log(`${d.getDate()}/${d.getMonth()+1}`)
+    d.setHours(0,0,0,0)
+    if (
+      ClockSet != true && d.getDate() === Today.getDate() && 
+      d.getMonth() === Today.getMonth() && 
+      d.getFullYear() === Today.getFullYear() 
+      )  {
+        Today = i;
+        ClockSet = true;
+      }
+  }
+  console.log(new Date(Today) + " is today")
 
   let MaxWords = parseInt(goal.amount_of_words);
   let Words = goal.words;
   let NeededWords = MaxWords - Words;
-  let TimeUntil = Time - Today;
+  let TimeUntil = Time - Today - 1 ;
+
+  console.log(TimeUntil + " days until the end")
+
   let WordsForToday = Math.round(NeededWords/TimeUntil);
+
+  console.log('In need of ' + WordsForToday + " for today")
 
   let WordsWritten = [];
   let StrikedBefore = 0;
@@ -442,12 +466,21 @@ words: 2500
       StrikedBefore=key;
   }
   
-  if(!WordsWritten[Today]) {
-    WordsWritten[Today]=0;
+  console.log(WordsWritten)
+  console.log(Time-TimeUntil)
+  if(!WordsWritten[Time-TimeUntil-1]) {
+    WordsWritten[Time-TimeUntil-1]=0;
   }
 
-  let ProgressToday = Math.round((WordsWritten[Today]*100)/WordsForToday);
+  
+
+  let ProgressToday = Math.round((WordsWritten[Time-TimeUntil-1]*100)/WordsForToday);
   let ProgressOverall = Math.round((Words*100)/MaxWords);
+
+
+  console.log(ProgressToday + " ==> amount of words made today")
+  console.log(ProgressOverall + " ==> amount of words made overall")
+
 
   document.getElementById('child-viewer').innerHTML=`
     <div class="c-v-c">
@@ -583,6 +616,9 @@ function DelUpdate(el) {
     OpenStats();
     return;
 }
+setTimeout(()=>{
+  GoalsShowUp()
+},20)
 
 /*var ctx = canvas.getContext("2d");
 

@@ -152,7 +152,6 @@ let Board = {
 
                     let container = document.createElement('div');
                     container.className="d-c-i-p"
-                    container.style.width = `230px`;
                     container.style.position="relative";
                     container.id=`DIVADBS${content}`;
 
@@ -206,7 +205,6 @@ let Board = {
                 container.style.flexDirection="row";
                 container.style.alignItems="center";
                 container.style.gap="15px";
-                container.style.width = `230px`;
 
                 container.id=`DIVADBS${content}`;
 
@@ -277,7 +275,6 @@ let Board = {
                 container.style.flexDirection="row";
                 container.style.alignItems="center";
                 container.style.gap="15px";
-                container.style.width = `230px`;
 
                 container.id=`DIVADBS${content}`;
 

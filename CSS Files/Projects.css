@@ -489,12 +489,11 @@ Project view:
     max-height: 100%;
 }
 .pj-b-content {
-    margin-top: 30px;
     background-color: #19284d;
     border: 2px solid white;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 85%;
     position:relative;
     margin-top: auto;
     margin-bottom: auto;
@@ -502,7 +501,7 @@ Project view:
     height: 90%;
     padding: 10px;
     border-radius: 10px;
-    padding-top: 15px;
+    padding-top:20px;
 }
 
 .pj-b-i {
@@ -655,7 +654,6 @@ Project view:
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    padding-left: 50px;
 
 }
 .pj-b-g-p {
@@ -883,13 +881,13 @@ Project view:
 .mdf-b input {
     width: 50%;
     color:white;
-    background-color: rgba(30, 47, 92,0.5);
+    background-color: rgba(36, 51, 90,0.3);
     border:none;
     outline:none;
-    height: 30px;
-    border-radius: 5px;
+    height: 40px;
+    border-radius: 20px;
     border: 2px solid #19284d;
-    padding-left: 5px;
+    padding-left: 10px;
     padding-right: 5px;
 }
 .mdf-b button:not(#cancel) {
@@ -898,18 +896,18 @@ Project view:
 .mdf-b button {
     width: 20%;
     color:white;
-    background-color: #19284d;
+    background-color: rgba(36, 51, 90,0.3);
     border:none;
     outline:none;
     height: 30px;
-    border-radius: 5px;
+    border-radius: 50px;
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 2px solid rgba(30, 47, 92,0.5)
+    border: 2px solid rgba(36, 51, 90,0.3);
 }
 .mdf-b button:hover {
     border: 2px solid white;
@@ -1014,37 +1012,58 @@ Project view:
         gap: 0px;
     }
     .pj-b-g {
-        width: 100%;
+        width: 95%;
         display: flex;
         height: fit-content;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
     .pj-b-g-p {
+        flex-direction: row;
         width: fit-content;
         align-items: center;
         min-width: 180px;
-        justify-content: center;
+        justify-content: unset;
         height: 50px;
-        display: flex;
-        flex-direction: row;
-    }
-    .pj-b-g-param{
-        padding: 5px;
-        width: 25px;
-        height: 25px;
+        gap:10px;
     }
     .pj-b-g-param p {
         visibility: hidden;
         position:absolute;
+        display: none;
     }
+    .pj-b-g-param{
+        padding: unset;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(36, 51, 90,0.6);
+        border:none;
+        gap:0px;
+    }
+
     .pj-b-content {
         width: 90%;
-        height: 100%;
+        height: 80%;
         overflow-y: auto;
         overflow-x: hidden;
+        padding-top: 10px;;
+        padding-bottom: 0px;;
+        margin-top: 0px;
     }
     .pj-b-i-t {
         position:relative;
+        padding-left: unset;
+
+    }
+    .pj-b-g-param-title {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        top:-16;
+        left:0;
+        right:0;
+        margin:auto;
     }
     .pj-b-c {
         width: 20%;
@@ -1110,10 +1129,13 @@ Project view:
         --slidein_size: 75px;
       }
     .mdf-b {
-        width: 300px;
+        width: 80%;
         margin-left: auto;
         margin-right: auto;
         text-align: left;
+        padding:5px;
+        padding-top: 10px;
+        height: 100%;
     }
     .mdf-t {
         text-align: center;
@@ -1129,10 +1151,36 @@ Project view:
         width: 100%;
     }
     .pj-mi {
-        position:absolute;
-        visibility: hidden;
+        position:relative;
+        visibility: visible;
+        margin-top: 30px;
+        height: 30%;
+        overflow-y:auto;
+        flex-direction: column;
+        gap:0px;
+        justify-content: unset;
+        background-color: unset;
+        overflow-x: hidden;
+        border-radius: 0px;
+
+    }
+    .pj-mi-c {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        padding-left: 10px;
+        border-radius: 0px;
     }
 
+    .-pj-b-i-i {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+       background-color: rgba(36, 51, 90,0.1);
+       border-radius: 0px;
+
+    }
     .g-b-n-t {
         width: 100%;
         justify-content: center;

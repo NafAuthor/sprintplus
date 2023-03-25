@@ -322,22 +322,6 @@ let all_contain = `
   <div class="all-c-p-d">
     Account
   </div>
-</div>
-<div class="all-c-p" onclick="Download()">
-<span class="material-symbols-outlined">
-  download
-  </span>
-<div class="all-c-p-d" >
-  Download
-</div>
-</div>
-<div class="all-c-p" onclick="Merge()">
-<span class="material-symbols-outlined">
-  upload
-  </span>
-<div class="all-c-p-d" >
-  Merge
-</div>
 </div>`;
 
 
@@ -358,9 +342,6 @@ let featured = `
 
 
 let Main = `
-<div class="img-content">
-<img src = "Images & Icons/Page d'accueil/Important informations.png" style="height:100%">
-</div>
 <div class="main-more-content">
 <div class="utilities">
   <div class="featuring">
@@ -414,11 +395,10 @@ let Main = `
   </div>
   <div class="mor-st">
     <div class="st" >
-    <div class="fancybar" id="NousEtLeMonde"></div>
       <div class="st-l">
         FR
       </div>
-      <div class="st-t">
+      <div class="st-t" id="NousEtLeMonde">
         Nous, et le monde
       </div>
       <div class="st-o">

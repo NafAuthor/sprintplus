@@ -133,7 +133,7 @@ body {
 }
 .l {
     text-align: justify;
-    padding-left: 15px;
+    padding: 15px;
 }
 
 .logs::before {    
@@ -151,4 +151,14 @@ body {
 
 #teamleader {
     outline:none; color:grey;text-decoration: none;cursor: pointer;
+}
+
+@media screen and (320px <= width <= 420px) {
+    .l {
+        font-size: 10px;
+    }
+    .log-h {
+        background-color: #24335a;
+    }
+
 }

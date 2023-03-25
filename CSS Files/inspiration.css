@@ -21,8 +21,10 @@
     gap: 0px;
     background-color: #1a2950;
     padding: 10px;
-    border-radius:10px;
+    border-radius:20px;
+    border: 2px solid white;
     margin:auto;
+
 }
 .c-p {
     display: flex;
@@ -86,7 +88,7 @@
     padding-left: 5px;
     padding-right: 5px;
     margin-top: -15px;
-    border-radius: 5px;
+    border-radius: 20px;
     transition: 0.2s;
 }
 .c-p-c option {
@@ -261,32 +263,34 @@
 }
 
 .d-c-i-q, .d-c-i-p {
-    width:var(--card_width);
+    width:230px;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     background-color:#1a2950;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+.d-c-i-p img {
+    border-radius: 20px;
+}
 
 #opt-dc {
     display: flex; 
     flex-direction:row;
     justify-content: center;
     align-items:center;
-    background-color:rgba(31, 48, 92, 0.7);
+    background-color:#182442;
     position: absolute;
-    border-radius: 5px;
+    border-radius: 20px;
     color:white;
     gap: 15px;
     margin: auto;
     height: 30px;
     width: 30px;
-    bottom:2;
-    right: 2;
+    bottom:10;
+    right: 10;
 }
 
 
@@ -361,11 +365,11 @@
         position:absolute;
     }
     .insp-c {
-        width: 100%;
+        width: 470px;
         display: grid;
         grid-template-columns: repeat(auto-fill, var(--card_width_media));
         row-gap: 1px;
-        column-gap: 232px;
+        column-gap: 225px;
         justify-content: start;
         overflow-y: scroll;
         margin:auto;
@@ -384,7 +388,7 @@
         border-radius: var(--card_border_radius);
     }
     .d-c-i-q, .d-c-i-p {
-        width:100px;
+        width:220px;
         padding-left: 5px;
         padding-right: 5px;
         border-radius: 5px;

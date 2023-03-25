@@ -28,7 +28,7 @@
     flex-direction: column;
     height: fit-content;
     background-color: #1a2950;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px;    border: 1px solid white;
 
 }
@@ -41,7 +41,7 @@
     padding-left: 10px;
     padding-right: 10px;
     background-color: #1a2950;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 .g-c-s-updt {
     background-color: #1a2950;
@@ -111,8 +111,9 @@
 .g-c-s-u-p input {
     background-color: #24335a;
     border:none;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 5px;
+    padding-left: 15px;
     color:white;
     width: 100%;
     height: 35px;
@@ -142,7 +143,7 @@
     width: 200px;
     color:white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     height: 30px;
     padding-left: 10px;
     padding-right: 10px;
@@ -189,7 +190,7 @@
     flex-direction: column;
     border: 1px solid white;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 
@@ -209,14 +210,12 @@
     border: none;
     background-color: #24335a;
     color:white;
-    border-radius: 5px;
-    border: 2px solid white;
+    border-radius: 50px;
     cursor: pointer;
-    border-style: none solid none solid;
     transition: 0.2s;
 }
 .g-c-s-m-c button:hover {
-    border-style: solid solid solid solid;
+    border: 2px solid white;
 
 }
 
@@ -244,12 +243,15 @@
     gap: 5px;
     align-items: center;
     font-size: 10px;
+    padding-left: 5px;
+    overflow-x: hidden;
+    overflow-y: hidden;
     cursor:pointer;
-    border: 1px solid  #24335a;
-    border-radius: 5px;
+    border: 2px solid  #24335a;
+    border-radius: 20px;
 }
 .g-c #_1:hover ,.g-c #_2:hover {
-    border: 1px solid  white;
+    border: 2px solid  white;
 
 }
 
@@ -558,7 +560,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         gap:0px;
     }
     .huge-separator {
@@ -634,8 +635,10 @@
         padding-bottom: 30px;
 
     }
-    .g-c-s-m-c button, .g-c-s-m-c button:hover {
-        width: 80%;
+    .g-c-s-m-c button, .g-c-s-m-c button:active,.g-c-s-m-c button:focus {
+        -webkit-tap-highlight-color: transparent;
+
+
         height: 50px;
         border:none;
         display: flex;
@@ -652,13 +655,14 @@
         height: fit-content;
         gap: 20px;
         padding: 10px;
-        padding-top: 15px;
         width: 30%;
-        background-color: rgba(0,0,0,0);
+        justify-content: unset;
+        padding-top: 50px;
+        margin:unset;
     }
     .g-c-s-updt {
-        padding-top: 20px;
-        padding-bottom: 10px;
+        padding-top: 25px;
+        padding-bottom: 20px;
     }
     .child-viewer {
         height:90%;
@@ -710,5 +714,15 @@
         bottom:-90;
         left:0;
         margin:auto;
+    }
+    .g-c-s-m-c button {
+        width: 100%;
+    }
+    .g-c-s-m-c {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 48%);
+        row-gap: 10px;
+        column-gap: 10px;
+        grid-auto-rows: fit-content(1px);    
     }
 }

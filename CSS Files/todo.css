@@ -83,7 +83,7 @@
     border: 2px solid rgba(31, 48, 92, 0.7);
     color:white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .td-p-c-slct-p-i select:hover {
@@ -98,7 +98,7 @@
 }
 
 .td-p-c-add-t button {
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: rgba(31, 48, 92, 0.7);
     border: 2px solid rgba(31, 48, 92, 0.7);
     display: flex;
@@ -189,14 +189,14 @@
     flex-direction: column;
     align-items: center;
     position:relative;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-bottom: 5px;
 
 }
 .todo {
     margin-top: 5px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -210,9 +210,9 @@
 }
 
 .todo-more, .todo-check {
-    padding: 2px;
+    padding: 5px;
     background-color: #19284d;
-    border-radius: 20%;
+    border-radius: 50%;
     cursor:pointer;
 }
 .todo-more:hover, .todo-check:hover {
@@ -499,7 +499,7 @@
 @media screen and (320px <= width <= 420px) {
     .td-m-c {
         flex-direction: column;
-
+        height: 100%;
     }
     .td-p-c {
         flex-direction: column;
@@ -507,6 +507,7 @@
         height: 150px;
         position:relative;
         overflow-y: hidden;
+        border: 2px solid white;
     }
     .td-p-c-t p {
         position: absolute;
@@ -534,20 +535,26 @@
         top:15;
         width: fit-content;
     }
-    .td-p-c-add-t button {
-        height: 50px;
-        width: 50px;
-    }
     .td-p-c-add-t button p {
         visibility:hidden ;
         position:absolute;
     }
+    #NewTask , #openTask {
+        width: fit-content;
+        height: fit-content;
+        padding: 5px;
+        font-size: 15px;
+        right:10;
+        border-radius: 50%;
+    }
     #openTask {
-        top: 85;
+        top:10;
+    }
+    #NewTask {
+        top:70;
     }
     .td-content {
-        width: 95%;
-        border: 1.5px solid white;
+        width: 100%;
         border-radius: 10px;
     }
     .MainContent {
