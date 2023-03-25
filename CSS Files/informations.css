@@ -236,5 +236,8 @@
     .ifo-m-c-u button:active, .ifo-m-c-p  button:active{
         border-style: outset;
     }
-
-}
+    .ifo-m-t {
+        width: 100%;
+        text-align: center;
+    }
+}  

@@ -136,16 +136,7 @@ body {
     padding: 15px;
 }
 
-.logs::before {    
-    content: "";
-    background-position: 50%;
-    position: absolute;
-    top: 120px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.2;
-}
+
 
 
 
@@ -153,12 +144,3 @@ body {
     outline:none; color:grey;text-decoration: none;cursor: pointer;
 }
 
-@media screen and (320px <= width <= 420px) {
-    .l {
-        font-size: 10px;
-    }
-    .log-h {
-        background-color: #24335a;
-    }
-
-}

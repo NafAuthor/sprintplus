@@ -88,7 +88,7 @@ function OpenInfos() {
                     it. More about this feature is coming 
                     for the 2.0 update.<br>As a price idea,
                     <b>Sprint+ enhanced</b> should cost 
-                    up to 5€.
+                    up to 1.99€.
                 </div>
             </div>
             <div class="ifo-bx"id="feat">

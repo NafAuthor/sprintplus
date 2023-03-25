@@ -582,6 +582,7 @@ body a {
 ::-webkit-scrollbar {
     cursor:pointer;
     width: 2px;
+    height: 2px;;
 }
     /* Track */
     ::-webkit-scrollbar-track {
@@ -708,6 +709,7 @@ body a {
         gap: 10px;
         align-items: center;
         justify-content: center;
+        background-color: rgba(25, 40, 77,0.9);
     }
     .Logs a , .Support a {
         position:unset;
@@ -754,14 +756,16 @@ body a {
         padding-right: 10px;
         position:unset;
         margin-top: -21px;
-        border-radius: 0px 0px 15px 15px;
+        border-radius: 0px 0px 20px 20px;
         gap:10px;
+        background-color: rgba(25, 40, 77,0.9);        
         font-size: 20px;
     }
 
     .all-c-p span {
         font-size: 30px;
     }
+
     .all-c-p {
         background-color: rgba(36, 51, 90,0.5);
         width: fit-content;
@@ -769,12 +773,15 @@ body a {
         padding: 10px;
         border-radius: 50%;
         -webkit-tap-highlight-color: transparent;
-
+        text-align: center;
+        align-items: center;
+        justify-content: center;
 
     }
     .all-c-p-d {
         visibility: hidden;
         position:absolute;
+        display: unset;
     }
     .mor-st {
         height: 75px;
@@ -786,10 +793,44 @@ body a {
         width: 95%;
         margin: unset;
     }
-    .all-c-p:active > all-c-p-d{
+    .all-c-p-d {
         visibility: hidden;
         position:absolute;
-        color:#F9A602
     }
-    
+    .all-c-p:hover {
+        background-color: rgba(36, 51, 90,0.5);
+        width: fit-content;
+        height: fit-content;
+        padding: 10px;
+        border-radius: 50%;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .all-c-p:hover .all-c-p-d{
+        visibility: hidden;
+        position:absolute;
+    }
+    .all-c-p:hover span {
+        visibility: hidden;
+        position:absolute;
+    }
+    .all-c-p-d {
+        visibility: hidden;
+        position:absolute;
+    }
+    .all-c-p:hover {
+        background-color: rgba(36, 51, 90,0.5);
+        width: fit-content;
+        height: fit-content;
+        padding: 10px;
+        border-radius: 50%;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .all-c-p:hover .all-c-p-d{
+        visibility: hidden;
+        position:absolute;
+    }
+    .all-c-p:hover span {
+        visibility: visible;
+        position:relative;
+    }
   }

@@ -138,6 +138,8 @@
     width: 100%;
 }
 .g-c-s-c-p select {
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
     background-color: #24335a;
     border: 2px solid #24335a;
     width: 200px;
@@ -725,4 +727,12 @@
         column-gap: 10px;
         grid-auto-rows: fit-content(1px);    
     }
+    .g-c #_1:hover ,.g-c #_2:hover {
+        border: 2px solid #24335a;
+    
+    }
+    .g-c-s-c-p select:hover {
+        border: 2px solid #24335a;
+    }
+    
 }

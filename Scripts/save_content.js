@@ -268,12 +268,12 @@ let all_contain = `
 </div>
 </div>
 <div class="all-c-p"  onclick="GoalsShowUp()">
-<span class="material-symbols-outlined">
-  monitoring
-</span>
-<div class="all-c-p-d">
-  Progress
-</div>
+  <span class="material-symbols-outlined">
+    monitoring
+  </span>
+  <div class="all-c-p-d">
+    Progress
+  </div>
 </div>
 <div class="all-c-p" onclick="ProjectShowUp()">
 <span class="material-symbols-outlined">
