@@ -7,6 +7,7 @@ function OpenInfos() {
             </span>
                 Parameters
             </div>
+            <div class="whole-header-ch"></div>
             <div class="sp-ttl" id="spt-ttl">
             <div class="param-header">
 
@@ -17,7 +18,9 @@ function OpenInfos() {
                 </span>
                 Your account
             </div>
-
+            </div>
+            <div class="param-info-wh">
+                Manage your personnal informations right here.
             </div>
             <div class="ifo-m-c">
                 <div class="ifo-m-c-un">
@@ -72,7 +75,10 @@ function OpenInfos() {
                 You & Sprint+
             </div>
             </div>
-
+            <div class="param-info-wh">
+                Discover how Sprint+ is working with 
+                you and your informations. 
+            </div>
             <div class="ifo-bx" id="premium">
                 <div class="ifo-bx-t">
                 <span style="color:yellow" class="material-symbols-outlined">
@@ -148,6 +154,13 @@ function OpenInfos() {
                 Help
             </div>
             </div>
+            <div class="param-info-wh">
+                If you want to suggest anything, report
+                any bug, or request something related to 
+                Sprint+, click on the buttons below.<br>
+                Sprint+ discord server is also a 
+                writing community.
+            </div>
             <div class="ifo-bt-c">
                 <div class="ifo-bt">
                     <div class="ifo-bt-b">
@@ -175,6 +188,11 @@ function OpenInfos() {
                 </span>
                 Security
             </div>
+        </div>
+        <div class="param-info-wh">
+            Datas synchronisations right here. Be careful with what 
+            you do. In case of merging, make sure to first download
+            your datas. Prevent any bugs.
         </div>
         <div class="ifo-bt-c">
         <div class="ifo-bt">

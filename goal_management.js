@@ -1,3 +1,4 @@
+
 let Current_goal="_3";
 let GoalItem = "";
 let Goal_name = "";
@@ -16,15 +17,39 @@ function UpdateGoal() {
       InCharge = pj.name;
       let goal = JSON.parse(localStorage.getItem(`${pj.name}-goal-${parseInt(GoalItem)}`));
       goal.words = parseInt(goal.words) + parseInt(document.getElementById('g-c-s-u-p').value);
+      
+      console.log(document.getElementById('g-c-s-u-p').value + " is value entered")
+      console.log(goal.words + " is now value total")
+
+      
+      
       Current_goal = `_${GoalItem+1}`;
-      let start = new Date(goal.started_on);
-      let today = new Date();
-  
-      const diffTime = Math.abs(today - start);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-      console.log(diffTime + " milliseconds");
-      console.log(diffDays + " days");
-      goal.updates[diffDays] = goal.words;
+      let Start = new Date(goal.started_on);  
+      let Time = parseInt(goal.duration)
+      let Today = new Date();
+      Today.setHours(0,0,0,0)
+      let TD = 0;
+      let ClockSet = false;
+      console.log('TIME IS ' + Time)
+      for (let i = 1; i < Time+1; i++) {
+        let d =Start.getTime() + 86400000*i;
+        d = new Date(d);
+        console.log(`${d.getDate()}/${d.getMonth()+1}`)
+        d.setHours(0,0,0,0)
+        if (
+          ClockSet != true && d.getDate() === Today.getDate() && 
+          d.getMonth() === Today.getMonth() && 
+          d.getFullYear() === Today.getFullYear() 
+          )  {
+
+            TD = i;
+            ClockSet = true;
+          }
+      }
+      console.log('TODAY IS ' + Today)
+      console.log('Time is ' + Time + " and today is" + TD)
+
+      goal.updates[TD] = goal.words;
       localStorage.setItem(`${pj.name}-goal-${parseInt(GoalItem)}`,JSON.stringify(goal))
   
   
@@ -228,7 +253,7 @@ function DownloadCanvas() {
 function FixGoal(el) {
   document.getElementById('error-no-goal').style.visibility = 'hidden';
     if (Current_goal!=el.id) {
-        document.getElementById(el.id).style.borderColor = "rgba(23, 169, 31, 0.8)";
+        document.getElementById(el.id).style.borderColor = "rgba(160, 160, 160, 0.14)";
         Current_goal = el.id;
         GoalItem = parseInt(el.id.replace("_",""))-1;
         document.getElementsByClassName('DelToActualize').id = `${InCharge}-goal-${parseInt(el.id.replace('_',''))-1}`;
@@ -591,7 +616,7 @@ words: 2500
       document.getElementById('content-info-updates').innerHTML+=`
         <div class="update">
           <div class="updateday">
-            Day ${key}
+            Day ${key+1}
           </div>
           <div class="updatecount">
             ${value}

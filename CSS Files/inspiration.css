@@ -90,6 +90,8 @@
     margin-top: -15px;
     border-radius: 20px;
     transition: 0.2s;
+    -webkit-tap-highlight-color: transparent;
+
 }
 .c-p-c option {
     width: 50px;
@@ -396,5 +398,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .c-p-c select:hover {
+        border: 2px solid rgba(0,0,0,0);
     }
 }
