@@ -616,9 +616,7 @@ function DelUpdate(el) {
     OpenStats();
     return;
 }
-setTimeout(()=>{
-  GoalsShowUp()
-},20)
+
 
 /*var ctx = canvas.getContext("2d");
 
