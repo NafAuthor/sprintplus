@@ -79,6 +79,7 @@
 }
 
 .g-c-s-u-u button {
+    -webkit-tap-highlight-color: transparent;
     background-color: #1a2950;
     border: 2px solid #1a2950;
     color:white;
@@ -682,8 +683,8 @@
     .g-c-s-updt {
         padding-top: 25px;
         padding-bottom: 25px;
-        padding-left: auto;
-        padding-right: unset;
+        padding-left: 5px;
+        padding-right: 5px;
         background-color: rgba(26, 41, 80,0.7);
         border:none;
     }

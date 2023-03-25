@@ -686,6 +686,8 @@ Project view:
     cursor: pointer;
     gap:10px;
     padding: 5px;
+    -webkit-tap-highlight-color: transparent;
+
 }
 .pj-b-g-b {
     width: 140px;
