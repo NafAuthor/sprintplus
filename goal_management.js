@@ -48,8 +48,10 @@ function UpdateGoal() {
       }
       console.log('TODAY IS ' + Today)
       console.log('Time is ' + Time + " and today is" + TD)
-
-      goal.updates[TD] = goal.words;
+      if (!goal.updates[TD]) {
+        goal.updates[TD]=0;
+      }
+      goal.updates[TD] += parseInt(number);
       localStorage.setItem(`${pj.name}-goal-${parseInt(GoalItem)}`,JSON.stringify(goal))
   
   
@@ -616,7 +618,7 @@ words: 2500
       document.getElementById('content-info-updates').innerHTML+=`
         <div class="update">
           <div class="updateday">
-            Day ${key+1}
+            Day ${parseInt(key)+1}
           </div>
           <div class="updatecount">
             ${value}
