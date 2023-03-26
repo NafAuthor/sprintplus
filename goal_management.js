@@ -496,7 +496,7 @@ words: 2500
   console.log(WordsWritten)
   console.log(Time-TimeUntil)
   if(!WordsWritten[Time-TimeUntil-1]) {
-    WordsWritten[Time-TimeUntil-1]=0;
+    WordsWritten[Time-TimeUntil]=0;
   }
 
   
@@ -529,7 +529,7 @@ words: 2500
                 ${ProgressToday > 100 ? "100%+":ProgressToday+"%"}
               </div>
               <div class="contentinfostatshidden" id="contentinfostatshiddentoday">
-              ${WordsWritten[Today]+" / "+WordsForToday} words
+              ${WordsWritten[Time-TimeUntil-1]+" / "+WordsForToday} words
               </div>
             </div>
 
