@@ -157,7 +157,7 @@
 }
 
 .pj-form {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -166,8 +166,10 @@
     overflow-y: auto;
     background-color: #19284d;
     padding: 10px;
+    padding-top: 5px;
     border-radius: 10px;
 }
+
 .following {
     width: 90px;
     height: 500px;
@@ -176,17 +178,15 @@
     left:25px;
 }
 .whole-pj-form {
-    width: 90%;
+    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: row;
     gap: 25px;
-    margin-left: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
-#form-intro-title {
-    font-size: 20px;
-    font-weight: bold;
-}
+
 .title {
     text-align: center;
     margin-left: auto;
@@ -200,9 +200,11 @@
 #form-title {
     font-size: 17px;
     display: flex;
+    font-weight: bold;
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    padding-left:50px;
 }
 
 .pj-form input {
@@ -210,13 +212,12 @@
     border:none;
     outline: none;
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
     height: 35px;
     color:white;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-left: 50px;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -235,37 +236,43 @@
     padding-right: 10px;
     border-radius: 5px;
 }
+.pj-form ::placeholder {
+    color:white;
+    font-style: italic;
+    opacity: 0.5;
+}
+
 .pj-form textarea {
-    width: 90%;
+    width: 80%;
     height: 80px;
-    margin-left: auto;
-    margin-right: auto;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #24335a;
+    margin-left: 50px;
 
 }
 
 .n-p-s {
-    width: 50%;
-    height: 50px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .n-p-s button {
-    width: 100%;
+    width: 40%;
     height: 100%;
-    font-size: 30px;
-    border-radius: 5px;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 20px;
     background-color: #24335a;
     color:white;
     border:none;
     cursor: pointer;
-
+    font-weight: 100;
 }
 
 
@@ -731,7 +738,10 @@ Project view:
 }
 
 .pj-b-goals .goal-save button {
-    background-color: #24335a;
+    background-color: #1d2d55;
+}
+.goal-save button {
+    border: 2px solid #1d2d55;
 }
 
 
@@ -780,7 +790,12 @@ Project view:
     gap: 5px;
     align-items: center;
     font-size: 10px;
-
+}
+#PJDESC {
+    height: 100%;
+    overflow-y: auto;
+    align-items: unset;
+    justify-content: unset;
 }
 .pj-b-gg-d-1, .pj-b-gg-d-2 {
     width: 50%;
@@ -857,21 +872,7 @@ Project view:
         border: 1px solid #2c3f70;
     }
 
-/*
-    <div class="mdf-b">
-      <div class="mdf-t">
-        Modify your cover
-      </div>
-      <div class="mdf-i">
-        You are about to modify the cover of your project.\n
-        To proceed, please enter a link to a cover (A4 image type).
-      </div>
-      <input type="text">
-      <button>
-        Proceed
-      </button>
-    </div>
-*/
+
 .mdf-b {
     width: 100%;
     height: 100%;
@@ -948,32 +949,39 @@ Project view:
     border-radius: 5px;
     padding-top: 20px;
 }
+.g-b-n-t-t input::placeholder,.g-b-n-t-t textarea::placeholder {
+    font-style: italic;
+    color:rgba(255,255,255,0.5)
+}
 .g-b-n-t-t input {
-    width: 50%;
-    background-color: #24335a;
+    width: 100%;
+    background-color: #1d2d55;
     height: 25px;
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 5px;
     border:none;
     color:white;
+    border-radius: 0px 20px 20px 0px;
 }
 .g-b-n-t-t input[type=number] {
     width: 20%;
-    background-color: #24335a;
-    padding-left: 5px;
-    padding-right: 5px;
+    background-color: #1d2d55;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 5px;
     border:none;
     color:white;
-    text-align: center;
+    text-align: left;
+    border-radius: 0px 20px 20px 0px;
+
 }
 .g-b-n-t-t textarea {
     width: 100%;
-    background-color: #24335a;
+    background-color: #1d2d55;
     height: 81px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     border:none;
     color:white;
 
@@ -987,7 +995,14 @@ Project view:
     visibility: hidden;
     position:absolute;
 }
-
+.pj-form input[type="date"] {
+    width: 25%;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.pj-form input, .pj-form textarea {
+    border: 2px solid #24335a
+}    
 
 @media screen and (320px <= width <= 420px) {
     .pj-ctnt {
@@ -1214,8 +1229,39 @@ Project view:
     #_1:hover, #_2:hover,#_1:active, #_2:active, #_1:focus, #_2:focus {
         border:2px solid #2c3f70;
     }
+    #form-intro-title {
+        visibility: hidden;
+        position:absolute;
+    }
+    .whole-pj-form {
+        width: 90%;
+        text-align: unset;
+
+    }
+    .pj-form {
+        padding: 10px;
+        padding-left: 0px;
+        width: 100%;
+        border-radius: 35px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+
+    }
+    .n-p-s button {
+        width: 65%;
+        font-size: 20px;
+
+    }
+    .pj-form input[type="date"] {
+        width: 35%;
+    }
+    .p-d2-e {
+        margin-top: 20px;;
+    }
+
 }
 
 .mdf-i {
     text-align: justify;
+    width: 85%;
 }

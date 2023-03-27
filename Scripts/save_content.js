@@ -1,8 +1,6 @@
 let Project_form = `
 <div class="whole-pj-form">
-<div class="following">
-  <img id="tracker" src="Images & Icons/1.png" >
-</div>
+
 <div class="pj-form">
   <div class="title" id="form-intro-title">
     Create a new project
@@ -14,19 +12,7 @@ let Project_form = `
         </span>
       Give your project a name
     </div>
-    <input type="text" id="name">
-  </div>
-  <div class="p-t"id="p-bx">
-    <div class="p-t-t"id="form-title">
-      <span class="material-symbols-outlined">
-        sort_by_alpha
-        </span>
-      What is your project?
-    </div>
-    <select id="type">
-      <option name="WP">Writing project</option>
-      <option name="EP">Editing project</option>
-    </select>
+    <input type="text" id="name" placeholder="Enter a title" autocomplete="off">
   </div>
   <div class="p-d"id="p-bx">
     <div class="p-d-t"id="form-title">
@@ -35,7 +21,7 @@ let Project_form = `
         </span>
       What is your project about?
     </div>
-    <textarea id="about"></textarea>
+    <textarea id="about" placeholder="Describe your project in some words" autocomplete="off"></textarea>
   </div>
   <div class="p-d2"id="p-bx">
     <div class="p-d2-s"id="form-title">
@@ -60,8 +46,8 @@ let Project_form = `
         </span>
         Add a link to your project
         </div>
-        <input type="text" id="more">
-  </div>
+        <input type="text" id="more" placeholder="Enter a valid link to more of your content" autocomplete="off">
+        </div>
   <div class="p-d-p"id="p-bx">
     <div class="p-d-p-t" id="form-title">
       <span class="material-symbols-outlined">
@@ -69,11 +55,11 @@ let Project_form = `
         </span>
       Add a cover (link, A4)
     </div>
-    <input type="text" id="cover">
+    <input type="text" id="cover" placeholder="Enter a valid link to an image" autocomplete="off">
   </div>
   <div class="n-p-s">
     <button type="button" onclick="CreateProject()">
-      Create
+      Create my project
     </button>
   </div>
 </div>
@@ -402,10 +388,10 @@ let Main = `
         Nous, et le monde
       </div>
       <div class="st-o">
-        <span class="material-symbols-outlined"onclick="window.open('https://www.wattpad.com/1320458753-nous-et-le-monde-chapitre-1')">
+        <span id="Nous Et Le Monde" class="material-symbols-outlined"onclick="openLink(this,'https://www.wattpad.com/1320458753-nous-et-le-monde-chapitre-1')">
           open_in_new
           </span>
-          <span class="material-symbols-outlined" onclick="window.open('https://www.wattpad.com/user/NafAuteur')">
+          <span id="Naf Auteur" class="material-symbols-outlined" onclick="openLink(this,'https://www.wattpad.com/user/NafAuteur')" >
             face
             </span>
       </div>
@@ -474,3 +460,48 @@ function OpenWelcome() {
   `;
 }
 
+
+
+let ManagementContent = `
+<div class="g-c-s-m-c">
+<div id="error-no-goal">Error: no goal selected</div>
+<div class="g-c-s-m-c-t">
+Goal management
+</div>
+<button onclick="EditGoal()">
+  <span class="material-symbols-outlined">
+      edit
+      </span>
+      <p>Edit the goal</p>
+      </button>
+      <button onclick="StopGoal()">
+      <span class="material-symbols-outlined">
+      block
+      </span>
+      <p>Stop the goal</p>
+      </button>
+    <button onclick="OpenStats()">
+    <span class="material-symbols-outlined">
+    analytics
+    </span>
+    <p>Goal statistics</p>
+  </button>
+  <button onclick="DrawCurve()">
+    <span class="material-symbols-outlined" >
+    monitoring
+    </span>
+    <p>Goal progress</p>
+  </button>
+  <button onclick="DownloadCanvas()">
+    <span class="material-symbols-outlined">
+      chart_data
+      </span>
+      <p>Download board</p>
+      </button>
+      <button onclick="DelGoalStats()" class="DelToActualize">
+      <span style="color:#EA3C12"class="material-symbols-outlined">
+            delete
+            </span>
+          <p>Delete the goal</p>
+      </button>
+`;

@@ -440,7 +440,7 @@ function ActualizeGoals() {
           </div>
         </div>
         <div class="pj-b-gg-d-2">
-        <div class="pj-b-gg-d">
+        <div class="pj-b-gg-d"  id="PJDESC">
           <span class="material-symbols-outlined">
           description
           </span>
@@ -522,9 +522,9 @@ function ModifyAddGoal() {
               <div class="g-b-n-t">
                 <div class="g-b-n-t-t">
                   <div class="ifo">
-                    <span class="material-symbols-outlined"> history_edu </span> Goal name (50ch.)
+                    <span class="material-symbols-outlined"> history_edu </span> Name
                   </div>
-                  <input type="text" id="goal-name" maxlength="50" autocomplete="off">
+                  <input type="text" id="goal-name" maxlength="50" placeholder="Enter your goal name here (50ch. max.)"autocomplete="off">
                 </div>
                 <div class="g-b-n-t-t">
                   <div class="ifo">
@@ -534,9 +534,9 @@ function ModifyAddGoal() {
                 </div>
                 <div class="g-b-n-t-t">
                   <div class="ifo">
-                    <span class="material-symbols-outlined"> flag </span> Describe your goal (200ch.)
+                    <span class="material-symbols-outlined"> flag </span> Details
                   </div>
-                  <textarea id="goal-details" maxlength="200"></textarea>
+                  <textarea id="goal-details" maxlength="200"  placeholder="Describe your goal (200ch. max.)"></textarea>
                 </div>
                 <div class="g-b-n-t-t">
                   <div class="ifo">
@@ -756,6 +756,12 @@ function Project() {
         !Pannel_Status === true
     ) {
         document.getElementById('Main').innerHTML = Project_form;
+        document.getElementById('start').valueAsDate = new Date();
+        let END = new Date()
+        END.setDate(END.getDate()+60);
+        console.log(END)
+        document.getElementById('end').valueAsDate = END;
+
     } else {
         document.getElementById('Main').innerHTML = ""
     }
@@ -775,7 +781,6 @@ const isValidUrl = urlString => {
 
 function CreateProject() {
     let name = document.getElementById('name').value;
-    let type = document.getElementById('type').value;
     let desc = document.getElementById('about').value;
     let start = document.getElementById('start').value;
     let end = document.getElementById('end').value;
@@ -783,10 +788,9 @@ function CreateProject() {
     let cover = document.getElementById('cover').value;
 
 
-    let check = ["name", "type", "about", "start", "end", "more", "cover"];
+    let check = ["name", "about", "start", "end", "more", "cover"];
     let o = 0;
     for (let i = 0; i < check.length; i++) {
-        console.log(document.getElementById(check[i]).value)
         if (document.getElementById(check[i]).value.length <= 0) {
             document.getElementById(check[i]).style.border = "2px solid red";
             o++;
@@ -802,6 +806,7 @@ function CreateProject() {
             }
         }
     }
+
     //#24335a
     console.log(start, end)
     let s = new Date(start);
@@ -818,6 +823,10 @@ function CreateProject() {
         document.getElementById("end").style.border = "2px solid #24335a";
 
     }
+    if (name.includes('"') || name.includes("'")) {
+      document.getElementById("name").style.border = "2px solid red";
+      o+=5;
+    }
 
     if (o > 0) {
         return;
@@ -825,7 +834,7 @@ function CreateProject() {
     Name = name;
     let Project = {
         name: name,
-        type: type,
+        type: "Writing project",
         desc: desc,
         start: start,
         end: end,
@@ -838,64 +847,11 @@ function CreateProject() {
         backed : false
     }
     localStorage.setItem(`Project : ${name}`, JSON.stringify(Project));
-    let Tracker = document.getElementById('tracker');
-    Tracker.src = "/Images & Icons/2.png";
-
-    document.getElementById('Main').innerHTML = `
-            <div class="following">
-            <img id="tracker" src="Images & Icons/2.png" >
-        </div>
-        <div class="r-f-1">
-            <div class="Review-form">
-            <div class="r-f-pic">
-            <img src="${cover}" >
-            </div>
-            <div class="r-f-m">
-            <div class="r-f-t">
-                ${name}
-            </div>
-            <div class="r-f-i" id="r-f-c">
-                <span class="material-symbols-outlined">
-                edit
-                </span>
-                ${type}
-            </div>
-            <div class="r-f-t_t" id="r-f-c">
-                <span class="material-symbols-outlined">
-                schedule
-                </span>
-                Starting: ${start} - Ending: ${end}
-            </div>
-            <div class="r-f-d" id="r-f-c">
-                <span class="material-symbols-outlined">
-                sms
-                </span>
-                ${desc}
-            </div>
-            <div class="r-f-p" id="r-f-c">
-                <span class="material-symbols-outlined">
-                pin_drop
-                </span>
-                <a href="${more}" target="_blank">More content</a>
-            </div>
-            </div>
-        </div>
-        <div class="buttons">
-        <button onclick="Back('Project : ${name}')">
-        <span class="material-symbols-outlined">
-        arrow_back
-        </span>
-        Back
-        </button>
-        <button onclick="Save()">
-          Continue
-          <span class="material-symbols-outlined">
-          arrow_forward
-          </span>
-        </button>
-        </div>
-
-    `
+    create = 0;
+    OpenFolder({
+        id: `pj-open-${Name}`
+    });
+    Name = "";
 }
 
 let create = 0;
@@ -968,37 +924,7 @@ let quotes = [
     "A good plan today is better than a perfect plan tomorrow."
 ]
 
-function Save() {
-    document.getElementById('Main').innerHTML = `
-  <div class="following">
-  <img id="tracker" src="Images & Icons/4.png" >
-</div>
-  <div class="Save_project">
-    <div class="s-p-t">
-      Your project ${Name} is created! 
-      Now, you just have to save it, and start 
-      working on it!
-    </div>
-    <div class="s-p-q">
-      « ${quotes[Math.floor((Math.random() * quotes.length - 1))]} »
-    </div>
-    <div class="s-p-b">
 
-      <button onclick="Rem()">
-      <span class="material-symbols-outlined">
-      celebration
-      </span>
-      Finalize my project</button>
-    </div>
-  </div>
-  `;
-    create = 0;
-    OpenFolder({
-        id: `pj-open-${Name}`
-    });
-    Name = "";
-
-}
 
 function Rem() {
     document.getElementById('Main').innerHTML = ''
@@ -1066,9 +992,6 @@ function Back(c) {
 
     document.getElementById('Main').innerHTML = `
     <div class="whole-pj-form">
-    <div class="following">
-      <img id="tracker" src="Images & Icons/1.png" >
-    </div>
     <div class="pj-form">
       <div class="title" id="form-intro-title">
         Create a new project
@@ -1081,17 +1004,6 @@ function Back(c) {
           Give your project a name
         </div>
         <input type="text" id="name" autocomplete="off">
-      </div>
-      <div class="p-t"id="p-bx">
-        <div class="p-t-t"id="form-title">
-          <span class="material-symbols-outlined">
-            sort_by_alpha
-            </span>
-          What is your project?
-        </div>
-        <select id="type">
-          <option name="WP">Writing project</option>
-        </select>
       </div>
       <div class="p-d"id="p-bx">
         <div class="p-d-t"id="form-title">

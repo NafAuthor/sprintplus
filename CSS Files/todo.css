@@ -505,11 +505,10 @@
     }
     .td-p-c {
         flex-direction: column;
-        width: 90%;
+        width: 95%;
         height: 150px;
         position:relative;
         overflow-y: hidden;
-        border: 2px solid white;
     }
     .td-p-c-t p {
         position: absolute;

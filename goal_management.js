@@ -80,7 +80,6 @@ function ShowUpOPT() {
 function GoalsShowUp() {
   Pannel_Status=false;
 
-
     document.getElementById('Main').innerHTML = `
     <div class="g-parent">
     <div class="openContainer">
@@ -134,48 +133,8 @@ function GoalsShowUp() {
           <div id="update_empty"></div>
         </div>
       </div>
-      <div class="g-c-s-management">
-          <div class="g-c-s-m-c">
-          <div id="error-no-goal">Error: no goal selected</div>
-          <div class="g-c-s-m-c-t">
-          Goal management
-        </div>
-        <button onclick="DelGoalStats()" class="DelToActualize">
-        <span class="material-symbols-outlined">
-                delete
-                </span>
-              <p>Delete the goal</p>
-            </button>
-            <button>
-            <span class="material-symbols-outlined">
-                edit
-                </span>
-                <p>Edit the goal</p>
-                </button>
-                <button onclick="StopGoal()">
-                <span class="material-symbols-outlined">
-                block
-                </span>
-                <p>Stop the goal</p>
-                </button>
-              <button onclick="OpenStats()">
-              <span class="material-symbols-outlined">
-              analytics
-              </span>
-              <p>Goal statistics</p>
-            </button>
-            <button onclick="DrawCurve()">
-              <span class="material-symbols-outlined" >
-              monitoring
-              </span>
-              <p>Goal progress</p>
-            </button>
-            <button onclick="DownloadCanvas()">
-              <span class="material-symbols-outlined">
-                chart_data
-                </span>
-                <p>Download board</p>
-                </button>
+      <div class="g-c-s-management" id="g-c-s-management">
+              ${ManagementContent}
           </div>
       </div>
     </div>
@@ -209,6 +168,197 @@ function GoalsShowUp() {
 }
 
 
+function EditGoal() {
+  let g = JSON.parse(localStorage.getItem(document.getElementsByClassName('DelToActualize').id));
+  if (g) {
+      document.getElementById('g-c-s-management').innerHTML=`
+      <div class="editGoalContent">
+        <div class="EGC-c">
+          <div class="EGC-c-t">
+            <span class="material-symbols-outlined">
+            edit_note
+            </span>
+            Name
+          </div>
+          <div class="EGC-c-d">
+            Change the name of your goal
+          </div>
+          <div class="EGC-c-c">
+            <input type="text" id="goalName">
+          </div>
+        </div>
+        <div class="EGC-c">
+          <div class="EGC-c-t">
+            <span class="material-symbols-outlined">
+            description
+            </span>
+            Description
+          </div>
+          <div class="EGC-c-d">
+            Describe your goal with some words
+          </div>
+          <div class="EGC-c-c">
+            <input type="textarea" id="goalDesc"></textarea>
+          </div>
+        </div>
+        <div class="EGC-c">
+          <div class="EGC-c-t">
+            <span class="material-symbols-outlined">
+            timer
+            </span>
+            Duration
+          </div>
+          <div class="EGC-c-d" id="GoalEndInHowMuchDays">
+            In how much days will your goal end? 
+          </div>
+          <div class="EGC-c-c">
+            <input type="number" id="goalDays" min="0">
+          </div>
+        </div>
+        <div class="EGC-c">
+          <div class="EGC-c-t">
+            <span class="material-symbols-outlined">
+            text_snippet
+            </span>
+            Words objective
+          </div>
+          <div class="EGC-c-d">
+            How much words do you want to write? You already wrote ${g.words} words
+          </div>
+          <div class="EGC-c-c">
+            <input type="number" id="goalWords" min="${g.words}">
+          </div>
+        </div>
+        <div class="EGC-c">
+          <div class="EGC-c-t">
+            <span class="material-symbols-outlined">
+            text_snippet
+            </span>
+            Current amount of words
+          </div>
+          <div class="EGC-c-d">
+            This shows how much words you've already written
+          </div>
+          <div class="EGC-c-c"  id="CantModifyContent">
+            <input type="number" id="currentamount" readonly="true">
+          </div>
+        </div>
+        <div class="EGC-c">
+          <div class="EGC-c-t">
+            <span class="material-symbols-outlined">
+            calendar_month
+            </span>
+            Started on
+          </div>
+          <div class="EGC-c-d">
+            THis shows when your goal started.
+          </div>
+          <div class="EGC-c-c"  id="CantModifyContent">
+            <input type="text" id="StartedOn" readonly="true">
+          </div>
+        </div>
+        <button id="SaveGoalButton"> 
+          Save goal
+        </button>
+        <div id="errorGoalSave" style="background-color:red;position:absolute;visibility:hidden">
+          An error occured. Check for your content.
+        </div>
+      </div>
+    `;
+    document.getElementById('goalName').value=g.name;
+    document.getElementById('goalDesc').value=g.details;
+    document.getElementById('goalWords').value=parseInt(g.amount_of_words);
+    document.getElementById('currentamount').value=g.words;
+
+    let Start = new Date(g.started_on);  
+    let Time = parseInt(g.duration)
+    let Today = new Date();
+    Today.setHours(0,0,0,0)
+    let TD = 0;
+    let ClockSet = false;
+    console.log('TIME IS ' + Time)
+    for (let i = 1; i < Time+1; i++) {
+      let d =Start.getTime() + 86400000*i;
+      d = new Date(d);
+      console.log(`${d.getDate()}/${d.getMonth()+1}`)
+      d.setHours(0,0,0,0)
+      if (
+        ClockSet != true && d.getDate() === Today.getDate() && 
+        d.getMonth() === Today.getMonth() && 
+        d.getFullYear() === Today.getFullYear() 
+        )  {
+
+          TD = i;
+          ClockSet = true;
+        }
+    }
+
+    Start.setDate(Start.getDate()+Time-TD)
+    Start = new Date(Start)
+    document.getElementById('GoalEndInHowMuchDays').innerHTML=`
+      Your goal will end on ${
+        Start.getDate()>9?Start.getDate():'0'+Start.getDate()
+      }/${Start.getMonth()+1>9?Start.getMonth()+1:'0'+(Start.getMonth()+1)}/${Start.getFullYear()},
+      which means in ${Time-TD} days
+  
+    `;
+    document.getElementById('goalDays').value=parseInt(g.duration);
+    document.getElementById('goalDays').onchange = function() {
+        let Start = new Date(g.started_on);  
+        let Time = parseInt(document.getElementById('goalDays').value);
+        Start.setDate(Start.getDate()+Time-TD)
+        Start = new Date(Start)
+        document.getElementById('GoalEndInHowMuchDays').innerHTML=`
+        Your goal will end on ${
+          Start.getDate()>9?Start.getDate():'0'+Start.getDate()
+        }/${Start.getMonth()+1>9?Start.getMonth()+1:'0'+(Start.getMonth()+1)}/${Start.getFullYear()},
+        which means in ${Time-TD} days
+    
+      `;
+    }
+
+
+
+    let startedOn = new Date(g.started_on);
+    document.getElementById('StartedOn').value=`${
+      startedOn.getDate()>9?startedOn.getDate():'0'+startedOn.getDate()
+    }/${startedOn.getMonth()+1>9?startedOn.getMonth()+1:'0'+(startedOn.getMonth()+1)}/${startedOn.getFullYear()}
+
+    `
+    ;
+
+    document.getElementById('SaveGoalButton').onclick = function() {
+      console.log(document.getElementById('goalName').length)
+      console.log(document.getElementById('goalDesc').value)
+      console.log(document.getElementById('goalWords').value)
+
+      if (
+        document.getElementById('goalName').value.length>0 &&
+        document.getElementById('goalDesc').value &&
+        document.getElementById('goalWords').value>=g.words
+      ) {
+        g.amount_of_words = document.getElementById('goalWords').value;
+        g.name = document.getElementById('goalName').value;
+        g.details = document.getElementById('goalDesc').value;
+        g.duration = parseInt(document.getElementById('goalDays').value);
+        localStorage.setItem(document.getElementsByClassName('DelToActualize').id,JSON.stringify(g));
+        Current_goal="_3";
+        GoalItem = "";
+        Goal_name = "";
+        GoalsShowUp();
+      }
+    }
+  }
+  else {
+    document.getElementById('errorGoalSave').style.visibility = 'visible';
+    document.getElementById('errorGoalSave').style.position = 'relative';
+
+  }
+}
+
+
+
+
 function StopGoal() {
   let g = JSON.parse(localStorage.getItem(document.getElementsByClassName('DelToActualize').id));
   if (g) {
@@ -223,20 +373,39 @@ function StopGoal() {
   }
 }
 
+
+
+
 function DelGoalStats() {
   if (localStorage.getItem(document.getElementsByClassName('DelToActualize').id)) {
-    console.log('UNSETID' + document.getElementsByClassName('DelToActualize').id)
-      localStorage.removeItem(document.getElementsByClassName('DelToActualize').id);
-      GoalsShowUp();
-      document.getElementsByClassName('DelToActualize').id = '';
+      document.getElementById('g-c-s-management').innerHTML = `
+        <div class="confirmPassword">
+          Confirm your action with the password of your project:
+          <input type="password" id="passwordProject">
+          <button onclick="ConfirmGoalDel()">
+              Confirm
+          </button>
+        </div>
+      `;
 
   } else {
     document.getElementById('error-no-goal').style.visibility = 'visible';
-
   }
 }
 
-
+function ConfirmGoalDel() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`))
+  if (pj) {
+    if (document.getElementById('passwordProject').value==pj.password) {
+      localStorage.removeItem(document.getElementsByClassName('DelToActualize').id);
+      document.getElementsByClassName('DelToActualize').id = '';
+    }
+  } 
+  Current_goal="_3";
+  GoalItem = "";
+  Goal_name = "";
+  GoalsShowUp();
+}
 function DownloadCanvas() {
   let canvas = document.getElementById('pjcurve');
   document.getElementById('error-no-goal').style.visibility = 'hidden';
@@ -255,7 +424,7 @@ function DownloadCanvas() {
 function FixGoal(el) {
   document.getElementById('error-no-goal').style.visibility = 'hidden';
     if (Current_goal!=el.id) {
-        document.getElementById(el.id).style.borderColor = "rgba(160, 160, 160, 0.14)";
+        document.getElementById(el.id).style.borderColor = "rgba(255, 255, 255, 0.3)";
         Current_goal = el.id;
         GoalItem = parseInt(el.id.replace("_",""))-1;
         document.getElementsByClassName('DelToActualize').id = `${InCharge}-goal-${parseInt(el.id.replace('_',''))-1}`;
