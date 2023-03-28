@@ -1,6 +1,6 @@
 .g-parent {
-    width: 1300px;
-    height: 800px;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: column;
     height: fit-content;
-    background-color: rgba(26, 41, 80,0.8);
+    background-color: #1d2c53;
     border-radius: 20px;
     padding: 10px;   
 
@@ -43,12 +43,12 @@
     border-radius: 15px;
 }
 .g-c-s-updt {
-    background-color: rgba(26, 41, 80,0.8);
+    background-color: #19284d;
     position:absolute;
     width: 30%;
     height: fit-content;
     display: flex;
-    left:0;
+    left:-60;
     top:120;
     flex-direction: row;
     justify-content: center;
@@ -56,8 +56,7 @@
     gap: 10px;  
     border: 1px solid white;
     border-radius: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
     z-index: 100;
 }
 .g-c-s-u-inbox {
@@ -130,28 +129,27 @@
     display: flex;
     flex-direction: row;
     gap: 5px;
+    width: 100%;
 }
 
 
 .g-c-s-c-p {
-    border:none;
     width: 100%;
-    cursor: pointer;
 }
-.g-c-s-c-p select {
+#select-pj-goal {
     -webkit-tap-highlight-color: transparent;
     outline:none;
     background-color: #19284d;
     border: 2px solid #19284d;
-    width: 200px;
+    width: 100%;
     color:white;
-    border: none;
     border-radius: 20px;
-    height: 30px;
+    height: 40px;
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
-    transition: 0.1s;
+    font-size: 15px;
+    z-index:20;
 }
 
 .g-c-s-management {
@@ -164,7 +162,7 @@
     justify-content: center;
     gap: 15px;
     overflow-y: auto;
-    background-color: rgba(26, 41, 80,0.8);
+    background-color: #1d2c53;
     padding: 10px;
     border-radius: 20px;
     padding-top: 20px;
@@ -187,7 +185,7 @@
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-
+    display: none;
 }
 .g-c-s-m-c {
     position:relative;
@@ -197,18 +195,18 @@
     flex-direction: column;
     padding: 10px;
     border-radius: 20px;
-
+    overflow-y: auto;
 }
 
 
 
 .g-c-s-m-c button {
     position:relative;
-    height: 40px;
+    height: 50px;
     width: 40%;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -220,6 +218,7 @@
     border-radius: 50px;
     cursor: pointer;
     transition: 0.2s;
+    border: 2px solid rgba(255,255,255,0)
 }
 .g-c-s-m-c button:hover {
     border: 2px solid white;
@@ -239,23 +238,29 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    width: 200px;
+    width: 100%;
     height: fit-content;
     justify-content: center;
     
+}
+#_1 p,#_2 p {
+    text-align: center;
+    width: 100%;
 }
 .g-c #_1,.g-c #_2 {
     display: flex;
     flex-direction: row;
     gap: 5px;
     align-items: center;
-    font-size: 10px;
-    padding-left: 5px;
+    padding-left: 15px;
+    padding-right: 5px;
+    height: 40px;
     overflow-x: hidden;
     overflow-y: hidden;
     cursor:pointer;
-    border: 2px solid  #24335a;
-    border-radius: 20px;
+    border: 2px solid  #19284d;
+    border-radius: 50px;
+    width: 100%
 }
 .g-c #_1:hover ,.g-c #_2:hover {
     border: 2px solid  white;
@@ -274,8 +279,7 @@
     display: flex;
     flex-direction: column;
     height: fit-content;
-    margin-top: -20px;
-    width: fit-content;
+    width: 40%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -286,7 +290,11 @@
     flex-direction: row;
     gap:10px;
     align-items: center;
-    
+    padding-top: 0px;
+    padding-bottom:0px;   
+}
+#select-pj-goal:hover {
+    border: 2px solid white;
 }
 .child-viewer {
     width: 80%;
@@ -494,7 +502,10 @@
     z-index: 1;
     border-radius: 10px;
 }
-
+@keyframes RollScroll {
+    0% {transform:rotate(180deg)}
+    100% {transform:rotate(360deg)}
+  }
 .openContainer {
     position:absolute;
     top:20;
@@ -502,7 +513,12 @@
     -webkit-tap-highlight-color: transparent;
 
 }
-
+.openContainer:hover {
+    animation:RollScroll;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
 .content-info-updates {
     width: 200px;
     height: 100%;
@@ -708,6 +724,8 @@
         flex-direction: column;
         align-items: center;
         gap:0px;
+        height: 100%;
+        overflow-y: auto;
     }
     .huge-separator {
         position:absolute;
@@ -744,6 +762,7 @@
         height: fit-content;
         margin-top: 0px;
         gap:10px;
+        width: 90%;
     }
     .g-c-s-m-c  {
         flex-direction: row;
@@ -807,14 +826,15 @@
     }
     .g-child-selector {
         width: fit-content;
-        height: fit-content;
+        height: 100%;
         gap: 20px;
         padding: 10px;
-        width: 30%;
+        width: 80%;
         justify-content: unset;
         padding-top: 50px;
         margin:unset;
         border-radius: 20px;
+
     }
     .g-c-s-updt-t {
         display: none;
@@ -888,6 +908,7 @@
         font-size: 12px;
         padding-top: 0px;
         padding-bottom: 0px;
+        font-size: 15px;
         height: 40px;
     }
     .g-c-s-m-c {
@@ -902,9 +923,12 @@
         border: 2px solid #1a2950;
     
     }
-    .g-c-s-c-p select,    .g-c #_1,    .g-c #_2 {
+    #select-pj-goal,    .g-c #_1,    .g-c #_2 {
         background-color: #1a2950;
         border: 2px solid #1a2950;
+        width: 100%;
+        font-size: 17px;    
+        height: 40px;
     }
     .g-c-s-c-p select:hover {
         border: 2px solid #1a2950;
@@ -935,5 +959,11 @@
     .confirmPassword {
         width: 100%;
         background-color: unset;
+    }
+    #select-pj-goal:hover {
+        border: 2px solid rgba(0,0,0,0);
+    }
+    .openContainer:hover {
+        animation:unset;
     }
 }

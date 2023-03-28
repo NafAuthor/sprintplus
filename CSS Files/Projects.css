@@ -1008,10 +1008,12 @@ Project view:
     .pj-ctnt {
         width: 100%;
         height: 100%;
-        margin-top: 100px;
+        margin-top: unset;
     }
     .pj-ctnt-opt {
         width: 100%;
+
+        
     }
     .pj-new {
         width: 95%;

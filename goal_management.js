@@ -458,7 +458,7 @@ function GoalSelect() {
                 <span class="material-symbols-outlined">
                     school
                     </span>
-                    ${g.name}
+                    <p> ${g.name} </p>
                 </div>
             `;
         } else {
@@ -467,7 +467,7 @@ function GoalSelect() {
                 <span class="material-symbols-outlined" >
                     empty_dashboard
                     </span>
-                    Manage goals
+                   <p> Manage goals </p>
                 </div>
             `;
         }

@@ -54,7 +54,7 @@
         .MainAlert button {
             border: none;
             color:white;
-            background-color: #1e2e56;
+            background-color: #192647;
             width: 50%;
             border-radius: 50px;
             margin-left: auto;
@@ -66,6 +66,11 @@
             justify-content: center;
             padding: 10px;
             cursor: pointer;
+            border: 2px solid rgba(255,255,255,0);
+            font-size: 18px;
+        }
+        .MainAlert button:hover {
+            border: 2px solid white;
         }
         .MainAlertTitle {
             font-size: 35px;
@@ -76,7 +81,6 @@
             gap:10px;
             align-items: center;
             justify-content: center;
-            color:red;
         }
         .MainAlertWarn {
             text-align: center;
@@ -87,15 +91,87 @@
             margin-right: auto;
         }
 
+
+        .contentInfos{
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        .contentInfosC {
+            width: 100%;
+            height: 30px;
+            display:flex;
+            flex-direction: row;
+            gap:10px;
+            align-items: center;
+            overflow-y: hidden;
+            border-radius: 50px;
+            background-color: #192647;
+            padding: 10px;
+        }
+        .contentInfosC p {
+            background-color:#1b294e;
+            width: 100%;
+            padding: 10px;
+            border-radius: 50px;
+            white-space: nowrap;
+            text-align: left;
+            padding-left: 15px;
+            padding-right: 15px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+        .ContentInfoSep {
+            width: 80%;
+            height: 3px;
+            background-color: white;
+            border-radius: 50px;
+        }
+        .contentInfosC span {
+            background-color: #212f57;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        .infoalertContent {
+            width: 80%;
+            background-color: #192647;
+            padding: 10px;
+            border-radius: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            font-size: 17px;
+            text-align: justify;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
         @media screen and (320px <= width <= 420px) {
             .MainAlert {
                 width: 80%;
-                height: fit-content;
+                height: 80%;
+                overflow-y: auto;
                 max-width: unset;
+                border-radius: 20px 0px 0px 20px;
+
             }
             .MainAlert button {
                 width: 80%;
             }
+            .contentInfos {
+                width: 90%
+            }
+
+            .infoalertContent {
+                width: 85%;
+                text-align: center;
+            }
+            
         }
     </style>
 </head>
@@ -104,23 +180,39 @@
     <img src="Images & Icons/Logo.ico" id="SprintPlusLogo">
     <div class="MainAlert">
         <div class="MainAlertTitle">
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-outlined" style="font-size:45px;color:red;">
                 warning
                 </span>
-            >arning
+            SecuLink
         </div>
         <div class="MainAlertWarn">
-            You are about to open a link (obj.:<a style="color:#d189d4" id="MAINALERTUSER"></a>)<br><br>
-            This external content has been aproved by the Sprint+ team
-            as a unique content dedicated to reading, or to promote content from
-            a user that is or is not affiliated to Sprint+.<br><br>
-            We want to be sure our community is safe using Sprint+.<br>
-            If you notice something unusual or against laws, please report this link 
-            to our <a style="font-weight: bold" href="https://discord.com/invite/72tACSk8Jd"> team</a> 
-            fast so we can work together to remove it.
-            <br><br>
-            This being said, please click on the button below to open the link 
-            you wanted to open.
+            <div class="contentInfos">
+                <div class="contentInfosC">
+                    <span class="material-symbols-outlined" style="font-size:25px;">
+                        info
+                    </span>
+                    <p id="CONTENTINFOUSER"></p>
+                </div>
+                <div class="ContentInfoSep"></div>
+                <div class="contentInfosC">
+                    <span class="material-symbols-outlined" style="font-size:25px;transform:rotate(-50deg)">
+                        link
+                    </span>
+                    <p id="CONTENTINFOlink"></p>
+                </div>
+            </div>
+            <div class="infoalertContent">
+                This external content has been aproved by the Sprint+ team
+                as a unique content dedicated to reading, or promoting the work 
+                of a user that is or is not affiliated to Sprint+.<br><br>
+                We want to be sure our community is safe using Sprint+ tool.<br>
+                If you notice something unusual and against laws, plaese report it 
+                to our <a style="color: rgb(231, 241, 192);" href="https://discord.com/invite/72tACSk8Jd"> team</a> 
+                fast so we can work together to remove it.
+                <br>
+                This being said, please click on the button below to open the link 
+                you wanted to open.
+            </div>
         </div>
         <button onclick="OpenLink()">
             <span class="material-symbols-outlined">
@@ -132,12 +224,16 @@
 
     <script>
 
-        let link = JSON.parse(localStorage.getItem('tolink'));
-        document.getElementById('MAINALERTUSER').innerHTML = link.user;
-        console.log(link)
-        function OpenLink() {
-            window.location.replace(link.link);
-        }
+        setTimeout(()=> {
+            let link = JSON.parse(localStorage.getItem('tolink'));
+            document.getElementById('CONTENTINFOUSER').innerHTML = link.user;
+            document.getElementById('CONTENTINFOlink').innerHTML = link.link;
+
+            console.log(link)
+            function OpenLink() {
+                window.location.replace(link.link);
+            }
+        },20)
     </script> 
   </body>
 

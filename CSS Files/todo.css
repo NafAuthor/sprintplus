@@ -83,7 +83,9 @@
     border: 2px solid rgba(31, 48, 92, 0.7);
     color:white;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 20px; -webkit-tap-highlight-color: transparent;
+
+
 }
 
 .td-p-c-slct-p-i select:hover {
@@ -94,7 +96,9 @@
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    
+    -webkit-tap-highlight-color: transparent;
+
+
 }
 
 .td-p-c-add-t button {
@@ -576,12 +580,17 @@
     .td-content {
         width: 100%;
         border-radius: 10px;
+
+        height: 100%;
     }
     .MainContent {
         width: 100%;
         height: 100%;
     }
-
+    .td-p-c-slct-p-i select:hover {
+        border: 2px solid rgba(192, 47, 47, 0);
+        
+    }
 }
 
 
