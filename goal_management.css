@@ -9,55 +9,54 @@
 
 .g-child-selector {
     width: 80%;
-    height: 100%;
-    border-radius: 10px;
+    height: 80%;
+    border-radius: 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     background-color: unset;
     position:relative;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     justify-content: center;
+    gap: 50px;
 }
+#g-child-selector {
+    visibility: visible;
 
+}
 .g-c-s-container {
-    width: 80%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     height: fit-content;
-    background-color: #1d2c53;
-    border-radius: 20px;
-    padding: 10px;   
-
+    padding-left: unset;
+    border-radius: 5px;
+    overflow-x: hidden;
+    gap: 10px;
+    border: 2px solid #19284d;
+    background-color: #19284d;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .g-c-s-updt-t {
-    position:absolute;
-    top:-12;
-    font-size: 15px;
-    left:5;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: #1a2950;
-    border-radius: 15px;
+    display:none
 }
 .g-c-s-updt {
     background-color: #19284d;
-    position:absolute;
-    width: 30%;
+    width: 95%;
     height: fit-content;
     display: flex;
-    left:-60;
-    top:120;
     flex-direction: row;
     justify-content: center;
+    position:relative;
     align-items: center;
     gap: 10px;  
-    border: 1px solid white;
-    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-top: 20px;;
     padding: 20px;
-    z-index: 100;
+    
 }
 .g-c-s-u-inbox {
     height: 30px;
@@ -89,7 +88,7 @@
 
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 .g-c-s-u-p {
@@ -104,15 +103,15 @@
     outline:none;
 }
 .g-c-s-u-p input::placeholder{
-    color:rgba(255, 255, 255,0.7);
+    color:rgba(255, 255, 255,0.6);
     font-style: italic;
 }
 .g-c-s-u-p input {
-    background-color: #24335a;
+    background-color: #1d2c53;
     border:none;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 5px;
-    padding-left: 15px;
+    padding-left: 10px;
     color:white;
     width: 100%;
     height: 35px;
@@ -120,7 +119,6 @@
 }
 
 .g-c-s-u-u button:hover span {
-    color:  #00A300;
     transition: 0.4s;
     transform: rotate(360deg);
 }
@@ -135,45 +133,53 @@
 
 .g-c-s-c-p {
     width: 100%;
+    text-align: center;
 }
 #select-pj-goal {
     -webkit-tap-highlight-color: transparent;
     outline:none;
-    background-color: #19284d;
-    border: 2px solid #19284d;
-    width: 100%;
+    background-color: #1d2c53;
+    border: 2px solid #1d2c53;
+    width: 80%;
     color:white;
-    border-radius: 20px;
+    border-radius: 5px;
     height: 40px;
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
     font-size: 15px;
+    margin-left: auto;
+    margin-right:auto;
     z-index:20;
 }
 
 .g-c-s-management {
-    width: 80%;
-    height: 50%;
-    margin-top: 20px;
+    width: 40%;
+    padding: 20px;
+    padding-left: unset;
+    padding-right: unset;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
     overflow-y: auto;
-    background-color: #1d2c53;
-    padding: 10px;
-    border-radius: 20px;
-    padding-top: 20px;
+    border-radius: 5px;
     overflow-x: hidden;
+    margin-top: auto;
+    margin-bottom: auto;
+    position:relative;
+    height: 60%;
+    overflow-y: auto;
+    background-color: #19284d;
 }
 
 .g-c-s-m-s {
     width: 1%;
     background-color: white;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .g-c-s-m-c-t {
     position: absolute;
@@ -188,13 +194,11 @@
     display: none;
 }
 .g-c-s-m-c {
-    position:relative;
     width: 100%;
     display: flex;
     gap: 10px;
     flex-direction: column;
-    padding: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     overflow-y: auto;
 }
 
@@ -202,8 +206,8 @@
 
 .g-c-s-m-c button {
     position:relative;
-    height: 50px;
-    width: 40%;
+    height: 40px;
+    width: 50%;
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -213,12 +217,12 @@
     gap: 10px;
     font-size: 15px;
     border: none;
-    background-color: #24335a;
+    background-color: #1a2950;
     color:white;
-    border-radius: 50px;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.2s;
-    border: 2px solid rgba(255,255,255,0)
+    border: 2px solid #1a2950;
 }
 .g-c-s-m-c button:hover {
     border: 2px solid white;
@@ -229,7 +233,7 @@
 .g-c-s-separator {
     width: 100%;
     height:1px;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: white;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -239,12 +243,13 @@
     flex-direction: column;
     gap: 2px;
     width: 100%;
-    height: fit-content;
+    height: 100%;
     justify-content: center;
-    
+    margin-left: -10px;
 }
 #_1 p,#_2 p {
-    text-align: center;
+    text-align: left;
+    margin-left: 5px;
     width: 100%;
 }
 .g-c #_1,.g-c #_2 {
@@ -252,18 +257,21 @@
     flex-direction: row;
     gap: 5px;
     align-items: center;
-    padding-left: 15px;
+    padding-left: 5px;
     padding-right: 5px;
-    height: 40px;
+    height: 30px;
     overflow-x: hidden;
     overflow-y: hidden;
     cursor:pointer;
-    border: 2px solid  #19284d;
-    border-radius: 50px;
-    width: 100%
+    border: 1px solid  #19284d;
+    border-radius: 5px;
+    width: 80%;
+    overflow-x:hidden;
+    margin-left: auto;
+    margin-right: auto;
 }
 .g-c #_1:hover ,.g-c #_2:hover {
-    border: 2px solid  white;
+    border: 1px solid  white;
 
 }
 
@@ -272,23 +280,25 @@
 
 
 
-.g-c-s-c-p, .g-c-s-c-g {
-    margin-top: -10px;
-}
+
 .g-c-s-c-C {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    width: 40%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    background-color: #19284d;
+    padding: 10px;
+    padding-top: unset;
+    gap:5px;
 }
 .g-c-s-c-t {
-    margin-top: 10px;
     font-size: 20px;
     display: flex;
     flex-direction: row;
     gap:10px;
+    height: 35px;
     align-items: center;
     padding-top: 0px;
     padding-bottom:0px;   
@@ -299,14 +309,13 @@
 .child-viewer {
     width: 80%;
     height: 100%;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: unset;
     margin-top: auto;
     margin-bottom: auto;
-    border-radius: 10px;
+    border-radius: 5px;
     visibility: hidden;
     position:absolute;
     justify-content: center;
@@ -314,12 +323,17 @@
     margin-right: auto;
 }
 #error-no-goal {
-    color:red;
-    font-size: 15px;
+    color:white;
+    font-size: 12px;
     visibility: hidden;
-    margin: auto;
     position: absolute;
-    top: 20; left: 20; bottom: 0;
+    bottom: 2; left: 0; right: 0;
+    margin: auto;
+    text-align: center;
+    border: 1px solid red;
+    width: fit-content;
+    border-style: none none solid none;
+    padding-bottom: 5px;
 }
 
 
@@ -343,11 +357,10 @@
     flex-direction: column;
     gap: 10px;
     width: 90%;
-    border: 2px solid white;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     position:relative;
 }
 .c-v-content-stats {
@@ -358,7 +371,6 @@
 }
 .c-v-c-t {
     width: fit-content;
-    border: 2px solid white;
     text-align: center;
     font-size: 25px;
     position:absolute;
@@ -367,12 +379,12 @@
     left:10;top:-20;
     padding-left: 15px;
     padding-right: 15px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .c-v-c-s {
     width: 100%;
     height: 100px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -433,7 +445,7 @@
     padding-left: 10px;
     padding-right: 10px;
     background-color: #1a2950;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #todaybar:hover #contentinfostatshiddentoday,#wholebar:hover #contentinfoswholehidden  {
@@ -450,8 +462,7 @@
     margin-right: auto;
     display: flex;
     flex-direction: row;
-    border-radius: 10px;
-    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .content-infos-infos {
@@ -508,10 +519,10 @@
   }
 .openContainer {
     position:absolute;
-    top:20;
-    left:10;
+    left:20;
     -webkit-tap-highlight-color: transparent;
-
+    bottom:0;
+    margin:auto;
 }
 .openContainer:hover {
     animation:RollScroll;
@@ -528,9 +539,8 @@
     flex-direction: column;
     gap: 5px;
     overflow-y: auto;    
-    border: 2px solid white;
     border-style: none none none solid;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 5px 5px 0px;
 }
 .content-info-updates {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -572,7 +582,7 @@
     border:1px solid white;
     padding-left: 5px;
     padding-right: 5px;
-    border-radius: 10px;;
+    border-radius: 5px;;
 }
 .updatedel {
     position:absolute;
@@ -600,13 +610,15 @@
       </div>
 */
 .editGoalContent button {
-    width: 50%;
-    background-color: #24335a;
+    width: fit-content;
+    background-color: #1d2c53;
     color:white;
-    border-radius: 50px;
+    border-radius: 5px;
     height: 50px;
     font-size: 20px;
-    padding: 10px;
+    padding:10px;
+    padding-left: 15px;
+    padding-right: 15px;
     border:none;
     cursor: pointer;
 }
@@ -622,22 +634,24 @@
     width: 100%;
 }
 .EGC-c input,.EGC-c textarea{
-    width: 50%;
-    background-color: #24335a;
+    width: 100%;
+    background-color: #1d2c53;
     border:none;
-    border-radius: 50px;
+    border-radius: 5px;
     outline:none;
     padding-left: 10px;
     padding-right: 10px;
     height: 30px;
     color:white;
-    border-radius: 0px 50px 50px 0px;
+    border-radius: 0px 5px 5px 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .EGC-c textarea{
     width: 50px;
 }
 .EGC-c input[type="number"] {
-    width: 15%;
+    width: 50%;
     cursor: unset;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -647,7 +661,7 @@
             user-select: none; 
 }
 #StartedOn{
-    width: 15%;
+    width: 50%;
     cursor: unset;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -667,7 +681,7 @@
 
 .editGoalContent {
     width: 80%;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 10px;
     height: 100%;
     overflow-y: auto;
@@ -685,7 +699,7 @@
 }
 .confirmPassword {
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -694,7 +708,7 @@
 }
 .confirmPassword input {
     width:80%;
-    border-radius: 50px;
+    border-radius: 5px;
     outline:none;
     color:white;
     padding-left: 10px;
@@ -706,7 +720,7 @@
 }
 .confirmPassword button {
     width: 50%;
-    border-radius: 50px;
+    border-radius: 5px;
     outline:none;color:white;
     background-color:#19284d;
     border:none;
@@ -714,9 +728,10 @@
     font-size: 20px;
     cursor: pointer;
 }
-#_1, #_2, .g-c-s-m-c button {
-    background-color: #19284d;
+#_1, #_2 {
+    background-color: #1d2c53;
  }
+
  
 @media screen and (320px <= width <= 420px) {
     .g-parent {
@@ -724,7 +739,7 @@
         flex-direction: column;
         align-items: center;
         gap:0px;
-        height: 100%;
+        height: 130%;
         overflow-y: auto;
     }
     .huge-separator {
@@ -739,12 +754,20 @@
         padding-top: 10px;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 10px;
+        width: 100%;
+        height: 50%;
+        border-radius: 0px;
         align-items:flex-start;
-        background-color: rgba(26, 41, 80,0.7);
+        background-color: #19284d;
+        margin:0px;
+        padding-bottom: 5px;
     }
     .g-c-s-c-p, .g-c-s-c-g {
         margin-top: 0px;
+    }
+    .editGoalContent {
+        width: 95%;
     }
     .g-c-s-c-t {
         padding: unset;
@@ -763,6 +786,11 @@
         margin-top: 0px;
         gap:10px;
         width: 90%;
+        padding: 10px;
+        border-radius:10px;
+    }
+    .g-c-s-c-C span {
+        display: none;
     }
     .g-c-s-m-c  {
         flex-direction: row;
@@ -775,7 +803,13 @@
         bottom:0;
         top:unset;
         font-size: 15px;
-        left:0;right:0;margin:auto
+        left:0;right:0;margin:auto;
+        color:white;
+        width: fit-content;
+        border-style: none none solid none;
+        padding: 5px;
+        border-color: red;
+
     }
     .g-c-s-m-c-t {
         position:absolute;
@@ -783,15 +817,18 @@
     }
     .g-c-s-management {
         height: fit-content;
-        background-color: rgba(26, 41, 80,0.7);
-        border-radius: 20px;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
         padding-left: unset;
         padding-right: unset;
-        width: 100%;
+
+        margin:unset;
+        padding-bottom: 1px;
     }
     .g-c-s-m-c {
         position:relative;
-        width: 80%;
+        width: 95%;
         margin-left: auto;
         margin-right: auto;
         display: flex;
@@ -826,36 +863,28 @@
     }
     .g-child-selector {
         width: fit-content;
-        height: 100%;
-        gap: 20px;
+        height: 80%;
         padding: 10px;
         width: 80%;
         justify-content: unset;
-        padding-top: 50px;
-        margin:unset;
+        padding-top: unset;
+        margin:auto;
         border-radius: 20px;
-
+        gap:30px;
+        flex-direction: column-reverse;
     }
     .g-c-s-updt-t {
         display: none;
     }
-    .g-c-s-updt {
-        padding-top: 25px;
-        padding-bottom: 25px;
-        padding-left: 5px;
-        padding-right: 5px;
-        background-color: rgba(26, 41, 80,0.7);
-        border:none;
-    }
+
     .child-viewer {
-        height:90%;
-        margin-top: 70px;;
+        height:100%;
         border-radius: 10px;
         background-color: rgba(0,0,0,0);
 
     }
     .c-v-c {
-        width: 40%;
+        width: 100%;
         height: 95%;
         overflow-y: hidden;
         overflow-x: hidden;
@@ -866,10 +895,13 @@
         position:relative
     }
     .content-infos-infos {
-        justify-content: center;
+        justify-content: unset;
         width: 100%;
         overflow-y: auto;
         height: 70%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
     }
     .content-stats {
         align-items: start;
@@ -891,20 +923,30 @@
         gap: 15px;
     }
     .g-c-s-updt {
-        width: 250px;
+        width: 85%;
         right:0;
         top:unset;
-        bottom:-90;
+        bottom:0;
         left:0;
         margin:auto;
         padding-top: 15px;
         padding-bottom: 15px;
-        border-radius: 20px;
+        gap: 30px;
+        border-radius: 10px;
+    }
+    .g-c-s-u-inbox {
+        width: 80%;
+    }
+    .g-c-s-u-p {
+        width: 100%;
+    }
+    .g-c-s-u-p input {
+        width: 100%;
     }
     .g-c-s-m-c button, .g-c-s-m-c button:active,.g-c-s-m-c button:focus,.g-c-s-m-c button:hover {
         width: 100%;
-        background-color: #1a2950;
-        border-radius: 20px;
+        background-color: #1d2c53;
+        border-radius: 5px;
         font-size: 12px;
         padding-top: 0px;
         padding-bottom: 0px;
@@ -914,8 +956,8 @@
     .g-c-s-m-c {
         display: grid;
         grid-template-columns: repeat(auto-fill, 48%);
-        row-gap: 10px;
-        column-gap: 10px;
+        row-gap: 5px;
+        column-gap: 5px;
         grid-auto-rows: fit-content(1px);    
         background-color: unset;
     }
@@ -924,11 +966,19 @@
     
     }
     #select-pj-goal,    .g-c #_1,    .g-c #_2 {
-        background-color: #1a2950;
+        background-color: #1d2c53;
         border: 2px solid #1a2950;
         width: 100%;
         font-size: 17px;    
         height: 40px;
+        border-radius: 5px;
+    }
+    .g-c #_1 span,.g-c #_2 span{
+        display: flex;
+        background-color: #19284d;
+        padding: 5px;
+        border-radius: 50%;
+        margin: auto;
     }
     .g-c-s-c-p select:hover {
         border: 2px solid #1a2950;
@@ -947,10 +997,10 @@
     .EGC-c-c input[type="number"],#StartedOn {
         width: 40%;
         text-align: center;
-        border-radius: 50px 50px 50px 50px;
+        border-radius: 5px 5px 5px 5px;
     }
     #goalDays {
-        border-radius: 0px 50px 50px 0px;
+        border-radius: 0px 5px 5px 0px;
 
     }
     #SaveGoalButton {
@@ -965,5 +1015,11 @@
     }
     .openContainer:hover {
         animation:unset;
+    }
+    .openContainer {
+        top:5;
+        left:0;
+        bottom:unset;
+
     }
 }

@@ -1,8 +1,8 @@
 .ifo-m {
-    width: 50%;
+    width: 90%;
     height: 85%;
     background-color: #19284d;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
     padding-left: 50px;
     padding-top: 20px;
@@ -39,7 +39,7 @@
     background-color: white;
     margin-top: 10px;
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .ifo-bx-t {
@@ -48,6 +48,20 @@
     gap: 10px;
     align-items: center;
     font-weight: bold;
+    position:relative;
+}
+.Spenhancedmore {
+    position:absolute;
+    right:0;
+    top:0;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;;
+}
+.Spenhancedmore:hover {
+    background-color: white;
+    color:#19284d;
 }
 .ifo-bx {
     display: flex;
@@ -57,7 +71,7 @@
     width: 80%;
     padding: 10px;
     border: solid 0.5px white;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -95,12 +109,11 @@
 
 }
 #spt-ttl {
-    margin-top: 70px;
+    margin-top: 30px;
 
 }
 .sp-ttl {
     width: 100%;
-    margin-top: 30px;
     font-size: 20px;
     font-weight: bold;
     display: flex;
@@ -112,8 +125,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 90%;
+    width: 100%;
     display: flex;
+    text-align: center;
     flex-direction: column;
 }
 
@@ -137,7 +151,7 @@
     padding: 2px;
     padding-left: 5px;
     padding-right: 5px;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 
@@ -147,14 +161,14 @@
     flex-direction: row;
     gap: 10px;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
 }
 .ifo-m-c-u textarea,.ifo-m-c-p textarea,.ifo-m-c-e textarea {
     width: 250px;
     height: 30px;
-    border-radius: 50px;
+    border-radius: 5px;
     background-color: #1f2f57;
     padding: 7px;
 }
@@ -189,22 +203,26 @@
 }
 
 .ifo-bt-c {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
+
 .ifo-bt-b button {
-    width: 100%;
+    width: 60%;
     height: 50px;
     color:white;
-    border-radius: 50px;
+    border-radius: 5px;
     background-color: #1f2f57;
     border: 2px solid #19284d;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 .ifo-bt-b button:hover {
     border: 2px solid white;
@@ -242,7 +260,7 @@
         margin:unset;
         padding: unset;
         padding-bottom: 20px;
-
+        padding-top: 20px;
         height: 100%;
     }
     .ifo-m-c-u button:hover, .ifo-m-c-p  button:hover{ 
@@ -250,6 +268,7 @@
     }
     .ifo-m-c-u button:active, .ifo-m-c-p  button:active{
         border-style: outset;
+
     }
     .ifo-m-t {
         width: 100%;
@@ -257,6 +276,10 @@
         align-items: center;
         justify-content: center;
         height: fit-content;
+    }
+    .ifo-bt button {
+        border-radius: 5px;        width:90%
+
     }
     .whole-header-ch {
         width: 100%;
@@ -273,5 +296,8 @@
     }
     .ifo-m-c-un-t,.ifo-m-c-ps-t, .ifo-m-c-ps-t {
         left: 80;
+    }
+    #sp-ttl {
+        margin-top: 150px;
     }
 }  

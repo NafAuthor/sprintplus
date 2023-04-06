@@ -1,6 +1,5 @@
 let Project_form = `
 <div class="whole-pj-form">
-
 <div class="pj-form">
   <div class="title" id="form-intro-title">
     Create a new project
@@ -12,7 +11,7 @@ let Project_form = `
         </span>
       Give your project a name
     </div>
-    <input type="text" id="name" placeholder="Enter a title" autocomplete="off">
+    <input type="text" id="name" autocomplete="off">
   </div>
   <div class="p-d"id="p-bx">
     <div class="p-d-t"id="form-title">
@@ -21,7 +20,7 @@ let Project_form = `
         </span>
       What is your project about?
     </div>
-    <textarea id="about" placeholder="Describe your project in some words" autocomplete="off"></textarea>
+    <textarea id="about"></textarea>
   </div>
   <div class="p-d2"id="p-bx">
     <div class="p-d2-s"id="form-title">
@@ -37,29 +36,32 @@ let Project_form = `
         </span>
       When will your project end?
     </div>
-    <input type="date" id="end">
+    <input type="date" id="end" >
   </div>
   <div class="p-d-i"id="p-bx">
     <div class="p-d-i-t" id="form-title">
       <span class="material-symbols-outlined">
         edit_note
         </span>
-        Add a link to your project
-        </div>
-        <input type="text" id="more" placeholder="Enter a valid link to more of your content" autocomplete="off">
-        </div>
+      Add a link to your project
+    </div>
+    <input type="text" id="more" autocomplete="off">
+  </div>
   <div class="p-d-p"id="p-bx">
     <div class="p-d-p-t" id="form-title">
       <span class="material-symbols-outlined">
         edit_note
         </span>
       Add a cover (link, A4)
+      <div class="howtoaddLink" onclick="OpenCoverHelp()">
+      How to add a cover
+      </div>
     </div>
-    <input type="text" id="cover" placeholder="Enter a valid link to an image" autocomplete="off">
+    <input type="text" id="cover" autocomplete="off">
   </div>
   <div class="n-p-s">
     <button type="button" onclick="CreateProject()">
-      Create my project
+      Create
     </button>
   </div>
 </div>
@@ -290,7 +292,7 @@ let all_contain = `
   edit_note
   </span>
 <div class="all-c-p-d">
-  Notes
+  Writing
 </div>
 </div>
 <div class="all-c-p">
@@ -298,7 +300,18 @@ let all_contain = `
   auto_stories
   </span>
 <div class="all-c-p-d">
-  Writing
+  Characters
+</div>
+</div>
+<div class="all-c-p" onclick="OpenNotifCenter()" id="notifclass">
+<span class="material-symbols-outlined">
+  notifications
+  </span>
+<div class="notifnb" id="notifnb">
+  9+
+</div>
+<div class="all-c-p-d">
+  Notifications
 </div>
 </div>
 <div class="all-c-p" onclick="OpenInfos()">
@@ -354,7 +367,7 @@ let Main = `
         <div class="f-m-d">
           Looking for a feat?
         </div>
-        <button id="contactteam" onclick="window.open('https://www.instagram.com/naf_author/',target='_blank')">
+        <button id="contactteam" onclick="window.open('https://www.instagram.com/sprintplus_app/',target='_blank')">
           Contact our team
         </button>
       </div>
@@ -367,9 +380,15 @@ let Main = `
         feed
         </span>
       What's going on?
+      <div class="f-t-center">
+        <span class="material-symbols-outlined" onclick="OpenNotifCenter()">
+        open_in_new
+        </span>
+      </div>
     </div>
     <div class="m-m-td" id="m-m-td">
     </div>
+
   </div>
 </div>
 <div class="more">

@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="CSS Files/informations.css">
     <link rel="stylesheet" href="CSS Files/inspiration.css">
     <link rel="stylesheet" href="CSS Files/todo.css">
+    <link rel="stylesheet" href="CSS Files/notifications.css">
+    <link rel="stylesheet" href="CSS Files/writing.css">
 
     <script type="text/javascript" src="Scripts/Download.js"></script>
     <script type="text/javascript" src="Scripts/projects.js"></script>
@@ -32,6 +34,10 @@
     <script type="text/javascript" src="Scripts/inspiration.js"></script>
     <script type="text/javascript" src="Scripts/todo.js"></script>
     <script type="text/javascript" src="Scripts/onclick.js"></script>
+    <script type="text/javascript" src="Scripts/notifications.js"></script>
+    <script type="text/javascript" src="Scripts/writing.js"></script>
+    <script type="text/javascript" src="Scripts/ad.js"></script>
+    <script type="text/javascript" src="Scripts/createPassword.js"></script>
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -43,9 +49,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,700,0,0" />
   </head>
   <body>
-    <img src="Images & Icons/Logo.ico" id="SprintPlusLogo">
+    <div id="ad">
+
+    </div>
+    <img src="Images & Icons/Sprint+ logo blank.png" id="SprintPlusLogo">
     <div class="Title" id="p-title">
-      <img src="Images & Icons/Logo.ico" id="logo">
+      <img src="Images & Icons/Sprint+ logo blank.png" id="logo">
       <a id="p-p-title"></a>
       <div class="Logs">
         <a href="logs.html" target="_blank">
@@ -110,7 +119,7 @@
           edit_note
           </span>
         <div class="all-c-p-d">
-          Notes
+          Writing
         </div>
       </div>
       <div class="all-c-p" onclick="OpenInfos()">
@@ -206,6 +215,7 @@
     </div>
 
     <script>
+      let itemToHelp;
 
 
       if (!localStorage.getItem('user')) {
@@ -286,6 +296,7 @@
         }
       }
       function mainMenuShowUp() {
+        let NotifNB = 0;
         let goaled = false;
         document.getElementById('Main').innerHTML=Main;
         document.getElementById('all-contain').innerHTML=all_contain;
@@ -343,6 +354,7 @@
             console.log('Time is ' + Time + " and today is" + g.words)
 
             if (((!g.updates[TD]) || g.words < g.updates[TD]) && g.started === true ) {
+              NotifNB++;
               document.getElementById('m-m-td').innerHTML+=`
                 <div class="alert">
                   <div class="c-m">
@@ -352,7 +364,7 @@
                       ${cm[Math.floor((Math.random() * cm.length))]}
                   </div>
                   <div class="c-d-c" onclick="GoalsShowUp()">
-                    You didn't work on « ${g.name} » today
+                    You didn't work on ${g.name} today
                   </div>
                 </div>
               `;
@@ -368,6 +380,7 @@
                   let date = new Date(task.for);
                   date = date.setHours(0,0,0,0);
                   if (today === date) {
+                    NotifNB++;
                     document.getElementById('m-m-td').innerHTML+=`
                       <div class="alert">
                         <div class="c-m">
@@ -386,8 +399,16 @@
               }
             }
           }
+          if (NotifNB>0) {
+            document.getElementById('notifnb').style.visibility = "visible";
+            document.getElementById('notifnb').innerHTML = `
+              ${NotifNB<=9 ? NotifNB : "9+"} 
+            `;
+
+          }
         }
         checkIfGoals(goaled);
+        console.log(NotifNB + " is amount of notifs")
       }
       function checkIfGoals(g) {
         console.log(g)

@@ -9,12 +9,15 @@ function DownloadItem() {
     for (let [key,value] of Object.entries(items)) {
         if (key.includes('Project') || key.includes('goal') || key.includes('user')) {
             value = JSON.parse(value);
-            if (key.includes("Project")) {
+            if (!value.sync) value.sync=true;
+            if (key.includes("Project") && value.sync) {
                 stats[0]++;
             } else if (key.includes("goal")) {
                 stats[1]++;
             }
-            content[`${key}`] = value;
+            if (value.sync) {
+                content[`${key}`] = value;
+            }
         }
     }
     let informations = `
@@ -160,19 +163,18 @@ function DataMergingPasswords() {
                     </div>
                 </div>
             `;
-        } else if (key==="user") {
-            document.getElementById('ab-infos').innerHTML+=`
-                <div class="ab-pj" >
-                    <div class="pj-name">
-                        Session password:
-                    </div>
-                    <div class="pj-p" >
-                        <input type="text" id="user"autocomplete="off">
-                    </div>
-                </div>
-            `;
-        }
+        } 
     }
+    document.getElementById('ab-infos').innerHTML+=`
+    <div class="ab-pj" >
+        <div class="pj-name">
+            Session password:
+        </div>
+        <div class="pj-p" >
+            <input type="text" id="user"autocomplete="off">
+        </div>
+    </div>
+    `;
 }
 
 function DataConfirm() {

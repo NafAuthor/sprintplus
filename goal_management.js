@@ -21,7 +21,10 @@ function UpdateGoal() {
       console.log(document.getElementById('g-c-s-u-p').value + " is value entered")
       console.log(goal.words + " is now value total")
 
-      
+      if (!goal.updatescount) {
+        goal.updatescount = 0;
+      }
+      goal.updatescount++;
       
       Current_goal = `_${GoalItem+1}`;
       let Start = new Date(goal.started_on);  
@@ -65,12 +68,16 @@ function UpdateGoal() {
 function ShowUpOPT() {
   let s = document.getElementById('g-child-selector');
   let c = document.getElementById('child-viewer');
+  document.getElementById('error-no-goal').style.visibility="hidden";
+  document.getElementById('error-no-goal').style.position="absolute";
+
   if (s.style.visibility ==="visible") {
     s.style.visibility ="hidden";
     s.style.position="absolute";
     c.style.visibility="visible";
     c.style.position="relative";
-  } else {
+  }
+  else  {
     c.style.visibility ="hidden";
     c.style.position="absolute";
     s.style.visibility="visible";
@@ -79,7 +86,7 @@ function ShowUpOPT() {
 }
 function GoalsShowUp() {
   Pannel_Status=false;
-
+  Current_goal="_3"
     document.getElementById('Main').innerHTML = `
     <div class="g-parent">
     <div class="openContainer">
@@ -87,7 +94,7 @@ function GoalsShowUp() {
     settings
     </span>
     </div>
-    <div class="g-child-selector" id="g-child-selector">
+    <div class="g-child-selector" id="g-child-selector" style="visibility:visible">
       <div class="g-c-s-container">
         <div class="g-c-s-c-C">
           <div class="g-c-s-c-t">
@@ -114,11 +121,12 @@ function GoalsShowUp() {
             </div>
           </div>
         </div>
-      </div>
-      <div class="g-c-s-updt">
-      <div class="g-c-s-updt-t">
-        Goal update
-      </div>
+        <div class="g-c-s-updt">
+        <div class="g-c-s-updt-t">
+          <span class="material-symbols-outlined">
+          update
+          </span>
+        </div>
         <div class="g-c-s-u-inbox">
           <div class="g-c-s-u-p">
             <input placeholder="Words written" type="number" id="g-c-s-u-p">
@@ -133,6 +141,7 @@ function GoalsShowUp() {
           <div id="update_empty"></div>
         </div>
       </div>
+      </div>
       <div class="g-c-s-management" id="g-c-s-management">
               ${ManagementContent}
           </div>
@@ -145,26 +154,57 @@ function GoalsShowUp() {
     `;//rgba(26,41,80,0.3)
 
 
-    let v = 0;
-    const items = { ...localStorage };
-    console.log(items)
-    for (let item of Object.values(items)) {
-        let i = JSON.parse(item);
-        if (i.type) {
-            document.getElementById('select-pj-goal').innerHTML+=`
-            <option>${i.name}</option>
-            `;
-            if ( v===0 ){
-              document.getElementById('select-pj-goal').value =  i.name;
-              document.getElementById('select-pj-goal').onchange();
-              
-              v = 1;
-          }
-        }
+
+
+
+    AddPJS()
+}
+
+function AddPJS() {
+  let v = 0;
+  const items = { ...localStorage };
+  console.log(items);
+  let PJT = []
+  for (let [i,k] of Object.entries(items)) {
+      if (i.includes("Project")) {
+          let K = JSON.parse(k);
+          if(!K.star) K.star=false;
+          if(!K.backed) K.backed=false;
+          PJT.push(K);
+      }
+  }
+  PJT.sort(function(a, b){
+    if(a.name < b.name) { return -1; }
+    if(a.name > b.name) { return 1; }
+    return 0;
+  })
+  PJT.sort(function(a,b){
+    return b.star- a.star
+  });
+  PJT.sort(function(a,b){
+    return a.backed- b.backed
+  });   
+  for (let i of PJT) {
+    document.getElementById('select-pj-goal').innerHTML+=`
+    <option>${i.name}</option>
+    `;
+    if ( v===0 ){
+      document.getElementById('select-pj-goal').value =  i.name;
+      document.getElementById('select-pj-goal').onchange();
+      
+      v = 1;
     }
-
-
-    
+  }
+}
+setTimeout(()=>{
+  GoalsShowUp()
+},20)
+function ManageGoals() {
+  GoalsShowUp();
+  AddPJS()
+  document.getElementById('select-pj-goal').value =  starringPJ.name;
+  document.getElementById('select-pj-goal').onchange();
+  starringPJ;
 }
 
 
@@ -423,6 +463,7 @@ function DownloadCanvas() {
 
 function FixGoal(el) {
   document.getElementById('error-no-goal').style.visibility = 'hidden';
+  console.log(Current_goal, el.id)
     if (Current_goal!=el.id) {
         document.getElementById(el.id).style.borderColor = "rgba(255, 255, 255, 0.3)";
         Current_goal = el.id;

@@ -69,12 +69,12 @@
 }
 
 
-.i-b button:hover img {
-    transform: rotate(360deg);
-}
 
 .c-p-c {
     text-align: center;
+}
+.inspt-add-i button {
+    background-color: red;
 }
 .c-p-c select {
     width: 90%;
@@ -87,7 +87,7 @@
     padding-left: 5px;
     padding-right: 5px;
     margin-top: -15px;
-    border-radius: 20px;
+    border-radius: 5px;
     transition: 0.2s;
     -webkit-tap-highlight-color: transparent;
 
@@ -125,7 +125,6 @@
     padding-right: 10px;
     text-align: justify;
     font-size: 12px;
-    font-family: Garet, serif;
     margin-top: -20px;
 }
 
@@ -137,8 +136,9 @@
     width: 100%;
 }
 #inspt-add-b button {
-    width: 15%;
-    height: 35px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
     background-color: rgba(31, 48, 92, 0.7);
     color:white;
     border:none;
@@ -147,13 +147,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 15px;
-    border: 2px solid rgba(31, 48, 92, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0);
+    transition: 0.2s;
 }
 
-#inspt-add-b button:hover span {
-    transform: rotate(180deg);
-    color:green;
+#inspt-add-b button:hover {
+    border: 2px solid white;
 }
 #inspt-add-b button span {
     transition: 0.5s;
@@ -267,14 +268,14 @@
     width:230px;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color:#1a2950;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .d-c-i-p img {
-    border-radius: 20px;
+    border-radius: 2px;
 }
 
 #opt-dc {
@@ -284,7 +285,7 @@
     align-items:center;
     background-color:#182442;
     position: absolute;
-    border-radius: 20px;
+    border-radius: 5px;
     color:white;
     gap: 15px;
     margin: auto;
@@ -316,7 +317,9 @@
     .c-p-c {
         width: 50%;
     }
-
+    #c-p-c {
+        border-radius: 5px;
+    }
     .i-b button p {
         visibility: hidden;
         position:absolute;

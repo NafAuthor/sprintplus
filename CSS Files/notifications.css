@@ -1,0 +1,995 @@
+
+.notifContent {
+    width: 90%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color:#19284d;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 1px;
+}
+
+.NC-act {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;    padding: 20px;
+    padding-left: unset;
+    padding-right: unset;
+
+}
+
+.NC-t {
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+.NC-i-b {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 10px;
+}
+.NC-i-b-b {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position:relative;
+    cursor: pointer;
+}
+
+#clearall:hover #clearallbar,#removered:hover #removeredcircle {
+    visibility: visible;
+    width:80% 
+}
+#clearallbar, #removeredcircle {
+    position:absolute;
+    width: 0%;
+    visibility: hidden;
+    height: 2px;
+    background-color: white;
+    bottom:0;  
+    left:35;right:0;margin:auto;
+    transition:0.5s
+}
+.NC-i-t {
+    text-align: center;
+    line-height: 22px;
+    color:rgba(255,255,255,0.5);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.NC-content {
+    width: 100%;
+    height: 65%;
+    background-color: #1b2a51;    
+    border-radius: 0px 0px 0px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.pannel-work {
+    width: 20%;
+    height: 100%;
+    background-color: #19284d;
+    border-radius: 0px 0px 0px 0px;
+    display: flex;
+
+    flex-direction: column;
+    gap:10px;
+}
+.p-w-s-d {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    color:rgba(255, 255, 255,0.6);
+    text-align: left;
+    font-size: 12px;
+}
+.content-showup {
+    width: 80%;
+    background-color: #19284d;
+    height: 100%;
+    position:relative;
+    overflow-y: hidden;overflow-x: hidden;
+    border: 2px solid #2c3f70;
+    border-radius: 10px;
+}
+.p-w-s {
+    width: 100%;
+    height: 22.5%;
+    padding-left: 5px;
+    position:relative;
+}
+.p-w-s-b {
+    width: 90%;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.3);
+    height: 2px;
+    position:absolute;
+    left:0;right:0;top:16;margin:auto;
+    z-index: 2;
+}
+.p-w-s-t {
+    width: 40%;
+    background-color: #19284d;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right:40px;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    height: 30px;
+    align-items: center;   
+    z-index: 10;position:relative;
+    margin-left: 15px;
+    border: 2px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.p-w-s-t:hover {
+    border: 2px solid white;
+
+}
+#green {
+    background-color: rgb(26, 92, 26);
+}
+#red {
+    background-color: rgb(91, 34, 34);
+
+}
+#green, #red {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position:absolute;
+    right:5;
+}
+
+@keyframes ChangeRadio {
+    from {     box-shadow: 0px 0px 0px rgb(26, 163, 26);    }
+    to   {     box-shadow: 0px 0px 8px rgb(26, 163, 26);    }
+  }
+#onlineChange {
+    font-size: 13px;
+    border:unset;
+    background-color: unset;
+    border-radius: 50%;
+    animation: 0.8s linear infinite alternate ChangeRadio;
+}
+
+.files_container {
+    width: 35%;
+    height: 90%;
+    padding: 20px;
+    position:relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#file_content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+    height: 70%;
+    overflow-y: auto;
+    margin-top: 20px;
+    overflow-x: hidden;
+}
+.sourcedesc {
+    font-size: 10px;
+    right:0;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: 100%;
+    color:rgba(255, 255, 255,0.6);
+}
+#prolbar {
+    position:absolute;
+    width: 1px;
+    left: 50;
+    background-color: white;
+    height: 20px;
+}
+.folder {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-left: 30px;
+    width: 80%;
+    background-color: #1b2a51;
+    height: 40px;
+    padding-right: 20px;
+    border-radius: 50px;    cursor:pointer;
+
+}
+
+#pjbar {
+    background-color: white;
+
+    height: 2px;
+}
+
+.foldername {
+    cursor: pointer;
+    border: 2px solid rgba(0,0,0,0);
+    padding: 5px;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right:10px;
+    border-style: none none solid none;
+    border-radius: 0px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+    
+}
+#starred {
+    color:rgba(248, 255, 0, 1);
+}
+#backed {
+    color:rgba(186, 186, 186, 1);
+}
+#colornostarback {
+    color:white;
+}
+
+.folder:hover {
+    background-color: rgba(255, 255, 255,0.1) !important;
+}
+.folder:hover .foldername {
+    color:white !important;
+}
+#filecontentview {
+    width: 50%;
+    position:absolute;
+    height: 90%;
+    bottom:0;
+    right:10;
+    border-radius: 0px;
+    top:0;
+    margin:auto;
+    background-color: #19284d;
+    z-index: 10;
+    visibility: hidden;
+    overflow-x: hidden;
+}
+
+#linkBarPannelFolder {
+    width: 50px;
+    height: 2px;
+    background-color: white;
+    position:absolute;
+}
+
+
+.foldercontent  {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.foldercontentitle {
+    font-size: 25px;
+    width: fit-content;
+    padding-left:20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius:50px;
+    margin-top: 5px;
+    text-align: center;
+}
+.foldercontentstatus {
+    width:100%;
+    left: 0;
+    right: 0;
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    height: 30px;
+    padding-top: 5px;
+    justify-content: center;
+    background-color: #19284d;
+    position:absolute;
+    top:0;
+    
+}
+.fcs {
+    width:fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.fcs span {
+    background-color: #1d2d56;
+    border-radius: 30%;
+    padding: 5px;
+    font-size: 20px;
+    top:0;bottom:0;
+    margin:auto;
+}
+.fcs input {
+    height: 25px;
+    width: 150px;
+    text-align: left;
+    padding: 5px;
+    overflow-x: auto;
+    background-color: #1d2d56;
+    border:none;
+    color:white;
+    border-radius: 50px;
+    padding-left: 10px;;
+    outline:none;
+}
+.fcs input::placeholder{
+    color:white;
+    font-style: italic;
+}
+
+.foldergoalsmore {
+    font-style: italic;
+    color:rgba(255, 255, 255,0.6);
+    margin-left: 5px;
+}
+.foldergoals {
+    width: 100%;
+    padding:10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    background-color: #1d2d56;
+    margin-top:40px;
+    border-radius: 20px;
+}
+.foldergoalsmore {
+    width: 100%;
+    padding-left: 10px;
+}
+.foldergoalsinfo {
+
+    padding-bottom: 0px;
+    padding-top: 10px;
+    position:relative;
+}
+
+.foldergoalsinfostitle {
+    width: 95%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:5px;
+    position:relative;
+    height: 20px;
+}
+.foldergoalsinfostitle p {
+    position:absolute;
+    right:10;
+    font-size: 12px;
+}
+
+.goal {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    align-items: center;
+    position:relative;
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #19284d;
+    border-radius: 50px;
+}
+#activegoals, #sleepinggoals {
+    height: 35px;
+    overflow-y: scroll;
+}
+.goal span {
+    position:absolute;
+    right:20;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.foldersecurity {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;    
+    width: 100%;
+    position:absolute;
+    bottom:0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.fs-a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    position:relative;
+    background-color: #1d2d56;
+    border-radius: 50px 0px 0px 50px;
+}
+.fs-a p {
+    position:absolute;
+    left:15;
+    width: 50%;
+
+}
+.fs {
+    width: fit-content;
+    border-radius: 50px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 30px;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid  #1d2d56;
+    margin-left: auto;
+    border-style: solid none solid solid;
+    border-radius: 50px 0px 0px 50px
+
+}
+.fs span {
+    font-size: 17px;
+}
+.fs:hover {
+    border: 1px solid white;
+    border-style: solid none solid solid;
+    border-radius: 50px 0px 0px 50px
+}
+
+.alertInfos {
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    position:absolute;
+    font-size:20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    background-color: #1d2d56;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.goals_container{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    gap:10px;width:95%;height: 100%;
+    overflow-y: scroll;
+}
+#goal_content{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 85%;
+    overflow-y: auto;
+
+}
+.foldergoalname {
+    display: flex;
+    flex-direction: row;
+    gap:7px;
+    align-items: center;
+}
+.folderforgoal {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #1b2a51;
+    padding: 5px;
+    border-radius: 50px;
+    align-items: center;
+}
+.expand {
+    border-radius: 50%;
+    background-color: #1d2d56;
+    padding: 5px;
+    cursor: pointer;
+}
+.expand:hover {
+    background-color: white;
+    color:#1d2d56;
+}
+
+.developfolder {
+    position:absolute;
+    visibility: hidden;
+    width: 80%;
+    background-color: #19284d;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border-radius: 20px;
+    padding-top: 0px;
+    gap:10px;
+}
+.goalshowup {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    gap:10px;
+    overflow-x: hidden;
+    text-align: center;
+    background-color: #1b2a51;
+    position:relative;
+    padding-bottom: 10px;
+    border-radius: 20px;
+}
+.startedpastille {
+    width:12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.pastilleandtitle {
+    right:15;
+    display: flex;
+    flex-direction: row;
+    position:absolute;    
+    font-size: 12px;
+    gap: 7px;
+    align-items: center;
+
+}
+.startedornot {
+    width: 97%;
+    left:-5;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    gap: 10px;
+    justify-content: start;
+    padding: 5px;
+    padding-left: 10px;
+    align-items: center;
+    background-color: #19284d;
+    position:absolute;
+    margin-left: 10px;
+    height: 20px;
+    top:5;
+    border-radius: 20px 20px 0px 0px;
+}
+.goal_namendesc {
+    margin-top: 30px;;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    padding-bottom: 20px;;
+}
+.goal_name, .goal_desc {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.goal_name_i, .goal_desc_i {
+    width: 100%;
+    text-align: left;
+}
+.goal_name_c input, .goal_desc_c textarea {
+    width: 100%;
+    outline:none;border:none;
+    background-color: #19284d;
+    height: 25px;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    color:white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.goal_name_c input::placeholder, .goal_desc_c textarea::placeholder {
+    font-style: italic;
+    color:rgba(255,255,255,0.6)
+}
+.goal_name_c, .goal_desc_c {
+    width: 100%;
+}
+
+#durationgoal {
+    width: 90%;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    gap:5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dateboard {
+    width: 100%;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 90px;
+    gap:5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.datetitle, .statstitle {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 23px;
+}
+.datec-t, .datec1, .datec2 {
+    width:33%;
+    display: flex;
+    flex-direction: column;
+    gap:5px
+}
+.datec, .datec1-c, .datec2-c,.datec1-t,.datec2-t {
+    width: 100%;
+    height: 30px;
+    background-color: #1d2d56;
+    border:1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.datec1-t, .datec2-t, .datec {
+    background-color: #19284d;
+}
+
+#datec-none {
+    border:none;background-color: unset;
+}
+
+
+/*
+        <div class="statstitle">
+          <span class="material-symbols-outlined">
+          analytics
+          </span>
+          Progress
+        </div>
+        <div class="progressbarstats">
+            <div class="progressbarstatscolored" style="width:${(i.words*100)/parseInt(i.amount_of_words)}%">
+
+            </div>
+            <div class="progressbarstatsct">
+                ${i.words}/${i.amount_of_words}
+            </div>
+        </div>
+*/
+
+#UpdatesStat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 50px;;
+}
+
+.progressbarstats {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;
+    height: 25px;
+    border-radius: 50px;
+    background-color: #19284d;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white; 
+
+}
+.progressbarstatsct{
+    font-size: 12px;
+    z-index: 50;
+}
+.progressbarstatscolored {
+    height: 20px;
+    position:absolute;
+    top:0;bottom:0;margin:auto;
+    background-color: rgba(44, 63, 112,0.3);   
+    border-radius: 50px;
+    left:0;
+    
+
+}
+
+
+.goalsbuttons {
+    padding-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.goalsbuttons button, .goalshowup button {
+    width: 35%;
+    background-color: #19284d;
+    color:white;
+    border-radius: 50px;
+    border:none;
+    cursor: pointer;
+    height: 35px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #19284d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.goalsbuttons button:hover, .goalshowup button:hover {
+    border: 1px solid white;
+}
+@media screen and (320px <= width <= 420px) {
+    .NC-i {
+        font-size:10px;
+        width: 100%;
+    }
+    .NC-i-t {
+        line-height: 11px;
+        width: 95%;
+
+    }
+    .NC-i-b {
+        position:absolute;
+        bottom:0;
+        padding: 5px;
+        width: 80%;
+        left:0;right:0;margin:auto;
+        font-size: 15px;
+    }
+    .NC-content {
+        flex-direction: column;
+        height: 75%;
+        background-color: unset;
+    }
+
+    .pannel-work {
+        width: 100%;
+        flex-direction: row;
+        gap: 5px;
+        height: 50px;
+        justify-content: center;
+        padding-bottom: 5px;
+    }
+    .p-w-s {
+        width: 50%;
+        height: fit-content;
+        padding-left: unset;
+        position:relative;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .sourcedesc {
+        display: none;
+    }
+    .p-w-s-t {
+        width: 90%;
+        margin: unset;
+        overflow-x: hidden;
+        position:relative;
+        border-radius: 5px;
+        padding-left: 10px;
+        padding-right:unset;
+        height: 40px;
+        margin-left: unset;
+        border:none;
+        background-color: #1b2a51;
+        
+    }
+    .p-w-s-t:hover {
+        border:none;
+    }
+    .p-w-s-d {
+        display:none
+    }
+    .p-w-s-b-as , .p-w-s-b{
+        display: none;
+    }
+    .content-showup {
+        width: 100%;
+        height: 85%;
+        border:none;
+        padding: unset;
+        display: flex;
+        flex-direction: column;
+        position:relative;
+        gap:10px;
+    }
+    .durationgoal {
+        width: 100%;
+        margin:unset;
+        background-color: red;
+
+    }
+    .files_container {
+        padding: unset;
+        flex-direction: column;
+        width: 100%;
+        height: 120px;
+    }
+    #file_content {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 5px;
+        padding-left: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 48%);
+        row-gap: 5px;
+        column-gap: 5px;
+        grid-auto-rows: fit-content(1px);    
+        position:relative;        
+        background-color: #1b2a51;
+
+    }
+    #filecontentview {
+        width: 100%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        left:0px;right:0px;
+        margin-top: unset;
+        height: 70%;
+        gap:0px;
+        overflow-y: auto;
+        background-color: #1b2a51;
+    }
+    .goalsbuttons button, .goalshowup button {
+        width: 65%;
+    }
+    .goalsbuttons {
+        padding:unset;
+    }
+    #goalofflinebutton {
+        display: none;
+    }
+    .foldercontentstatus {
+        background-color: unset;
+    }
+    .alertInfos {
+        background-color: #19284d;
+        overflow:hidden;
+    }
+    .fs-a {
+        background-color: unset;
+        text-align: center;
+    }
+    .foldersecurity {
+        position:relative;
+        gap:3px;
+    }
+    .foldergoalsinfostitle p {
+        display: none;
+    }
+    .foldergoalsinfostitle {
+        text-align: center;
+    }
+    .foldergoals {
+        background-color: unset;
+    }
+
+    .fs, .fs:hover {
+        position:relative;        
+        left:0px;right:0px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction:row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        height: 40px;
+        cursor: pointer;
+        padding-left: 20px;
+        padding-right: 20px;
+        border: unset;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        border:none;
+        background-color: #19284d;
+    }
+    .alertInfos p {
+        width: 80%;
+    }
+    .fs-a p {
+        display: none;
+    }
+    .folder{
+        width: 90%;
+        margin:unset;
+        background-color: #19284d;
+        border-radius: 5px;
+    }
+    .startedornot {
+        width: 90%;
+        left: 0;
+        right: 0;
+
+    }
+    .datec1-c, .datec2-c {
+        font-size: 10px;
+        background-color: #19284d;
+    }
+    .dateboard {
+        width: 100%;
+    }
+    .folderforgoal {
+        border-radius: 5px;
+
+    }
+}

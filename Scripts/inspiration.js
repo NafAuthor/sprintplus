@@ -43,8 +43,8 @@ function OpenInspiration() {
     let v = 0;
     let items = {... localStorage};
     for (let [n,k] of Object.entries(items)) {
-        let K = JSON.parse(k);
         if (n.includes('Project')) {
+            let K = JSON.parse(k);
             document.getElementById('c-p-c').innerHTML+=`
                 <option>
                     ${K.name}

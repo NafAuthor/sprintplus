@@ -85,6 +85,9 @@ function OpenInfos() {
                 workspace_premium
                 </span>
                 Sprint+ enhanced
+                <div class="Spenhancedmore" onclick="LearnMoreSPEnhanced()">
+                    Learn more
+                </div>
                 </div>
                 <div class="ifo-bx-d">
                     <b>Sprint+ enhanced</b> is a premium
@@ -108,8 +111,8 @@ function OpenInfos() {
                     Featuring is the best Sprint+ v.1.0.0 way
                     to share your stories & social medias content
                     on Sprint+.<br>
-                    Contact <a href="https://www.instagram.com/naf_author">
-                    our team leader
+                    Contact <a href="https://www.instagram.com/sprintplus_app/">
+                    our team
                     </a> to discuss about a feat. 
                     <br> Featuring are free, but are not 
                     necessary always easy to get. The 
@@ -164,7 +167,7 @@ function OpenInfos() {
             <div class="ifo-bt-c">
                 <div class="ifo-bt">
                     <div class="ifo-bt-b">
-                        <button onclick="window.open('https://www.instagram.com/naf_author')">
+                        <button onclick="window.open('https://www.instagram.com/sprintplus_app/')">
                         Contact our <b>team manager</b> for any
                         questions
                         </button>
@@ -174,6 +177,13 @@ function OpenInfos() {
                     <div class="ifo-bt-b">
                         <button onclick="window.open('https://discord.gg/72tACSk8Jd')">
                         Discord support
+                        </button>
+                    </div>
+                </div>
+                <div class="ifo-bt">
+                    <div class="ifo-bt-b">
+                        <button onclick="window.open('logs.html')">
+                            Informations
                         </button>
                     </div>
                 </div>
@@ -224,7 +234,13 @@ function OpenInfos() {
     document.getElementById('userpassword').value = user.password;
     document.getElementById('useremail').value = user.email;
 
-}/*
+}
+function LearnMoreSPEnhanced() {
+    localStorage.setItem('helpItem',"premium");
+    window.open('help.html')
+}
+
+/*
 let Activated = false;
 let USERNAME = "";
 function EditName() {

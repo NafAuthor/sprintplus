@@ -3,6 +3,15 @@ let customGoal = false;
 let customGoalName;
 let InCharge;
 
+function NewGoalCreateByCenter() {
+  OpenFolder({id:`pj-open-${starringPJ.name}`});
+  ModifyAddGoal()
+  starringPJ;
+}
+function ActivateGoal() {
+  OpenFolder({id:`pj-open-${starringPJ.name}`});
+  starringPJ;
+}
 function OpenFolder(el) {
   customGoal=false;
   NewAddGoal=0;
@@ -569,12 +578,26 @@ function FilterProjects(type) {
       PJNEW[i].remove();
     }
     let PJS = [];
-    for (let o of Object.entries(items)) {
-      if (o[0].includes("Project")) {
-          PJS.push(JSON.parse(o[1]))
+    for (let e of Object.entries(items)) {
+      if (e[0].includes("Project")) {
+          let o = JSON.parse(e[1])
+          if (!o.star) {
+            o.star=false;
+          }
+          if(!o.backed) {
+            o.backed=false;
+          }
+          PJS.push(o);
       }
     }
-    PJS.sort(function(a,b){return b.star- a.star});
+    console.log(PJs)
+    PJS.sort(function(a,b){
+      return b.star- a.star
+    });
+    PJS.sort(function(a,b){
+      return a.backed- b.backed
+    });    console.log(PJs)
+
     for (let o of PJS) {
           let item = o;
           if (item.cover === null) {
@@ -592,10 +615,10 @@ function FilterProjects(type) {
                 <div class="pj-param">
                   <div class="pj-param-contan">
                     <span class="material-symbols-outlined" onclick="ChangeStatusStar(this)" id="${item.name}"
-                      style="border:1px solid ${item.star ? 'yellow' : '#2c3f70'}"
+                      style="border:1px solid ${item.star ? 'yellow' : '#1d2d55'}"
                       > star </span>
                     <span class="material-symbols-outlined" id="${item.name}" onclick="ChangeStatusBack(this)"
-                    style="border:1px solid ${item.backed ? 'white' : '#2c3f70'}"
+                    style="border:1px solid ${item.backed ? 'white' : '#1d2d55'}"
                     > hide_source </span>
                   </div>
                 </div>
@@ -620,28 +643,29 @@ function ProjectShowUp() {
     InCharge;
     Pannel_Status = false;
     document.getElementById('Main').innerHTML = `
-    <div class="pj-ctnt" id="pj-ctnt">
-      <div class="pj-ctnt-opt">
-        <button onclick="Project()">
+    <div class="pj-ctnt-opt">
+      <button onclick="Project()">
+      <span class="material-symbols-outlined">
+        add
+        </span>
+        New project
+      </button>
+    <div class="pj-ctnt-select">
+      <div class="pj-ctn-select-title">
         <span class="material-symbols-outlined">
-          add
-          </span>
-          New project
-        </button>
-        <div class="pj-ctnt-select">
-          <div class="pj-ctn-select-title">
-            <span class="material-symbols-outlined">
-            filter_alt
-            </span>
-            Filter projects
-          </div>
-          <select id="FilterProject" onchange="FilterRedirect()">
-            <option>All</option>
-            <option>Starred</option>
-            <option>Sleeping</option>
-          </select>
-        </div>
+        filter_alt
+        </span>
+        Filter projects
       </div>
+      <select id="FilterProject" onchange="FilterRedirect()">
+        <option>All</option>
+        <option>Starred</option>
+        <option>Sleeping</option>
+      </select>
+    </div>
+  </div>
+    <div class="pj-ctnt" id="pj-ctnt">
+      
     </div>
   `;
   FilterProjects('All');
@@ -946,7 +970,11 @@ function Goal_Save() {
           words: 0,
           started: false,
           started_on: "",
-          updates: {}
+          updates: {},
+          star:false,
+          backed:false,
+          status:'',
+          sync:true
       }
 
       for (let i = 0; i < 2; i++) {
@@ -1045,6 +1073,9 @@ function Back(c) {
             edit_note
             </span>
           Add a cover (link, A4)
+          <div class="howtoaddLink" onclick="OpenCoverHelp()">
+            How to add a cover
+          </div>
         </div>
         <input type="text" id="cover" autocomplete="off">
       </div>
@@ -1062,4 +1093,9 @@ function Back(c) {
     document.getElementById('end').value = c.end;
     document.getElementById('more').value = c.more;
     document.getElementById('cover').value = c.cover;
+}
+
+function OpenCoverHelp() {
+  localStorage.setItem('helpItem',"pj-cover");
+  window.open('help.html')
 }

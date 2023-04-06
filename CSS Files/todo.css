@@ -43,7 +43,7 @@
     height: 55%;
     padding: 10px;
     background-color: #19284d;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -80,10 +80,11 @@
     outline: none;
     background-color: rgba(31, 48, 92, 0.7);
     height: 35px;
-    border: 2px solid rgba(31, 48, 92, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0);
     color:white;
     cursor: pointer;
-    border-radius: 20px; -webkit-tap-highlight-color: transparent;
+    border-radius: 5px;
+    -webkit-tap-highlight-color: transparent;
 
 
 }
@@ -102,7 +103,7 @@
 }
 
 .td-p-c-add-t button {
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: rgba(31, 48, 92, 0.7);
     border: 2px solid rgba(31, 48, 92, 0.7);
     display: flex;
@@ -131,7 +132,7 @@
     width: 100%;
 }
 .td-content {
-    border-radius: 10px;
+    border-radius: 5px;
     width: 80%;
     background-color: #19284d;
     height: 90%;
@@ -160,7 +161,7 @@
     width: 90%;
     height: 2px;
     background-color: rgba(255,255,255,0.3);
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .td-c-t-t {
@@ -168,7 +169,7 @@
     padding-left: 10px;
     padding-right: 10px;
     background-color: #19284d;
-    border-radius: 80px;
+    border-radius: 5px;
 }
 
 #undonetext {
@@ -193,14 +194,14 @@
     flex-direction: column;
     align-items: center;
     position:relative;
-    border-radius: 20px;
+    border-radius: 5px;
     margin-bottom: 5px;
 
 }
 .todo {
     margin-top: 5px;
     width: 100%;
-    border-radius: 50px;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -433,14 +434,14 @@
     padding-right: 5px;
     height: 25px;
     color:white;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 #date {
     width: 50%;
 }
 .tdn-form textarea {
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .tdn-form {
     display: flex;
@@ -466,7 +467,7 @@
     border:none;
     margin-left: auto;
     padding: 10px;
-    border-radius: 50px;
+    border-radius: 5px;
     font-size: 18px;
     margin-right: auto;
     border: 2px solid rgba(31, 48, 92, 0.7);
@@ -504,7 +505,7 @@
 
 @media screen and (320px <= width <= 420px) {
     .td-m-c {
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: 100%;
     }
     .td-p-c {
@@ -525,6 +526,7 @@
         justify-content: center;
         align-items: center;
     }
+
     .td-p-c-slct-p-i {
         width: 50%;
         margin-right: auto;
@@ -591,7 +593,11 @@
         border: 2px solid rgba(192, 47, 47, 0);
         
     }
+    #td-p-c-slct-p-i, #td-p-c-slct-p-s {
+        border-radius: 5px;
+    }
 }
+
 
 
 

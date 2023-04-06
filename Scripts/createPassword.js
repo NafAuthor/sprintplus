@@ -28,3 +28,19 @@ console.log('\n\n\n\n\nPasswords:')
 for (let i = 0; i < hwm; i++) {
     console.log(`${forw[i]} --> ${mdps[i]} \n`)
 }
+
+function AdblockDel() {
+        let AB = [];
+        for (let i = 0; i < 50; i++) {
+            let x = Math.floor((Math.random() * 3));
+            if (x === 0) {
+                AB.push(abc.split('')[Math.floor(Math.random()*abc.split('').length)]);
+            } else if(x === 1) {
+                AB.push(nb.split('')[Math.floor(Math.random()*nb.split('').length)]);
+            } else if (x === 2) {
+                AB.push(crctr.split('')[Math.floor(Math.random()*crctr.split('').length)]);
+            }
+        }
+        AdBlockBlock = AB.join('')
+        return AdBlockBlock;
+}
