@@ -196,9 +196,7 @@ function AddPJS() {
     }
   }
 }
-setTimeout(()=>{
-  GoalsShowUp()
-},20)
+
 function ManageGoals() {
   GoalsShowUp();
   AddPJS()

@@ -295,14 +295,6 @@ let all_contain = `
   Writing
 </div>
 </div>
-<div class="all-c-p">
-<span class="material-symbols-outlined">
-  auto_stories
-  </span>
-<div class="all-c-p-d">
-  Characters
-</div>
-</div>
 <div class="all-c-p" onclick="OpenNotifCenter()" id="notifclass">
 <span class="material-symbols-outlined">
   notifications
