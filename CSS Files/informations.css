@@ -214,7 +214,7 @@
 
 
 .ifo-bt-b button {
-    width: 60%;
+    width: 40%;
     height: 50px;
     color:white;
     border-radius: 5px;
@@ -225,7 +225,8 @@
     margin-right: auto;
 }
 .ifo-bt-b button:hover {
-    border: 2px solid white;
+    background-color:white;
+    color: #19284d;
 }
 
 
@@ -238,10 +239,7 @@
     margin-left: auto;
     margin-right: auto;
 }
-#security button:hover{
-    border: 2px solid #4DB399;
 
-}
 
 .param-info-wh {
     font-size: 13px;

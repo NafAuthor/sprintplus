@@ -384,11 +384,14 @@ let Main = `
   </div>
 </div>
 <div class="more">
-  <div class="mor-t" title="Want your story to be there? Contact our team.">
+  <div class="mor-t">
     <span class="material-symbols-outlined">
       auto_awesome
       </span>
     Our favorite stories
+    <div class="learnmorefavsto" onclick="learnmorefavsto()">
+      Learn more
+    </div>
   </div>
   <div class="mor-st">
     <div class="st" >
@@ -411,6 +414,12 @@ let Main = `
 </div>
 </div>
 `;
+
+
+function learnmorefavsto() {
+  localStorage.setItem('helpItem',"feat");
+  window.open('help.html')
+}
 
 let goaled = false;
 

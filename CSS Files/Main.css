@@ -254,6 +254,7 @@ body a {
     margin:auto;
     right:0;
     transition: 0.5s;
+
 }
 .all-contain:hover {
     bottom:0;
@@ -267,9 +268,7 @@ body a {
     z-index: 20;
 
 }
-.Support a:hover, .Logs a:hover {
-    border: 2px solid white;
-}
+
 
 .Logs a, .Support a {
     position:absolute;
@@ -282,7 +281,7 @@ body a {
     align-items: center;
     justify-content: center;
     width: fit-content;
-    padding: 10px;
+    padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
     height: fit-content;
@@ -294,7 +293,14 @@ body a {
     border-radius: 5px;
     background-color: #19284d;
 }
+.Support a, .Logs a, .Support span, .Logs span {
+    font-size:20px !important;
 
+}
+.Support a:hover, .Logs a:hover {
+    background-color: white;
+    color:#19284d;
+}
 
 .all-c-p {
     display: flex;
@@ -494,8 +500,8 @@ body a {
 
 }
 .featured button:hover {
-    border: 1px solid white;
-
+    background-color:white;
+    color: #19284d;
 }
 /*
                 <div class="alert">
@@ -549,11 +555,27 @@ body a {
     text-align: center;
 }
 .c-d-c:hover {
-    border: 1px solid white;
+    background-color:white;
+    color:#19284d;
 
 }
 
 
+    .learnmorefavsto {
+        position:absolute;
+        right:10;
+        font-size: 15px;
+        padding: 5px;
+        padding-left:10px;
+        padding-right:10px;
+        border-radius: 5px;
+        cursor:pointer;
+    }
+
+    .learnmorefavsto:hover {
+        background-color: white;
+        color:#19284d;
+    }
 .nothing-to-see-here {
 
     padding: 5px;
@@ -660,10 +682,10 @@ body a {
 }
 .mor-t {
     padding-bottom:10px;
-    cursor:help;
     font-size: 20px;
     display: flex;
     flex-direction: row;
+    position:relative;
     gap: 10px;
     align-items: center;
     border: 2px solid white;
