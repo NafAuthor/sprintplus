@@ -123,6 +123,12 @@
     font-family: 'Rubik Distressed', cursive;
     font-family: 'Source Sans Pro', sans-serif;
     font-family: 'Ubuntu', sans-serif;
+    display: block;
+}
+#editcontent div, #editcontent span, #editcontent p {
+    display: block !important;
+    width:100% !important;
+    height: fit-content;
 }
 #writingdisplayer #editcontent {
     padding: 10px;
@@ -133,6 +139,8 @@
     outline:none;
     font-size: 13px;
     overflow-y: auto;
+    width: 95%;
+    box-sizing: border-box;
 }
 
 .chaptermv {
