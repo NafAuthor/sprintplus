@@ -93,9 +93,7 @@ function SetPJ(el) {
     }
 }
 
-setTimeout(() => {
-    OpenWriting();
-}, 20);
+
 
 function CreateNewChapter() {
     chapterincharge=false;
