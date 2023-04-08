@@ -94,7 +94,6 @@ function SetPJ(el) {
 }
 
 
-
 function CreateNewChapter() {
     chapterincharge=false;
     NewChapter()
@@ -210,6 +209,9 @@ function Save() {
 
 function CheckInt(el) {
     let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    if (!pj.chapters) {
+        pj.chapters = {};
+    }
     if (pj.chapters[el.value]!=null && pj.chapters[el.value].name != chapterincharge.name) {
         el.style.border="1px solid red";
         el.style.borderStyle="none none solid none"
