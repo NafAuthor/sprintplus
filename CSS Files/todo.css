@@ -80,7 +80,7 @@
     outline: none;
     background-color: rgba(31, 48, 92, 0.7);
     height: 35px;
-    border: 2px solid rgba(0, 0, 0, 0);
+    border:none;
     color:white;
     cursor: pointer;
     border-radius: 5px;
@@ -90,7 +90,8 @@
 }
 
 .td-p-c-slct-p-i select:hover {
-    border: 2px solid white;
+    background-color: white;
+    color:#19284d;
 }
 
 .td-p-c-add-t {
@@ -105,7 +106,6 @@
 .td-p-c-add-t button {
     border-radius: 5px;
     background-color: rgba(31, 48, 92, 0.7);
-    border: 2px solid rgba(31, 48, 92, 0.7);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -121,7 +121,8 @@
 }
 
 .td-p-c-add-t button:hover {
-    border: 2px solid white;
+    background-color: white;
+    color:#19284d;
 }
 .td-c-td-c {
     height: fit-content;
@@ -215,9 +216,9 @@
 }
 
 .todo-more, .todo-check {
-    padding: 5px;
+    padding: 2px;
     background-color: #19284d;
-    border-radius: 50%;
+    border-radius: 5px;
     cursor:pointer;
 }
 .todo-more:hover, .todo-check:hover {
@@ -253,7 +254,6 @@
 .todo-more-content-p:hover {
     background-color: white;
     color:#19284d;
-    border-color:rgba(255, 255, 255,0.8);
 }
 
 .tododesc {
@@ -423,7 +423,23 @@
     align-items: center;
     gap: 10px;
     font-size: 17px;
+    position:relative;
 }
+#td-t-up {
+    height: 55px;
+
+}
+.taskcasedev {
+    position:absolute;
+    bottom:0;
+    font-size: 12px;
+    color:rgba(255,255,255,0.6)
+}
+.tdn-form input::placeholder, .tdn-form textarea::placeholder {
+    font-style: italic;
+    color:rgba(255,255,255,0.6)
+}
+
 .tdn-form input, .tdn-form textarea {
     width: 80%;
     background-color: rgba(31, 48, 92, 0.7);
@@ -432,12 +448,24 @@
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
-    height: 25px;
+    height: 30px;
+    border:2px solid rgba(0,0,0,0);
+    border-style:none none solid none;
+
     color:white;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+.tdn-form input:focus, .tdn-form textarea:focus, .tdn-form input:hover, .tdn-form textarea:hover {
+    border:2px solid white;
+    border-radius: 5px 5px 0px 0px;
+    border-style:none none solid none;
+}
+.tdn-form input {
+    padding-left: 10px;
 }
 #date {
     width: 50%;
+    cursor: pointer;
 }
 .tdn-form textarea {
     padding: 10px;
@@ -470,11 +498,12 @@
     border-radius: 5px;
     font-size: 18px;
     margin-right: auto;
-    border: 2px solid rgba(31, 48, 92, 0.7);
     cursor: pointer;
+    border:none;
 }
 .validate_button:hover {
-    border: 2px solid white;
+    background-color: white;
+    color:#19284d;
 }
 
 .tdn-f-t {

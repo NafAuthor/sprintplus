@@ -1,6 +1,7 @@
 let ChargedTask;
 
 function ShowUpToDo() {
+
     document.getElementById('Main').innerHTML = `
         <div class="td-m-c">
             <div class="td-p-c">
@@ -370,18 +371,18 @@ function openNewTask() {
                     <span class="material-symbols-outlined">
                     task
                     </span>
-                    Task name (100ch.)
+                    Name (100ch.)
                 </div>
-                <input type="text" maxlength="100" id="taskname" autocomplete="off">
+                <input type="text" maxlength="100" id="taskname" autocomplete="off" placeholder="Enter a name for your task">
             </div>
             <div class="td-n-p">
                 <div class="td-n-p-t">
                     <span class="material-symbols-outlined">
                     description
                     </span>
-                    Task description (500ch.)
+                    Description (500ch.)
                 </div>
-                <textarea  maxlength="500 "style="width:90%;height:100px" id="taskdesc"></textarea>
+                <textarea  maxlength="500 "style="width:90%;height:100px" id="taskdesc" placeholder="Enter a description for your task"></textarea>
             </div>
             <div class="td-n-p">
                 <div class="td-n-p-t">
@@ -393,11 +394,14 @@ function openNewTask() {
                 <input type="date" id="date">
             </div>
             <div class="td-n-p">
-                <div class="td-n-p-t">
+                <div class="td-n-p-t" id="td-t-up">
                 <span class="material-symbols-outlined">
                 task_alt
                 </span>
                     Repeat the task
+                    <div class="taskcasedev">
+                        The task will be repeated every day
+                    </div>
                 </div>
                 <div class="choice">
                     <div  class="choicecheck">
@@ -415,11 +419,14 @@ function openNewTask() {
                 </div>
             </div>
                 <div class="td-n-p">
-                    <div class="td-n-p-t">
+                    <div class="td-n-p-t" id="td-t-up">
                         <span class="material-symbols-outlined">
                         notifications
                         </span>
                         Alert a day before
+                        <div class="taskcasedev">
+                            You will be notified one day before the task ends.
+                        </div>
                     </div>
                     <div class="choice">
                         <div  class="choicecheck">
@@ -437,11 +444,14 @@ function openNewTask() {
                     </div>
                 </div>
                 <div class="td-n-p">
-                    <div class="td-n-p-t">
+                    <div class="td-n-p-t" id="td-t-up">
                         <span class="material-symbols-outlined">
                         delete
                         </span>
                         Delete if undone
+                        <div class="taskcasedev">
+                           If undone after the day limit, your task will be deleted.
+                        </div>
                     </div>
                     <div class="choice">
                         <div class="choicecheck">

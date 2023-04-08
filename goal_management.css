@@ -225,8 +225,8 @@
     border: 2px solid #1a2950;
 }
 .g-c-s-m-c button:hover {
-    border: 2px solid white;
-
+    background-color: white;
+    color:#19284d
 }
 
 
@@ -271,8 +271,8 @@
     margin-right: auto;
 }
 .g-c #_1:hover ,.g-c #_2:hover {
-    border: 1px solid  white;
-
+    background-color: white;
+    color:#19284d
 }
 
 
@@ -303,8 +303,9 @@
     padding-top: 0px;
     padding-bottom:0px;   
 }
-#select-pj-goal:hover {
-    border: 2px solid white;
+#select-pj-goal:hover, #SaveGoalButton:hover {
+    background-color: white;
+    color:#19284d
 }
 .child-viewer {
     width: 80%;
@@ -521,7 +522,7 @@
     position:absolute;
     left:20;
     -webkit-tap-highlight-color: transparent;
-    bottom:0;
+    top:0;
     margin:auto;
 }
 .openContainer:hover {

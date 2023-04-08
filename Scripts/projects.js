@@ -167,7 +167,10 @@ function ChangeTime() {
       To proceed, please enter a date.<br>
       You will still be able to modify it later.
     </div>
+    <div class="mdf-input">
     <input type="date" id="enter-content" >
+    </div>
+    <div class="mdf-button">
     <button onclick="SaveDate()">
       <span class="material-symbols-outlined">
       sync_saved_locally
@@ -181,6 +184,7 @@ function ChangeTime() {
       </span>
       Cancel
     </button>
+    </div>
   </div>
 `;
 }
@@ -196,7 +200,10 @@ function ChangeName() {
         To proceed, please enter name (must not contain « project » or « goal »).<br>
         You will still be able to modify it later.
       </div>
-      <input type="text" id="enter-content" autocomplete="off">
+      <div class="mdf-input">
+      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a new name">
+      </div>
+      <div class="mdf-button">
       <button onclick="SaveName()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -210,6 +217,7 @@ function ChangeName() {
         </span>
         Cancel
       </button>
+      </div>
     </div>
   `;
 }
@@ -265,12 +273,18 @@ function ChangeCover() {
     <div class="mdf-b">
       <div class="mdf-t">
         Modify your cover
+        <div class="howtoaddLink" onclick="OpenCoverHelp()">
+          How to add a cover
+        </div>
       </div>
       <div class="mdf-i">
         You are about to modify the cover of your project.<br>
         To proceed, please enter a link to a cover (A4 image type).
       </div>
-      <input type="text" id="enter-content" autocomplete="off">
+      <div class="mdf-input">
+      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a link to an image">
+      </div>
+      <div class="mdf-button">
       <button onclick="SaveCover()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -284,6 +298,7 @@ function ChangeCover() {
         </span>
         Cancel
       </button>
+      </div>
     </div>
   `;
 }
@@ -316,7 +331,10 @@ function ChangeDesc() {
         Please do not make it too long.<br>
         You will still be able to modify it later.
       </div>
-      <input type="text" id="enter-content" autocomplete="off">
+      <div class="mdf-input">
+      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a description">
+      </div>
+      <div class="mdf-button">
       <button onclick="SaveDesc()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -329,6 +347,7 @@ function ChangeDesc() {
         </span>
         Cancel
       </button>
+      </div>
     </div>
   `;
 }
@@ -360,7 +379,10 @@ function ChangeFiles() {
         You are about to modify the additional content of your project.<br>
         To proceed, please enter a link to a file of yours on the internet that reffers to your project.
       </div>
-      <input type="text" id="enter-content" autocomplete="off">
+      <div class="mdf-input">
+      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a link to any type of content">
+      </div>
+      <div class="mdf-button">
       <button onclick="SaveFiles()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -374,6 +396,7 @@ function ChangeFiles() {
         </span>
         Cancel
       </button>
+      </div>
     </div>
   `;
 }
@@ -603,30 +626,79 @@ function FilterProjects(type) {
           if (item.cover === null) {
               item.cover = "https://drive.google.com/uc?id=1AH5bmT04YgAPoQjATPxTLq2C0mv7la1O"
           }
+          if (!item.end) {
+            item.end = new Date()
+          }
+          if (!item.chapters) {
+            item.chapters = {}
+          }
+          console.log(item)
+          let Ends = item.end;
+          console.log(Ends)
+
+          Ends = new Date(Ends)
+          console.log(Ends)
+
           let WTA = `
           <div class="pj-new">
             <div class="pj-${item.name}" id="pj-whl">
               <div class="pj-infos" id="pj-child">
                 <div class="pj-new-ttl"> ${item.name} </div>
-                <div class="pj-open" id="pj-open-${item.name}" onclick="OpenFolder(this);">
-                  <button class="material-symbols-outlined" style="font-size:50px;cursor:pointer;" id="folder"> folder </button>
-                  <button class="material-symbols-outlined" style="font-size:50px;cursor:pointer;" id="folder-open"> folder_open </button>
-                  <div class="pj-open-desc"> Open project </div></div>
-                <div class="pj-param">
-                  <div class="pj-param-contan">
-                    <span class="material-symbols-outlined" onclick="ChangeStatusStar(this)" id="${item.name}"
-                      style="border:1px solid ${item.star ? 'yellow' : '#1d2d55'}"
-                      > star </span>
-                    <span class="material-symbols-outlined" id="${item.name}" onclick="ChangeStatusBack(this)"
-                    style="border:1px solid ${item.backed ? 'white' : '#1d2d55'}"
-                    > hide_source </span>
+                <div class="pj-open-and-desc">
+                  <div class="pj-open-desc">
+                    <div class="pj-open-desc-ddesc">
+                      <div class="pj-open-desc-info-b">
+                        Project description
+                      </div>
+                      ${item.desc}
+                    </div>
+                    <div class="pj-open-desc-infos">
+                      <div class="pj-open-infos-b">
+                        <span class="material-symbols-outlined" style="color:${item.sync?"green":"red"}">
+                        recycling
+                        </span>
+                        <span class="material-symbols-outlined" style="color:${item.star?"yellow":(item.backed?"white":"white")}">
+                        ${item.star?"star":(item.backed?"hide_source":"blur_on")}
+                        </span>
+                      </div>
+
+                      <div class="pj-open-desc-infos-d">
+                        Ends on ${Ends.getDate()>9?Ends.getDate():"0"+Ends.getDate()}/
+                        ${Ends.getMonth()+1>9?Ends.getMonth()+1:"0"+(Ends.getMonth()+1)}/
+                        ${Ends.getFullYear()}
+                      </div>
+
+                      <div class="pj-open-desc-infos-d">
+                        ${Object.keys(item.chapters).length} chapters
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="pj-slct-img">
-                <img src="${item.cover}" class="pj-cover">
+              <div class="pj-param">
+              <div class="pj-open" id="pj-open-${item.name}" onclick="OpenFolder(this);">
+                  <button class="material-symbols-outlined"  id="folder"> folder </button>
+                  <button class="material-symbols-outlined"  id="folder-open"> folder_open </button>
+                  <div class="pj-open-desc"> Open project </div>
+              </div>
+              <div class="pj-param-contan">
+                <span class="material-symbols-outlined" onclick="window.open('${item.more}')" id="${item.name}"> open_in_new </span>
+                <span class="material-symbols-outlined" onclick="GoalsShowUp()" id="${item.name}"> show_chart </span>
+                <span class="material-symbols-outlined" onclick="OpenWriting()" id="${item.name}"> edit </span>
+                <div class="pj-param-contan-view">
+                  <span class="material-symbols-outlined" onclick="ChangeStatusStar(this)" id="${item.name}"
+                    style="color: ${item.star ? 'yellow' : 'white'};"
+                    > star </span>
+                  <span class="material-symbols-outlined" id="${item.name}" onclick="ChangeStatusBack(this)"
+                  style="color: ${item.backed ? 'grey' : 'white'}"
+                  > hide_source </span>
+                </div>
               </div>
             </div>
+            </div>
+            <div class="pj-slct-img">
+            <img src="${item.cover}" class="pj-cover">
+          </div>
         </div>`;
         let ct = document.getElementById("FilterProject").value;
         if (
@@ -723,11 +795,14 @@ function DeleteProject() {
     </div>
     <div class="mdf-i">
       You are about to delete your project. <br>
-      This action can't be undone. If you're not sure, please download yoru datas before deleting your project. <br>
+      This action can't be undone. If you're not sure, please download your datas before deleting your project. <br>
       Enter in the following inputs the password of your project, and the password of your account.
     </div>
-    <input type="text" id="enter-content-0">
-    <input type="text" id="enter-content-1">
+    <div class="mdf-input">
+    <input type="text" id="enter-content-0" placeholder="Project password">
+    <input type="text" id="enter-content-1" placeholder="Session password">
+    </div>
+    <div class="mdf-button">
     <button onclick="confirmdel()">
       <span class="material-symbols-outlined">
       sync_saved_locally
@@ -740,6 +815,7 @@ function DeleteProject() {
       </span>
       Cancel
     </button>
+    </div>
   </div>
 `;
 

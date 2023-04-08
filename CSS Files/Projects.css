@@ -2,9 +2,12 @@
 
 .pj-new-ttl {
     font-size: 20px;
-    width: 95%;
-    text-align: center;
+    width: 100%;
+    text-align: left;
     overflow-x: hidden;
+    padding-left: 5px;
+    margin-left: 5px;
+
 }
 .pj-new {
 
@@ -16,7 +19,9 @@
     height: 200px;
     position:relative;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
+    border-style: none none none solid;
+    border-color: white;
     margin-left: auto;
     margin-right: auto;
 }
@@ -33,9 +38,66 @@
         <div class="pj-new-ttl"> ${item.name} </div>
 
 */
+
+
+
+
+.pj-slct-img img {
+    border-radius: 5px;
+
+}
+.pj-slct-img {
+    height: 75%;
+    overflow-y: hidden;
+    position:absolute;
+    width: fit-content;
+    max-width: 30%;
+    right:5;
+    top: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pj-cover {
+    max-width: 95%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+
+
+.pj-infos {
+    width: 70%;
+    z-index:0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    gap: 5px;
+}
+.pj-open {
+    width: fit-content;
+
+    padding: 10px;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 1px solid #1d2d55;
+    cursor:pointer;
+    background-color: #1d2d55;
+    height: 15px;
+    gap:10px;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right:15px;
+}
 #folder-open {
     position: absolute;
     visibility: hidden;
+}
+#folder, #folder-open {
+    height: 100%;
 }
 .pj-open:hover #folder {
     position: absolute;
@@ -46,60 +108,9 @@
     visibility: visible;
 }
 
-
-
-.pj-slct-img img {
-    border-radius: 5px;
-    border: 2px solid #2c3f70;
-
-}
-.pj-slct-img {
-    height: 90%;
-    overflow-y: hidden;
-    position:absolute;
-    right:3;
-    width: 26%;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.pj-cover {
-    max-width: 95%;
-    max-height: 100%;
-    border-radius: 2px;
-}
-
-
-
-.pj-infos {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items:center ;
-    gap: 25px;
-}
-.pj-open {
-    width: 50%;
-    padding: 10px;;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border: 1px solid #1d2d55;
-    cursor:pointer;
-    background-color: #1d2d55;
-
-    border-radius: 5px;
-}
-
-
 .pj-open button {
-    width: 50%;
-    height: 100%;
+    width: 50px;
+    height: 50px;
     background-color: #1d2d55;
     border:none;
     display: flex;
@@ -107,36 +118,47 @@
     justify-content: center;
     color:white;
 }
-.pj-open:hover {
-    border: 1px solid white;
+.pj-open:hover, .pj-open:hover #folder-open {
+        color:#19284d;
+        background-color: white;
 }
 
 .pj-open-desc {
     font-weight: bold;
-    font-size: 10px;
+    font-size: 13px;
 }
 .pj-param {
     position:absolute;
     bottom:0;
     left:0;
-    width: 50%;
+    width: 100%;
     height:50px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 10px;
     gap: 5px;
+    
 }
 
 .pj-param-contan {
     border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 5px;
-
+    position:relative;
+    width:100%
 }
 
+.pj-param-contan-view {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+    height: 100%;
+    right:20;
+    position:absolute;
+}
 .pj-param-contan span {
     padding: 5px;
     cursor: pointer;
@@ -144,7 +166,7 @@
     display: flex;
     width: 25px;
     height: 25px;
-    background-color: #24335a;
+    background-color: #1d2d55;
     border:none;
     border-radius: 5px;
     align-items: center;
@@ -153,7 +175,8 @@
     color:white;
 }
 .pj-param-contan span:hover {
-    background-color: rgba(223, 223, 223,0.3);
+    color:#19284d;
+    background-color: white;
 }
 
 .pj-form {
@@ -252,9 +275,10 @@
     right:15%;
     font-weight: normal;
     font-size: 10px;
-    padding: 5px;top:0;bottom:0;margin:auto;
+    padding: 5px;
+    top:0;bottom:0;margin:auto;
     border-radius: 5px;
-
+    height: fit-content;
     cursor: pointer;
 }
 .howtoaddLink:hover {
@@ -298,8 +322,8 @@
     border: 2px solid rgba(0,0,0,0);
 }
 .n-p-s button:hover {
-    border: 2px solid white;
-}
+    color:#19284d;
+    background-color: white;}
 
 
 .Save_project {
@@ -385,7 +409,7 @@
     outline:none;
     color:white;
     background-color: #19284d;
-    border:1px solid #2c3f70;
+    border:none;
     border-radius: 5px;
     cursor: pointer;
     padding-left: 5px;
@@ -394,8 +418,8 @@
 
 }
 .pj-ctnt-select select:hover {
-    border:1px solid white;
-}
+    color:#19284d;
+    background-color: white;}
 .pj-ctnt-select {
     display: flex;
     flex-direction: row;
@@ -403,14 +427,17 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border:1px solid white;
-    border-style: solid none solid none;
-    height: 100%;
+    border:none;
+    border-radius:5px;
+    height: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #1d2d55;
 }
 
 .pj-ctnt-opt{
     background-color: #19284d;
-    width: 60%;
+    width: 80%;
     border-radius: 10px;
     height: 50px;
     border-radius:5px;
@@ -428,35 +455,96 @@
 }
 .pj-ctnt-opt button {
     width: 180px;
-    height: 100%;
+    height: 80%;
     display: flex;
     align-items: center;
-    background-color: #19284d;
-    border:1px solid white;
-    border-style: solid none solid none;
+    background-color: #1d2d55;
+    border:none;
     color:white;
     cursor: pointer;
+    margin-top: auto;
+    margin-bottom: auto;
     outline:none;
     justify-content: center;
     font-size: 15px;
     gap: 5px;
+    border-radius:5px;
 }
 .pj-ctnt-opt button:hover {
-    border: 1px solid white;
+    color:#19284d;
+    background-color: white;
 }
 
 .pj-ctnt {
     display:flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     height: 80%;
     overflow-y: auto;
     gap: 20px;
     flex-flow: wrap;
     position:relative;
 }
+.pj-open-and-desc {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 60%;
+    gap:5px;
+}
+.pj-open-desc {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position:relative;
+    font-weight: normal !important;
 
+}
+.iconmeaning {
+    margin-left: 10px;
+    font-size: 10px;
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.iconmeaning:hover {
+    background-color: white;
+    color:#19284d;
+}
+.pj-open-desc-infos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    position:absolute;bottom:0;
+    align-items: center;
+    padding-left: 5px;
+}
+.pj-open-infos-b {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+}
+.pj-open-infos-b span {
+    font-size: 15px;
+}
+.pj-open-desc-info-b {
+    font-style: italic;
+    font-size: 13px;
+    color:rgba(255,255,255,0.6);
+    padding-bottom: 4px;
+}
+.pj-open-desc-ddesc {
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    padding: 5px;
+    padding-top: 0px;
 
+}
 
 
 
@@ -645,7 +733,7 @@ Project view:
     border: 2px solid #1d2d55;
     background-color: #1d2d55;
     border-radius: 5px;
-    width: 50%;
+    width: 80%;
     min-width: 40px;
     cursor: pointer;
     padding-left: 10px;
@@ -671,8 +759,8 @@ Project view:
 
 
 .pj-b-g-param:hover  {
-    border: 2px solid white;
-    width: 50%;
+    color:#19284d;
+    background-color: white;
 }
 .pj-b-g-param:hover p {
     visibility: visible;
@@ -698,7 +786,7 @@ Project view:
     background-color: #19284d;
     padding: 10px;
     border-radius: 10px;
-    padding-top: 17px;
+    padding-top: 25px;
 }
 .pj-b-g-b button {
     width: 100%;
@@ -722,8 +810,8 @@ Project view:
     height: 50px;
 }
 .pj-b-g-b button:hover {
-    border: 2px solid white;
-
+    color:#19284d;
+    background-color: white;
 }
 
 .g-b-new {
@@ -862,9 +950,9 @@ Project view:
 .DelGoal button {
     background-color: #19284d;
 }
-.DelGoal button:hover, .RingGoal button:hover {
-    border:2px solid white;
-
+.DelGoal button:hover{
+    color:#19284d;
+    background-color: white;
 }
 ::-webkit-scrollbar {
     cursor:pointer;
@@ -896,43 +984,85 @@ Project view:
 
 .mdf-b {
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    max-height: 100%;
     padding: unset;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-.mdf-t {
-    font-size: 25px;
+    position:relative !important;
+    margin-top: 10px;
+    padding-top: 20px;
     padding-bottom: 10px;
+    border: 2px solid #1d2d55;
+}
+.mdf-b input::placeholder, .mdf-b textarea::placeholder {
+    font-style: italic;
+    color:rgba(255,255,255,0.6)
+}
+
+.mdf-t {
+    font-size: 18px;
+    padding: 10px;
+    position:absolute;
+    top:-22;
+    padding-left: 20px;
+    border-radius: 5px;
+    border: 2px solid #19284d;
+    width: 90%;
+    background-color: #1d2d55;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+.mdf-t .howtoaddLink {
+    right:10;
+    font-size: 13px;
+}
+.mdf-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.mdf-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
 }
 .mdf-b input {
-    width: 50%;
+    width: 80%;
     color:white;
     background-color: #1d2d55;
-    border:none;
     outline:none;
     height: 40px;
     border-radius: 5px;
-    border: 2px solid #1d2d55;
     padding-left: 10px;
     padding-right: 5px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px 5px 0px 0px;
+    border: 2px solid rgba(255,255,255,0);
+    transition: 0.1s;
+    border-style: none none solid none;
+
+
 }
-.mdf-b button:not(#cancel) {
-    margin-top: 20px;
+.mdf-b input:hover, .mdf-b input:focus {
+    border: 2px solid white;
+    border-style: none none solid none;
+
 }
 .mdf-b button {
-    width: 40%;
+    width: fit-content;
     color:white;
     background-color: #1d2d55;
     border:none;
     outline:none;
     height: 40px;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -940,10 +1070,14 @@ Project view:
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 2px solid #1d2d55
+    border: 2px solid #1d2d55;
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 .mdf-b button:hover {
-    border: 2px solid white;
+    color:#19284d;
+    background-color: white;
 }
 
 
@@ -1035,9 +1169,23 @@ Project view:
     border-radius: 5px;
 }
 .pj-form input, .pj-form textarea {
-    border: 2px solid #1d2d55
+    border: 2px solid rgba(0,0,0,0);
+    border-style: none none solid none;
+    border-radius: 5px 5px 0px 0px;
 }    
 
+.pj-form input:hover, .pj-form textarea:hover,
+.pj-form input:focus, .pj-form textarea:focus
+{
+    border: 2px solid white;
+    border-style: none none solid none;
+
+}
+.pj-open-desc-infos-d {
+    background-color: #1d2d55;
+    padding: 5px;
+    border-radius: 5px;
+}
 @media screen and (320px <= width <= 420px) {
     .pj-ctnt {
         width: 100%;
@@ -1050,7 +1198,8 @@ Project view:
         
     }
     .pj-new {
-        width: 95%;
+        width: 92%;
+        margin-left:unset;
     }
     .pj-slct-img {
         right: 10px;
@@ -1084,15 +1233,20 @@ Project view:
         visibility: hidden;
         position:absolute;
         display: none;
+        margin:unset;
     }
     .pj-b-g-param,.pj-b-g-param:active, .pj-b-g-param:hover    {
-        padding: unset;
+        padding: 2px;
         width: 40px;
         height: 40px;
-        border-radius: 50%;
-        background-color: rgba(36, 51, 90,0.6);
+        border-radius: 5px;
+        background-color: #1d2d55;
         border:none;
         gap:0px;
+    }
+    .pj-b-g-param:hover  {
+        color:white;
+        background-color: #1d2d55;
     }
     .pj-slct-img img {
         border:none;
@@ -1116,6 +1270,15 @@ Project view:
         padding-left: unset;
 
     }
+    .mdf-button {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+    }
+
     .pj-b-gg-d {
         text-align: justify;
     }
@@ -1125,6 +1288,7 @@ Project view:
         align-items: center;
         min-width: 180px;
         justify-content: unset;
+        text-align: unset;
         height: fit-content;
         gap:1px;
         border:none;
@@ -1211,27 +1375,36 @@ Project view:
         --slidein_size: 75px;
       }
     .mdf-b {
-        width: 80%;
+        width: 95%;
+        margin: auto;
+        text-align: left;
+        margin:unset;
+        margin-top: 20px;;
         margin-left: auto;
         margin-right: auto;
-        text-align: left;
-        padding:5px;
-        padding-top: 10px;
-        height: 100%;
         padding-bottom: 20px;;
     }
     .mdf-t {
         text-align: center;
+        width: fit-content;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color:#19284d;
+        border: 2px solid #1d2d55
     }
     .mdf-b button {
-        width: 200px;
-        height: 50px;
+        padding: 5px;
+        padding-left: 30px;
+        padding-right: 30px;
         font-size: 20px;
         margin-left: auto;
         margin-right: auto;
     }
+    .mdf-i {
+        width: 90%;
+    }
     .mdf-b input {
-        width: 100%;
+        width: 80%;
     }
     .pj-mi {
         position:relative;
@@ -1309,6 +1482,7 @@ Project view:
         border: 2px solid rgba(0,0,0,0);
     }
     .pj-ctnt-opt {
+        width: 95%;
         gap:10px;
         flex-direction: row-reverse;
         position:relative;
@@ -1341,6 +1515,9 @@ Project view:
         display: flex;
         align-items: center;
         right:30;
+    }
+    .pj-open-desc-ddesc {
+        text-align: left;
     }
 }
 

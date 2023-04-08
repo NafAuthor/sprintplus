@@ -50,7 +50,7 @@ function EvaluateS() {
         </div>
     `;
 }
-
+/*
 function ReEvaluateAd() {
     EvaluateS()
     setInterval(()=>{
@@ -60,4 +60,4 @@ function ReEvaluateAd() {
 
 setTimeout(() => {
     ReEvaluateAd()
-}, 20);
+}, 20);*/

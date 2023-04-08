@@ -56,9 +56,13 @@
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    transition: 0.5s;
+    transition: 0.2s;
     overflow-x: hidden;
     overflow-y: hidden;
+}
+.i-b button:hover {
+    background-color: white;
+    color:#19284d;
 }
 .i-b button img {
     width: 20px;
@@ -79,8 +83,8 @@
 .c-p-c select {
     width: 90%;
     background-color: rgba(31, 48, 92, 0.7);
-    border: 2px solid rgba(31, 48, 92, 0.7);
     color:white;
+    border:none;
     height: 30px;
     cursor: pointer;
     outline:none;
@@ -96,7 +100,8 @@
     width: 50px;
 }
 .c-p-c select:hover {
-    border: 2px solid white;
+    background-color: white;
+    color:#19284d;
 }
 .insp-i-i, .insp-add {
     display: flex;
@@ -150,15 +155,13 @@
     justify-content: center;
     gap: 15px;
     border: 2px solid rgba(0, 0, 0, 0);
-    transition: 0.2s;
 }
 
 #inspt-add-b button:hover {
-    border: 2px solid white;
+    background-color: white;
+    color:#19284d;
 }
-#inspt-add-b button span {
-    transition: 0.5s;
-}
+
 
 
 #inspt-add-b-c {
@@ -181,8 +184,8 @@
     outline:none;
 }
 #inspt-add-b-c input:hover {
-    border: 2px solid white;
-
+    background-color: white;
+    color:#19284d;
 }
 #inspt-add-b-c input::placeholder {
     font-style: italic;
@@ -259,10 +262,7 @@
     padding-right: 10px;
     
 }
-.d-c-i-p span:hover, .d-c-i-q span:hover {
-    background-color: white;
-    color:rgba(31, 48, 92, 0.7)
-}
+
 
 .d-c-i-q, .d-c-i-p {
     width:230px;
@@ -294,7 +294,10 @@
     bottom:10;
     right: 10;
 }
-
+#opt-dc:hover {
+    background-color: white;
+    color:#19284d;
+}
 
 @media screen and (320px <= width <= 420px) {
     .Main {

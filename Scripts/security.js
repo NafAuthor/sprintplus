@@ -1,4 +1,5 @@
 function TriggerSecurity() {
+
     document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
@@ -9,10 +10,12 @@ function TriggerSecurity() {
         If no password has been set yet, your password is the password of your account. <br>
         Enter in the following inputs the password of your project, and your new password (5 characters min., no " or '), two times.
       </div>
-      <input type="text" id="enter-content-0" autocomplete="off">
-      <input type="text" id="enter-content-1" autocomplete="off">
-      <input type="text" id="enter-content-2" autocomplete="off">
-
+      <div class="mdf-input">
+      <input type="text" id="enter-content-0" autocomplete="off" placeholder="Project password">
+      <input type="text" id="enter-content-1" autocomplete="off" placeholder="New password">
+      <input type="text" id="enter-content-2" autocomplete="off" placeholder="New password">
+      </div>
+      <div class="mdf-button">
       <button onclick="confirmsecurity()">
         <span class="material-symbols-outlined">
         sync_saved_locally
@@ -25,6 +28,7 @@ function TriggerSecurity() {
         </span>
         Cancel
       </button>
+      </div>
     </div>
   `;
 

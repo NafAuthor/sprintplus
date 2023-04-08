@@ -1,0 +1,303 @@
+.writingcontent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+.writingcontent button {
+    width: fit-content;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    border:none;
+    background-color: #1d2d55;
+    color:white;
+    cursor: pointer;
+}
+.writingcontent button:hover,.chaptermvv span:hover, .chapternewopendesc:hover, .itemact:not(#removechapter) span:hover {
+    color:#1d2d55;
+    background-color: white;
+}
+
+.writingselect {
+    width: 20%;
+    height: 100%;
+    background-color: #19284d;
+    min-width: 200px;
+    border-radius: 5px;
+}
+.writingselectinfos p,.writingchapterinfos p {
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    height: 15px;
+    margin-bottom: 5px;
+}
+#writingselect, #writingselectchap {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: fit-content;
+    max-height: 30%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    align-items: center;
+
+
+}
+.namecontent {
+    width: 90%;
+    overflow-x: auto;
+}
+#writingselectchap {
+    height: fit-content;
+    max-height: 30%;
+}
+.pj-select-writing, .goal-select-writing {
+    width: 80%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #1d2d55;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.goal-select-writing {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.goal-select-writing span {
+    position:absolute;
+    right:5;
+    font-size: 15px;
+}
+.pj-select-writing:hover, .goal-select-writing:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.pj-select-writing span {
+    padding: 5px;
+    background-color: #19284d;
+    border-radius: 5px;
+}
+#writingselectsep {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 1px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+#writingdisplayer {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:0px;
+
+}
+#editcontent * {
+    background-color: unset !important;
+    padding: unset;
+    margin:unset;
+    color:white;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Encode Sans SC', sans-serif;
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Heebo', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik Distressed', cursive;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+#writingdisplayer #editcontent {
+    padding: 10px;
+    background-color: #19284d;
+    border-radius: 5px;
+    height: 100%;
+    border:none;
+    outline:none;
+    font-size: 13px;
+    overflow-y: auto;
+}
+
+.chaptermv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 5px;
+}
+.chapternew {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    position:relative;
+}
+.autosave , .autosave span {
+    font-size: 15px;
+}
+.autosave {
+    width: fit-content;
+    position:absolute;
+    bottom:0;
+    right:0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    background-color: #1d2d55;
+    padding-left: 10px;
+    border-radius: 5px 0px 5px 0px;
+    padding-right: 10px;
+    gap: 5px;
+    visibility: hidden;
+}
+.chaptermv input::placeholder, #newchapterdesc textarea::placeholder{
+    color:rgba(255,255,255,0.6);
+    font-style: italic;
+}
+#newchapterdesc {
+    visibility: hidden;
+}
+.chaptermv input {
+    padding:10px;
+    outline:none;border:none;
+    background-color: #19284d;
+    color:white;
+    border-radius: 5px;
+}
+.chaptermv input[type="number"] {
+    width: 70px;
+}
+.chapterdescription {
+    position:absolute;
+    width: 300px;
+    height: 100px;
+    bottom:-108;
+    left:5;
+    visibility: hidden;
+}
+.itemact {
+    position:absolute;
+    right:0;
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+}
+.chaptermvv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.chaptermvv input{
+    height: 100%;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.chaptermvv input::-webkit-color-swatch {
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+}
+.itemact span, .chaptermvv span {
+    padding: 5px;
+    background-color: #19284d;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#saveDesc {
+    z-index:50;
+    position:absolute;
+    right:0;
+    bottom:0;
+    border-radius: 5px 0px 5px 0px;
+    
+}
+.chapterdescription textarea {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background-color: #19284d;
+    border: 2px solid #1d2d55;
+    text-align: left;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+.writingdisplayer textarea{
+    width:fit-content;
+    height: 100%;
+}
+.chapternewopendesc span, .chapternewopendesc {
+    font-size: 15px;
+
+}
+.chapternewopendesc {
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 100%;
+    cursor: pointer;
+    align-items: center;
+    background-color: #19284d;
+    border-radius: 5px;
+    justify-content: center;
+}
+/*
+19284d
+*/
+
+.removeChapter {
+    height: 35px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.removeChapter span:hover {
+    background-color: #19284d !important;
+    color:white !important;
+}
+.removeChapter span {
+    cursor: unset !important;
+}
+
+.removeChapter:hover input {
+    display: inline;
+
+}
+.removeChapter input {
+
+    border: 2px solid white;
+    border-style: none none solid none;
+    border-radius: 5px 5px 0px 0px;
+    height: 100%;
+    padding-left: 5px;
+    display: none;
+
+}

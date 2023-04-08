@@ -11,16 +11,16 @@ let Project_form = `
         </span>
       Give your project a name
     </div>
-    <input type="text" id="name" autocomplete="off">
+    <input type="text" id="name" autocomplete="off" placeholder="Enter a name">
   </div>
   <div class="p-d"id="p-bx">
     <div class="p-d-t"id="form-title">
       <span class="material-symbols-outlined">
         info
         </span>
-      What is your project about?
+      What is it about?
     </div>
-    <textarea id="about"></textarea>
+    <textarea id="about" placeholder="Describe your project!"></textarea>
   </div>
   <div class="p-d2"id="p-bx">
     <div class="p-d2-s"id="form-title">
@@ -36,7 +36,7 @@ let Project_form = `
         </span>
       When will your project end?
     </div>
-    <input type="date" id="end" >
+    <input type="date" id="end">
   </div>
   <div class="p-d-i"id="p-bx">
     <div class="p-d-i-t" id="form-title">
@@ -45,7 +45,7 @@ let Project_form = `
         </span>
       Add a link to your project
     </div>
-    <input type="text" id="more" autocomplete="off">
+    <input type="text" id="more" autocomplete="off" placeholder="Enter a link to any type of content">
   </div>
   <div class="p-d-p"id="p-bx">
     <div class="p-d-p-t" id="form-title">
@@ -57,7 +57,7 @@ let Project_form = `
       How to add a cover
       </div>
     </div>
-    <input type="text" id="cover" autocomplete="off">
+    <input type="text" id="cover" autocomplete="off" placeholder="Enter a link to an image">
   </div>
   <div class="n-p-s">
     <button type="button" onclick="CreateProject()">
@@ -287,7 +287,7 @@ let all_contain = `
   Inspiration
 </div>
 </div>
-<div class="all-c-p">
+<div class="all-c-p" onclick="OpenWriting()">
 <span class="material-symbols-outlined">
   edit_note
   </span>
