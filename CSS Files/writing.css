@@ -124,11 +124,27 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-family: 'Ubuntu', sans-serif;
     display: block;
+    font-size: 15px;
 }
 #editcontent div, #editcontent span, #editcontent p {
     display: block !important;
     width:100% !important;
     height: fit-content;
+    white-space: unset !important;
+    color:white !important;
+    font-family: 'Bebas Neue', cursive !important;
+    font-family: 'Comfortaa', cursive !important;
+    font-family: 'Encode Sans SC', sans-serif !important;
+    font-family: 'Fira Sans', sans-serif !important;
+    font-family: 'Heebo', sans-serif !important;
+    font-family: 'Josefin Sans', sans-serif !important;
+    font-family: 'Kanit', sans-serif !important;
+    font-family: 'Lato', sans-serif !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Rubik Distressed', cursive !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-family: 'Ubuntu', sans-serif !important;
 }
 #writingdisplayer #editcontent {
     padding: 10px;
@@ -139,7 +155,7 @@
     outline:none;
     font-size: 13px;
     overflow-y: auto;
-    width: 95%;
+    width: 98%;
     box-sizing: border-box;
 }
 

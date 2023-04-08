@@ -4,7 +4,18 @@ let chapterincharge;
 function OpenWriting(el) {
     InCharge;
     chapterincharge=false;
+    document.addEventListener('keydown', (e) => {
+        if (e.code === "Enter") {
+            var btn = document.createElement('span');
+            btn.innerHTML = "&#13;&#10;";
+            btn.style.fontWeight = 'normal';
+            btn.style.fontStyle = 'normal';
+            btn.style.color="white";
+            document.execCommand('insertHTML', false, btn.outerHTML);
 
+        }
+
+    });
     document.getElementById('Main').innerHTML = `
         <div class="writingcontent">
             <div class="writingselect">
@@ -176,7 +187,7 @@ function NewChapter() {
                         <span class="material-symbols-outlined" onclick="RemoveContent()" >
                             remove
                         </span>
-                        <input type="color" id="textcolor" value="#ffffff" onchange="ChangeColor()">
+                        <input type="color" id="textcolor" value="#CDE" onchange="ChangeColor()">
                 </div>
             </div>
             <div id="editcontent" contentEditable="true" onchange="Save()"></div>
@@ -285,7 +296,7 @@ function AutoSave() {
     }
     setTimeout(()=> {
         document.getElementById('autosave').style.visibility = "hidden";
-    },500);
+    },1500);
 }
 
 
@@ -305,7 +316,7 @@ function ChangeColor() {
             if (e.code === "Space") {
                 console.log("space")
                 var btn = document.createElement('span');
-                btn.innerHTML = "&#8203;";
+                btn.innerHTML = "&#13;&#10;";
                 btn.style.color="#ffffff";
                 document.execCommand('insertHTML', false, btn.outerHTML);
 
@@ -314,7 +325,6 @@ function ChangeColor() {
         });
         document.execCommand('insertHTML', false, btn.outerHTML);
     }
-    Save()
 }
 
 /*
@@ -346,7 +356,6 @@ function OpenDesc() {
         `;
         v.style.visibility="hidden";
     }
-
     ///<input type="text" placeholder="Chapter description" id="newchapterdesc" placeholder="Chapter description">
 
 }
@@ -369,11 +378,11 @@ function StyleText() {
                 }
             }
         }
+        console.log(a)
         i.innerHTML = a;
-        btn.style.textAlign=a.replace("format_align","")
+        btn.style.textAlign=`${a.replace("format_align","")} !important`;
         document.execCommand('insertHTML', false, btn.outerHTML);
     }
-    Save()
 
 }
 function getSelectionText() {
