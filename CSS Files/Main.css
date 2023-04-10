@@ -223,7 +223,7 @@ body a {
     position:absolute;
     width: 350px;
     height: 350px;
-    animation: 6s overall;
+    animation: 5s overall;
     left:0;right:0;bottom:0;top:0;
     margin:auto;        
     opacity: 0.5;
