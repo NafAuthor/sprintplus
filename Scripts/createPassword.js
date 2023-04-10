@@ -1,6 +1,6 @@
 let abc = "abcdefghijklmnopqrstuvwxyz";
 let nb = "123456789";
-let crctr = `&é"'(-è_çà)=^$ù*,;:!~#{[|\^@]}`;
+let crctr = `&é(-è_çà)=^$ù*,;:!~#{[|\^@]}`;
 
 
 

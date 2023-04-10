@@ -82,7 +82,6 @@
 }
 .pj-select-writing span {
     padding: 5px;
-    background-color: #19284d;
     border-radius: 5px;
 }
 #writingselectsep {
@@ -100,10 +99,11 @@
 #writingdisplayer {
     width: 80%;
     height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
     display: flex;
     flex-direction: column;
     gap:0px;
-
 }
 #editcontent * {
     background-color: unset !important;
@@ -126,12 +126,10 @@
     display: block;
     font-size: 15px;
 }
-#editcontent div, #editcontent span, #editcontent p {
-    display: block !important;
-    width:100% !important;
+#editcontent div:not(#styletextalign), #editcontent span, #editcontent p  {
+    display: inline  !important;
     height: fit-content;
     white-space: unset !important;
-    color:white !important;
     font-family: 'Bebas Neue', cursive !important;
     font-family: 'Comfortaa', cursive !important;
     font-family: 'Encode Sans SC', sans-serif !important;
@@ -145,6 +143,47 @@
     font-family: 'Rubik Distressed', cursive !important;
     font-family: 'Source Sans Pro', sans-serif !important;
     font-family: 'Ubuntu', sans-serif !important;
+    white-space: pre-line !important;
+    width:100% !important;
+
+
+}
+#editcontent b ,  #editcontent i {
+    display: inline  !important;
+
+}
+#styletextalign {
+    display: block !important;
+    width:100% !important;
+    
+}
+
+@keyframes slidein {
+    0% { opacity: 1; }
+    50%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+.savebubble span {
+    font-size: 10px;
+    background-color: #ff0000 !important;
+    padding: 0px !important;    color:white !important;
+animation: 3s linear infinite slidein;
+}
+
+.savebubble {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    color:white !important;
+    right: 5;;
+    bottom:5;
+    
+
 }
 #writingdisplayer #editcontent {
     padding: 10px;
@@ -153,9 +192,9 @@
     height: 100%;
     border:none;
     outline:none;
-    font-size: 13px;
+    font-size: 15px;
     overflow-y: auto;
-    width: 98%;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -172,6 +211,7 @@
     flex-direction: row;
     gap: 5px;
     position:relative;
+    justify-content: start;
 }
 .autosave , .autosave span {
     font-size: 15px;
@@ -190,7 +230,6 @@
     border-radius: 5px 0px 5px 0px;
     padding-right: 10px;
     gap: 5px;
-    visibility: hidden;
 }
 .chaptermv input::placeholder, #newchapterdesc textarea::placeholder{
     color:rgba(255,255,255,0.6);
@@ -324,4 +363,48 @@
     padding-left: 5px;
     display: none;
 
+}
+
+
+/*
+                    <div class="numberinput">
+                        <input type="text" onchange="CheckInt(this)" min="1" value="${!chapterincharge?chaptersnb:chapterincharge.number}" id="newchapternb" placeholder="x">
+                        <div class="plusless">
+                            <span class="material-symbols-outlined" onclick="MoreInt()">
+                            add
+                            </span>
+                            <span class="material-symbols-outlined" onclick="LessInt()">
+                            remove
+                            </span>
+                        </div>
+                        </div>
+*/
+.numberinput {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+.plusless {
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #19284d;
+    cursor: pointer;
+}
+.plusless span {
+    font-size: 15px;
+}
+.plusless span:hover {
+    color:#19284d;
+    background-color: white;
+    border-radius: 5px;
+}
+.numberinput input {
+    width: 40px;
+    text-align: center;
+    pointer-events:none;
+    padding: 0px;
 }
