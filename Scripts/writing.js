@@ -1,8 +1,6 @@
 let chapterincharge;
 
-setTimeout(() => {
-    OpenWriting()
-}, 20);
+
 
 function ClearSpan() {
     document.getElementById('editcontent').innerHTML="";
