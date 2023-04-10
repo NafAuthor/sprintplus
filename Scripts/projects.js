@@ -85,9 +85,11 @@ function OpenFolder(el) {
           <span class="material-symbols-outlined"> article </span> ${pj.type}
         </div>
         <div class="-pj-b-i-i" id="containLink">
-          <span class="material-symbols-outlined"> pending </span>
-          <a target="_blank" href="${pj.more}">Linked content</a>
-          <div id="a-link-goes"></div>
+          ${pj.more?`
+            <span class="material-symbols-outlined"> pending </span>
+            <a target="_blank" href="${pj.more}">Linked content</a>
+            <div id="a-link-goes"></div>
+          `:'<span class="material-symbols-outlined"> pending </span> No linked content'}
           </div>
         <div class="-pj-b-i-i-desc">
           <span class="material-symbols-outlined"> description </span>
@@ -97,7 +99,7 @@ function OpenFolder(el) {
         </div>
         </div>
         <div class="pj-b-c">
-        <img src="${pj.cover}">
+        <img src="${pj.cover?pj.cover:"Images & Icons/MS.png"}">
         </div>
       </div>
 
@@ -157,6 +159,8 @@ function OpenFolder(el) {
 }
 
 function ChangeTime() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
   document.getElementById('pj-b-content').innerHTML = `
   <div class="mdf-b">
     <div class="mdf-t">
@@ -168,7 +172,7 @@ function ChangeTime() {
       You will still be able to modify it later.
     </div>
     <div class="mdf-input">
-    <input type="date" id="enter-content" >
+    <input type="date" value="${pj.end}" id="enter-content" >
     </div>
     <div class="mdf-button">
     <button onclick="SaveDate()">
@@ -190,6 +194,8 @@ function ChangeTime() {
 }
 
 function ChangeName() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+
     document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
@@ -201,7 +207,7 @@ function ChangeName() {
         You will still be able to modify it later.
       </div>
       <div class="mdf-input">
-      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a new name">
+      <input type="text" id="enter-content" autocomplete="off"value="${pj.name}" placeholder="Enter a new name">
       </div>
       <div class="mdf-button">
       <button onclick="SaveName()">
@@ -282,7 +288,7 @@ function ChangeCover() {
         To proceed, please enter a link to a cover (A4 image type).
       </div>
       <div class="mdf-input">
-      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a link to an image">
+      <input type="text" id="enter-content" autocomplete="off" value="${pj.cover}" placeholder="Enter a link to an image">
       </div>
       <div class="mdf-button">
       <button onclick="SaveCover()">
@@ -320,6 +326,7 @@ function SaveCover() {
 }
 
 function ChangeDesc() {
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
     document.getElementById('pj-b-content').innerHTML = `
     <div class="mdf-b">
       <div class="mdf-t">
@@ -332,7 +339,7 @@ function ChangeDesc() {
         You will still be able to modify it later.
       </div>
       <div class="mdf-input">
-      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a description">
+      <textarea type="text" id="enter-content" autocomplete="off"placeholder="Enter a description">${pj.desc}</textarea>
       </div>
       <div class="mdf-button">
       <button onclick="SaveDesc()">
@@ -380,7 +387,7 @@ function ChangeFiles() {
         To proceed, please enter a link to a file of yours on the internet that reffers to your project.
       </div>
       <div class="mdf-input">
-      <input type="text" id="enter-content" autocomplete="off" placeholder="Enter a link to any type of content">
+      <input type="text" id="enter-content" autocomplete="off" value="${pj.more}" placeholder="Enter a link to any type of content">
       </div>
       <div class="mdf-button">
       <button onclick="SaveFiles()">
@@ -675,7 +682,7 @@ function FilterProjects(type) {
                       </div>
 
                       <div class="pj-open-desc-infos-d">
-                        ${chapteramount} chapters
+                        ${chapteramount} chapter${chapteramount>1?"s":""}
                       </div>
                     </div>
                   </div>
@@ -688,7 +695,9 @@ function FilterProjects(type) {
                   <div class="pj-open-desc"> Open project </div>
               </div>
               <div class="pj-param-contan">
-                <span class="material-symbols-outlined" onclick="window.open('${item.more}')" id="${item.name}"> open_in_new </span>
+                ${item.more?`
+                  <span class="material-symbols-outlined" onclick="window.open('${item.more}')" id="${item.name}"> open_in_new </span>
+                `:""}
                 <span class="material-symbols-outlined" onclick="GoalsShowUp()" id="${item.name}"> show_chart </span>
                 <span class="material-symbols-outlined" onclick="OpenWriting()" id="${item.name}"> edit </span>
                 <div class="pj-param-contan-view">
@@ -703,7 +712,9 @@ function FilterProjects(type) {
             </div>
             </div>
             <div class="pj-slct-img">
-            <img src="${item.cover}" class="pj-cover">
+            ${item.cover?`
+              <img src="${item.cover}" class="pj-cover">
+            `:'<img src="Images & Icons/MS.png" class="pj-cover">'}
           </div>
         </div>`;
         let ct = document.getElementById("FilterProject").value;
@@ -894,22 +905,14 @@ function CreateProject() {
     let cover = document.getElementById('cover').value;
 
 
-    let check = ["name", "about", "start", "end", "more", "cover"];
+    let check = ["name", "about", "start", "end"];
     let o = 0;
     for (let i = 0; i < check.length; i++) {
         if (document.getElementById(check[i]).value.length <= 0) {
-            document.getElementById(check[i]).style.border = "2px solid red";
+            document.getElementById(check[i]).style.borderBlockColor = "red";
             o++;
         } else {
-            document.getElementById(check[i]).style.border = "2px solid #24335a";
-        }
-        if (check[i] == "more" || check[i] == "cover") {
-            if (!isValidUrl(document.getElementById(check[i]).value)) {
-                document.getElementById(check[i]).style.border = "2px solid red";
-                o++;
-            } else {
-                document.getElementById(check[i]).style.border = "2px solid #24335a";
-            }
+          document.getElementById(check[i]).style.borderBlockColor = "rgba(0,0,0,0)";
         }
     }
 
@@ -948,7 +951,7 @@ function CreateProject() {
         cover: cover,
         created_on: Date.now(),
         chapters : {},
-        password: password,
+        password: JSON.parse(localStorage.getItem('user')).password,
         inspi: [],
         star : false,
         backed : false
@@ -1094,88 +1097,6 @@ function Goal_Save() {
       document.getElementById('AlertMissingContent').style.position = "relative";
 
     }
-}
-
-
-function Back(c) {
-    let p = localStorage.getItem(c)
-    c = JSON.parse(p);
-
-    document.getElementById('Main').innerHTML = `
-    <div class="whole-pj-form">
-    <div class="pj-form">
-      <div class="title" id="form-intro-title">
-        Create a new project
-      </div>
-      <div class="p-n" id="p-bx">
-        <div class="p-n-t"id="form-title" >
-          <span class="material-symbols-outlined">
-            history_edu
-            </span>
-          Give your project a name
-        </div>
-        <input type="text" id="name" autocomplete="off">
-      </div>
-      <div class="p-d"id="p-bx">
-        <div class="p-d-t"id="form-title">
-          <span class="material-symbols-outlined">
-            info
-            </span>
-          What is your project about?
-        </div>
-        <textarea id="about"></textarea>
-      </div>
-      <div class="p-d2"id="p-bx">
-        <div class="p-d2-s"id="form-title">
-          <span class="material-symbols-outlined">
-            calendar_month
-            </span>
-          When will your project start?
-        </div>
-        <input type="date" id="start">
-        <div class="p-d2-e"id="form-title">
-          <span class="material-symbols-outlined">
-            event_busy
-            </span>
-          When will your project end?
-        </div>
-        <input type="date" id="end" >
-      </div>
-      <div class="p-d-i"id="p-bx">
-        <div class="p-d-i-t" id="form-title">
-          <span class="material-symbols-outlined">
-            edit_note
-            </span>
-          Add a link to your project
-        </div>
-        <input type="text" id="more" autocomplete="off">
-      </div>
-      <div class="p-d-p"id="p-bx">
-        <div class="p-d-p-t" id="form-title">
-          <span class="material-symbols-outlined">
-            edit_note
-            </span>
-          Add a cover (link, A4)
-          <div class="howtoaddLink" onclick="OpenCoverHelp()">
-            How to add a cover
-          </div>
-        </div>
-        <input type="text" id="cover" autocomplete="off">
-      </div>
-      <div class="n-p-s">
-        <button type="button" onclick="CreateProject()">
-          Create
-        </button>
-      </div>
-    </div>
-    `;
-    document.getElementById('name').value = c.name;
-    document.getElementById('type').value = c.type;
-    document.getElementById('about').value = c.desc;
-    document.getElementById('start').value = c.start;
-    document.getElementById('end').value = c.end;
-    document.getElementById('more').value = c.more;
-    document.getElementById('cover').value = c.cover;
 }
 
 function OpenCoverHelp() {

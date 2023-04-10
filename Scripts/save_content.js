@@ -1,42 +1,59 @@
 let Project_form = `
 <div class="whole-pj-form">
 <div class="pj-form">
+
   <div class="title" id="form-intro-title">
     Create a new project
   </div>
-  <div class="p-n" id="p-bx">
-    <div class="p-n-t"id="form-title" >
-      <span class="material-symbols-outlined">
-        history_edu
-        </span>
-      Give your project a name
-    </div>
-    <input type="text" id="name" autocomplete="off" placeholder="Enter a name">
+  <div class="new-pj-contain-el">
+  <div id="mandatory">
+  Mandatory
   </div>
-  <div class="p-d"id="p-bx">
-    <div class="p-d-t"id="form-title">
-      <span class="material-symbols-outlined">
-        info
-        </span>
-      What is it about?
-    </div>
-    <textarea id="about" placeholder="Describe your project!"></textarea>
+  <div id="mandatorybar">
+
   </div>
-  <div class="p-d2"id="p-bx">
-    <div class="p-d2-s"id="form-title">
-      <span class="material-symbols-outlined">
-        calendar_month
-        </span>
-      When will your project start?
+    <div class="p-n" id="p-bx">
+      <div class="p-n-t"id="form-title" >
+        <span class="material-symbols-outlined">
+          history_edu
+          </span>
+        Give your project a name
+      </div>
+      <input type="text" id="name" autocomplete="off" placeholder="Enter a name">
     </div>
-    <input type="date" id="start">
-    <div class="p-d2-e"id="form-title">
-      <span class="material-symbols-outlined">
-        event_busy
-        </span>
-      When will your project end?
+    <div class="p-d"id="p-bx">
+      <div class="p-d-t"id="form-title">
+        <span class="material-symbols-outlined">
+          info
+          </span>
+        What is it about?
+      </div>
+      <textarea id="about" placeholder="Describe your project!"></textarea>
     </div>
-    <input type="date" id="end">
+    <div class="p-d2"id="p-bx">
+      <div class="p-d2-s"id="form-title">
+        <span class="material-symbols-outlined">
+          calendar_month
+          </span>
+        When will your project start?
+      </div>
+      <input type="date" id="start">
+      <div class="p-d2-e"id="form-title">
+        <span class="material-symbols-outlined">
+          event_busy
+          </span>
+        When will your project end?
+      </div>
+      <input type="date" id="end">
+    </div>
+  </div>
+  <div class="new-pj-contain-sep"></div>
+  <div class="new-pj-contain-el">
+  <div id="optionnal">
+  Optionnal
+  </div>
+  <div id="optionnalbar">
+
   </div>
   <div class="p-d-i"id="p-bx">
     <div class="p-d-i-t" id="form-title">
@@ -58,6 +75,14 @@ let Project_form = `
       </div>
     </div>
     <input type="text" id="cover" autocomplete="off" placeholder="Enter a link to an image">
+  </div>
+  </div>
+  <div class="infomdp">
+    <span class="material-symbols-outlined">
+    info
+    </span>
+    Your project password is your account password. The security section of your project will 
+    provide you a place to change it if you wish to.
   </div>
   <div class="n-p-s">
     <button type="button" onclick="CreateProject()">

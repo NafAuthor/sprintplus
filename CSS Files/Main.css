@@ -142,21 +142,7 @@ body a {
 }
 
 
-@keyframes slidein {
-    0% {
-        width: 0px;
-        height: 0px;
-        border-radius: 5px;
-    }
-    50% {
-        width: 100%;
-        height: 100%;
-    }
-    100% {
-        transform: rotate(360deg);
-        border-radius: 50%;   
-    }
-  }
+
   @keyframes slidein1 {
     0% {
         border-radius: 5px;
@@ -173,14 +159,34 @@ body a {
 
     }
   }
+  @keyframes slideinOne {
+    0% {
+        border-radius: 5px;
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+    50% {
+        width: 99%;
+        height: 99%;
+    }
+    100% {
+        transform: rotate(360deg);
+        border-radius: 50%; 
+
+    }
+  }
 .circle {
     border-radius: 50%;   
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     position:absolute;
     top:0;right:0;left:0;bottom:0;margin:auto;
-    background-color: white;    z-index: 1;
-    animation: 3s linear 0.1s slidein;
+    background-color: white;    
+    z-index: 1;
+    animation: slideinOne;
+    animation-duration: 5s;
+    animation-delay: 0.1s;
 }
 .circlehide {
     border-radius: 50%;   
@@ -201,19 +207,27 @@ body a {
         left:0px;right:0px;bottom:0px;top:0px;
         margin:auto;
         visibility: visible;
-        opacity: 0.8;
+        opacity: 1;
+        z-index: 50;
+    }
+    50% {
+        opacity: 1;
     }
     100% {
         opacity: 0.5;
+
     }
   }
+
 .imgcontan {
     position:absolute;
     width: 350px;
     height: 350px;
-    animation: 4s overall;
+    animation: 6s overall;
     left:0;right:0;bottom:0;top:0;
-    margin:auto;        opacity: 0.5;
+    margin:auto;        
+    opacity: 0.5;
+    z-index: 0;
 
 }
 @keyframes TextWelcome {
@@ -229,14 +243,21 @@ body a {
   }
 .imgcontantext {
     position:absolute;
-    bottom:-60;
-    width: 100%;
+    bottom:-80;
+    left:0;right:0;margin:auto;
+    width: fit-content;
     text-align: center;
     font-size: 50px;
+    height: fit-content;
     opacity: 0;
-    color:white;
+    color: white;
+    z-index: 5;
     animation: 5s 2s TextWelcome;
     font-style: "garet" serif;
+}
+.minitext {
+    font-size: 15px !important;
+    padding-top: 5px;
 }
 #SprintPlusLogo {
     z-index: 3;
@@ -1260,18 +1281,19 @@ body a {
             height:20px;
             bottom:0;
             position:fixed;
-            top:60%;
+            top:45%;
             left:25%;right:25%;
             visibility: visible;
             opacity: 0.8;
         }
         100% {
             opacity: 0.5;
+            top:45%
         }
       }
       .imgcontan {
         position:fixed;
-        top:50%;
+        top:45%;
         width: 300px;
         height: 300px;
         left:0px;right:0px;
