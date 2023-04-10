@@ -247,21 +247,13 @@ let Goal = `
 `
 
 let all_contain = `
-<div class="all-c-p"  onclick="Menu()">
+<div class="all-c-p"  onclick="Menu()" id="home">
 <span class="material-symbols-outlined">
   home
 </span>
 <div class="all-c-p-d">
   Home
 </div>
-</div>
-<div class="all-c-p"  onclick="GoalsShowUp()">
-  <span class="material-symbols-outlined">
-    monitoring
-  </span>
-  <div class="all-c-p-d">
-    Progress
-  </div>
 </div>
 <div class="all-c-p" onclick="ProjectShowUp()">
 <span class="material-symbols-outlined">
@@ -270,21 +262,8 @@ let all_contain = `
 <div class="all-c-p-d">
   Projects
 </div>
-</div>
-<div class="all-c-p" onclick="ShowUpToDo()">
-<span class="material-symbols-outlined" >
-  pending_actions
-  </span>
-<div class="all-c-p-d">
-  To-Do
-</div>
-</div>
-<div class="all-c-p" onclick="OpenInspiration()">
-<span class="material-symbols-outlined">
-  tips_and_updates
-  </span>
-<div class="all-c-p-d">
-  Inspiration
+<div class="all-c-p-d-d">
+  Browse your writing projects
 </div>
 </div>
 <div class="all-c-p" onclick="OpenWriting()">
@@ -294,7 +273,44 @@ let all_contain = `
 <div class="all-c-p-d">
   Writing
 </div>
+<div class="all-c-p-d-d">
+  Write your stories
 </div>
+</div>
+<div class="all-c-p"  onclick="GoalsShowUp()">
+  <span class="material-symbols-outlined">
+    monitoring
+  </span>
+  <div class="all-c-p-d">
+    Progress
+  </div>
+  <div class="all-c-p-d-d">
+  Track your progress
+</div>
+</div>
+<div class="all-c-p" onclick="ShowUpToDo()">
+<span class="material-symbols-outlined" >
+  pending_actions
+  </span>
+<div class="all-c-p-d">
+  To-Do
+</div>
+<div class="all-c-p-d-d">
+  Create tasks
+</div>
+</div>
+<div class="all-c-p" onclick="OpenInspiration()">
+<span class="material-symbols-outlined">
+  tips_and_updates
+  </span>
+<div class="all-c-p-d">
+  Inspiration
+</div>
+<div class="all-c-p-d-d">
+  Inspire yourself
+</div>
+</div>
+
 <div class="all-c-p" onclick="OpenNotifCenter()" id="notifclass">
 <span class="material-symbols-outlined">
   notifications
@@ -305,15 +321,20 @@ let all_contain = `
 <div class="all-c-p-d">
   Notifications
 </div>
+<div class="all-c-p-d-d">
+  Manage your content
 </div>
-<div class="all-c-p" onclick="OpenInfos()">
+</div>
+<div class="all-c-p" onclick="OpenInfos()" id="user">
 <span class="material-symbols-outlined">
   manage_accounts
   </span>
   <div class="all-c-p-d">
     Account
   </div>
-</div>`;
+</div>
+
+`;
 
 
 let featured = `
@@ -335,37 +356,6 @@ let featured = `
 let Main = `
 <div class="main-more-content">
 <div class="utilities">
-  <div class="featuring">
-    <div class="f-t">
-      <span class="material-symbols-outlined">
-        groups
-        </span>
-      Sprint+ is featuring...
-    </div>
-    <div class="f-f">
-    <div class="featured">
-    <div class="ft-t">
-      Sprint+ Support Server
-    </div>
-    <div class="ft-d">
-      Looking for suggestions? Want to report bugs?<br>
-      Join Sprint+ Discord server to stay tuned about exciting news!
-    </div>
-    <button onclick="window.open('https://discord.gg/72tACSk8Jd')">
-      Join this discord server
-    </button>
-  </div>
-      <div class="f-more">
-        <div class="f-m-d">
-          Looking for a feat?
-        </div>
-        <button id="contactteam" onclick="window.open('https://www.instagram.com/sprintplus_app/',target='_blank')">
-          Contact our team
-        </button>
-      </div>
-    </div>
-    
-  </div>
   <div class="m-m-i">
     <div class="f-t">
       <span class="material-symbols-outlined">
@@ -382,43 +372,60 @@ let Main = `
     </div>
 
   </div>
-</div>
-<div class="more">
+  <div class="more">
   <div class="mor-t">
     <span class="material-symbols-outlined">
       auto_awesome
       </span>
-    Our favorite stories
+    Your favorite stories
     <div class="learnmorefavsto" onclick="learnmorefavsto()">
       Learn more
     </div>
   </div>
-  <div class="mor-st">
-    <div class="st" >
-      <div class="st-l">
-        FR
-      </div>
-      <div class="st-t" id="NousEtLeMonde">
-        Nous, et le monde
-      </div>
-      <div class="st-o">
-        <span id="Nous Et Le Monde" class="material-symbols-outlined"onclick="openLink(this,'https://www.wattpad.com/1320458753-nous-et-le-monde-chapitre-1')">
-          open_in_new
-          </span>
-          <span id="Naf Auteur" class="material-symbols-outlined" onclick="openLink(this,'https://www.wattpad.com/user/NafAuteur')" >
-            face
-            </span>
-      </div>
-    </div>
+  <div class="mor-st" id="mor-st">
+    
   </div>
 </div>
 </div>
-`;
 
+</div>
+`;
+/*
+
+<div class="featuring">
+<div class="f-t">
+  <span class="material-symbols-outlined">
+    groups
+    </span>
+  Sprint+ is featuring...
+</div>
+<div class="f-f">
+<div class="featured">
+<div class="ft-t">
+  Sprint+ Support Server
+</div>
+<div class="ft-d">
+  Looking for suggestions? Want to report bugs?<br>
+  Join Sprint+ Discord server to stay tuned about exciting news!
+</div>
+<button onclick="window.open('https://discord.gg/72tACSk8Jd')">
+  Join this discord server
+</button>
+</div>
+  <div class="f-more">
+    <div class="f-m-d">
+      Looking for a feat?
+    </div>
+    <button id="contactteam" onclick="window.open('https://www.instagram.com/sprintplus_app/',target='_blank')">
+      Contact our team
+    </button>
+  </div>
+</div>
+*/
 
 function learnmorefavsto() {
-  localStorage.setItem('helpItem',"feat");
-  window.open('help.html')
+    localStorage.setItem('helpItem', "feat");
+    window.open('help.html')
 }
 
 let goaled = false;
@@ -426,8 +433,8 @@ let goaled = false;
 
 
 function OpenWelcome() {
-  document.getElementById('p-p-title').innerHTML = "Welcome to Sprint+!"
-  document.getElementById('Main').innerHTML = `
+    document.getElementById('p-p-title').innerHTML = "Welcome to Sprint+!"
+    document.getElementById('Main').innerHTML = `
     <div class="welcome-f">
       <div class="w-t">
       Welcome, dear writer!

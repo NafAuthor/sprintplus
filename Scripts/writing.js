@@ -1,6 +1,7 @@
 let chapterincharge;
 
 
+
 function ClearSpan() {
     document.getElementById('editcontent').innerHTML="";
 }
@@ -19,6 +20,9 @@ function OpenWriting(el) {
     document.getElementById('Main').innerHTML = `
         <div class="writingcontent">
             <div class="writingselect">
+                <div id="clicktodevelop">
+                    Click to develop
+                </div>
                 <div class="writingselectinfos">
                     <p>Select a project</p>
                     <div id="writingselect">
@@ -125,7 +129,7 @@ function GetChapter(el) {
 function NewChapter() {
     if (InCharge) {
         let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
-        let chaptersnb =  0;
+        let chaptersnb =  1;
         if (pj.chapters) {
             let size = Object.keys(pj.chapters).length;
             function Calc() {
@@ -263,9 +267,11 @@ function LessInt() {
     }
     document.getElementById('newchapternb').value = nb;
     if (nb<1) {
-        for (let i = 1; i<  Object.keys(pj.chapters).length+1; i++) {
+        for (let i = 1; i<  Object.keys(pj.chapters).length+2; i++) {
+            console.log(i)
          if (pj.chapters[i] === null || pj.chapters[i]===undefined) {
             document.getElementById('newchapternb').value = i;
+            console.log(i)
             return;
          }
         }
@@ -291,7 +297,7 @@ function CheckInt(el) {
     if (!pj.chapters) {
         pj.chapters = {};
     }
-    if (pj.chapters[value]!=null && pj.chapters[value].name != chapterincharge.name) {
+    if (pj.chapters[value]!=null && pj.chapters[value].number != chapterincharge.number) {
         el.style.border="1px solid red";
         el.style.borderStyle="none none solid none"
         el.style.borderRadius="5px 5px 0px 0px";
@@ -344,6 +350,7 @@ function AutoSave() {
     if (!pj.chapters) {
         pj.chapters = {};
     }
+
     let Chapter = {
         name : name,
         number : nb,
@@ -351,15 +358,15 @@ function AutoSave() {
         content : content,
         finished : chapterincharge.finished
     }
-    
+    delete pj.chapters[chapterincharge.number]
     pj.chapters[nb] = Chapter;
+    chapterincharge = Chapter;
     localStorage.setItem(`Project : ${InCharge}`,JSON.stringify(pj))
 
-    console.log("Autosaving")
     if (pj) {
         SetPJ({id:InCharge});
         if (chapterincharge) {
-            GetChapter({id:chapterincharge.number})
+            GetChapter({id:nb})
         }
     }
     document.getElementById('autosave').style.opacity = "1";

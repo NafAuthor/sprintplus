@@ -51,14 +51,17 @@
     <div id="ad">
 
     </div>
-    <img src="Images & Icons/Sprint+ logo blank.png" id="SprintPlusLogo">
-    <div class="Title" id="p-title">
-      <div class="imgcontan">
-        <div class="circle"></div>
-        <div class="circlehide"></div>
-
-        <img src="Images & Icons/Sprint+ logo blank.png" id="logo">
+    <div class="imgcontan">
+      <div class="circle"></div>
+      <div class="circlehide"></div>
+      <img src="Images & Icons/Sprint+ logo blank.png" id="SprintPlusLogo">
+      <div class="imgcontantext">
+        Sprint+
       </div>
+    </div>
+    <div class="Title" id="p-title">
+      <img src="Images & Icons/Sprint+ logo blank.png" id="logo">
+
       <a id="p-p-title"></a>
       <div class="Logs">
         <a href="logs.html" target="_blank">
@@ -78,6 +81,9 @@
       </div>
     </div>
     <div class="all-contain" id="all-contain">
+      <div id="menutext">
+        Menu
+      </div>
       <div class="all-c-p"  onclick="Menu()">
         <span class="material-symbols-outlined">
           home
@@ -303,7 +309,12 @@
         let NotifNB = 0;
         let goaled = false;
         document.getElementById('Main').innerHTML=Main;
-        document.getElementById('all-contain').innerHTML=all_contain;
+        document.getElementById('all-contain').innerHTML=`
+        <div id="menutext">
+          Menu
+        </div>
+        ${all_contain}
+        `;
         document.getElementById('all-contain').style.visibility="visible";
         let sentences = [
           `Welcome back ${JSON.parse(localStorage.getItem('user')).name}. We were waiting for you!`,
@@ -329,6 +340,7 @@
               "That ain't true!",
               "What?!"
             ]
+            console.log(items)
         for (let [k,v] of Object.entries(items)) {
           if (k.includes('goal')) {
             let g = JSON.parse(v);
@@ -354,8 +366,7 @@
                   ClockSet = true;
                 }
             }
-            console.log('TODAY IS ' + Today)
-            console.log('Time is ' + Time + " and today is" + g.words)
+
 
             if (((!g.updates[TD]) || g.words < g.updates[TD]) && g.started === true ) {
               NotifNB++;
@@ -375,16 +386,76 @@
               goaled=true;
               console.log("GOALED IS "+ goaled);
             }
-          } else if (k.includes("Project")) {
+          } 
+          if (k.includes("Project")) {
             let pj = JSON.parse(v);
+            console.log("PJ!")
+            if (pj.star) {
+              document.getElementById('mor-st').innerHTML+=`
+              <div class="st">
+                <div class="st-l">
+                  <span class="material-symbols-outlined">
+                    star
+                  </span>
+                </div>
+                <div class="st-t">
+                  ${pj.name}
+                </div>
+                <div class="st-o">
+                  <span id="Project : ${pj.name}" class="material-symbols-outlined" onclick="OpenFolder({id:'pj-open-${pj.name}'})">
+                    open_in_new
+                    </span>
+                </div>
+              </div>
+              `;
+
+            }
             if (pj.tasks) {
               for (let i = 0; i < pj.tasks.length; i++ ) {
                 let task = pj.tasks[i];
                 if (task.validated != true) {
                   let date = new Date(task.for);
                   date = date.setHours(0,0,0,0);
-                  if (today === date) {
+
+                  let tomorrow = new Date(today)
+                  tomorrow.setDate(today.getDate() + 1)
+                  tomorrow = tomorrow.setHours(0,0,0,0)
+                  today = today.setHours(0,0,0,0);
+
+                  today = new Date(today);
+                  tomorrow = new Date(tomorrow);
+                  date = new Date(date);
+                  let Tasks = []
+
+
+                  let IfToday = false;
+                  if (today.getDate() === date.getDate() &&
+                    today.getMonth() === date.getMonth() &&
+                    today.getFullYear() === date.getFullYear()) {
+                      IfToday=true;
+                    } else if (tomorrow.getDate() === date.getDate() &&
+                    tomorrow.getMonth() === date.getMonth() &&
+                    tomorrow.getFullYear() === date.getFullYear()) {
+                      IfToday=false;
+                    }
+                  if ((
+                    today.getDate() === date.getDate() &&
+                    today.getMonth() === date.getMonth() &&
+                    today.getFullYear() === date.getFullYear()
+                  ) || (
+                    tomorrow.getDate() === date.getDate() &&
+                    tomorrow.getMonth() === date.getMonth() &&
+                    tomorrow.getFullYear() === date.getFullYear()
+                  )) {  
+                    Tasks.push([task,IfToday])
+                  }
+                  Tasks.sort(function(a,b){
+                    return b[1]- a[1]
+                  });
+                  for (let t of Tasks) {
+                    let task = t[0];
                     NotifNB++;
+                    goaled=true;
                     document.getElementById('m-m-td').innerHTML+=`
                       <div class="alert">
                         <div class="c-m">
@@ -392,6 +463,9 @@
                         task
                         </span>
                             ${cm[Math.floor((Math.random() * cm.length))]}
+                            <div class="AlertDate">
+                          ${IfToday?"Today":"Tomorrow"}
+                            </div>
                         </div>
                         <div class="c-d-c" onclick="ShowUpToDo()">
                           You didn't finish your « ${task.name} » task!
@@ -414,9 +488,9 @@
         checkIfGoals(goaled);
         console.log(NotifNB + " is amount of notifs")
       }
-      function checkIfGoals(g) {
-        console.log(g)
 
+
+      function checkIfGoals(g) {
         if (!g) {
 
           document.getElementById('m-m-td').innerHTML+=`

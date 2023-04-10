@@ -633,12 +633,11 @@ function FilterProjects(type) {
             item.chapters = {}
           }
           let chapteramount = 0;
-          for (let i =0; i <  Object.keys(item.chapters).length;i++) {
-            if (items.chapters[i] != null) {
+          for (let i =1; i <  Object.keys(item.chapters).length+1;i++) {
+            if (item.chapters[i] != null) {
               chapteramount++;
             }
           }
-
           console.log(item)
           let Ends = item.end;
           console.log(Ends)
@@ -948,6 +947,7 @@ function CreateProject() {
         more: more,
         cover: cover,
         created_on: Date.now(),
+        chapters : {},
         password: password,
         inspi: [],
         star : false,
