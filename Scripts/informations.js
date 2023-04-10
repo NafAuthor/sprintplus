@@ -182,7 +182,7 @@ function OpenInfos() {
                 </div>
                 <div class="ifo-bt">
                     <div class="ifo-bt-b">
-                        <button onclick="window.open('help.html')">
+                        <button onclick="window.open('logs.html')">
                             Informations
                         </button>
                     </div>
