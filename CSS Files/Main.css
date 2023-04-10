@@ -149,9 +149,85 @@ body a {
     text-decoration: none;
     color:rgba(244, 216, 231, 0.8);
 }
+
+
+@keyframes slidein {
+    0% {
+        width: 0px;
+        height: 0px;
+        border-radius: 5px;
+    }
+    50% {
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        transform: rotate(360deg);
+        border-radius: 50%;   
+    }
+  }
+  @keyframes slidein1 {
+    0% {
+        border-radius: 5px;
+        width: 0px;
+        height: 0px;
+    }
+    50% {
+        width: 95%;
+        height: 95%;
+    }
+    100% {
+        transform: rotate(360deg);
+        border-radius: 50%;   
+
+    }
+  }
+.circle {
+    border-radius: 50%;   
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top:0;right:0;left:0;bottom:0;margin:auto;
+    background-color: white;    z-index: 1;
+    animation: 3s linear 0.1s slidein;
+}
+.circlehide {
+    border-radius: 50%;   
+    width: 95%;
+    height: 95%;
+    position:absolute;
+    top:0;right:0;left:0;bottom:0;margin:auto;
+    background-color:#1d2d55;    
+    z-index: 2;
+    animation: 3s slidein1;
+
+}
+.imgcontan {
+    position:relative;
+    width: 70px;
+    height: 70px;
+}
+@keyframes logoslide {
+    0% {
+        filter:blur(10px)
+    }
+    100% {
+        transform: rotate(360deg);  
+        filter:blur(0px)
+
+    }
+  }
 #logo {
-    max-width: 90%;
-    max-height: 90%;
+    width: 85%;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: 3s border;
+    z-index: 3;
+    position:absolute;
+    top:0;right:0;left:0;bottom:0;margin:auto;
+    animation: 3s logoslide;
+
 }
 .img-content {
     width:23%;
@@ -829,10 +905,6 @@ body a {
         visibility: hidden;
         position:absolute;
     }
-    #p-title {
-        display: none;
-
-    }
     .f-t-center {
         border: 2px solid #1d2d55;
         border-radius: 5px;
@@ -859,10 +931,6 @@ body a {
         font-size: 10px;
         background-color: unset;
     }
-    .Title img {
-        position:absolute;
-        visibility: hidden;
-    }
     .f-t {
         width: 97.5%;
     }
@@ -884,9 +952,8 @@ body a {
     .featuring {
         display:none;
     }
-    #p-p-title {
-        visibility: hidden;
-        position:absolute;
+    .Title {
+        display: none;
     }
     #SprintPlusLogo {
         margin-left: auto;

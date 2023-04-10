@@ -632,6 +632,13 @@ function FilterProjects(type) {
           if (!item.chapters) {
             item.chapters = {}
           }
+          let chapteramount = 0;
+          for (let i =0; i <  Object.keys(item.chapters).length;i++) {
+            if (items.chapters[i] != null) {
+              chapteramount++;
+            }
+          }
+
           console.log(item)
           let Ends = item.end;
           console.log(Ends)
@@ -669,7 +676,7 @@ function FilterProjects(type) {
                       </div>
 
                       <div class="pj-open-desc-infos-d">
-                        ${Object.keys(item.chapters).length} chapters
+                        ${chapteramount} chapters
                       </div>
                     </div>
                   </div>

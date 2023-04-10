@@ -1,6 +1,8 @@
 let chapterincharge;
 
-
+setTimeout(() => {
+    OpenWriting()
+}, 20);
 
 function ClearSpan() {
     document.getElementById('editcontent').innerHTML="";
@@ -264,14 +266,13 @@ function LessInt() {
     }
     document.getElementById('newchapternb').value = nb;
     if (nb<1) {
-        for (let i = 1; i< pj.chapters.length; i++) {
-         if (pj.chapters[i] === null) {
+        for (let i = 1; i<  Object.keys(pj.chapters).length+1; i++) {
+         if (pj.chapters[i] === null || pj.chapters[i]===undefined) {
             document.getElementById('newchapternb').value = i;
             return;
-         }   
+         }
         }
     }
-
 }
 
 
