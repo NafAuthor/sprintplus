@@ -78,9 +78,22 @@ function OpenFolder(el) {
     </div>
     </div>
     <div class="pj-b-content" id="pj-b-content">
+    <div class="pj-b-i-t"> 
+      <span class="material-symbols-outlined" style="color:${pj.star?"yellow":(pj.backed?"grey":"whitee")}">
+      ${pj.star?"star":(pj.backed?"hide_source":"blur_on")}
+      </span>
+      ${pj.name} 
+        <div class="pj-b-i-t-i">
+        ${
+          pj.star?"This project is one of your favorites.":(
+            pj.backed?"This project is currently sleeping":
+            "This project has no sorting particularities."
+            )
+        }
+        </div>
+      </div>
       <div class="pj-b-i">
         <div class="pj-i-c">
-        <div class="pj-b-i-t"> ${pj.name} </div>
         <div class="-pj-b-i-i">
           <span class="material-symbols-outlined"> article </span> ${pj.type}
         </div>

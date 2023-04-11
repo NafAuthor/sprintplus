@@ -685,7 +685,7 @@ Project view:
     background-color: #19284d;
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 90%;
     position:relative;
     margin-top: auto;
     margin-bottom: auto;
@@ -709,17 +709,42 @@ Project view:
     flex-direction: column;
     gap: 10px;
 }
+.pj-b-i-t span {
+    font-size: 20px;
+}
 .pj-b-i-t {
-    width: fit-content;
+    width: 80%;
+    padding:5px;
     padding-left: 10px;
-    padding-right: 10px;
     font-size: 25px;
-    position: absolute;
-    border-radius:10px;
+    position:relative;
+    border-radius:5px;
     top:-12;
-    left:10;
+    left:0;
     background-color: #19284d;
+    display:flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
 
+}
+
+.pj-b-i-t:hover .pj-b-i-t-i {
+    visibility: visible;
+}
+.pj-b-i-t-i {
+    background-color: rgba(29, 45, 85,0.5);
+    width:fit-content;
+
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    height: 15px;
+    position:absolute;
+    top:0;
+    bottom:0;margin:auto;
+    right:0;
+    visibility: hidden;
 }
 .-pj-b-i-i-desc {
     padding: 10px;
@@ -1105,9 +1130,7 @@ Project view:
     border-style: none none solid none;
     border-color: rgba(0,0,0,0);
     height: 150px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 15px;
 }
 .mdf-input textarea:hover, .mdf-input textarea:focus {
     border-style: none none solid none;
@@ -1330,9 +1353,9 @@ Project view:
         margin:unset;
     }
     .pj-b-g-param,.pj-b-g-param:active, .pj-b-g-param:hover    {
-        padding: 2px;
-        width: 40px;
-        height: 40px;
+        padding: 0px !important;
+        width: 35px !important;
+        height: 35px !important;
         border-radius: 5px;
         background-color: #1d2d55;
         border:none;
@@ -1380,21 +1403,31 @@ Project view:
         flex-direction: row;
         width: fit-content;
         align-items: center;
-        min-width: 180px;
+        min-width: 135px;
         justify-content: unset;
         text-align: unset;
         height: fit-content;
         gap:1px;
         border:none;
-        padding-left: 7px;
+        padding: 5px;
+    }
+    .pj-b-g-param-title, .pj-b-g-param-title span {
+        font-size: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
     .pj-b-g-param-title {
+        width: 85%;
         padding-top: 2px;
         padding-bottom: 2px;
-        top:-13;
+        top:-21;
         left:0;
         right:0;
         margin:auto;
+        background-color: unset;
+        color:rgba(255,255,255,0.6)
     }
     .pj-b-c {
         width: 20%;
