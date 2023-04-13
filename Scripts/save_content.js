@@ -380,7 +380,6 @@ let featured = `
 
 let Main = `
 <div class="main-more-content">
-<
 <div class="utilities">
   <div class="m-m-i">
     <div class="f-t">
