@@ -13,9 +13,7 @@ function ActivateGoal() {
   starringPJ;
 }
 
-setTimeout(() => {
-  OpenFolder({id:"pj-open-Nous, et le monde"})
-}, 20);
+
 
 function ReturnChapterNb() {
   let nb = 0;
@@ -246,7 +244,6 @@ function OpenFolder(el) {
   `;
   let items = {...localStorage} ;
   let g= 0;
-  let tasks = [];
 
   for (let [i,k] of Object.entries(items)) {
     if (i.includes('goal') && i.includes(pj.name)) {
@@ -256,27 +253,29 @@ function OpenFolder(el) {
   if (g===2) {
     document.getElementById('pj-b-g-b').remove()
   }
-  for (let i = 0; i < pj.tasks.length; i++) {
-    if (pj.tasks[i].validated != true) {
-      let t = pj.tasks[i];
-      document.getElementById('wholegoalsinfo-c-c-task').innerHTML+=`
-        <div class="pjtask">
-          <div class="pjtask-t">
-            ${t.name}
+  if (pj.tasks) {
+    for (let i = 0; i < pj.tasks.length; i++) {
+      if (pj.tasks[i].validated != true) {
+        let t = pj.tasks[i];
+        document.getElementById('wholegoalsinfo-c-c-task').innerHTML+=`
+          <div class="pjtask">
+            <div class="pjtask-t">
+              ${t.name}
+            </div>
+            <div class="pjtask-i">
+              <span class="material-symbols-outlined" style="color:${t.delete?"white":"rgba(255,255,255,0.5)"}">
+                delete
+              </span>
+              <span class="material-symbols-outlined" style="color:${t.repeat?"white":"rgba(255,255,255,0.5)"}">
+                replay
+              </span>
+              <span class="material-symbols-outlined" style="color:${t.alert?"white":"rgba(255,255,255,0.5)"}">
+              notifications
+              </span>
+            </div>
           </div>
-          <div class="pjtask-i">
-            <span class="material-symbols-outlined" style="color:${t.delete?"white":"rgba(255,255,255,0.5)"}">
-              delete
-            </span>
-            <span class="material-symbols-outlined" style="color:${t.repeat?"white":"rgba(255,255,255,0.5)"}">
-              replay
-            </span>
-            <span class="material-symbols-outlined" style="color:${t.alert?"white":"rgba(255,255,255,0.5)"}">
-            notifications
-            </span>
-          </div>
-        </div>
-      `;
+        `;
+      }
     }
   }
 
