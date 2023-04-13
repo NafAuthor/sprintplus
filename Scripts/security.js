@@ -50,13 +50,13 @@ let confirmsecurity = function() {
         OpenFolder({id:`pj-open-${InCharge}`});
     } else {
         if (p.value!=pj.password) {
-            document.getElementById(`enter-content-0`).style.border = "2px solid red";
+            document.getElementById(`enter-content-0`).style.borderBlockColor = "red";
         } else {
-            document.getElementById(`enter-content-0`).style.border = "2px solid green";
+            document.getElementById(`enter-content-0`).style.borderBlockColor = "green";
         }
         if (p1.value!=p2.value || p1.value.length<5 && p2.value.length<5) {
-            document.getElementById(`enter-content-1`).style.border = "2px solid red";
-            document.getElementById(`enter-content-2`).style.border = "2px solid red";
+            document.getElementById(`enter-content-1`).style.borderBlockColor = "red";
+            document.getElementById(`enter-content-2`).style.borderBlockColor = "red";
         } 
     }
 

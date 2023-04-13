@@ -183,7 +183,7 @@ animation: 3s linear infinite slidein;
 }
 #writingdisplayer #editcontent {
     padding: 10px;
-    background-color: #19284d;
+    background-color: #1d2d55;
     border-radius: 5px;
     height: 100%;
     border:none;
@@ -238,9 +238,15 @@ animation: 3s linear infinite slidein;
 .chaptermv input {
     padding:10px;
     outline:none;border:none;
-    background-color: #19284d;
+    background-color: #1d2d55;
     color:white;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
+    border-color: rgba(0,0,0,0);
+    border-style: none none solid none;
+    cursor: pointer;
+}
+.chaptermv input:hover, .chaptermv input:focus {
+    border-color: white;
 }
 .chaptermv input[type="number"] {
     width: 70px;
@@ -272,7 +278,9 @@ animation: 3s linear infinite slidein;
     padding: 2px;
     padding-left: 5px;
     padding-right: 5px;
+
 }
+
 .chaptermvv input::-webkit-color-swatch {
     border-radius: 5px;
     border:none;
@@ -280,12 +288,16 @@ animation: 3s linear infinite slidein;
 }
 .itemact span, .chaptermvv span {
     padding: 5px;
-    background-color: #19284d;
+    background-color: #1d2d55;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+.itemact span:hover, .chaptermvv span:hover {
+    background-color: white;
+    color:#19284d;
 }
 #saveDesc {
     z-index:50;
@@ -300,8 +312,8 @@ animation: 3s linear infinite slidein;
     width: 100%;
     height: 100%;
     padding: 5px;
-    background-color: #19284d;
-    border: 2px solid #1d2d55;
+    background-color: #1d2d55;
+    border: 2px solid #19284d;
     text-align: left;
     border-radius: 5px;
     overflow-y: auto;
@@ -324,7 +336,7 @@ animation: 3s linear infinite slidein;
     height: 100%;
     cursor: pointer;
     align-items: center;
-    background-color: #19284d;
+    background-color: #1d2d55;
     border-radius: 5px;
     justify-content: center;
 }
@@ -340,7 +352,7 @@ animation: 3s linear infinite slidein;
     gap: 5px;
 }
 .removeChapter span:hover {
-    background-color: #19284d !important;
+    background-color: #1d2d55 !important;
     color:white !important;
 }
 
@@ -390,7 +402,7 @@ animation: 3s linear infinite slidein;
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #19284d;
+    background-color: #1d2d55;
     cursor: pointer;
 }
 .plusless span {
@@ -411,36 +423,73 @@ animation: 3s linear infinite slidein;
 #clicktodevelop {
     display: none;
 }
+.infovocal {
+    display: none;
+}
 @media screen and (320px <= width <= 420px) {
-
+    .infovocal {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        position:fixed;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        bottom:1px;;
+        align-items: center;
+        background-color: #1d2d55;
+        border:1px solid white;
+        border-style: none none solid none;
+        padding: 5px;
+        left: 0px;
+        right:0px;
+        margin:auto;
+        font-size: 15px;
+        color:rgba(255,255,255,0.8)
+    }
+    .infovocal span {
+        font-size: 15px;
+    }
     .writingcontent {
+        display: flex;
         flex-direction: column;
+        gap:50px;
+        padding-top: 110px;
     }
     .writingselect {
-        width: 100%;
+        width: 75%;
         height: 50px;
         overflow-y: hidden;
         overflow-x: hidden;
+        background-color: #1d2d55;
+        position:absolute;top:0;
+        left:0;right:0;
+        margin: auto !important;
+
     }
-    .writingselect:hover {
-        height: 100%;
+    .writingselect:hover{
+        height: fit-content;
+        max-height: 80%;
         z-index: 50;
         overflow-y: scroll;
         overflow-x: hidden;
+        border: 2px solid #19284d;
     }
     #editcontent {
         width: 95% !important;
         margin-left: auto;
         margin-right: auto;
+        height: 90% !important;
     }
     .chaptermvv {
         justify-content: center;
     }
     #clicktodevelop {
         display: block;
-        height: 30px !important;
+        height: 31px !important;
         padding: 5px;
         width: 95%;
+        margin-top: 2.5px;
         margin-left: auto;
         margin-right: auto;
         background-color: #1d2d55;
@@ -448,7 +497,7 @@ animation: 3s linear infinite slidein;
         display: flex;
         align-items: center;
         justify-content: center;
-
+        font-weight: bold;
     }
 
     #writingdisplayer {
@@ -456,9 +505,9 @@ animation: 3s linear infinite slidein;
     }
     .chapternew {
         position:fixed;
-        top:85%;
+        bottom:25px;
         left:0px;
-        background-color: #19284d;
+        background-color: #1d2d55;
         height: 80px;
         padding: 10px;
 
@@ -471,7 +520,7 @@ animation: 3s linear infinite slidein;
         justify-content: center;
     }
     .itemact span {
-        background-color: #1d2d55;
+        background-color: #19284d;
     }
     .numberinput {
         height: 40px;
@@ -480,15 +529,15 @@ animation: 3s linear infinite slidein;
         right:30;
     }
     .numberinput input, .chapternew input, .chapternewopendesc {
-        background-color: #1d2d55 !important;
+        background-color: #19284d !important;
         height: 40px;
     }
     .plusless {
         gap:5px;
-        background-color: #1d2d55;
+        background-color: #19284d;
     }
     .plusless span {
-        background-color: #1d2d55 !important;
+        background-color: #19284d !important;
         font-size: 18px;
         height: 17.5px;
         border-radius: 5px;
@@ -513,9 +562,19 @@ animation: 3s linear infinite slidein;
         left:0;right:0;
         margin:auto;
     }
+    #writingselectchap button {
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+        background-color: #19284d !important;
+    }
     .chapterdescription textarea {
         border: 3px solid #1d2d55;
         width: 100%;
         border-color: #1d2d55 #1d2d55 white #1d2d55;
+    }
+    .pj-select-writing,.goal-select-writing {
+        background-color: #19284d !important;
     }
 }

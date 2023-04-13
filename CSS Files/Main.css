@@ -23,7 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     color: white;
-    background-color: #1d2d55;
+    background-color: #19284d;
     overflow-y: hidden;
 }
 
@@ -280,6 +280,7 @@ body a {
 #logo {
     width: 70px;
     border-radius: 5px;
+    background-color: unset !important;
 }
 
 .img-content {
@@ -492,7 +493,7 @@ body a {
 
     color:white;
     border-radius: 5px;
-    background-color: #19284d;
+    background-color: #1d2d55;
 }
 .Support a, .Logs a, .Support span, .Logs span {
     font-size:20px !important;
@@ -592,7 +593,6 @@ body a {
     border-style: none none solid none;
     border-radius: 5px 5px 0px 0px;
     border-width: 0px 0px 2px 0px;
-    background-color: #19284d;
     position:relative;
     height: 20px;
 }
@@ -618,7 +618,7 @@ body a {
     flex-direction: column;
     gap: 5px;
     width: 90%;
-    background-color: #19284d;
+    background-color: #1d2d55;
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -693,7 +693,7 @@ body a {
 
 .alert {
     width: 90%;
-    background-color: #19284d;
+    background-color: #1d2d55;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -856,7 +856,7 @@ body a {
     height: 40px;
     align-items: center;
     gap: 0px;
-    background-color: #19284d;
+    background-color: #1d2d55;
     border-radius: 5px;
     padding-left: 20px;
     padding-right: 10px;
@@ -941,7 +941,7 @@ body a {
 .welcome-f {
     background-color: #68511c;
     padding: 15px;
-    background-color: #19284d;
+    background-color: #1d2d55;;
     border-radius: 5px;
     overflow-y: auto;
 }
@@ -959,7 +959,7 @@ body a {
     position: absolute;
     top:-15;
     padding: 5px;
-    background-color: #19284d;
+    background-color: #1d2d55;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
@@ -967,7 +967,7 @@ body a {
 
 
 .openContainer {
-    background-color: #19284d;
+    background-color: #1d2d55;
     border-radius: 50%;
     padding: 10px;
     width: fit-content;
@@ -1116,6 +1116,7 @@ body a {
         gap:5px;
         background-color: rgba(25, 40, 77,0.9);        
         font-size: 20px;
+        border:none;
     }
     .all-contain  {
         left:-10px !important;right:0;

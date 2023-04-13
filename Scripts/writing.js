@@ -147,6 +147,12 @@ function NewChapter() {
         document.getElementById('writingdisplayer').innerHTML = `
             <div class="chaptermv">
                 <div class="chapternew">
+                    <div class="infovocal">
+                        <span class="material-symbols-outlined">
+                        info
+                        </span>
+                        You can use your speech-to-text keyboard feature to write
+                    </div>
                     <div class="numberinput">
                         <input readonly type="text" onchange="CheckInt(this)" min="1" value="${!chapterincharge?chaptersnb:chapterincharge.number}" id="newchapternb" placeholder="x">
                         <div class="plusless">

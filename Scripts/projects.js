@@ -12,6 +12,21 @@ function ActivateGoal() {
   OpenFolder({id:`pj-open-${starringPJ.name}`});
   starringPJ;
 }
+
+setTimeout(() => {
+  OpenFolder({id:"pj-open-Nous, et le monde"})
+}, 20);
+
+function ReturnChapterNb() {
+  let nb = 0;
+  let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+  for (let [i,v] of Object.entries(pj.chapters)) {
+    if (v!=null) {
+      nb++;
+    }
+  }
+  return nb;
+}
 function OpenFolder(el) {
   customGoal=false;
   NewAddGoal=0;
@@ -46,7 +61,7 @@ function OpenFolder(el) {
     <div class="pj-b-g-p">
       <div class="pj-b-g-param-title">
       <span class="material-symbols-outlined"> info </span>
-      Project details
+      <p>Project details</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeCover(this)">
         <span class="material-symbols-outlined"> imagesmode </span><p> Edit cover</p>
@@ -67,7 +82,7 @@ function OpenFolder(el) {
     <div class="pj-b-g-p">
       <div class="pj-b-g-param-title">
       <span class="material-symbols-outlined"> warning </span>
-      Sensitive area
+      <p>Sensitive area</p>
       </div>
       <div class="pj-b-g-param" onclick="TriggerSecurity(this);" id="${pj.name}" style="color:#4DB399">
         <span class="material-symbols-outlined"> security </span> <p>Security</p>
@@ -79,76 +94,150 @@ function OpenFolder(el) {
     </div>
     <div class="pj-b-content" id="pj-b-content">
     <div class="pj-b-i-t"> 
-      <span class="material-symbols-outlined" style="color:${pj.star?"yellow":(pj.backed?"grey":"whitee")}">
-      ${pj.star?"star":(pj.backed?"hide_source":"blur_on")}
-      </span>
       ${pj.name} 
-        <div class="pj-b-i-t-i">
-        ${
-          pj.star?"This project is one of your favorites.":(
-            pj.backed?"This project is currently sleeping":
-            "This project has no sorting particularities."
-            )
-        }
+    </div>
+    <div class="wholeinfoshover" onclick="HoverShow('infos')">
+    <div class="text2">
+    <span class="material-symbols-outlined" id="infosright">
+    chevron_right
+    </span>
+    Informations
+    </div>
+    <div class="pj-whole-contain-all" id="infoswhole" style="visibility:hidden;display:none;">
+    <div class="pj-b-c">
+    <img src="${pj.cover?pj.cover:"Images & Icons/MS.png"}">
+    </div>
+    <div class="pjinfocontent">
+        <div class="pj-b-i">
+          <div class="pj-i-c">
+          <div class="-pj-b-i-i" id="containLink">
+            ${pj.more?`
+              <span class="material-symbols-outlined"> pending </span>
+              <a target="_blank" href="${pj.more}">Linked content</a>
+              <div id="a-link-goes"></div>
+            `:'<span class="material-symbols-outlined"> pending </span> No linked content'}
+            </div>
+            <p>
+              The linked content is an additional and external part of your work you can 
+              save as a link to fastly open it when you need it. 
+            </p>
+          <div class="-pj-b-i-i-desc">
+            <span class="material-symbols-outlined"> description </span>
+            <div class="-pj-b-i-i-c">
+            ${pj.desc}
+            </div>
+          </div>
+          <p>
+          Your project description is for you to remember important parts of your story, and for 
+          people to read a summary of your story.
+          </p>
+          </div>          
         </div>
       </div>
-      <div class="pj-b-i">
-        <div class="pj-i-c">
-        <div class="-pj-b-i-i">
-          <span class="material-symbols-outlined"> article </span> ${pj.type}
+    </div>
+    </div>
+    <div class="wholegoalsinfo" onclick="HoverShow('goals')">
+      <div class="text2">
+      <span class="material-symbols-outlined" id="goalsright">
+      chevron_right
+      </span>
+      Goals & Tasks
+      </div>
+      <div class="wholegoalsinfo-container" id="goalswhole" style="visibility:hidden;display:none;">
+        <div class="wholegoalsinfo-c">
+            <div class="wholegoalsinfo-c-t">
+                <div></div>
+                <p>Goals</p>
+                <p id="pjgdesc">Goals are a way to set up writing objectives in order to 
+                progress and to improve your story. You can have up to two goals per project for the moment.</p>
+            </div>
+            <div class="wholegoalsinfo-c-c" id="wholegoalsinfo-c-c-goal">
+                <button onclick="ModifyAddGoal();" id="pj-b-g-b">
+                <span class="material-symbols-outlined"> add </span> New goal </button>
+            </div>
         </div>
-        <div class="-pj-b-i-i" id="containLink">
-          ${pj.more?`
-            <span class="material-symbols-outlined"> pending </span>
-            <a target="_blank" href="${pj.more}">Linked content</a>
-            <div id="a-link-goes"></div>
-          `:'<span class="material-symbols-outlined"> pending </span> No linked content'}
-          </div>
-        <div class="-pj-b-i-i-desc">
-          <span class="material-symbols-outlined"> description </span>
-          <div class="-pj-b-i-i-c">
-          ${pj.desc}
-          </div>
+        <div class="wholegoalsinfo-c">
+            <div class="wholegoalsinfo-c-t">
+                <div></div>
+                <p>Tasks</p>
+                <p id="pjgdesc">Tasks are a way for you to set up short-time objectives which are not 
+                statistically calculated by Sprint+. You can have as much tasks as you want, and your done
+                tasks are kept inside the ${pj.name} file.
+                </p>
+            </div>
+            <div class="wholegoalsinfo-c-c" id="wholegoalsinfo-c-c-task">
+            </div>
         </div>
+      </div>
+    </div>
+    <div class="wholedetailsinfos" onclick="HoverShow('details')">
+      <div class="text2">
+      <span class="material-symbols-outlined" id="detailsright">
+      chevron_right
+      </span>
+      Details
+      </div>
+      <div class="pj-b-details" id="detailswhole"  style="visibility:hidden;display:none;">
+      <div class="pj-b-details-c">
+        <p id="pj-b-details-c-t">Overview</p>
+        <p>
+          Writing
+        </p>
+        <div>
+          ${ReturnChapterNb()>1?ReturnChapterNb()+" chapters have been written":ReturnChapterNb()+"chapter have been written"}
         </div>
-        <div class="pj-b-c">
-        <img src="${pj.cover?pj.cover:"Images & Icons/MS.png"}">
+        <p>
+          Inspiration
+        </p>
+        <div>
+          ${pj.inspi?(pj.inspi.length>1?pj.inspi.length+" elements inspire this project":pj.inspi.length+"element inspires this project"):"This project doesn't have any chapter."} 
+        </div>
+        <p>
+          Tasks
+        </p>
+        <div>
+          ${pj.tasks?(pj.tasks.length>1?pj.tasks.length+" tasks made for this project":pj.tasks.length+"task made for this project"):"This project does not have any task."} 
         </div>
       </div>
 
-      <div class="pj-b-p">
-        <div class="pj-b-goals" id="pj-b-goals">
-          <div class="pj-b-g-b" id="pj-b-g-b">
-            <button onclick="ModifyAddGoal();">
-              <span class="material-symbols-outlined"> add </span> New goal </button>
-          </div>
-        <div class="pj-b-g-c" id="pj-b-g-c"></div>
-        </div>
-      </div>
-      <div class="pj-mi">
-      <div class="pj-mi-c">
-        <div class="-pj-b-i-i" style="font-size: 12px;"  id="PJRIGHT">
-          <span class="material-symbols-outlined"> line_start </span> Created on ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}
-        </div>
-        <div class="-pj-b-i-i" style="font-size: 12px;"id="PJLEFT">
-          <span class="material-symbols-outlined"> timer </span> Start on ${pj.start} - End on ${pj.end}
-        </div>
-      </div>
-      <div class="pj-mi-c">
-        <div class="-pj-b-i-i" style="font-size: 12px;" id="PJRIGHT"> 
-          <span class="material-symbols-outlined"> cognition </span>  ${pj.inspi ? pj.inspi.length : "No"} elements inspires this project
-        </div>
-        <div class="-pj-b-i-i" style="font-size: 12px;"id="PJLEFT">
-          <span class="material-symbols-outlined"> timer </span> ${pj.tasks ? pj.tasks.length : "No"} tasks made for this project
-        </div>
-      </div>
-      <div class="pj-mi-c">
-        <div class="-pj-b-i-i" style="font-size: 12px;"  id="PJRIGHT">
-          <span class="material-symbols-outlined"> star </span> This project is ${pj.star ? "starry" : "not starry"}
-        </div>
-        <div class="-pj-b-i-i" style="font-size: 12px;"  id="PJLEFT">
-          <span class="material-symbols-outlined"> hide_source </span> This project is ${pj.backed ? "sleepy" : "not sleepy"}
-        </div>
+      <div class="pj-b-details-c">
+      <p id="pj-b-details-c-t">Details</p>
+      <p>
+        Project sorting
+      </p>
+    <div>
+      <span class="material-symbols-outlined" style="color:${pj.star?"yellow":(pj.backed?"grey":"whitee")}">
+      ${pj.star?"star":(pj.backed?"hide_source":"blur_on")}
+      </span>
+      ${pj.star?"Starred":(pj.backed?"Sleeping":"Normal")} project
+    </div>
+    <p>
+    Synchronization on download
+    </p>
+    <div>
+      <span class="material-symbols-outlined" style="color:${pj.sync?"green":"red"}">
+      recycling
+      </span>
+      ${pj.sync?"Synchronized":"Non-synchronized"} project
+    </div>
+    <p>
+    NSFW content 
+  </p>
+    <div>
+      <span class="material-symbols-outlined" style="color:${pj.NSFW?"red":"green"}">
+        18_up_rating
+      </span>
+      This project is marked as ${pj.NSFW?"NSFW (partially or globally)":"not NSFW"}
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="wholeonlineinfos">
+      <div class="text2">
+      <span class="material-symbols-outlined" id="onlineright">
+      chevron_right
+      </span>
+      Online overview <i style="margin-left:auto;color:rgba(255,255,255,0.6)">Section in progress</i>
       </div>
     </div>
     </div>
@@ -157,6 +246,8 @@ function OpenFolder(el) {
   `;
   let items = {...localStorage} ;
   let g= 0;
+  let tasks = [];
+
   for (let [i,k] of Object.entries(items)) {
     if (i.includes('goal') && i.includes(pj.name)) {
       g++
@@ -165,10 +256,45 @@ function OpenFolder(el) {
   if (g===2) {
     document.getElementById('pj-b-g-b').remove()
   }
-    ActualizeGoals()
+  for (let i = 0; i < pj.tasks.length; i++) {
+    if (pj.tasks[i].validated != true) {
+      let t = pj.tasks[i];
+      document.getElementById('wholegoalsinfo-c-c-task').innerHTML+=`
+        <div class="pjtask">
+          <div class="pjtask-t">
+            ${t.name}
+          </div>
+          <div class="pjtask-i">
+            <span class="material-symbols-outlined" style="color:${t.delete?"white":"rgba(255,255,255,0.5)"}">
+              delete
+            </span>
+            <span class="material-symbols-outlined" style="color:${t.repeat?"white":"rgba(255,255,255,0.5)"}">
+              replay
+            </span>
+            <span class="material-symbols-outlined" style="color:${t.alert?"white":"rgba(255,255,255,0.5)"}">
+            notifications
+            </span>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  ActualizeGoals()
 
 
 
+}
+
+
+function HoverShow(i) {
+  let span = document.getElementById(`${i}right`);
+  span.innerHTML = (span.innerHTML.includes("chevron_right") ? "expand_more":"chevron_right");
+  
+  let whole = document.getElementById(`${i}whole`);
+  console.log(whole)
+  whole.style.visibility = (whole.style.visibility === "hidden" ? "visible":"hidden");
+  whole.style.display =whole.style.display== "none"?"flex":"none"
 }
 
 function ChangeTime() {
@@ -254,7 +380,7 @@ function SaveDate() {
           id: `pj-open-${pj.name}`
       })
   } else {
-      document.getElementById('enter-content').style.border = "2px solid red";
+      document.getElementById('enter-content').style.borderBlockColor = "red";
   }
 }
 
@@ -264,7 +390,7 @@ function SaveName() {
 
     let cv = document.getElementById('enter-content').value;
 
-    if (cv && cv.toLowerCase().includes('goal') != true && cv.toLowerCase().includes('project') != true) {
+    if (cv && cv.toLowerCase().includes('goal') != true && cv.toLowerCase().includes('project') != true && cv.includes('"') != true && cv.includes("'") !=true) {
         for (let i = 0; i < 2; i++) {
             let g = JSON.parse(localStorage.getItem(`${pj.name}-goal-${i}`));
             if (g) {
@@ -281,7 +407,7 @@ function SaveName() {
         })
         localStorage.removeItem(`Project : ${backup}`);
     } else {
-        document.getElementById('enter-content').style.border = "2px solid red";
+        document.getElementById('enter-content').style.borderBlockColor = "red";
     }
 }
 
@@ -334,7 +460,7 @@ function SaveCover() {
             id: `pj-open-${pj.name}`
         })
     } else {
-        document.getElementById('enter-content').style.border = "2px solid red";
+        document.getElementById('enter-content').style.borderBlockColor= "red";
     }
 }
 
@@ -384,7 +510,7 @@ function SaveDesc() {
             id: `pj-open-${InCharge}`
         })
     } else {
-        document.getElementById('enter-content').style.border = "2px solid red";
+        document.getElementById('enter-content').style.borderBlockColor= "red";
     }
 }
 
@@ -439,7 +565,7 @@ function SaveFiles() {
             id: `pj-open-${pj.name}`
         })
     } else {
-        document.getElementById('enter-content').style.border = "2px solid red";
+        document.getElementById('enter-content').style.borderBlockColor= "red";
     }
 }
 
@@ -492,11 +618,11 @@ function ActualizeGoals() {
           </div>
         </div>
         <div class="pj-b-gg-d-2">
-        <div class="pj-b-gg-d"  id="PJDESC">
-          <span class="material-symbols-outlined">
+        <div class="pj-b-gg-d" >
+          <span id="descg" class="material-symbols-outlined">
           description
           </span>
-          ${Goal.details}
+          <p id="PJDESC">${Goal.details}</p>
         </div>
         </div>
         </div>
@@ -518,11 +644,11 @@ function ActualizeGoals() {
     console.log(Content)
     for (let j = 0; j < Content.length; j++) {
         for (let o of Object.values(Content[j])) {
-            document.getElementById('pj-b-g-c').innerHTML += o;
+            document.getElementById('wholegoalsinfo-c-c-goal').innerHTML += o;
         }
     }
     if (z == 2) {
-        document.getElementById('pj-b-g-b').innerHTML = "";
+        
     }
 }
 
@@ -869,12 +995,12 @@ let confirmdel = function() {
         ProjectShowUp();
     } else {
         if (p.value != pj.password) {
-            document.getElementById(`enter-content-0`).style.border = "2px solid red";
+            document.getElementById(`enter-content-0`).style.borderBlockColor= "red";
         } else {
-            document.getElementById(`enter-content-0`).style.border = "2px solid green";
+            document.getElementById(`enter-content-0`).style.borderBlockColor= "green";
         }
         if (p1.value != user.password) {
-            document.getElementById(`enter-content-1`).style.border = "2px solid red";
+            document.getElementById(`enter-content-1`).style.borderBlockColor = "red";
         }
     }
 
@@ -937,16 +1063,16 @@ function CreateProject() {
     e = e.getTime();
     if (e < s) {
         o++;
-        document.getElementById("start").style.border = "2px solid red";
-        document.getElementById("end").style.border = "2px solid red";
+        document.getElementById("start").style.borderBlockColor = "red";
+        document.getElementById("end").style.borderBlockColor = "red";
 
     } else {
-        document.getElementById("start").style.border = "2px solid #24335a";
-        document.getElementById("end").style.border = "2px solid #24335a";
+        document.getElementById("start").style.borderBlockColor = "rgba(0,0,0,0)";
+        document.getElementById("end").style.borderBlockColor = "rgba(0,0,0,0)";
 
     }
     if (name.includes('"') || name.includes("'")) {
-      document.getElementById("name").style.border = "2px solid red";
+      document.getElementById("name").style.borderBlockColor = "red";
       o+=5;
     }
 
