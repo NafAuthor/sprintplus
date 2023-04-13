@@ -141,14 +141,14 @@ function OpenFolder(el) {
       <span class="material-symbols-outlined" id="goalsright">
       chevron_right
       </span>
-      Goals & Tasks
+      Objectives & Tasks
       </div>
       <div class="wholegoalsinfo-container" id="goalswhole" style="visibility:hidden;display:none;">
         <div class="wholegoalsinfo-c">
             <div class="wholegoalsinfo-c-t">
                 <div></div>
-                <p>Goals</p>
-                <p id="pjgdesc">Goals are a way to set up writing objectives in order to 
+                <p>Objectives</p>
+                <p id="pjgdesc">Objectives are a way to set up writing objectives in order to 
                 progress and to improve your story. You can have up to two goals per project for the moment.</p>
             </div>
             <div class="wholegoalsinfo-c-c" id="wholegoalsinfo-c-c-goal">
@@ -582,48 +582,129 @@ function ActualizeGoals() {
             let GoalNumber = o[0].split('')[o[0].split('').length - 1]
             let Goal = JSON.parse(localStorage.getItem(o[0]));
             GoalNumber = parseInt(GoalNumber);
+            let Time = parseInt(Goal.duration);
+            let Start = new Date(Goal.started_on);
+            let Ends = new Date(Start.getTime()+86400000*Time);
+            let WhatDayToday = new Date();
+          
+            WhatDayToday.setHours(0,0,0,0);
+            Start.setHours(0,0,0,0);
+            Ends.setHours(0,0,0,0);
             Content.push({
                 [GoalNumber]: `
       <div class="goal-nb-${GoalNumber + 1 }-${Goal.name}" id="pj-b-gg">
         <div class="pj-b-gg-t">
           <div class="pj-b-gg-t-t">${Goal.name}</div>
-          <div class="RingGoal" onclick="RingGoal(this);" id="${InCharge}-goal-${GoalNumber}" >
-          <button style="background-color:${Goal.started ? "#98C379":"#E06C75"}">
-          <span class="material-symbols-outlined">
-          notifications_active
-          </span>          
-          </button>
-        </div>
-          <div class="DelGoal" onclick="DelGoal(this);" id="${InCharge}-goal-${GoalNumber}">
-          <button>
-          <span class="material-symbols-outlined">
-          delete
-          </span>          
-          </button>
-        </div>
           </div>
         <div class="pj-gg-cc">
         <div class="pj-b-gg-d-1">
-          <div class="pj-b-gg-d">
+          <div class="pj-b-gg-t">
             <span class="material-symbols-outlined">
-            alarm_smart_wake
+            insights
             </span>
-            ${Goal.duration} days long
+            Global
           </div>
           <div class="pj-b-gg-d">
-            <span class="material-symbols-outlined">
-            chart_data
-            </span>
-            ${Goal.amount_of_words} words long
+              <div class="pj-b-gg-d-t">
+                Write
+              </div>
+              <b>${Goal.amount_of_words}</b>
+              <p>words</p>
+          </div>
+          <div class="pj-b-gg-d">
+              <div class="pj-b-gg-d-t">
+                Written
+              </div>
+              <b>${Goal.amount_of_words}</b>
+              <p>words</p>
+          </div>
+          <div class="pj-b-sep"></div>
+            <div class="pj-b-gg-d">
+            <div class="pj-b-gg-d-t">
+                Lasts
+              </div>
+              <b>${Goal.duration}</b>
+              <p>days</p>
+            </div>
+            <div class="pj-b-gg-d">
+            <div class="pj-b-gg-d-t">
+              Ends on
+            </div>
+            <b>
+            ${
+              Ends.getDate()>9?Ends.getDate():"0"+Ends.getDate()
+            }/${
+              Ends.getMonth()+1>9?Ends.getMonth()+1:"0"+(Ends.getMonth()+1)
+            }/${Ends.getFullYear()}
+            </b>
+            <p>
+              dd/mm/yy
+            </p>
+          </div>
+          <div class="pj-b-sep"></div>
+          <div class="pj-b-gg-d">
+              <div class="pj-b-gg-d-t">
+                Download
+              </div>
+              <b>
+                <span class="material-symbols-outlined">
+                ${Goal.sync?"check":"close"}
+                </span>
+              </b>
+              <p>
+                project-side
+              </p>
           </div>
         </div>
         <div class="pj-b-gg-d-2">
-        <div class="pj-b-gg-d" >
-          <span id="descg" class="material-symbols-outlined">
-          description
-          </span>
-          <p id="PJDESC">${Goal.details}</p>
+        <div class="pj-b-gg-dd" >
+          <div class="pj-b-gg-t">
+            <span class="material-symbols-outlined">
+              description
+              </span>
+              Description
+            </div>
+          <p>${Goal.details}</p>
         </div>
+        </div>
+        <div class="goal-mngment">
+            <div class="g-m-t">
+            <span class="material-symbols-outlined">
+            security
+            </span>
+            Goal management
+            </div>
+            <div class="goal-mngment-buttons">
+                  <div class="RingGoal" onclick="RingGoal(this);" id="${InCharge}-goal-${GoalNumber}" >
+                  <button style="background-color:${Goal.started ? "#98C379":"#E06C75"}">
+                    <span class="material-symbols-outlined">
+                    notifications_active
+                    </span>     
+                    <p>
+                    Change your objective status to ${Goal.started?"sleeping":"active"}
+                  </p>
+                  </button>
+                </div>
+                <div class="DelGoal" onclick="DelGoal(this);" id="${InCharge}-goal-${GoalNumber}">
+                <button>
+                <span class="material-symbols-outlined">
+                delete
+                </span>    
+                <p>
+                Delete ${Goal.name}. This action is irreversible.
+                </p>      
+                </button>
+              </div>
+            </div>
+        </div>
+        <div class="gi">
+          You can modify this objective whenever you want, by clicking the <i>Progress</i> button on your menu.
+        </div>
+        <div class="goalstate">
+              <span class="material-symbols-outlined" style="font-size:20px !important">
+              ${Goal.started ? "toggle_on":"toggle_off"}
+              </span>
+              This objective is ${Goal.started ? "running":"sleeping"}
         </div>
         </div>
       </div>

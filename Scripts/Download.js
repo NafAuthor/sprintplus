@@ -9,6 +9,9 @@ function DownloadItem() {
     for (let [key,value] of Object.entries(items)) {
         if (key.includes('Project') || key.includes('goal') || key.includes('user')) {
             value = JSON.parse(value);
+
+
+
             if (!value.sync) value.sync=true;
             if (key.includes("Project") && value.sync) {
                 stats[0]++;

@@ -336,6 +336,26 @@
         ]
         document.getElementById('p-p-title').innerHTML = sentences[Math.floor(Math.random()*sentences.length)];
         let items = {...localStorage};
+
+        for (let [k,v] of Object.entries(items)) {
+          if (k.includes('Project')) {
+            let pj = JSON.parse(localStorage.getItem(k))
+            for ([u,b] of Object.entries(items)) {
+              if (u.includes('goal') && u.includes(pj.name)) {
+                console.log(u)
+                let goal = JSON.parse(localStorage.getItem(u));
+                console.log(goal)
+                if (!goal.sync) {
+                  goal.sync;
+                }
+                goal.sync = pj.sync;
+                localStorage.setItem(u,JSON.stringify(goal))
+              }
+            }
+          }
+        }
+ 
+
         let today = new Date(); 
         let cm = [
               "What's that?",
