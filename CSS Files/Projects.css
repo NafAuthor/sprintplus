@@ -186,8 +186,8 @@
     color:white;
 }
 .pj-param-contan span:hover {
-    color:#19284d;
-    background-color: white;
+    color:#19284d !important;
+    background-color: white !important;
 }
 
 .pj-form {
@@ -940,9 +940,8 @@ Project view:
     font-size: 20px;
 }
 .pj-b-i-t {
-    width: 98%;
     background-color: #1d2d55;
-    padding:5px;
+    padding:10px;
     font-size: 25px;
     position:relative;
     border-radius:5px;
@@ -954,7 +953,11 @@ Project view:
     margin-right: auto;
     justify-content: center;
     margin-top: 5px;
-
+    position:relative;
+    padding-left: unset;
+    width: fit-content;
+    padding-left: 30px;
+    padding-right: 30px;
 
 }
 
@@ -1109,6 +1112,7 @@ Project view:
     background-color: #19284d;
     margin-left: auto;
     margin-right: auto;
+    height: 20px;
 }
 
 
@@ -1646,10 +1650,6 @@ Project view:
         flex-direction: column;
         gap:0px !important;
     }
-    .pj-param-contan span {
-        background-color: #1d2d55;
-        border:2px solid #1d2d55;
-    }
     .pj-b-g {
         position:fixed;
         width: 100%;
@@ -1685,10 +1685,6 @@ Project view:
     }
     .pj-slct-img img {
         border:none;
-    }
-    .pj-open, .pj-open button{
-        background-color: #1d2d55;
-        border: 2px solid #1d2d55;
     }
     .pj-b-content {
         width: 90%;

@@ -13,7 +13,9 @@ function ActivateGoal() {
   starringPJ;
 }
 
-
+setTimeout(() => {
+  OpenFolder({id:"pj-open-Nous, et le monde"})
+}, 20);
 
 function ReturnChapterNb() {
   let nb = 0;
