@@ -396,13 +396,26 @@
       }
       function mainMenuShowUp() {
         let user = JSON.parse(localStorage.getItem('user'));
-
-        if (user.colorcontent) {
-          document.body.style.color=user.colorcustom;
+        /*
+    --main-blue-dark: #19284d;
+    --main-clear:#1d2d55;
+    --main-background-color: #19284d;
+        */
+        if (!user.background) {
+          user.background="Images & Icons/Sprint+ logo blank.png";
         }
+        if (!user.colorcustom) {
+          user.colorcustom="white";
+        }
+        if (!user.lightvariant) {
+          user.lightvariant="#1d2d55";
+        }
+        if(!user.darkvariant) {
+          user.darkvariant="#19284d";
+        }
+          document.body.style.color=user.colorcustom;
              
-        if (user.background) {
-          document.getElementById('custombackground').src = user.background?user.background:"Images & Icons/Sprint+ logo blank.png";
+          document.getElementById('custombackground').src = user.background;
           document.getElementById('custombackground').style=`
                   position:absolute;
                   top:0;
@@ -414,8 +427,7 @@
                   opacity:0.5;
                   z-index:0;
           `;
-          document.getElementById('width').value = user.backgroundwidth
-        }
+          document.getElementById('width').value = user.backgroundwidth;
         document.getElementById('widthsize').innerHTML = user.backgroundwidth+"% of the screen";
         document.getElementById('textcolor').value = user.colorcustom;
         document.getElementById('darkvariant').value = user.darkvariant;
