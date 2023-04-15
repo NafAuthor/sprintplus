@@ -402,7 +402,7 @@
         }
              
         if (user.background) {
-          document.getElementById('custombackground').src = user.background;
+          document.getElementById('custombackground').src = user.background?user.background:"Images & Icons/Sprint+ logo blank.png";
           document.getElementById('custombackground').style=`
                   position:absolute;
                   top:0;
