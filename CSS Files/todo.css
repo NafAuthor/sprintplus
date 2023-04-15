@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     width: fit-content;
     left:0;right:0;margin-left: auto;
     margin-right: auto;
@@ -42,7 +42,7 @@
     width: 20%;
     height: 55%;
     padding: 10px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -78,7 +78,7 @@
     width: 100%;
     border: none;
     outline: none;
-    background-color: rgba(31, 48, 92, 0.7);
+    background-color: var(--main-clear);
     height: 35px;
     border:none;
     color:white;
@@ -91,7 +91,7 @@
 
 .td-p-c-slct-p-i select:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 .td-p-c-add-t {
@@ -105,7 +105,7 @@
 
 .td-p-c-add-t button {
     border-radius: 5px;
-    background-color: rgba(31, 48, 92, 0.7);
+    background-color: var(--main-clear);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -122,7 +122,7 @@
 
 .td-p-c-add-t button:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 .td-c-td-c {
     height: fit-content;
@@ -135,7 +135,6 @@
 .td-content {
     border-radius: 5px;
     width: 80%;
-    background-color: #19284d;
     height: 90%;
     overflow-y: auto;
     padding-bottom: 20px;
@@ -156,6 +155,8 @@
     align-items: center;
     justify-content: center;
     position:relative;
+    background-color: var(--main-clear);
+    border-radius: 5px;
 }
 
 .td-c-t-s {
@@ -169,7 +170,7 @@
     position:absolute;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #19284d;
+    background-color: var(--main-clear);
     border-radius: 5px;
 }
 
@@ -217,13 +218,13 @@
 
 .todo-more, .todo-check {
     padding: 2px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     border-radius: 5px;
     cursor:pointer;
 }
 .todo-more:hover, .todo-check:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 .todo-more-content {
@@ -239,11 +240,10 @@
     top:40px;
     right:0;
     z-index: 20;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     visibility: hidden;
 }
 .todo-more-content-p {
-    border: 1px solid rgba(31, 48, 92, 0.7);
     width: 50px;
     display: flex;
     align-items: center;
@@ -253,12 +253,12 @@
 }
 .todo-more-content-p:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 .tododesc {
     width: 90%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     text-align: justify;
     padding: 10px;
     border-radius: 5px;
@@ -401,7 +401,7 @@
 }
 .choicecheck span:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 .choice {
     width: 100%;
@@ -442,7 +442,7 @@
 
 .tdn-form input, .tdn-form textarea {
     width: 80%;
-    background-color: rgba(31, 48, 92, 0.7);
+    background-color: var(--main-clear);
     border: none;
     outline: none;
     border-radius: 5px;
@@ -490,7 +490,7 @@
 .validate_button {
     width: 150px;
     height: 50px;
-    background-color: rgba(31, 48, 92, 0.7);
+    background-color: var(--main-clear);
     color:white;
     border:none;
     margin-left: auto;
@@ -503,7 +503,7 @@
 }
 .validate_button:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 .tdn-f-t {
@@ -513,10 +513,10 @@
     border-radius: 5px;
     text-align: center;
     font-size: 20px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     margin-left: auto;
     margin-right: auto;
-}
+}f
 
 #alertMessageTask {
     bottom:-10;
@@ -574,7 +574,6 @@
 
     .td-p-c-add-t button:hover,.td-p-c-add-t {
         border-radius: 20px;
-        background-color: rgba(31, 48, 92, 0.7);
         display: flex;
         flex-direction: row;
         align-items: center;

@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     gap: 0px;
-    background-color: #1a2950;
+    background-color: var(--main-blue-dark);
     padding: 10px;
     border-radius:20px;
     margin:auto;
@@ -47,7 +47,7 @@
 .i-b button {
     width: 100%;
     height: 35px;
-    background-color: rgba(31, 48, 92, 0.7);
+    background-color: var(--main-clear);
     color:white;
     border:none;
     border-radius: 5px;
@@ -62,7 +62,7 @@
 }
 .i-b button:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 .i-b button img {
     width: 20px;
@@ -82,7 +82,7 @@
 }
 .c-p-c select {
     width: 90%;
-    background-color: rgba(31, 48, 92, 0.7);
+    background-color: var(--main-clear);
     color:white;
     border:none;
     height: 30px;
@@ -101,7 +101,7 @@
 }
 .c-p-c select:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 .insp-i-i, .insp-add {
     display: flex;
@@ -144,7 +144,7 @@
     width: 30px;
     height: 30px;
     padding: 5px;
-    background-color: rgba(31, 48, 92, 0.7);
+    background-color: var(--main-clear);
     color:white;
     border:none;
     border-radius: 5px;
@@ -159,7 +159,7 @@
 
 #inspt-add-b button:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 
@@ -185,7 +185,7 @@
 }
 #inspt-add-b-c input:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 #inspt-add-b-c input::placeholder {
     font-style: italic;
@@ -236,11 +236,14 @@
 }
 
 .newlink textarea {
-    height: 50px;
+    height: fit-content;
+    max-height: 50px;
     border-radius:5px;
-    padding: 10px;
-    background-color: rgba(31, 48, 92, 0.7);
+    padding: 5px;
+    width: 80%;
+    background-color: var(--main-clear);
     font-size: 10px;
+    text-align: center;
 }
 .newlink textarea::placeholder {
     color:white;
@@ -269,7 +272,7 @@
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
-    background-color:#1a2950;
+    background-color:var(--main-blue-dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -283,7 +286,7 @@
     flex-direction:row;
     justify-content: center;
     align-items:center;
-    background-color:#182442;
+    background-color:var(--main-clear);
     position: absolute;
     border-radius: 5px;
     color:white;
@@ -296,7 +299,7 @@
 }
 #opt-dc:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 @media screen and (320px <= width <= 420px) {
@@ -317,7 +320,7 @@
         width: 90%;
         gap: 0px;
         height: fit-content;
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
     }
     .c-p-c {
         width: 50%;
@@ -337,7 +340,7 @@
         justify-content: center;
         border-radius: 5px;
         padding: 20px;
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
         
     }
 
@@ -405,7 +408,7 @@
         padding-left: 5px;
         padding-right: 5px;
         border-radius: 5px;
-        background-color:#1d2d55;
+        background-color:var(--main-clear);
         display: flex;
         align-items: center;
         justify-content: center;

@@ -33,8 +33,8 @@
     border-radius: 5px;
     overflow-x: hidden;
     gap: 10px;
-    border: 2px solid #19284d;
-    background-color: #19284d;
+    border: 2px solid var(--main-blue-dark);
+    background-color: var(--main-blue-dark);
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -42,7 +42,7 @@
     display:none
 }
 .g-c-s-updt {
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     width: 95%;
     height: fit-content;
     display: flex;
@@ -77,8 +77,8 @@
 
 .g-c-s-u-u button {
     -webkit-tap-highlight-color: transparent;
-    background-color: #1a2950;
-    border: 2px solid #1a2950;
+    background-color: var(--main-clear);
+    border: 2px solid var(--main-clear);
     color:white;
     display: flex;
     flex-direction: row;
@@ -107,7 +107,7 @@
     font-style: italic;
 }
 .g-c-s-u-p input {
-    background-color: #1d2c53;
+    background-color: var(--main-clear);
     border:none;
     border-radius: 5px;
     padding: 5px;
@@ -138,8 +138,8 @@
 #select-pj-goal {
     -webkit-tap-highlight-color: transparent;
     outline:none;
-    background-color: #1d2c53;
-    border: 2px solid #1d2c53;
+    background-color: var(--main-clear);
+    border: 2px solid var(--main-clear);
     width: 80%;
     color:white;
     border-radius: 5px;
@@ -172,7 +172,6 @@
     position:relative;
     height: 60%;
     overflow-y: auto;
-    background-color: #19284d;
 }
 
 .g-c-s-m-s {
@@ -187,7 +186,7 @@
     border-radius: 10px;
     top:-12px;
     left:10;
-    background-color: #1a2950;
+    background-color: var(--main-clear);
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -217,16 +216,16 @@
     gap: 10px;
     font-size: 15px;
     border: none;
-    background-color: #1a2950;
+    background-color: var(--main-clear);
     color:white;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.2s;
-    border: 2px solid #1a2950;
+    border: 2px solid var(--main-clear);
 }
 .g-c-s-m-c button:hover {
     background-color: white;
-    color:#19284d
+    color:var(--main-blue-dark)
 }
 
 
@@ -263,7 +262,7 @@
     overflow-x: hidden;
     overflow-y: hidden;
     cursor:pointer;
-    border: 1px solid  #19284d;
+    border: 1px solid  var(--main-blue-dark);
     border-radius: 5px;
     width: 80%;
     overflow-x:hidden;
@@ -272,7 +271,7 @@
 }
 .g-c #_1:hover ,.g-c #_2:hover {
     background-color: white;
-    color:#19284d
+    color:var(--main-blue-dark)
 }
 
 
@@ -288,7 +287,7 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     padding: 10px;
     padding-top: unset;
     gap:5px;
@@ -305,7 +304,7 @@
 }
 #select-pj-goal:hover, #SaveGoalButton:hover {
     background-color: white;
-    color:#19284d
+    color:var(--main-blue-dark)
 }
 .child-viewer {
     width: 80%;
@@ -324,7 +323,6 @@
     margin-right: auto;
 }
 #error-no-goal {
-    color:white;
     font-size: 12px;
     visibility: hidden;
     position: absolute;
@@ -352,7 +350,7 @@
     background-color: unset;
 }
 .contain_infos {
-    background-color: #1a2950;
+    background-color: var(--main-clear);
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -375,7 +373,7 @@
     text-align: center;
     font-size: 25px;
     position:absolute;
-    background-color: #1a2950;
+    background-color: var(--main-clear);
     padding: 5px;
     left:10;top:-20;
     padding-left: 15px;
@@ -406,12 +404,12 @@
 .bar {
     height: 30px;
     width: 90%;
-    background-color: #24335a;
+    background-color: var(--main-blue-dark);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid #1a2950;
+    border: 2px solid var(--main-clear);
     position:relative;
     border-radius: 5px;
     cursor: pointer;
@@ -445,7 +443,7 @@
     width: fit-content;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #1a2950;
+    background-color: var(--main-clear);
     border-radius: 5px;
 }
 
@@ -457,7 +455,7 @@
 .content-infos {
     width: 95%;
     height: 25%;
-    background-color: #1a2950;
+    background-color: var(--main-clear);
 
     margin-left: auto;
     margin-right: auto;
@@ -500,7 +498,7 @@
 .strikeBall {
     width: 20px;
     height: 20px;
-    background-color: #24335a;
+    background-color: var(--main-blue-dark);
     border-radius: 50%;
     border: 2px solid white;
     z-index: 2;
@@ -508,7 +506,7 @@
 
 .strikebar {
     width: 80%;
-    background-color: #24335a;
+    background-color: var(--main-blue-dark);
     height: 10px;
     position:absolute;
     z-index: 1;
@@ -570,14 +568,13 @@
 .update {
     display: flex;
     flex-direction: row;
-    background-color: #1a2950;
+    background-color: var(--main-clear);
     align-items: center;
     position:relative;
     height: fit-content;
     padding: 5px;
+    border:none;
     gap: 10px;
-    border: 2px solid #24335a;
-    border-style: solid none solid none;
 }
 .updateday, .updatecount, .updateday {
     border:1px solid white;
@@ -593,7 +590,7 @@
 
 
 #content-infos-update, .content-info-updates {
-    background-color: #1a2950;
+    background-color: var(--main-clear);
 }
 
 /*
@@ -612,7 +609,7 @@
 */
 .editGoalContent button {
     width: fit-content;
-    background-color: #1d2c53;
+    background-color: var(--main-clear);
     color:white;
     border-radius: 5px;
     height: 50px;
@@ -636,7 +633,7 @@
 }
 .EGC-c input,.EGC-c textarea{
     width: 100%;
-    background-color: #1d2c53;
+    background-color: var(--main-clear);
     border:none;
     border-radius: 5px;
     outline:none;
@@ -716,21 +713,21 @@
     border:none;
     height: 30px;
     padding-right: 10px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
 
 }
 .confirmPassword button {
     width: 50%;
     border-radius: 5px;
     outline:none;color:white;
-    background-color:#19284d;
+    background-color:var(--main-blue-dark);
     border:none;
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
 }
 #_1, #_2 {
-    background-color: #1d2c53;
+    background-color: var(--main-clear);
  }
 
  
@@ -760,7 +757,6 @@
         height: 50%;
         border-radius: 0px;
         align-items:flex-start;
-        background-color: #19284d;
         margin:0px;
         padding-bottom: 5px;
     }
@@ -946,7 +942,7 @@
     }
     .g-c-s-m-c button, .g-c-s-m-c button:active,.g-c-s-m-c button:focus,.g-c-s-m-c button:hover {
         width: 100%;
-        background-color: #1d2c53;
+        background-color: var(--main-clear);
         border-radius: 5px;
         font-size: 12px;
         padding-top: 0px;
@@ -963,12 +959,11 @@
         background-color: unset;
     }
     .g-c #_1:hover ,.g-c #_2:hover {
-        border: 2px solid #1a2950;
+        border: 2px solid var(--main-clear);
     
     }
     #select-pj-goal,    .g-c #_1,    .g-c #_2 {
-        background-color: #1d2c53;
-        border: 2px solid #1a2950;
+        border: 2px solid var(--main-clear);
         width: 100%;
         font-size: 17px;    
         height: 40px;
@@ -976,13 +971,13 @@
     }
     .g-c #_1 span,.g-c #_2 span{
         display: flex;
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
         padding: 5px;
         border-radius: 50%;
         margin: auto;
     }
     .g-c-s-c-p select:hover {
-        border: 2px solid #1a2950;
+        border: 2px solid var(--main-clear);
         cursor: pointer;
 
     }

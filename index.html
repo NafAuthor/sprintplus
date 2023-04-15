@@ -38,6 +38,7 @@
     <script type="text/javascript" src="Scripts/notifications.js"></script>
     <script type="text/javascript" src="Scripts/writing.js"></script>
     <script type="text/javascript" src="Scripts/createPassword.js"></script>
+    <script type="text/javascript" src="Scripts/palette.js"></script>
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -49,8 +50,90 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,700,0,0" />
   </head>
   <body>
-    <div id="ad">
-
+    <img id="custombackground" src="">
+    <div class="customize_app">
+      <div class="ca-b"  onclick="OpenContainer()">
+        <span class="material-symbols-outlined">
+          edit
+        </span>
+        <p>Customize Sprint+</p>
+      </div>
+    </div>
+    <div class="customize_container" id="customize_container">
+      <h2>Customize your Sprint+ interface</h2>
+      <div class="cc-b" id="backgroundcustom">
+        <p>
+          Customize Sprint+ with a personalized background image
+        </p>
+        <div class="cc-i">
+          <span class="material-symbols-outlined">
+            image
+          </span>
+          <input type="text" placeholder="Enter a link" oninput="ChangeBackground(this)">
+        </div>
+      </div>
+      <div class="cc-b" id="backgroundcustomw">
+        <p>
+          Style the width of your image (1% to 100% of the screen)
+        </p>
+        <div class="cc-i">
+          <span class="material-symbols-outlined">
+            fullscreen
+          </span>
+          <input type="range" id="width" min="1" max="100" class="custom-slider" oninput="changeWidth(this)">
+          <p id="widthsize"></p>      
+          </div>
+        </div>
+        <div class="cc-b">
+        <p>
+          Change text color
+        </p>
+        <div class="cc-i">
+          <span class="material-symbols-outlined">
+            palette
+          </span>
+          <input type="color" value="#ffffff" id="textcolor" oninput="ChangeColor(this)">
+        </div>
+      </div>
+      <div class="cc-b">
+        <p>
+          Change dark-blue variant
+        </p>
+        <div class="cc-i">
+          <span class="material-symbols-outlined">
+            palette
+          </span>
+          <input type="color" value="#19284d" id="darkvariant" oninput="ChangeDarkVariant(this)">
+        </div>
+      </div>
+      <div class="cc-b">
+        <p>
+          Change lighter-blue variant
+        </p>
+        <div class="cc-i">
+          <span class="material-symbols-outlined">
+            palette
+          </span>
+          <input type="color" value="#1d2d55" id="lightvariant" oninput="ChangeLightVariant(this)">
+        </div>
+      </div>
+      <div class="containerbutton">
+        <button onclick="DarkMode()">
+          <span class="material-symbols-outlined">
+            dark_mode
+            </span>
+          Dark mode
+        </button>
+        <button onclick="ResetCustom()">
+          <img style="height:20px;background-color:var(--main-clear);border-radius:50%;padding:3px" src="Images & Icons/Sprint+ logo blank.png">
+          Normal theme
+        </button>
+      </div>
+      <div class="closecustomcontainer" onclick="OpenContainer()">
+        <span class="material-symbols-outlined">
+          close
+          </span>
+      </div>
     </div>
     <div class="wholecontentwelcome">
       <div class="imgcontan">
@@ -312,6 +395,34 @@
         }
       }
       function mainMenuShowUp() {
+        let user = JSON.parse(localStorage.getItem('user'));
+
+        if (user.colorcontent) {
+          document.body.style.color=user.colorcustom;
+        }
+             
+        if (user.background) {
+          document.getElementById('custombackground').src = user.background;
+          document.getElementById('custombackground').style=`
+                  position:absolute;
+                  top:0;
+                  left:0;
+                  bottom:0;
+                  right:0;
+                  margin:auto;
+                  width:${user.backgroundwidth+"%"};
+                  opacity:0.5;
+                  z-index:0;
+          `;
+          document.getElementById('width').value = user.backgroundwidth
+        }
+        document.getElementById('widthsize').innerHTML = user.backgroundwidth+"% of the screen";
+        document.getElementById('textcolor').value = user.colorcustom;
+        document.getElementById('darkvariant').value = user.darkvariant;
+        document.getElementById('lightvariant').value = user.lightvariant;
+        document.documentElement.style.setProperty('--main-blue-dark', user.darkvariant);
+        document.documentElement.style.setProperty('--main-clear', user.lightvariant);
+
         let NotifNB = 0;
         let goaled = false;
         document.getElementById('Main').innerHTML=Main;

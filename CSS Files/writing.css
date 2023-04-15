@@ -12,7 +12,7 @@
     padding-right: 10px;
     border-radius: 5px;
     border:none;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     color:white;
     cursor: pointer;
 }
@@ -20,7 +20,7 @@
 .writingselect {
     width: 20%;
     height: 100%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     min-width: 200px;
     border-radius: 5px;
 }
@@ -56,7 +56,7 @@
     width: 80%;
     border-radius: 5px;
     padding: 5px;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -183,7 +183,6 @@ animation: 3s linear infinite slidein;
 }
 #writingdisplayer #editcontent {
     padding: 10px;
-    background-color: #1d2d55;
     border-radius: 5px;
     height: 100%;
     border:none;
@@ -222,7 +221,7 @@ animation: 3s linear infinite slidein;
     flex-direction: row;
     align-items: center;
     padding: 5px;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     padding-left: 10px;
     border-radius: 5px 0px 5px 0px;
     padding-right: 10px;
@@ -238,7 +237,7 @@ animation: 3s linear infinite slidein;
 .chaptermv input {
     padding:10px;
     outline:none;border:none;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     color:white;
     border-radius: 5px 5px 0px 0px;
     border-color: rgba(0,0,0,0);
@@ -288,7 +287,7 @@ animation: 3s linear infinite slidein;
 }
 .itemact span, .chaptermvv span {
     padding: 5px;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -297,7 +296,7 @@ animation: 3s linear infinite slidein;
 }
 .itemact span:hover, .chaptermvv span:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 #saveDesc {
     z-index:50;
@@ -312,8 +311,8 @@ animation: 3s linear infinite slidein;
     width: 100%;
     height: 100%;
     padding: 5px;
-    background-color: #1d2d55;
-    border: 2px solid #19284d;
+    background-color: var(--main-clear);
+    border: 2px solid var(--main-blue-dark);
     text-align: left;
     border-radius: 5px;
     overflow-y: auto;
@@ -336,7 +335,7 @@ animation: 3s linear infinite slidein;
     height: 100%;
     cursor: pointer;
     align-items: center;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     border-radius: 5px;
     justify-content: center;
 }
@@ -352,7 +351,7 @@ animation: 3s linear infinite slidein;
     gap: 5px;
 }
 .removeChapter span:hover {
-    background-color: #1d2d55 !important;
+    background-color: var(--main-clear) !important;
     color:white !important;
 }
 
@@ -402,14 +401,14 @@ animation: 3s linear infinite slidein;
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     cursor: pointer;
 }
 .plusless span {
     font-size: 15px;
 }
 .plusless span:hover {
-    color:#19284d;
+    color:var(--main-blue-dark);
     background-color: white;
     border-radius: 5px;
 }
@@ -418,6 +417,7 @@ animation: 3s linear infinite slidein;
     text-align: center;
     pointer-events:none;
     padding: 0px;
+    border-radius: 5px 0px 0px 5px;
 }
 
 #clicktodevelop {
@@ -437,7 +437,7 @@ animation: 3s linear infinite slidein;
         justify-content: center;
         bottom:1px;;
         align-items: center;
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
         border:1px solid white;
         border-style: none none solid none;
         padding: 5px;
@@ -461,7 +461,7 @@ animation: 3s linear infinite slidein;
         height: 50px;
         overflow-y: hidden;
         overflow-x: hidden;
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
         position:absolute;top:0;
         left:0;right:0;
         margin: auto !important;
@@ -473,7 +473,7 @@ animation: 3s linear infinite slidein;
         z-index: 50;
         overflow-y: scroll;
         overflow-x: hidden;
-        border: 2px solid #19284d;
+        border: 2px solid var(--main-blue-dark);
     }
     #editcontent {
         width: 95% !important;
@@ -492,8 +492,8 @@ animation: 3s linear infinite slidein;
         margin-top: 2.5px;
         margin-left: auto;
         margin-right: auto;
-        background-color: #1d2d55;
-        border: 2px solid #19284d;
+        background-color: var(--main-clear);
+        border: 2px solid var(--main-blue-dark);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -507,7 +507,7 @@ animation: 3s linear infinite slidein;
         position:fixed;
         bottom:25px;
         left:0px;
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
         height: 80px;
         padding: 10px;
 
@@ -520,24 +520,25 @@ animation: 3s linear infinite slidein;
         justify-content: center;
     }
     .itemact span {
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
     }
     .numberinput {
         height: 40px;
         gap:0px;
         position:absolute;
         right:30;
+
     }
     .numberinput input, .chapternew input, .chapternewopendesc {
-        background-color: #19284d !important;
+        background-color: var(--main-blue-dark) !important;
         height: 40px;
     }
     .plusless {
         gap:5px;
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
     }
     .plusless span {
-        background-color: #19284d !important;
+        background-color: var(--main-blue-dark) !important;
         font-size: 18px;
         height: 17.5px;
         border-radius: 5px;
@@ -548,7 +549,7 @@ animation: 3s linear infinite slidein;
 
     .plusless span:hover, .removeChapter:hover input, .removeChapter span:hover, .writingcontent button:hover,.chaptermvv span:hover, .chapternewopendesc:hover, .itemact:not(#removechapter) span:hover {
         color:white;
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
     }
     .goal-select-writing {
         text-align: left;
@@ -567,14 +568,14 @@ animation: 3s linear infinite slidein;
         padding-top: 10px;
         padding-bottom: 10px;
         padding-right: 20px;
-        background-color: #19284d !important;
+        background-color: var(--main-blue-dark) !important;
     }
     .chapterdescription textarea {
-        border: 3px solid #1d2d55;
+        border: 3px solid var(--main-clear);
         width: 100%;
-        border-color: #1d2d55 #1d2d55 white #1d2d55;
+        border-color: var(--main-clear) var(--main-clear) white var(--main-clear);
     }
     .pj-select-writing,.goal-select-writing {
-        background-color: #19284d !important;
+        background-color: var(--main-blue-dark) !important;
     }
 }

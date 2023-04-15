@@ -4,7 +4,7 @@
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color:#19284d;
+    background-color:var(--main-blue-dark);
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -82,7 +82,7 @@
 .pannel-work {
     width: 20%;
     height: 100%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     border-radius: 0px 0px 0px 0px;
     display: flex;
 
@@ -100,7 +100,7 @@
 }
 .content-showup {
     width: 80%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     height: 100%;
     position:relative;
     overflow-y: hidden;overflow-x: hidden;
@@ -124,7 +124,7 @@
 }
 .p-w-s-t {
     width: 40%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     border-radius: 10px;
     padding-left: 10px;
     padding-right:40px;
@@ -265,7 +265,7 @@
     border-radius: 0px;
     top:0;
     margin:auto;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     z-index: 10;
     visibility: hidden;
     overflow-x: hidden;
@@ -307,7 +307,7 @@
     height: 30px;
     padding-top: 5px;
     justify-content: center;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     position:absolute;
     top:0;
     
@@ -320,7 +320,7 @@
     align-items: center;
 }
 .fcs span {
-    background-color: #1d2d56;
+    background-color: var(--main-blue-dark);
     border-radius: 30%;
     padding: 5px;
     font-size: 20px;
@@ -333,7 +333,7 @@
     text-align: left;
     padding: 5px;
     overflow-x: auto;
-    background-color: #1d2d56;
+    background-color: var(--main-blue-dark);
     border:none;
     color:white;
     border-radius: 50px;
@@ -403,7 +403,7 @@
     height: 35px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     border-radius: 50px;
 }
 #activegoals, #sleepinggoals {
@@ -516,14 +516,14 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    background-color: #1b2a51;
+    background-color: var(--main-clear);
     padding: 5px;
     border-radius: 50px;
     align-items: center;
 }
 .expand {
     border-radius: 50%;
-    background-color: #1d2d56;
+    background-color: var(--main-clear);
     padding: 5px;
     cursor: pointer;
 }
@@ -536,7 +536,7 @@
     position:absolute;
     visibility: hidden;
     width: 80%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -555,7 +555,7 @@
     gap:10px;
     overflow-x: hidden;
     text-align: center;
-    background-color: #1b2a51;
+    background-color: var(--main-clear);
     position:relative;
     padding-bottom: 10px;
     border-radius: 20px;
@@ -587,7 +587,7 @@
     padding: 5px;
     padding-left: 10px;
     align-items: center;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     position:absolute;
     margin-left: 10px;
     height: 20px;
@@ -619,7 +619,7 @@
 .goal_name_c input, .goal_desc_c textarea {
     width: 100%;
     outline:none;border:none;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     height: 25px;
     border-radius: 20px;
     padding: 5px;
@@ -692,7 +692,7 @@
 }
 
 .datec1-t, .datec2-t, .datec {
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
 }
 
 #datec-none {
@@ -731,7 +731,7 @@
     position:relative;
     height: 25px;
     border-radius: 50px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     padding-left: 5px;
     padding-right: 5px;
     display: flex;
@@ -748,7 +748,7 @@
     height: 20px;
     position:absolute;
     top:0;bottom:0;margin:auto;
-    background-color: rgba(44, 63, 112,0.3);   
+    background-color: white;   
     border-radius: 50px;
     left:0;
     
@@ -769,7 +769,7 @@
 
 .goalsbuttons button, .goalshowup button {
     width: 35%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     color:white;
     border-radius: 50px;
     border:none;
@@ -778,7 +778,7 @@
     padding: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border: 1px solid #19284d;
+    border: 1px solid var(--main-blue-dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -848,7 +848,7 @@
         height: 40px;
         margin-left: unset;
         border:none;
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
         
     }
     .p-w-s-t:hover {
@@ -894,7 +894,7 @@
         column-gap: 5px;
         grid-auto-rows: fit-content(1px);    
         position:relative;        
-        background-color: #1b2a51;
+        background-color: var(--main-clear);
 
     }
     #filecontentview {
@@ -907,7 +907,7 @@
         height: 70%;
         gap:0px;
         overflow-y: auto;
-        background-color: #1b2a51;
+        background-color: var(--main-clear);
     }
     .goalsbuttons button, .goalshowup button {
         width: 65%;
@@ -922,7 +922,7 @@
         background-color: unset;
     }
     .alertInfos {
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
         overflow:hidden;
     }
     .fs-a {
@@ -961,7 +961,7 @@
         margin-left: auto;
         margin-right: auto;
         border:none;
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
     }
     .alertInfos p {
         width: 80%;
@@ -972,7 +972,7 @@
     .folder{
         width: 90%;
         margin:unset;
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
         border-radius: 5px;
     }
     .startedornot {
@@ -983,7 +983,7 @@
     }
     .datec1-c, .datec2-c {
         font-size: 10px;
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
     }
     .dateboard {
         width: 100%;

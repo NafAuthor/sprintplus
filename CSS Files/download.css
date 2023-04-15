@@ -40,7 +40,7 @@
     width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 10px;        background-color: #19284d;
+    gap: 10px;        background-color: var(--main-blue-dark);
     padding: 10px;
     border-radius: 5px;    padding-bottom:10px;
 
@@ -68,7 +68,7 @@
     width: 450px;
     margin-left: auto;
     margin-right: auto;
-    border:solid 2px #19284d;
+    border:solid 2px var(--main-blue-dark);
     background-color: rgba(36, 51, 90,0.5);
     color:white;
     font-size: 20px;
@@ -82,7 +82,7 @@
     .AlertBox {
         width: 90%;
         height: fit-content;
-        background-color: #19284d;
+        background-color: var(--main-blue-dark);
         border-radius: 20px;
         margin: auto;
         max-height: 50%;

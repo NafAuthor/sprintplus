@@ -1,5 +1,9 @@
 
-
+:root {
+    --main-blue-dark: #19284d;
+    --main-clear:#1d2d55;
+    --main-background-color: #19284d;
+  }
 body {
     font-family: 'Bebas Neue', cursive;
     font-family: 'Comfortaa', cursive;
@@ -23,9 +27,210 @@ body {
     display: flex;
     flex-direction: column;
     color: white;
-    background-color: #19284d;
+    background-color:  var(--main-blue-dark);
     overflow-y: hidden;
 }
+
+
+
+.customize_app {
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    width: fit-content;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border:none;
+    z-index: 50;
+  }
+  .ca-b p {
+    margin:none !important;
+    display: none;
+}
+.ca-b:hover p{
+    display: inline;
+    margin:none !important;
+
+}
+  .customize_container button span {
+    font-size: 15px;
+  }
+  .ca-b {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    height: 20px;
+    background-color: var(--main-clear);
+    margin-top: auto;
+    cursor: pointer;
+  }
+  .customize_container button {
+    padding: 5px;
+    color:white;
+    background-color: var(--main-blue-dark);
+    border:none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 50px;
+  }
+  .containerbutton {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap:1px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #widthsize {
+    position:absolute;
+    right:5;
+  }
+  .closecustomcontainer {
+    position:absolute;
+    right:5;
+    top:5;
+    background-color: var(--main-blue-dark);
+    border-radius: 5px;
+    padding: 2px;
+    cursor: pointer;
+  }
+  .closecustomcontainer:hover {
+    background-color: white;
+    color:var(--main-blue-dark)
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--main-clear);
+    border-radius: 5px;
+  }
+  
+  input[type="range"]::-moz-range-track {
+    background: var(--main-clear);
+    border-radius: 5px;
+  }
+input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Override default look */
+   appearance: none;
+   background-color:var(--main-blue-dark);
+   height: 1rem;
+   width:10px;    
+}
+  .cc-b {
+    background-color: var(--main-blue-dark);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;    
+}
+  .customize_container p {
+    margin: unset;
+    font-size: 12px;
+    color:rgba(255, 255, 255,0.5);
+    padding-right: 10px;
+  }
+  .cc-i {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+  }
+  .customize_container {
+    display:flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--main-clear);
+    border-radius:5px;
+    position:absolute;
+    width: 50%;
+    height: fit-content;
+    bottom:10px;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    z-index:50;
+    display: none;
+  }
+  .customize_container h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .customize_container button:hover {
+    background-color: white;
+    color:var(--main-blue-dark)
+  }
+
+  .customize_app:hover .ca-b {
+    background-color: white;
+    color:var(--main-blue-dark);
+  }
+  .cc-i input {
+    background-color: var(--main-clear);
+    padding: 5px;
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    color:white;
+    width: 80%;
+  }
+  .cc-i input::placeholder{
+    color:rgba(255,255,255,0.6);
+    font-style: italic;
+  }
+  .cc-i input[type="color"] {
+    padding: 0px;
+    border:1px solid grey;;
+    background-color: grey;
+    width: 50px;
+    height: 25px;
+    border-radius:5px;
+    cursor: pointer;
+  }
+  .cc-i input::-webkit-color-swatch {
+    border-radius: 5px;
+    height: 23px;
+    margin-top: -4px;
+    border:none;
+  }
+  .cc-i input::-moz-color-swatch {
+    border-radius: 5px;
+    height: 23px;
+    margin-top: -4px;
+    border:none;
+  }
+  .cc-i input[type=range] {
+    -webkit-appearance: none;     /*nécessaire pour Chrome */
+    padding: 0;                   /* nécessaire pour IE */
+    font: inherit;                /* même rendu suivant font document */
+    outline: none;
+    color: #21325c;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+    opacity: 1;
+    background: var(--main-clear);             /* sert pour couleur de fond de la zone de déplacement */
+    box-sizing: border-box;       /* même modèle de boîte pour tous */
+    transition: opacity .2s;
+    cursor: pointer;
+  }
 
 #ad {
     position:absolute;
@@ -39,19 +244,19 @@ body {
     align-items: center;
     text-align: center;
     padding: 5px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
 }
 .ADTT {
     position:absolute;bottom:5;z-index: 50;
-    color:rgba(255,255,255,0.6);font-size:8px;;
+   font-size:8px;;
     width: 90%;
     text-align: center;
 }
 .addjoin button {
-    background-color: #19284d;
-    border:none;color:white;
+    background-color: var(--main-blue-dark);
+    border:none;
     border-radius: 5px;
-    border:1px solid #19284d;
+    border:1px solid var(--main-blue-dark);
 
     height: 40px;
 }
@@ -71,8 +276,7 @@ body {
 }
 .myAdd button {
     width: fit-content;
-    background-color: #19284d;
-    color:white;
+    background-color: var(--main-blue-dark);
     font-size: 10px;
     color:none;outline:none;
     border: none;
@@ -83,7 +287,7 @@ body {
     border-radius:5px;
 }
 .myAdd button:hover {
-    color:#19284d;
+    color:var(--main-blue-dark);
     background-color: white;
 }
 
@@ -106,10 +310,8 @@ body {
 
 .Title a {
     font-size: 25px;
-    color:white;
 }
 .Title img {
-    background-color: rgba(36, 51, 90,0.4);
     border-radius: 50%;
 }
 .Main {
@@ -138,7 +340,7 @@ body {
 }
 body a {
     text-decoration: none;
-    color:rgba(244, 216, 231, 0.8);
+    color:unset
 }
 
 
@@ -194,7 +396,7 @@ body a {
     height: 95%;
     position:absolute;
     top:0;right:0;left:0;bottom:0;margin:auto;
-    background-color:#1d2d55;    
+    background-color:var(--main-clear);    
     z-index: 2;
     animation: 3s slidein1;
 
@@ -226,7 +428,7 @@ body a {
     left:0;right:0;bottom:0;top:0;
     margin:auto;        
     opacity: 0.5;
-    z-index: 0;
+    display: none;
 
 }
 @keyframes TextWelcome {
@@ -249,7 +451,6 @@ body a {
     font-size: 50px;
     height: fit-content;
     opacity: 0;
-    color: white;
     z-index: 5;
     animation: 5s 2s TextWelcome;
     font-style: "garet" serif;
@@ -377,7 +578,7 @@ body a {
     gap:10px;
     border-radius: 5px;
     font-size: 15px !important;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     position:relative;
     transition: 0.2s;
 }
@@ -397,19 +598,19 @@ body a {
 }
 .all-c-p:hover .all-c-p-d-d {
     visibility: visible;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 .all-c-p:hover:not(#home, #user) {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
     border-radius: 5px;
     padding-bottom: 10px;
 
 }
 #home:hover,#user:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
     border-radius: 5px;
 
 }
@@ -436,8 +637,8 @@ body a {
     top:0;
     transition: 0.5s;
     padding-right: 50px;
-    background-color: #19284d;
-    border: 2px solid #1d2d55;;
+    background-color: var(--main-blue-dark);
+    border: 2px solid var(--main-clear);;
     
 }
 #menutext {
@@ -445,7 +646,7 @@ body a {
     width: 100%;
     text-align: center;
     z-index: 50;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     height: fit-content;
     position:absolute;
     top:0;bottom:0;
@@ -487,13 +688,12 @@ body a {
     padding-left: 15px;
     padding-right: 15px;
     height: fit-content;
-    border: 2px solid  #19284d;
+    border: 2px solid  var(--main-blue-dark);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 
-    color:white;
     border-radius: 5px;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
 }
 .Support a, .Logs a, .Support span, .Logs span {
     font-size:20px !important;
@@ -501,7 +701,7 @@ body a {
 }
 .Support a:hover, .Logs a:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 
 
@@ -589,12 +789,13 @@ body a {
     width: 95%;
     margin-left:auto;
     margin-right: auto;
-    color:white;
     border-style: none none solid none;
     border-radius: 5px 5px 0px 0px;
     border-width: 0px 0px 2px 0px;
     position:relative;
     height: 20px;
+    border-color: white;
+    background-color: var(--main-blue-dark);
 }
 .f-t-center:hover {
     border: 2px solid white;
@@ -618,7 +819,7 @@ body a {
     flex-direction: column;
     gap: 5px;
     width: 90%;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -669,16 +870,15 @@ body a {
     height: fit-content;
     padding: 10px;
     cursor:pointer;
-    color:white;
     background-color: #24335a;
-    border: 1px solid  #19284d;
+    border: 1px solid  var(--main-blue-dark);
     border-radius: 5px;
     -webkit-tap-highlight-color: transparent;
 
 }
 .featured button:hover {
     background-color:white;
-    color: #19284d;
+    color: var(--main-blue-dark);
 }
 /*
                 <div class="alert">
@@ -693,7 +893,7 @@ body a {
 
 .alert {
     width: 90%;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -744,7 +944,7 @@ body a {
     padding: 5px;
     padding-right: 10px;
     padding-left: 10px;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     border-radius: 5px;
   }
 .c-m span {
@@ -752,9 +952,9 @@ body a {
     color:red;
 }
 .c-d-c {
-    border: 1px solid  #1d2d55;
+    border: 1px solid  var(--main-clear);
     cursor: pointer;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     padding: 5px;
     border-radius: 5px;
     padding-left: 10px;
@@ -763,7 +963,7 @@ body a {
 }
 .c-d-c:hover {
     background-color:white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 
 }
 
@@ -781,7 +981,7 @@ body a {
 
     .learnmorefavsto:hover {
         background-color: white;
-        color:#19284d;
+        color:var(--main-blue-dark);
     }
 .nothing-to-see-here {
 
@@ -856,7 +1056,7 @@ body a {
     height: 40px;
     align-items: center;
     gap: 0px;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     border-radius: 5px;
     padding-left: 20px;
     padding-right: 10px;
@@ -902,7 +1102,7 @@ body a {
     border: 2px solid white;
     border-style: none none solid none;
     border-radius: 5px 5px 0px 0px;
-     background-color: #19284d;
+     background-color: var(--main-blue-dark);
      padding: 10px;
 
 }
@@ -927,21 +1127,21 @@ body a {
     ::-webkit-scrollbar-thumb {
         background: white;
         cursor: pointer;
-        border: 1px solid #2c3f70;
+        border: 1px solid white;
         border-radius: 5px;
 
     }
     
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background: #19284d;
-        border: 1px solid #2c3f70;    border-radius: 5px;
+        background: var(--main-blue-dark);
+        border: 1px solid white;    border-radius: 5px;
 
     }
 .welcome-f {
     background-color: #68511c;
     padding: 15px;
-    background-color: #1d2d55;;
+    background-color: var(--main-clear);;
     border-radius: 5px;
     overflow-y: auto;
 }
@@ -959,7 +1159,7 @@ body a {
     position: absolute;
     top:-15;
     padding: 5px;
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
@@ -967,7 +1167,7 @@ body a {
 
 
 .openContainer {
-    background-color: #1d2d55;
+    background-color: var(--main-clear);
     border-radius: 50%;
     padding: 10px;
     width: fit-content;
@@ -1024,8 +1224,8 @@ body a {
         border-radius: 5px;
     }
     .c-d-c {
-        background-color: #1d2d55;
-        border: 2px solid #1d2d55;
+        background-color: var(--main-clear);
+        border: 2px solid var(--main-clear);
         border-radius:5px;
     }
     .Main::-webkit-scrollbar { 
@@ -1042,8 +1242,11 @@ body a {
         visibility: hidden;
         position:absolute;
     }
+    #widthsize {
+        display: none;
+    }
     .f-t-center {
-        border: 2px solid #1d2d55;
+        border: 2px solid var(--main-clear);
         border-radius: 5px;
         width: 25px;
         padding:5px;
@@ -1114,7 +1317,6 @@ body a {
         position:fixed;
         border-radius: 0px 0px 5px 5px;
         gap:5px;
-        background-color: rgba(25, 40, 77,0.9);        
         font-size: 20px;
         border:none;
     }
@@ -1126,7 +1328,6 @@ body a {
     }
 
     .all-c-p {
-        background-color: rgba(36, 51, 90,0.5);
         width: fit-content;
         height: fit-content;
         padding: 10px;
@@ -1159,7 +1360,6 @@ body a {
         position:absolute;
     }
     .all-c-p:hover {
-        background-color: rgba(36, 51, 90,0.5);
         width: fit-content;
         height: fit-content;
         padding: 10px;
@@ -1181,7 +1381,6 @@ body a {
 
     .all-c-p:hover {
         font-size: 20px;
-        background-color: rgba(36, 51, 90,0.5);
         color:white;
         border-radius: 10px;
     }
@@ -1193,15 +1392,11 @@ body a {
         visibility: visible;
         position:relative;
     }
-    .all-c-p:hover {
-        background-color: rgba(44, 63, 112,0.6);
-    }
     .Support a:hover, .Logs a:hover {
         font-weight: bold;
-        border: 1px solid rgba(0,0,0,0);
     }
     .featured button:hover {
-        border: 1px solid #19284d;
+        border: 1px solid var(--main-blue-dark);
     
     }
     #ad {
@@ -1220,7 +1415,6 @@ body a {
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
-        border: 1px solid white;
         border-style: solid none solid none;
         display: none;
 
@@ -1242,7 +1436,7 @@ body a {
     }
     .myAdd button:hover {
         color:white;
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
     }
     .addjoin button:hover {
         border:none;
@@ -1255,7 +1449,7 @@ body a {
         margin-right: auto;
     }
     .addjoin button {
-        background-color: #1d2d55;
+        background-color: var(--main-clear);
         width: 100%;
         height: 40px;        
         padding-left: 50px;
@@ -1274,6 +1468,28 @@ body a {
     }
     .all-c-p:active, .all-c-p:focus, .all-c-p:hover {
         border-radius: 5px;
+    }
+    .customize_container {
+        position:fixed;
+        width: 85%;
+        bottom:0px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 1px solid white;;
+    }
+    #custombackground {
+        display: none;
+    }
+    .closecustomcontainer  {
+        right:0;
+        top:0;
+        border: 1px solid white;
+        border-radius: 0px;
+        border-style:none none solid solid;
+        border-radius: 0px 0px 0px 5px;
+    }
+    .cc-b p  {
+        text-align: left;
     }
     @keyframes overall {
         0% {

@@ -86,7 +86,7 @@ function SetPJ(el) {
     let p = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
     let i = document.getElementsByClassName('pj-select-writing');
     for (let p of i) {
-        p.style.backgroundColor="#1d2d55";
+        p.style.backgroundColor=document.documentElement.style.getPropertyValue('--main-clear');
     }
     document.getElementById(el.id).style.backgroundColor="rgba(255,255,255,0.1)";
 

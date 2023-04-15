@@ -1,7 +1,7 @@
 .ifo-m {
     width: 90%;
     height: 85%;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     border-radius: 5px;
     padding: 10px;
     padding-left: 50px;
@@ -61,7 +61,7 @@
 }
 .Spenhancedmore:hover {
     background-color: white;
-    color:#19284d;
+    color:var(--main-blue-dark);
 }
 .ifo-bx {
     display: flex;
@@ -78,7 +78,7 @@
 .param-header {
     width: 90%;
     position:absolute;
-    background-color: #5d6e9b;
+    background-color: var(--main-clear);
     height: 2px;
     border-radius: 50px;
     z-index: 0;
@@ -94,7 +94,7 @@
     padding-left: 10px;
     padding-right: 10px;
     z-index: 9;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     margin-left: auto;
     margin-right: auto;
 }
@@ -147,7 +147,7 @@
     position: absolute;
     top:-9;
     left: 4;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     padding: 2px;
     padding-left: 5px;
     padding-right: 5px;
@@ -169,15 +169,15 @@
     width: 250px;
     height: 30px;
     border-radius: 5px;
-    background-color: #1f2f57;
+    background-color: var(--main-clear);
     padding: 7px;
 }
 .ifo-m-c-u button,.ifo-m-c-p button,.ifo-m-c-e button {
     width: 40px;
     height: 30px;
-    background-color: #19284d;
+    background-color: var(--main-blue-dark);
     color:white;
-    border:2px solid #19284d;
+    border:2px solid var(--main-blue-dark);
     cursor: pointer;
     border-radius: 5px;
     display: flex;
@@ -218,15 +218,15 @@
     height: 50px;
     color:white;
     border-radius: 5px;
-    background-color: #1f2f57;
-    border: 2px solid #19284d;
+    background-color: var(--main-clear);
+    border: 2px solid var(--main-blue-dark);
     cursor: pointer;
     margin-left: auto;
     margin-right: auto;
 }
 .ifo-bt-b button:hover {
     background-color:white;
-    color: #19284d;
+    color: var(--main-blue-dark);
 }
 
 

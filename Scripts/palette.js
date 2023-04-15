@@ -1,49 +1,114 @@
-
-const abc = (() => {
-    const caps = [...Array(26)].map((val, i) => String.fromCharCode(i + 65));
-    return caps.concat(caps.map(letter => letter.toLowerCase()));
-  })();
-let nb = [1,2,3,4,5,6,7,8,9]
-// Palette script //
-
-let palette_active = false;
-
-// Change visibilies & visual stuff of the palette
-function PLACT(c) {
-    let P = document.getElementById('bs-pl');
-    let Box = document.getElementById('palette-charge');
-    let HB = document.getElementById('hexplace');
-
-    if (palette_active) {
-        P.innerHTML = "close";
-        Box.style.visibility  = "visible";
-    } else {
-        P.innerHTML = "palette"
-        Box.style.visibility = "hidden";
-        HB.style.border="none";
-    }
-
-    palette_active = !palette_active
-
+function ResetCustom() {
+    ChangeColor({value:""},"white");
+    ChangeDarkVariant({value:""},'#19284d');
+    ChangeLightVariant({value:""},'#1d2d55');
+    ChangeBackground({value:""},'Images & Icons/Sprint+ logo blank.png');
+    changeWidth({value:""},5)
 
 }
 
+function DarkMode() {
+    ChangeColor({value:""},"white");
+    ChangeDarkVariant({value:""},'#000000');
+    ChangeLightVariant({value:""},'#1c1c1c');
+}
+function LightMode() {
+    ChangeColor({value:""},"black");
+    ChangeDarkVariant({value:""},'#000000');
+    ChangeLightVariant({value:""},'#1c1c1c');
+    ChangeBackground({value:""},'');
+}
 
-function PalAP() {
+function ChangeColor(element=null,item) {
+
+   let value = element.value;
+    if (item) {
+        value = item;
+    }
+    document.body.style.color=value;
+    
+    let user = JSON.parse(localStorage.getItem('user'));
+    user.colorcustom = value;
+    localStorage.setItem('user',JSON.stringify(user));
+}
+
+/*
+:root {
+    --main-blue-dark: #19284d;
+    --main-clear:#1d2d55;
+    --main-background-color: #19284d;
+  }
+*/
+function ChangeDarkVariant(element,item) {
+    let value = element.value;
+    if (item) {
+        value = item;
+    }
+    document.documentElement.style.setProperty('--main-blue-dark', value);
+    let user = JSON.parse(localStorage.getItem('user'));
+    user.darkvariant = value;
+    localStorage.setItem('user',JSON.stringify(user));
 
 }
-// Check for a correct hex code
-function PalAP() {
-    let B = document.getElementById('hexplace').value.split();
-    let HB = document.getElementById('hexplace');
-    for (let b of B) {
-        if (
-            b.toLowerCase() in abc == false || 
-            parseInt(b) in nb == false || 
-            B[0] !== "#") {
-            HB.style.border = "1px solid red";
-            return;
-        }
+function ChangeLightVariant(element,item) {
+    let value = element.value;
+    if (item) {
+        value = item;
     }
-    PLACT();
+    document.documentElement.style.setProperty('--main-clear', value);
+    let user = JSON.parse(localStorage.getItem('user'));
+    user.lightvariant = value;
+    localStorage.setItem('user',JSON.stringify(user));
+
+}
+function changeWidth(element,item) {
+    let value = element.value;
+    if (item) {
+        value = item;
+    }
+    document.getElementById('custombackground').style=`
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    margin:auto;
+    width:${value}%;
+    opacity:0.5;
+    z-index:0;
+    `;
+    document.getElementById('widthsize').innerHTML = value+"% of the screen";
+    let user = JSON.parse(localStorage.getItem('user'));
+    user.backgroundwidth = value;
+    localStorage.setItem('user',JSON.stringify(user));
+}
+
+function ChangeBackground(element,item) {
+    let value = element.value;
+    if (item) {
+        value = item;
+    }
+    document.getElementById('custombackground').src = value;
+    document.getElementById('custombackground').style=`
+        position:absolute;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        margin:auto;
+        width:50%;
+        opacity:0.5;
+        z-index:0;
+    `;
+    let user = JSON.parse(localStorage.getItem('user'));
+    user.background = value;
+    localStorage.setItem('user',JSON.stringify(user));
+
+}
+
+let showContainer = false;
+
+function OpenContainer() {
+    showContainer=!showContainer;
+    document.getElementById('customize_container').style.display=showContainer?"flex":"none";
 }
