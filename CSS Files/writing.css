@@ -120,7 +120,7 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-family: 'Ubuntu', sans-serif;
     display: block;
-    font-size: 15px;
+    font-size: 15px !important;
 }
 #editcontent div:not(#styletextalign), #editcontent span, #editcontent p  {
     display: inline  !important;
@@ -192,6 +192,7 @@ animation: 3s linear infinite slidein;
     width: 100%;
     box-sizing: border-box;
     text-align: left;
+    color: white !important;
 }
 
 .chaptermv {

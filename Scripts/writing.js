@@ -211,7 +211,7 @@ function NewChapter() {
                         <span class="material-symbols-outlined" onclick="RemoveContent()" >
                             remove
                         </span>
-                        <input type="color" id="textcolor" value="#000000" oninput="ChangeColor()">
+                        <input type="color" id="textcolor" value="#000000" oninput="ChangeTextBoxColor(this)">
                         <span class="material-symbols-outlined" onclick="Before()">
                         navigate_before
                         </span>
@@ -389,7 +389,7 @@ function RemoveContent() {
         window.getSelection().deleteFromDocument();
     }
 }
-function ChangeColor() {
+function ChangeTextBoxColor() {
     UserLOGS.before = document.getElementById('editcontent').innerHTML;
     color = document.getElementById("textcolor").value;
     document.execCommand('styleWithCSS', false, true);
@@ -515,3 +515,4 @@ function Bold() {
     Save()
 
 }
+
