@@ -3,6 +3,71 @@ let Current_goal="_3";
 let GoalItem = "";
 let Goal_name = "";
 
+function TimeLapse(goal) {
+  let today = new Date();
+  today.setHours(0,0,0,0);
+  let start = new Date(goal.started_on);
+  start.setHours(0,0,0,0)
+  let end = new Date();
+  end.setDate(start.getDate() + parseInt(goal.duration));
+
+
+  let timelapse = dateDiffInDays(today,end)
+  
+
+
+  console.log(`Timelapse is ${timelapse}`)
+
+  return timelapse; // Amount of days including « today » and « end » before the actual end of the goal
+}
+
+function dateDiffInDays(a, b) {
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  // Discard the time and time-zone information.
+  const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+  return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+}
+
+function CheckEnd(goal) {
+  if (goal.words >= goal.amount_of_words) {
+
+      return true;
+  }
+  if (dateDiffInDays(new Date(goal.started_on), new Date())<0) {
+      return true;
+  }
+
+}
+
+
+function UpdateWords(goal, words) {
+  let today = new Date();
+  let start = new Date(goal.started_on);
+
+  let day = dateDiffInDays(start,today);
+  
+  if (!goal.updates) goal.updates={};
+  if (!goal.updates[day]) {
+      goal.updates[day]=0;
+  }
+  goal.updates[day]+=parseInt(words);
+
+  if (!goal.updatescount) goal.updatescount=0;
+
+  goal.updatescount++;
+  goal.words+=parseInt(words);
+
+  let ifEnd = CheckEnd(goal);
+
+  if (ifEnd) {
+      return [true, goal];
+  } else {
+      return [false,goal];
+  }
+  
+}
 function UpdateGoal() {
     let el = document.getElementById('select-pj-goal');
     let number = document.getElementById('g-c-s-u-p').value;
@@ -16,48 +81,12 @@ function UpdateGoal() {
       let pj = JSON.parse(localStorage.getItem(`Project : ${text}`));
       InCharge = pj.name;
       let goal = JSON.parse(localStorage.getItem(`${pj.name}-goal-${parseInt(GoalItem)}`));
-      goal.words = parseInt(goal.words) + parseInt(document.getElementById('g-c-s-u-p').value);
       
-      console.log(document.getElementById('g-c-s-u-p').value + " is value entered")
-      console.log(goal.words + " is now value total")
-
-      if (!goal.updatescount) {
-        goal.updatescount = 0;
+      let W = UpdateWords(goal, number);
+      if (W[0] === true) {
+        goal.finished=true;
       }
-      goal.updatescount++;
-      
-      Current_goal = `_${GoalItem+1}`;
-      let Start = new Date(goal.started_on);  
-      let Time = parseInt(goal.duration)
-      let Today = new Date();
-      Today.setHours(0,0,0,0)
-      let TD = 0;
-      let ClockSet = false;
-      console.log('TIME IS ' + Time)
-      for (let i = 1; i < Time+1; i++) {
-        let d =Start.getTime() + 86400000*i;
-        d = new Date(d);
-        console.log(`${d.getDate()}/${d.getMonth()+1}`)
-        d.setHours(0,0,0,0)
-        if (
-          ClockSet != true && d.getDate() === Today.getDate() && 
-          d.getMonth() === Today.getMonth() && 
-          d.getFullYear() === Today.getFullYear() 
-          )  {
-
-            TD = i;
-            ClockSet = true;
-          }
-      }
-      console.log('TODAY IS ' + Today)
-      console.log('Time is ' + Time + " and today is" + TD)
-      if (!goal.updates[TD]) {
-        goal.updates[TD]=0;
-      }
-      goal.updates[TD] += parseInt(number);
       localStorage.setItem(`${pj.name}-goal-${parseInt(GoalItem)}`,JSON.stringify(goal))
-  
-  
       document.getElementById('g-c-s-u-p').value = "";
   
       OpenStats()
@@ -66,6 +95,7 @@ function UpdateGoal() {
 }
 
 function ShowUpOPT() {
+  document.getElementById('openContainer').style.display="none";
   let s = document.getElementById('g-child-selector');
   let c = document.getElementById('child-viewer');
   document.getElementById('error-no-goal').style.visibility="hidden";
@@ -89,9 +119,9 @@ function GoalsShowUp() {
   Current_goal="_3"
     document.getElementById('Main').innerHTML = `
     <div class="g-parent">
-    <div class="openContainer">
-    <span class="material-symbols-outlined" onclick="ShowUpOPT()">
-    settings
+    <div class="openContainer" id="openContainer" onclick="ShowUpOPT()">
+    <span class="material-symbols-outlined">
+      keyboard_backspace
     </span>
     </div>
     <div class="g-child-selector" id="g-child-selector" style="visibility:visible">
@@ -105,7 +135,6 @@ function GoalsShowUp() {
           </div>
           <div class="g-c-s-c-p">
             <select id="select-pj-goal" onchange="GoalSelect()">
-              <option></option>
             </select>
           </div>
         </div>
@@ -126,13 +155,13 @@ function GoalsShowUp() {
           <span class="material-symbols-outlined">
           update
           </span>
+          Update objective
         </div>
         <div class="g-c-s-u-inbox">
           <div class="g-c-s-u-p">
             <input placeholder="Words written" type="number" id="g-c-s-u-p">
           </div>
-        </div>
-        <div class="g-c-s-u-u">
+          <div class="g-c-s-u-u">
           <button onclick="UpdateGoal()">
             <span class="material-symbols-outlined">
               add
@@ -140,6 +169,8 @@ function GoalsShowUp() {
           </button>
           <div id="update_empty"></div>
         </div>
+        </div>
+
       </div>
       </div>
       <div class="g-c-s-management" id="g-c-s-management">
@@ -152,7 +183,7 @@ function GoalsShowUp() {
     </div>
   </div>
     `;//rgba(26,41,80,0.3)
-
+    document.getElementById('openContainer').style.display="none";
 
 
 
@@ -350,7 +381,7 @@ function EditGoal() {
         Your goal will end on ${
           Start.getDate()>9?Start.getDate():'0'+Start.getDate()
         }/${Start.getMonth()+1>9?Start.getMonth()+1:'0'+(Start.getMonth()+1)}/${Start.getFullYear()},
-        which means in ${Time-TD} days
+        which means in ${TimeLapse(g)} days
     
       `;
     }
@@ -482,7 +513,8 @@ function FixGoal(el) {
 function GoalSelect() {
     let el = document.getElementById('select-pj-goal');
     var text = el.options[el.selectedIndex].text;
-    console.log(`Project : ${text}`)
+    console.log(el.selectedIndex, el.options[el.selectedIndex].text)
+
     let pj = JSON.parse(localStorage.getItem(`Project : ${text}`));
     InCharge = pj.name;
 
@@ -502,7 +534,7 @@ function GoalSelect() {
             `;
         } else {
             document.getElementById('g-c').innerHTML+=`
-                <div id="_${i+1}" onclick="OpenFolder({id:'pj-open-${pj.name}'})">
+                <div id="_${i+1}" onclick="OpenFolder({id:'pj-open-${InCharge}'})">
                 <span class="material-symbols-outlined" >
                     empty_dashboard
                     </span>
@@ -511,10 +543,10 @@ function GoalSelect() {
             `;
         }
     } 
+
+
 }
-function u() {
-    alert('AAAAAAAAAAAA')
-}
+
 
 
 function GetWidth(a) {
@@ -552,7 +584,7 @@ function DrawCurve() {
       document.getElementById('error-no-goal').style.visibility = 'visible';
       return;
     }
-    let daysUntil = goal.duration;
+    let daysUntil = parseInt(goal.duration);
     let MaxWords = parseInt(goal.amount_of_words);
     let updates = goal.updates;
 
@@ -624,47 +656,60 @@ function DrawCurve() {
 
 
 
-
-function OpenStats() {
-  let goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
-  if (  document.getElementById('update_empty')) {
+function ChangeGoalFeedback(el) {
+    let project = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    for (let i = 0 ; i < project.archived_goals.length;i++) {
+      if (project.archived_goals[i].name === el.id) {
+        project.archived_goals[i].feedback = document.getElementById('feedbackarea').value;
+        localStorage.setItem(`Project : ${InCharge}`,JSON.stringify(project));
+        return;
+      }
+    }
+}
+function OpenStats(y=false) {
+  let project = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+  let goal;
+  if (y===false) {
+    goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
+  } else {
+    for (let G of project.archived_goals) {
+      if (G.name === y.id) {
+        goal= G;
+        document.getElementById('Main').innerHTML = `
+        <div class="g-parent">
+          <div class="child-viewer" id="child-viewer">
+          </div>
+        </div>`
+      }
+    }
+  }
+  if (  document.getElementById('update_empty') && y===false) {
     document.getElementById('update_empty').innerHTML = ""
 
   }
-  if (!goal) {
+  if (!goal && y === false) {
     document.getElementById('error-no-goal').style.visibility = 'visible';
     return;
   }
-  ShowUpOPT()
-
-  /*
-amount_of_words: "30000"
-details: "Plus sur le drive nafauthor@gmail.com"
-duration: "90"name: "Ecriture"
-started: true
-started_on: 1677925986433
-updates
-words: 2500
-*/
+  if (y===false) {
+    ShowUpOPT()
+  }
   let Time = parseInt(goal.duration);
   let Start = new Date(goal.started_on);
   let Ends = new Date(Start.getTime()+86400000*Time);
-  let WhatDayToday = new Date();
-
-  WhatDayToday.setHours(0,0,0,0);
   Start.setHours(0,0,0,0);
   Ends.setHours(0,0,0,0);
 
 
 
   let Today = new Date();
-  Today.setHours(0,0,0,0)
-  console.log('Starting day is ' + Start);
+  Today.setHours(0,0,0,0);
+  let td = new Date();
+  td.setHours(0,0,0,0);
   let ClockSet = false;
   for (let i = 0; i < Time; i++) {
     let d =Start.getTime() + 86400000*i;
     d = new Date(d);
-    console.log(`${d.getDate()}/${d.getMonth()+1}`)
     d.setHours(0,0,0,0)
     if (
       ClockSet != true && d.getDate() === Today.getDate() && 
@@ -675,25 +720,26 @@ words: 2500
         ClockSet = true;
       }
   }
-  console.log(new Date(Today) + " is today")
 
   let MaxWords = parseInt(goal.amount_of_words);
   let Words = goal.words;
+  // Amount of words missing to finish the goal:
   let NeededWords = MaxWords - Words;
-  let TimeUntil = Time - Today - 1 ;
+  console.log(NeededWords + " words")
 
-  console.log(TimeUntil + " days until the end")
+  // How much day till the end of the goal:
+  let TimeUntil = TimeLapse(goal);
+  console.log(TimeUntil)
 
+  // How much words for today:
   let WordsForToday = Math.round(NeededWords/TimeUntil);
-
-  console.log('In need of ' + WordsForToday + " for today")
 
   let WordsWritten = [];
   let StrikedBefore = 0;
   let StrikeCount = 0;
 
   for (let [key,value] of Object.entries(goal.updates)) {
-      WordsWritten.push(value);
+      WordsWritten.push(parseInt(value));
       if (key-1!=StrikedBefore) {
         StrikeCount=0;
       }
@@ -701,27 +747,68 @@ words: 2500
       StrikedBefore=key;
   }
   
-  console.log(WordsWritten)
-  console.log(Time-TimeUntil)
-  if(!WordsWritten[Time-TimeUntil-1]) {
-    WordsWritten[Time-TimeUntil]=0;
+  if(!WordsWritten[goal.duration-TimeUntil]) {
+    WordsWritten[goal.duration-TimeUntil]=0;
   }
 
   
 
-  let ProgressToday = Math.round((WordsWritten[Time-TimeUntil-1]*100)/WordsForToday);
+  let ProgressToday = Math.round((WordsWritten[goal.duration-TimeUntil]*100)/WordsForToday);
   let ProgressOverall = Math.round((Words*100)/MaxWords);
 
 
-  console.log(ProgressToday + " ==> amount of words made today")
-  console.log(ProgressOverall + " ==> amount of words made overall")
 
 
+  if (y===false) document.getElementById('openContainer').style.display="flex";
+
+  if (goal.finished && y==false) {
+    let project = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    if (!project.archived_goals) {
+      project.archived_goals = [];
+    }
+    goal.finished_on = new Date();
+    goal.finished_on.setHours(0,0,0,0)
+    project.archived_goals.push(goal);
+    localStorage.removeItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`);
+    localStorage.setItem(`Project : ${InCharge}`,JSON.stringify(project));
+  }
   document.getElementById('child-viewer').innerHTML=`
     <div class="c-v-c">
-      <div class="contain_infos">
       <div class="c-v-c-t">
-        ${goal.name}
+        ${goal.name} - <i>${InCharge}</i>
+      </div>
+      <div class="finishedgoal" style="display:${goal.finished?"inline":"none"}">
+        <div class="finishedcongratulation">
+            <div class="finishedtitle">
+                Congratulations, ${JSON.parse(localStorage.getItem('user')).name}!<br>
+                You did it! You wrote ${goal.words} words in ${goal.duration} days!<br>
+                <p>
+                  What an advancement. What will you do next?<br>
+                  Publish what you write? Start new objectives?<br>
+                  We hope the best for you!
+                </p><br>
+                <div class="textareafeedback" id="${goal.name}" oninput="ChangeGoalFeedback(this)">
+                  <textarea id="feedbackarea" placeholder="My experience during this goal">${goal.feedback?goal.feedback:""}</textarea>
+                </div>
+            </div>
+            <div class="finisheddesc">
+                This goal is officialy finished. It is archived in your project 
+                files, and you will not be able to update it anymore. It will be stopped,
+                and won't be reseted.
+            </div>
+        </div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <img src="Images & Icons/party.png">
+
+      </div>
+      <div class="contain_infos">
+      <div class="c-v-c-mt">
+        Progress
       </div>
         <div class="c-v-content-stats" id="c-v-content-stats">
           <div class="c-v-c-s">
@@ -729,15 +816,15 @@ words: 2500
               <span class="material-symbols-outlined">
               calendar_today
               </span>
-              Todays progress
+              Today progress
             </div>
             <div class="bar" id="todaybar">
               <div class="bar-hover" id="bartoday"></div>
               <div class="contentinfostats" id="contentinfostatstoday">
-                ${ProgressToday > 100 ? "100%+":ProgressToday+"%"}
+                ${goal.finished?"":(ProgressToday > 100 ? "100%+":ProgressToday+"%")}
               </div>
               <div class="contentinfostatshidden" id="contentinfostatshiddentoday">
-              ${WordsWritten[Time-TimeUntil-1]+" / "+WordsForToday} words
+              ${goal.finished?"":(WordsWritten[goal.duration-TimeUntil]+" / "+WordsForToday + "words")} 
               </div>
             </div>
 
@@ -783,6 +870,9 @@ words: 2500
         </div>
       </div>
       <div class="content-infos">
+        <div class="c-v-c-mt">
+          Informations
+        </div>
           <div class="content-infos-infos">
               <div class="content-desc">
               <span class="material-symbols-outlined">
@@ -807,20 +897,26 @@ words: 2500
               }/${Ends.getFullYear()})
             </div>
           </div>
-          <div class="content-info-updates" id="content-info-updates">
-
+          <div id="buttonpjjump">
+            Delete & change status in ${InCharge}
           </div>
+      </div>
+      <div class="content-info-updates" id="content-info-updates">
+        <div class="c-v-c-mt">
+          Updates
+        </div>
       </div>
     </div>
   `;  
   if (StrikeCount>7) StrikeCount=7;
   let Content = document.getElementById('c-v-content-stats');
-  document.getElementById('bartoday').style.width = (Content.offsetWidth*ProgressToday)/100+"px";
-  document.getElementById('barwhole').style.width = (Content.offsetWidth*ProgressOverall)/100+"px";
-  for (let i = 1; i < StrikeCount+1; i++) {
-    document.getElementById(`strikeBall${i}`).style.backgroundColor="FFC55C"
+  if(y===false) {
+    document.getElementById('bartoday').style.width = (Content.offsetWidth*ProgressToday)/100+"px";
+    document.getElementById('barwhole').style.width = (Content.offsetWidth*ProgressOverall)/100+"px";
+    for (let i = 1; i < StrikeCount+1; i++) {
+      document.getElementById(`strikeBall${i}`).style.backgroundColor="FFC55C"
+    }
   }
-
 
   for (let [key,value] of Object.entries(goal.updates)) {
       document.getElementById('content-info-updates').innerHTML+=`
@@ -831,7 +927,7 @@ words: 2500
           <div class="updatecount">
             ${value}
           </div>
-          <div class="updatedel" id="${key}" onclick="DelUpdate(this)">
+          <div class="updatedel" id="${key}" onclick="DelUpdate(this)" style="visibility:${goal.finished?"hidden":"visible"}">
             <span class="material-symbols-outlined" style="cursor:pointer">
             delete
             </span>
@@ -839,11 +935,15 @@ words: 2500
         </div>
       `;
   }
+  if (y!=false) {
+    document.getElementById('child-viewer').style.visibility = "visible";
+    document.getElementById('child-viewer').style.position = "relative";
+
+  }
 }
 
 function DelUpdate(el) {
   let goal = JSON.parse(localStorage.getItem(`${InCharge}-goal-${parseInt(Current_goal.replace('_',''))-1}`));
-    console.log('e')
     goal.words-=goal.updates[parseInt(el.id)]
     delete goal.updates[parseInt(el.id)]
     console.log(goal)
@@ -851,152 +951,3 @@ function DelUpdate(el) {
     OpenStats();
     return;
 }
-
-/*var ctx = canvas.getContext("2d");
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-
-  ctx.fillStyle = "#2c3f70";
-  ctx.fill();
-  ctx.roundRect(30, 30, 200, 200, [20, 20, 20, 20]);
-
-
-  ctx.fill();
-  ctx.roundRect(30, 250, 200, 200, [20, 20, 20, 20]);
-
-  ctx.roundRect(280, 30, 670, 165, [20, 20, 20, 20]);
-  ctx.fill();    
-  ctx.roundRect(700, 250, 250, 165, [20, 20, 20, 20]);
-  ctx.fill();    
-
-  ctx.roundRect(275, 395, 400, 50, [20, 20, 20, 20]);
-  ctx.fill();   
-
-  ctx.roundRect(275, 230, 400, 140, [20, 20, 20, 20]);
-  ctx.fill(); 
-
-  ctx.strokeStyle = "white";
-  ctx.beginPath();
-  ctx.roundRect(280+70/2, 145, 600, 10, [80, 80, 80, 80]);
-  ctx.fillStyle = "white";
-  ctx.fill();
-  ctx.stroke();
-
-  for (let i = 0 ; i < 7; i++) {
-    ctx.beginPath();
-    ctx.arc(350+i*88, 150, 6, 0, 7);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = 'white';
-    ctx.fillStyle = "rgba(255, 183, 0, 1)";
-    if (s!=0) {
-      if (i<strike) {
-        ctx.style = "green";
-      }
-    }
-    ctx.fill();
-    ctx.beginPath();
-    ctx.fillStyle = "white";
-
-    ctx.font = "15px serif";
-    ctx.fillText(`Day ${i+1}`, 332.5+i*88,174)
-  }
-  
-
-
-  ctx.fillStyle = "white";
-  ctx.font = "25px serif";
-  ctx.fillText(`${total_strike} days striked`, total_strike>9?545:555,92.5)
-
-
-  ctx.font = "25px serif";
-  let g = Math.round((done_today*100)/For_Today);
-  if (isNaN(g) || g == null) {
-    g = 0;
-  }
-  ctx.fillText(`${g > 100 ? "100%+":g+"%"}`, g>100?95:g>10?110:115, 140);
-
-  let t = Math.round((c_words*100)/MaxWords);
-  ctx.fillText(`${t > 100 ? "100%+":t+"%"}`, t>100?95:t>10?110:115, 360);
-
-
-  ctx.font = "20px serif";
-  ctx.fillText("Your progress today", 50, 55);
-  ctx.fillText("Your progress overall", 45, 280);
-
-  ctx.font = "30px serif";
-  ctx.fillText(`Viewing: ${goal.name}`, 300, 430);
-  ctx.font = "25px serif";
-  ctx.fillText(`Overall details`, 412.5, 257.5);
-
-  ctx.font = "15px serif";
-  ctx.fillText(`${goal.duration-diffDays} days left (${Math.round(100-((goal.duration-diffDays)/goal.duration)*100)}% done)`, 325, 292.5);
-  ctx.fillText(`${parseInt(goal.amount_of_words)-goal.words} words left (${Math.round(((goal.words)/parseInt(goal.amount_of_words))*100)}% done)`, 325, 330-7.5);
-  ctx.fillText(`You striked ${ts} days (${Math.round((strike/ts)*100)}% better than now)`, 325, 360-7.5);
-
-
-  ctx.font = '25px Material Icons';
-  ctx.fillText('timelapse',290,300);
-  ctx.fillText('inventory_2',290,330);
-  ctx.fillText('list_alt',290,360);
-
-
-  ctx.font = '25px Material Icons';
-  ctx.fillText('timelapse',710,290);
-  ctx.fillText('inventory_2',710,325);
-  ctx.stroke()
-
-  ctx.font = "20px serif";
-  ctx.fillText(`${goal.duration} days long`,745,285);
-  ctx.fillText(`${MaxWords} words to write`,745,320);
-  ctx.stroke()
-
-  let details = [[],[]];
-  if (goal.details.length > 25 ) {
-    let d = goal.details.split('');
-    for (let i = 0; i < goal.details.length ; i++) {
-      if (i < 25) {
-        details[0].push(d[i]);
-      } else{
-        details[1].push(d[i]);
-      }
-    }
-  } else {
-    details[0]=goal.details.split('');
-  }
-
-
-  ctx.beginPath();
-  ctx.arc(130, 130, 50, 0, 7);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = '#24335a';
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(130, 350, 50, 0, 7);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = '#24335a';
-  ctx.stroke();
-
-
-  ctx.beginPath();
-  ctx.arc(130, 130, 50, 0, (((done_today*100)/For_Today)*6.28)/100);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = 'rgba(255, 183, 0, 1)';
-  ctx.stroke();
-
-  console.log(c_words, MaxWords)
-  ctx.beginPath();
-  ctx.arc(130, 350, 50, 0, (((c_words*100)/MaxWords)*6.28)/100);
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = 'rgba(255, 183, 0, 1)';
-  ctx.stroke();
-
-  ctx.font = "15px serif";
-
-  ctx.fillStyle = '#CDE';
-  ctx.fillText(`Sprint+ Generated`,10, 490);
-  ctx.fillText(`A tool made by https://www.instagram.com/naf_author/`,625, 490);
-
-
-*/

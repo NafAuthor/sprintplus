@@ -416,4 +416,7 @@
     .c-p-c select:hover {
         border: 2px solid rgba(0,0,0,0);
     }
+    #opt-dc {
+        background-color:var(--main-blue-dark);
+    }
 }

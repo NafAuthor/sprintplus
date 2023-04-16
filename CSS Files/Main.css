@@ -65,7 +65,9 @@ body {
     flex-direction: row;
     gap:5px;
     align-items: center;
-    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
     border-radius: 5px;
     height: 20px;
     background-color: var(--main-clear);
@@ -104,11 +106,12 @@ body {
   }
   .closecustomcontainer {
     position:absolute;
-    right:5;
-    top:5;
+    right:0;
+    top:0;
     background-color: var(--main-blue-dark);
     border-radius: 5px;
-    padding: 2px;
+    padding: 1px;
+    border-radius: 0px 0px 0px 5px;
     cursor: pointer;
   }
   .closecustomcontainer:hover {
@@ -161,20 +164,21 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: var(--main-clear);
     border-radius:5px;
     position:absolute;
-    width: 50%;
+    width: 25%;
     height: fit-content;
     bottom:10px;
-    left:0;
     right:0;
     top:0;
     bottom:0;
     margin:auto;
-    z-index:50;
-    display: none;
+    z-index:99;
+    display: none; 
+
   }
   .customize_container h2 {
     margin-left: auto;
     margin-right: auto;
+    font-size: 18px;
   }
   .customize_container button:hover {
     background-color: white;
@@ -193,6 +197,9 @@ input[type="range"]::-webkit-slider-thumb {
     outline:none;
     color:white;
     width: 80%;
+  }
+  .cc-i input[type="number"] {
+    width: 55px;
   }
   .cc-i input::placeholder{
     color:rgba(255,255,255,0.6);
@@ -672,11 +679,15 @@ body a {
 
 }
 
-
+.logsandsupport {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+    margin-left: auto;
+}
 .Logs a, .Support a {
-    position:absolute;
-    top:0;
-    bottom:0;
     margin:auto;
     display: flex;
     flex-direction: row;
@@ -757,7 +768,9 @@ body a {
     align-items: center;
     border-radius: 5px;
     height: 80%;
-    position:absolute;right:0;
+    position:absolute;
+    top:0;
+    right:0;
 }
 
 .featuring, .m-m-i {
@@ -1177,8 +1190,22 @@ body a {
     justify-content: center;
     cursor:pointer;
 }
-
+@media screen and (width <= 800px) {
+    #p-p-title {
+        display: none;
+    }
+    .logsandsupport {
+        margin-right: auto;
+    }
+    .f-t p, .mor-t p {
+        display: none;
+    }
+}
 @media screen and (320px <= width <= 420px) {
+    .customize_app {
+        bottom:25;
+        right:0;
+    }
     body {
         position:relative;
         text-align: center;
@@ -1312,7 +1339,7 @@ body a {
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
-        top:0px;
+        top:5px;
         margin:unset;
         position:fixed;
         border-radius: 0px 0px 5px 5px;
@@ -1473,6 +1500,9 @@ body a {
         position:fixed;
         width: 85%;
         bottom:0px;
+        left:0;
+        right:0;
+        margin:auto;
         overflow-y: auto;
         overflow-x: hidden;
         border: 1px solid white;;

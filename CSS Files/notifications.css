@@ -73,7 +73,7 @@
 .NC-content {
     width: 100%;
     height: 65%;
-    background-color: #1b2a51;    
+    background-color: var(--main-clear);    
     border-radius: 0px 0px 0px 20px;
     display: flex;
     align-items: center;
@@ -104,7 +104,7 @@
     height: 100%;
     position:relative;
     overflow-y: hidden;overflow-x: hidden;
-    border: 2px solid #2c3f70;
+    border: 2px solid var(--main-clear);
     border-radius: 10px;
 }
 .p-w-s {
@@ -212,7 +212,7 @@
     align-items: center;
     margin-left: 30px;
     width: 80%;
-    background-color: #1b2a51;
+    background-color: var(--main-clear);
     height: 40px;
     padding-right: 20px;
     border-radius: 50px;    cursor:pointer;
@@ -358,7 +358,7 @@
     display: flex;
     flex-direction: column;
     gap:5px;
-    background-color: #1d2d56;
+    background-color: var(--main-blue-dark);
     margin-top:40px;
     border-radius: 20px;
 }
@@ -434,40 +434,36 @@
     align-items: center;
     flex-direction: row;
     position:relative;
-    background-color: #1d2d56;
+    background-color: var(--main-blue-dark);
     border-radius: 50px 0px 0px 50px;
 }
 .fs-a p {
     position:absolute;
-    left:15;
+    right:15;
     width: 50%;
+    text-align: right;
 
 }
 .fs {
-    width: fit-content;
-    border-radius: 50px;
+    width: 150px;
+    border-radius: 5px;
     display: flex;
     flex-direction:row;
     align-items: center;
-    justify-content: center;
     gap: 10px;
     height: 30px;
     cursor: pointer;
     padding-left: 20px;
     padding-right: 20px;
-    border: 1px solid  #1d2d56;
-    margin-left: auto;
-    border-style: solid none solid solid;
-    border-radius: 50px 0px 0px 50px
+    margin-right: auto;
 
 }
 .fs span {
     font-size: 17px;
 }
 .fs:hover {
-    border: 1px solid white;
-    border-style: solid none solid solid;
-    border-radius: 50px 0px 0px 50px
+    color:var(--main-blue-dark);
+    background-color: white;
 }
 
 .alertInfos {
@@ -480,7 +476,7 @@
     justify-content: center;
     display: flex;
     text-align: center;
-    background-color: #1d2d56;
+    background-color: var(--main-blue-dark);
     visibility: hidden;
     display: flex;
     flex-direction: column;
@@ -529,7 +525,7 @@
 }
 .expand:hover {
     background-color: white;
-    color:#1d2d56;
+    color:var(--main-blue-dark);
 }
 
 .developfolder {
@@ -684,7 +680,7 @@
 .datec, .datec1-c, .datec2-c,.datec1-t,.datec2-t {
     width: 100%;
     height: 30px;
-    background-color: #1d2d56;
+    background-color: var(--main-blue-dark);
     border:1px solid white;
     display: flex;
     justify-content: center;

@@ -485,8 +485,7 @@ function replaceSelectedText(replacementText) {
 }
 function AddSpaceBar() {
     UserLOGS.before = document.getElementById('editcontent').innerHTML;
-    var bar = document.createElement('span');
-    bar.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    zzz="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     document.execCommand('insertHTML', false, bar.outerHTML);
     Save()
 }

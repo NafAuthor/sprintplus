@@ -386,8 +386,8 @@ let Main = `
       <span class="material-symbols-outlined">
         feed
         </span>
-      What's going on?
-      <div class="f-t-center">
+        <p style="margin:unset">What's going on?</p>
+        <div class="f-t-center">
         <span class="material-symbols-outlined" onclick="OpenNotifCenter()">
         open_in_new
         </span>
@@ -402,7 +402,7 @@ let Main = `
     <span class="material-symbols-outlined">
       auto_awesome
       </span>
-    Your favorite stories
+    <p style="margin:unset">Your favorite stories</p>
     <div class="learnmorefavsto" onclick="learnmorefavsto()">
       Learn more
     </div>

@@ -103,7 +103,7 @@ function OpenFolder(el) {
     </div>
     <div class="pj-whole-contain-all" id="infoswhole" style="visibility:hidden;display:none;">
     <div class="pj-b-c">
-    <img src="${pj.cover?pj.cover:"Images & Icons/MS.png"}">
+    <img src="${pj.cover?pj.cover:"Images & Icons/Sprint+.jpg"}">
     </div>
     <div class="pjinfocontent">
         <div class="pj-b-i">
@@ -231,17 +231,68 @@ function OpenFolder(el) {
     </div>
     </div>
     <div class="wholeonlineinfos">
+        <div class="text2">
+        <span class="material-symbols-outlined" id="onlineright">
+        chevron_right
+        </span>
+        Online overview <i style="margin-left:auto;color:rgba(255,255,255,0.6)">Section in progress</i>
+        </div>
+    </div>
+    <div class="wholearchive" onclick="HoverShow('archive')">
       <div class="text2">
-      <span class="material-symbols-outlined" id="onlineright">
+      <span class="material-symbols-outlined" id="archiveright">
       chevron_right
       </span>
-      Online overview <i style="margin-left:auto;color:rgba(255,255,255,0.6)">Section in progress</i>
+      Archives
+      </div>
+      <div id="archivewhole"  style="visibility:hidden;display:none;">
+
       </div>
     </div>
     </div>
 
   </div>
   `;
+
+    if (pj.archived_goals) {
+      for (let goal of pj.archived_goals) {
+        let start = new Date(goal.started_on);
+        let end = new Date(goal.finished_on);
+        document.getElementById('archivewhole').innerHTML+=`
+          <div class="archivedgoal">
+            <div class="a-g-t">
+              ${goal.name}
+            </div>
+            <div class="archidesc">
+              ${goal.details}
+            </div>
+            <div class="a-g-d">
+              Objective : ${goal.amount_of_words} words in ${goal.duration} days<br>
+              Started on : ${
+                start.getDate()>9?start.getDate():"0"+start.getDate()
+              }/${
+                start.getMonth()+1>9?start.getMonth():"0"+(start.getMonth()+1)
+              }/${
+                start.getFullYear()
+              }<br>
+              Finished on : ${
+                end.getDate()>9?end.getDate():"0"+end.getDate()
+              }/${
+                end.getMonth()+1>9?end.getMonth():"0"+(end.getMonth()+1)
+              }/${
+                end.getFullYear()
+              }<br>
+            </div>
+            <button onclick='OpenStats(this)' id="${goal.name}">
+              View
+            </button>
+          </div>
+
+        `;
+      }
+    }
+
+
   let items = {...localStorage} ;
   let g= 0;
 
@@ -287,13 +338,15 @@ function OpenFolder(el) {
 
 
 function HoverShow(i) {
-  let span = document.getElementById(`${i}right`);
-  span.innerHTML = (span.innerHTML.includes("chevron_right") ? "expand_more":"chevron_right");
-  
-  let whole = document.getElementById(`${i}whole`);
-  console.log(whole)
-  whole.style.visibility = (whole.style.visibility === "hidden" ? "visible":"hidden");
-  whole.style.display =whole.style.display== "none"?"flex":"none"
+  if (document.getElementById(`${i}right`) && document.getElementById(`${i}whole`)) {
+    let span = document.getElementById(`${i}right`);
+    span.innerHTML = (span.innerHTML.includes("chevron_right") ? "expand_more":"chevron_right");
+    
+    let whole = document.getElementById(`${i}whole`);
+    console.log(whole)
+    whole.style.visibility = (whole.style.visibility === "hidden" ? "visible":"hidden");
+    whole.style.display =whole.style.display== "none"?"flex":"none";
+  }
 }
 
 function ChangeTime() {
@@ -919,6 +972,9 @@ function FilterProjects(type) {
                 `:""}
                 <span class="material-symbols-outlined" onclick="GoalsShowUp()" id="${item.name}"> show_chart </span>
                 <span class="material-symbols-outlined" onclick="OpenWriting()" id="${item.name}"> edit </span>
+
+                <span class="material-symbols-outlined" onclick="window.open('https://twitter.com/intent/tweet?text=I%20created%20my%20writing%20project%20%C2%AB${item.name}%C2%BB%20using%20Sprint%2B%21%20${chapteramount>0?"I%20already%20wrote%20some%20chapters%2C%20and%20":""}I%20am%20ready%20to%20work%20on%20my%20objectives%21%0ATry%20it%20out%2C%20on%20https%3A%2F%2Fbit.ly%2Fspriplus')" id="${item.name}"> share </span>
+
                 <div class="pj-param-contan-view">
                   <span class="material-symbols-outlined" onclick="ChangeStatusStar(this)" id="${item.name}"
                     style="color: ${item.star ? 'yellow' : 'white'};"
@@ -933,7 +989,7 @@ function FilterProjects(type) {
             <div class="pj-slct-img">
             ${item.cover?`
               <img src="${item.cover}" class="pj-cover">
-            `:'<img src="Images & Icons/MS.png" class="pj-cover">'}
+            `:'<img src="Images & Icons/Sprint+.jpg" class="pj-cover">'}
           </div>
         </div>`;
         let ct = document.getElementById("FilterProject").value;
@@ -951,30 +1007,32 @@ function ProjectShowUp() {
     InCharge;
     Pannel_Status = false;
     document.getElementById('Main').innerHTML = `
-    <div class="pj-ctnt-opt">
-      <button onclick="Project()">
-      <span class="material-symbols-outlined">
-        add
-        </span>
-        New project
-      </button>
-    <div class="pj-ctnt-select">
-      <div class="pj-ctn-select-title">
-        <span class="material-symbols-outlined">
-        filter_alt
-        </span>
-        Filter projects
+      <div class="pjctnt">
+          <div class="pj-ctnt-opt">
+          <button onclick="Project()">
+          <span class="material-symbols-outlined">
+            add
+            </span>
+            New project
+          </button>
+        <div class="pj-ctnt-select">
+          <div class="pj-ctn-select-title">
+            <span class="material-symbols-outlined">
+            filter_alt
+            </span>
+            <p style="marign:none">Filter projects</p>
+          </div>
+          <select id="FilterProject" onchange="FilterRedirect()">
+            <option>All</option>
+            <option>Starred</option>
+            <option>Sleeping</option>
+          </select>
+        </div>
       </div>
-      <select id="FilterProject" onchange="FilterRedirect()">
-        <option>All</option>
-        <option>Starred</option>
-        <option>Sleeping</option>
-      </select>
-    </div>
-  </div>
-    <div class="pj-ctnt" id="pj-ctnt">
-      
-    </div>
+        <div class="pj-ctnt" id="pj-ctnt">
+          
+        </div>
+      </div>
   `;
   FilterProjects('All');
 }

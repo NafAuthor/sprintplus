@@ -537,10 +537,6 @@
     border-radius: 10px;
     height: 50px;
     border-radius:5px;
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -556,7 +552,6 @@
     align-items: center;
     background-color: var(--main-clear);
     border:none;
-    color:white;
     cursor: pointer;
     margin-top: auto;
     margin-bottom: auto;
@@ -565,6 +560,7 @@
     font-size: 15px;
     gap: 5px;
     border-radius:5px;
+    color:white;
 }
 .pj-ctnt-opt button:hover {
     color:var(--main-blue-dark);
@@ -642,7 +638,48 @@
     padding-top: 0px;
 
 }
-
+#archivewhole {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.archivedgoal {
+    width: 100%;
+    background-color: var(--main-clear);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.a-g-d {
+    font-size: 15px;
+    border: 2px solid white;
+    border-style: none none none solid;
+    padding-left: 10px;
+}
+.archivedgoal button {
+    padding: 10px;
+    border-radius: 5px;
+    color:white;
+    border:none;
+    background-color: var(--main-blue-dark);
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.archivedgoal button:hover {
+    color:var(--main-blue-dark);
+    background-color: white;
+}
+.archidesc {
+    border: 2px solid white;
+    border-style: none none none solid;
+    padding-left:10px;
+    font-size: 15px;
+}
 
 
 
@@ -802,7 +839,7 @@ Project view:
     height: fit-content;
     font-size: 20px !important;
 }
-.wholeinfoshover, .wholegoalsinfo, .wholedetailsinfos, .wholeonlineinfos {
+.wholeinfoshover, .wholegoalsinfo, .wholedetailsinfos, .wholeonlineinfos,.wholearchive {
     padding-top: 10px;
     display: flex;
     flex-direction: column;
@@ -919,6 +956,13 @@ Project view:
 
 .pj-b-p {
     width: 100%;
+}
+.pjctnt {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
 }
 
 .pj-b-content {
@@ -1487,10 +1531,10 @@ Project view:
     margin-top: 10px;
     padding-top: 20px;
     padding-bottom: 10px;
-    border: 2px solid var(--main-clear);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
+    border: 2px solid var(--main-blue-dark);
+    background-color: var(--main-clear);
+    margin: auto;
+    border-radius: 5px;
 }
 .mdf-b input::placeholder, .mdf-b textarea::placeholder {
     font-style: italic;
@@ -1525,7 +1569,7 @@ Project view:
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px 5px 0px 0px;
-    background-color: var(--main-clear);
+    background-color: var(--main-blue-dark);
     border-style: none none solid none;
     border-color: rgba(0,0,0,0);
     height: 150px;
@@ -1547,7 +1591,7 @@ Project view:
 .mdf-b input {
     width: 80%;
     color:white;
-    background-color: var(--main-clear);
+    background-color:var(--main-blue-dark);
     outline:none;
     height: 40px;
     border-radius: 5px;
@@ -1570,7 +1614,7 @@ Project view:
 .mdf-b button {
     width: fit-content;
     color:white;
-    background-color: var(--main-clear);
+    background-color:var(--main-blue-dark);
     border:none;
     outline:none;
     height: 40px;
@@ -1581,7 +1625,6 @@ Project view:
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 2px solid var(--main-clear);
     padding: 5px;
     padding-left: 30px;
     padding-right: 30px;
@@ -1709,10 +1752,23 @@ Project view:
     padding: 5px;
     border-radius: 5px;
 }
+
+@media screen and (width <= 800px) {
+    .pj-ctn-select-title p {
+        display: none;
+    }
+}
+
 @media screen and (320px <= width <= 420px) {
+    .archivedgoal {
+        text-align: left;
+    }
+    .pjctnt {
+        overflow-x: hidden;
+    }
     .pj-ctnt {
         width: 100%;
-        height: 80%;
+        height: 100%;
         margin-top: unset;
     }
     .pj-ctnt-opt {
@@ -2075,7 +2131,7 @@ Project view:
     .-pj-b-i-i-desc {
         width: 100%;
     }
-    #detailswhole, #infoswhole,#goalswhole {
+    #detailswhole, #infoswhole,#goalswhole,#archivewhole {
         width: 100%;
         border-radius: px;
     }

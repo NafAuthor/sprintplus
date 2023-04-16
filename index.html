@@ -70,6 +70,7 @@
             image
           </span>
           <input type="text" placeholder="Enter a link" oninput="ChangeBackground(this)">
+          <input type="number" id="backgroundopacity" value="0.5" step="0.05" min="0" max="1" oninput="ChangeOpacity(this)">
         </div>
       </div>
       <div class="cc-b" id="backgroundcustomw">
@@ -124,6 +125,12 @@
             </span>
           Dark mode
         </button>
+        <button onclick="LightMode()">
+          <span class="material-symbols-outlined">
+            light_mode
+            </span>
+          Light mode
+        </button>
         <button onclick="ResetCustom()">
           <img style="height:20px;background-color:var(--main-clear);border-radius:50%;padding:3px" src="Images & Icons/Sprint+ logo blank.png">
           Normal theme
@@ -135,38 +142,27 @@
           </span>
       </div>
     </div>
-    <div class="wholecontentwelcome">
-      <div class="imgcontan">
-        <div class="circle"></div>
-        <div class="circlehide"></div>
-        <img src="Images & Icons/Sprint+ logo blank.png" id="SprintPlusLogo">
-        <div class="imgcontantext">
-          Sprint+
-          <div class="minitext">
-            wishes you a good day :)
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="Title" id="p-title">
-      <img src="Images & Icons/Sprint+ logo blank.png" id="logo">
+      <img src="Images & Icons/Sprint+.jpg" id="logo">
 
       <a id="p-p-title"></a>
-      <div class="Logs">
-        <a href="logs.html" target="_blank">
-          <span class="material-symbols-outlined">
-            help
-          </span>
-          Infos
-        </a>
-      </div>
-      <div class="Support">
-        <a href="https://discord.com/invite/72tACSk8Jd" target="_blank">
-          <span class="material-symbols-outlined">
-            supervisor_account
-          </span>
-          Support
-        </a>
+      <div class="logsandsupport">
+        <div class="Logs">
+          <a href="logs.html" target="_blank">
+            <span class="material-symbols-outlined">
+              help
+            </span>
+            Infos
+          </a>
+        </div>
+        <div class="Support">
+          <a href="https://discord.com/invite/72tACSk8Jd" target="_blank">
+            <span class="material-symbols-outlined">
+              supervisor_account
+            </span>
+            Support
+          </a>
+        </div>
       </div>
     </div>
     <div class="all-contain" id="all-contain">
@@ -278,7 +274,7 @@
               <span class="material-symbols-outlined">
                 notifications_active
                 </span>
-              What's going on?
+                <p style="margin:none">What's going on?</p>
             </div>
             <div class="m-m-td" id="m-m-td">
             </div>
@@ -414,7 +410,10 @@
           user.darkvariant="#19284d";
         }
           document.body.style.color=user.colorcustom;
-             
+          let opacity = 0.5;
+          if (user.backgroundopacity) {
+              opacity = user.backgroundopacity;
+          }
           document.getElementById('custombackground').src = user.background;
           document.getElementById('custombackground').style=`
                   position:absolute;
@@ -424,14 +423,15 @@
                   right:0;
                   margin:auto;
                   width:${user.backgroundwidth+"%"};
-                  opacity:0.5;
+                  opacity:${opacity};
                   z-index:0;
           `;
-          document.getElementById('width').value = user.backgroundwidth;
-        document.getElementById('widthsize').innerHTML = user.backgroundwidth+"% of the screen";
+        document.getElementById('width').value = user.backgroundwidth;
+        document.getElementById('widthsize').innerHTML = user.backgroundwidth+"%";
         document.getElementById('textcolor').value = user.colorcustom;
         document.getElementById('darkvariant').value = user.darkvariant;
         document.getElementById('lightvariant').value = user.lightvariant;
+        document.getElementById('backgroundopacity').value = opacity;
         document.documentElement.style.setProperty('--main-blue-dark', user.darkvariant);
         document.documentElement.style.setProperty('--main-clear', user.lightvariant);
 
@@ -525,7 +525,7 @@
                     <span class="material-symbols-outlined">
                   ssid_chart
                   </span>
-                      ${cm[Math.floor((Math.random() * cm.length))]}
+                     ${cm[Math.floor((Math.random() * cm.length))]}
                   </div>
                   <div class="c-d-c" onclick="GoalsShowUp()">
                     You didn't work on ${g.name} today

@@ -13,10 +13,9 @@ function DarkMode() {
     ChangeLightVariant({value:""},'#1c1c1c');
 }
 function LightMode() {
-    ChangeColor({value:""},"black");
-    ChangeDarkVariant({value:""},'#000000');
-    ChangeLightVariant({value:""},'#1c1c1c');
-    ChangeBackground({value:""},'');
+    ChangeColor({value:""},"#ffffff");
+    ChangeDarkVariant({value:""},'#ababab');
+    ChangeLightVariant({value:""},'#bdbdbd');
 }
 
 function ChangeColor(element=null,item) {
@@ -61,6 +60,17 @@ function ChangeLightVariant(element,item) {
     localStorage.setItem('user',JSON.stringify(user));
 
 }
+
+function ChangeOpacity(element) {
+    let value = element.value;
+    let user = JSON.parse(localStorage.getItem('user'));
+    user.backgroundopacity = value;
+    localStorage.setItem('user',JSON.stringify(user));
+    ChangeBackground({value:user.background})
+}
+
+
+
 function changeWidth(element,item) {
     let value = element.value;
     if (item) {
@@ -77,16 +87,25 @@ function changeWidth(element,item) {
     opacity:0.5;
     z-index:0;
     `;
-    document.getElementById('widthsize').innerHTML = value+"% of the screen";
+    document.getElementById('widthsize').innerHTML = value+"%";
     let user = JSON.parse(localStorage.getItem('user'));
     user.backgroundwidth = value;
     localStorage.setItem('user',JSON.stringify(user));
 }
 
-function ChangeBackground(element,item) {
+function ChangeBackground(element,item=null) {
     let value = element.value;
+    let user = JSON.parse(localStorage.getItem('user'));
+    let width = 50;
+    if (user.backgroundwidth) {
+        width = user.backgroundwidth;
+    }
     if (item) {
         value = item;
+    }
+    let opacity = 0.5;
+    if (user.backgroundopacity) {
+        opacity = user.backgroundopacity;
     }
     document.getElementById('custombackground').src = value;
     document.getElementById('custombackground').style=`
@@ -96,11 +115,10 @@ function ChangeBackground(element,item) {
         bottom:0;
         right:0;
         margin:auto;
-        width:50%;
-        opacity:0.5;
+        width:${width}%;
+        opacity:${opacity};
         z-index:0;
     `;
-    let user = JSON.parse(localStorage.getItem('user'));
     user.background = value;
     localStorage.setItem('user',JSON.stringify(user));
 

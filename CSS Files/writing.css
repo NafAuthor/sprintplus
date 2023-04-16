@@ -193,6 +193,7 @@ animation: 3s linear infinite slidein;
     box-sizing: border-box;
     text-align: left;
     color: white !important;
+    border: 2px solid var(--main-clear)
 }
 
 .chaptermv {
