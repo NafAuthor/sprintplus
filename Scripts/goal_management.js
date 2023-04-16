@@ -267,7 +267,7 @@ function EditGoal() {
             Describe your goal with some words
           </div>
           <div class="EGC-c-c">
-            <input type="textarea" id="goalDesc"></textarea>
+            <textarea  id="goalDesc"></textarea>
           </div>
         </div>
         <div class="EGC-c">
@@ -775,7 +775,14 @@ function OpenStats(y=false) {
   document.getElementById('child-viewer').innerHTML=`
     <div class="c-v-c">
       <div class="c-v-c-t">
-        ${goal.name} - <i>${InCharge}</i>
+      <p onclick="OpenFolder({id:'pj-open-${InCharge}'})">
+        ${InCharge} 
+      </p>
+      
+      <span class="material-symbols-outlined">
+      navigate_next
+      </span>
+      ${goal.name}
       </div>
       <div class="finishedgoal" style="display:${goal.finished?"inline":"none"}">
         <div class="finishedcongratulation">
