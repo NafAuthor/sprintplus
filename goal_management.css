@@ -999,14 +999,14 @@
 */
 .editGoalContent button {
     width: fit-content;
-    background-color: var(--main-clear);
+    background-color: var(--main-blue-dark);
     color:white;
     border-radius: 5px;
     height: 50px;
-    font-size: 20px;
+    font-size: 18px;
     padding:10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
     border:none;
     cursor: pointer;
 }
@@ -1022,8 +1022,8 @@
     width: 100%;
 }
 .EGC-c input,.EGC-c textarea{
-    width: 100%;
-    background-color: var(--main-clear);
+    width: 95%;
+    background-color:var(--main-blue-dark);
     border:none;
     border-radius: 5px;
     outline:none;
@@ -1031,15 +1031,17 @@
     padding-right: 10px;
     height: 30px;
     color:white;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
 }
 .EGC-c textarea{
-    width: 50px;
+    padding-top: 10px;
+    width: 95%;
+    height: 100px;
 }
 .EGC-c input[type="number"] {
-    width: 50%;
+    width: 100px;
     cursor: unset;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -1068,7 +1070,7 @@
 }
 
 .editGoalContent {
-    width: 80%;
+    width: 95%;
     border-radius: 5px;
     padding: 10px;
     height: 100%;
@@ -1076,7 +1078,10 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap:30px;
+    margin-left: auto;
+    margin-right: auto;
+    gap:20px;
+    background-color: var(--main-clear);
 }
 .EGC-c-d {
     width: 100%;
@@ -1110,7 +1115,7 @@
     width: 50%;
     border-radius: 5px;
     outline:none;color:white;
-    background-color:var(--main-clear);
+    background-color:var(--main-blue-dark);
     border:none;
     padding: 10px;
     font-size: 20px;

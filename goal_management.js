@@ -267,7 +267,7 @@ function EditGoal() {
             Describe your goal with some words
           </div>
           <div class="EGC-c-c">
-            <input type="textarea" id="goalDesc"></textarea>
+            <textarea  id="goalDesc"></textarea>
           </div>
         </div>
         <div class="EGC-c">
