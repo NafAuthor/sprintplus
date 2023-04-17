@@ -291,12 +291,21 @@ let all_contain = `
   Browse your writing projects
 </div>
 </div>
-<div class="all-c-p" onclick="OpenWriting()">
+<div class="all-c-p" id="writingcpd">
 <span class="material-symbols-outlined">
   edit_note
   </span>
+<p>Writing</p>
 <div class="all-c-p-d">
-  Writing
+  <div class="all-cpdb"  onclick="OpenWriting()">
+    Write
+  </div>
+  <div class="all-cpdb">
+    Characters
+  </div>
+  <div class="all-cpdb">
+    Story
+  </div>
 </div>
 <div class="all-c-p-d-d">
   Write your stories

@@ -341,6 +341,7 @@ function StatusDone() {
     pj.chapters[chapterincharge.number].finished  = !pj.chapters[chapterincharge.number].finished ;
     localStorage.setItem(`Project : ${InCharge}`, JSON.stringify(pj));
     if (pj) {
+        document.getElementById('writingselectchap').innerHTML = "";
         SetPJ({id:InCharge});
         if (chapterincharge) {
             GetChapter({id:chapterincharge.number})

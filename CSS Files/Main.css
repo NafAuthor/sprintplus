@@ -608,7 +608,7 @@ body a {
     color:var(--main-blue-dark);
 }
 
-.all-c-p:hover:not(#home, #user) {
+.all-c-p:hover:not(#home, #user, #writingcpd) {
     background-color: white;
     color:var(--main-blue-dark);
     border-radius: 5px;
@@ -1051,7 +1051,65 @@ body a {
     <div class="fancybar" id="NousEtLeMonde"></div>
 
 */
+@keyframes showwriting {
+    0% {
+        height:20px;
+    }
+    100% {
+        height: 150px;
+    }
+}
+#writingcpd {
+    height:fit-content;
+    padding-top:10px;
+    padding-bottom: 15px;
+    color:white;
+    overflow-y: hidden;
+    height: 20px;
+    overflow-x: hidden;
+}
+#writingcpd .all-c-p-d-d {
+    color:white;
+}
+#writingcpd:hover {
+    padding-bottom: 25px;
+    color:white;
+    animation:0.5s showwriting;
+    height: 150px;
 
+}
+#writingcpd:hover .all-cpdb {
+    display:inline;
+
+}
+#writingcpd .all-c-p-d {
+    justify-content:unset;
+    height:fit-content;
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    width:100%;
+}
+#writingcpd p {
+    margin:0px;
+}
+#writingcpd:hover p {
+    display:none;
+}
+.all-cpdb {
+    width: 100%;
+    height: 20px;
+    background-color:var(--main-blue-dark);
+    padding:10px;
+    border-radius:5px;;
+    display:none;
+    z-index:30;
+}
+
+.all-cpdb:hover {
+    background-color: white;
+    color:var(--main-blue-dark);
+}
 @keyframes TransFormUI {
     0% { color: #F9A602; }
     100% { color: white; }
