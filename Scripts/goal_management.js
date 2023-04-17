@@ -904,7 +904,7 @@ function OpenStats(y=false) {
               }/${Ends.getFullYear()})
             </div>
           </div>
-          <div id="buttonpjjump">
+          <div id="buttonpjjump" onclick="OpenFolder({id:'pj-open-${InCharge}'})" style="visibility:${goal.finished?"hidden":"visible"}">
             Delete & change status in ${InCharge}
           </div>
       </div>

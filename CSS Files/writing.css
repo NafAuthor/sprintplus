@@ -16,19 +16,49 @@
     color:white;
     cursor: pointer;
 }
+.writing_ressources {
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+.writing_ressources button:hover {
+    background-color: white;
+    color:var(--main-blue-dark)
+}
+.writing_ressources button {
+    width: 90%;
+    display:flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+    padding:5px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .writingselect {
     width: 20%;
-    height: 100%;
+    height: 95%;
     background-color: var(--main-blue-dark);
     min-width: 200px;
     border-radius: 5px;
+    overflow-y: auto;
+    border: 2px solid var(--main-clear);
+    margin-top: auto;
+    margin-bottom: auto;
 }
-.writingselectinfos p,.writingchapterinfos p {
+.writingselect::-webkit-scrollbar{
+    display: none;
+  }
+.writingselectinfos p,.writingchapterinfos p, .writing_ressources p {
     font-size: 15px;
     width: 100%;
     text-align: center;
     height: 15px;
+    margin:none;
     margin-bottom: 5px;
 }
 #writingselect, #writingselectchap {
@@ -87,8 +117,7 @@
     height: 1px;
     background-color: white;
     border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 
@@ -341,6 +370,10 @@ animation: 3s linear infinite slidein;
     border-radius: 5px;
     justify-content: center;
 }
+.chapternewopendesc:hover {
+    background-color: white;
+    color:var(--main-blue-dark);
+}
 /*
 19284d
 */
@@ -428,6 +461,8 @@ animation: 3s linear infinite slidein;
 .infovocal {
     display: none;
 }
+
+
 @media screen and (320px <= width <= 420px) {
     .infovocal {
         display: flex;

@@ -37,6 +37,27 @@ function OpenWriting(el) {
                     </div>
                 </div>
                 <div id="writingselectsep"></div>
+                <div class="writing_ressources">
+                    <p>Writer ressources</p>
+                    <button onclick="CreateNewChapter()">
+                        <span class="material-symbols-outlined">
+                        bookmark
+                        </span>
+                        New chapter
+                    </button>
+                    <button>
+                        <span class="material-symbols-outlined">
+                        emoji_people
+                        </span>
+                        Characters
+                    </button>
+                    <button>
+                        <span class="material-symbols-outlined">
+                        timeline
+                        </span>
+                        Conducting line
+                    </button>
+                </div>
             </div>
             <div id="writingdisplayer">
 
@@ -77,11 +98,6 @@ function OpenWriting(el) {
     }
 }
 function SetPJ(el) {
-    document.getElementById('writingselectchap').innerHTML=`
-    <button onclick="CreateNewChapter()">
-        Create a new chapter
-    </button>
-    `;
     InCharge = el.id;
     let p = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
     let i = document.getElementsByClassName('pj-select-writing');
@@ -133,8 +149,9 @@ function NewChapter() {
         if (pj.chapters) {
             let size = Object.keys(pj.chapters).length;
             function Calc() {
-                for (let i = 1 ; i < size+1; i++) {
-                    if (pj.chapters[i] === null) {
+                for (let i = 1 ; i < size+2; i++) {
+                    console.log(i)
+                    if (pj.chapters[i] === null || pj.chapters[i] === undefined) {
                         chaptersnb=i;
                         return;
                     }
@@ -231,9 +248,9 @@ function NewChapter() {
             document.getElementById('editcontent').innerHTML = chapterincharge.content;
             let i = document.getElementsByClassName('goal-select-writing');
             for (let p of i) {
-                p.style.backgroundColor="#1d2d55";
+                p.style.backgroundColor=document.documentElement.style.getPropertyValue('--main-clear');
             }
-            document.getElementById(chapterincharge.number).style.backgroundColor="rgba(255,255,255,0.1)";
+            document.getElementById(chapterincharge.number).style.backgroundColor="rgba(255,255,255,0.2)";
         }
     } else {
         alert('No pj selected')
@@ -364,12 +381,14 @@ function AutoSave() {
         content : content,
         finished : chapterincharge.finished
     }
-    delete pj.chapters[chapterincharge.number]
+    delete pj.chapters[chapterincharge.number];
+    console.log(Chapter)
     pj.chapters[nb] = Chapter;
     chapterincharge = Chapter;
     localStorage.setItem(`Project : ${InCharge}`,JSON.stringify(pj))
 
     if (pj) {
+        document.getElementById('writingselectchap').innerHTML="";
         SetPJ({id:InCharge});
         if (chapterincharge) {
             GetChapter({id:nb})
