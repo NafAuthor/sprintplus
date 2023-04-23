@@ -1,10 +1,8 @@
+
 let chapterincharge;
 
 
 
-function ClearSpan() {
-    document.getElementById('editcontent').innerHTML="";
-}
 
 window.onbeforeunload = confirmExit;
 function confirmExit(){
@@ -13,53 +11,17 @@ function confirmExit(){
     }
 }
 
-function OpenWriting(el) {
-    InCharge;
-    chapterincharge=false;
 
+function OpenEditor() {
     document.getElementById('Main').innerHTML = `
-        <div class="writingcontent">
-            <div class="writingselect">
-                <div id="clicktodevelop">
-                    Click to develop
-                </div>
-                <div class="writingselectinfos">
-                    <p>Select a project</p>
-                    <div id="writingselect">
-
-                    </div>
-                </div>
-                <div id="writingselectsep"></div>
-                <div class="writingchapterinfos">
-                    <p>Select a chapter</p>
-                    <div id="writingselectchap">
-
-                    </div>
-                </div>
-                <div id="writingselectsep"></div>
-                <div class="writing_ressources">
-                    <p>Writer ressources</p>
-                    <button onclick="CreateNewChapter()">
-                        <span class="material-symbols-outlined">
-                        bookmark
-                        </span>
-                        New chapter
-                    </button>
-                    <button>
-                        <span class="material-symbols-outlined">
-                        emoji_people
-                        </span>
-                        Characters
-                    </button>
-                    <button>
-                        <span class="material-symbols-outlined">
-                        timeline
-                        </span>
-                        Conducting line
-                    </button>
-                </div>
+        <div class="PJContainer">
+            <div class="PJContainerDesc">
+                Select a project to get started
+                <p>
+                    Double click on your project to open the editor
+                </p>
             </div>
-            <div id="writingdisplayer">
+            <div id="PJContain">
 
             </div>
         </div>
@@ -78,6 +40,9 @@ function OpenWriting(el) {
             if (!pj.backed) {
               pj.backed = false;
             }
+            if(!pj.chapters) {
+                pj.chapters = {};
+            }
         }
     }
     PJs.sort(function(a,b){
@@ -86,42 +51,104 @@ function OpenWriting(el) {
     PJs.sort(function(a,b){
       return a.backed- b.backed
     });
-    for (let p of PJs) {
-        document.getElementById('writingselect').innerHTML+=`
-            <div class="pj-select-writing" id="${p.name}" onclick="SetPJ(this)">
-                <span style="font-size:10px;"class="material-symbols-outlined" >
-                ${p.star?"star":(p.backed?"hide_source":"blur_on")}
-                </span>
-                ${p.name}
+    for (let pj of PJs) {
+        let chapterlength = 0;
+        for (let [k,v] of Object.entries(pj.chapters)) {
+            if (v != null && v != undefined) {
+                chapterlength++;
+            }
+        }
+        document.getElementById('PJContain').innerHTML+=`
+            <div class="pjwriting" id="${pj.name}" onclick="OpenWriting(this)">
+                <img src="${pj.cover?pj.cover:"Images & Icons/Sprint+ logo blank.png"}">
+                <div class="pjwritinginfoscontainer">
+                    <div class="pjwritingname">
+                        ${pj.name}
+                    </div>
+                    <div class="pjwritinchapters">
+                        ${chapterlength} chapter${chapterlength>1?"s":""}
+                    </div>
+                </div>
+                ${pj.star?`
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20" fill="yellow"><path d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                `:""}
             </div>
         `;
     }
 }
-function SetPJ(el) {
-    InCharge = el.id;
-    let p = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
-    let i = document.getElementsByClassName('pj-select-writing');
-    for (let p of i) {
-        p.style.backgroundColor=document.documentElement.style.getPropertyValue('--main-clear');
-    }
-    document.getElementById(el.id).style.backgroundColor="rgba(255,255,255,0.1)";
 
-        if (p.chapters) {
-            for (let [n,v] of Object.entries(p.chapters)) {
-                if (v!=null) {
-                    document.getElementById('writingselectchap').innerHTML+=`
-                    <div class="goal-select-writing" id="${n}" onclick="GetChapter(this)">
-                        <div class="namecontent">
-                            ${n} - ${v.name}
-                        </div>
-                        <span class="material-symbols-outlined" style="color:${v.finished?"green":"red"}">
-                        inventory
-                        </span>
-                    </div>
-            `;
-                }
+
+
+function OpenWriting(el) {
+    InCharge = el.id;
+    let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
+    chapterincharge=false;
+    if (!pj.chapters) {
+        pj.chapters={};
+    }
+
+    document.getElementById('Main').innerHTML = `
+        <div class="ChapterContainer">
+            <div class="ChapterContainerBack">
+                <svg  id="writinghoverable" onclick="OpenAll()" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
+                <p id="writinghoverable" onclick="OpenEditor()">Writing</p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
+                <p>${InCharge}</p>
+
+            </div>
+            <div class="ChapterContainDesc">
+                <p>Select a chapter or</p>
+                <div class="NewChapterButton" onclick="CreateNewChapter()">
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20" fill="white"><path d="M220.001 905.998v-616.15q0-23.231 17.039-40.462 17.038-17.231 40.654-17.231h404.612q23.616 0 40.654 17.231 17.039 17.231 17.039 40.462v616.15L480 794.46 220.001 905.998Z"/></svg>
+                        Create a new chapter
+                    </button>
+                </div>
+            </div>
+            <div id="ChapterContain">
+
+            </div>
+        </div>
+    `;
+    let Chapters=[]
+    for (let [key, value] of Object.entries(pj.chapters)) {
+        if (value != null && value !=undefined) {
+            Chapters.push(value)
         }
     }
+    Chapters.sort(function(a,b){
+      return b.number- a.number
+    });
+    for (let ch of Chapters) {
+        document.getElementById('ChapterContain').innerHTML+=`
+            <div class="chapterwriting" id="${ch.number}" onclick="GetChapter(this)">
+                <div class="chapterwritingcontent">
+                    <div class="chname">
+                        <div class="chapternb">
+                            ${ch.number} -
+                        </div>
+                       <p>${ch.name}</p>
+                    </div>
+                    <div class="chdesc">
+                        ${ch.desc}
+                    </div>
+                </div>
+                ${ch.finished?`
+                <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25" fill="green"><path d="m435.154 782.152 214.383-213.998-29.768-29.769-184.615 185-98.769-98.769L307.001 654l128.153 128.152Zm-197.46 173.847q-23.529 0-40.611-17.082-17.082-17.082-17.082-40.611V253.694q0-23.529 17.082-40.611 17.082-17.082 40.611-17.082h347.537l194.768 194.768v507.537q0 23.529-17.082 40.611-17.082 17.082-40.611 17.082H237.694ZM562.539 411.23V241.385H237.694q-4.616 0-8.463 3.846-3.846 3.847-3.846 8.463v644.612q0 4.616 3.846 8.463 3.847 3.846 8.463 3.846h484.612q4.616 0 8.463-3.846 3.846-3.847 3.846-8.463V411.23H562.539ZM225.385 241.385V411.23 241.385v669.23V241.385Z"/></svg>
+                `:""}
+            </div>
+        `;
+    }
+}
+function SetPJ() {
+    var event = new MouseEvent('dblclick', {
+        'view': window,
+        'bubbles': true,
+        'cancelable': true
+      });
+    OpenEditor();
+    document.getElementById(InCharge).dispatchEvent(event);
 }
 
 
@@ -142,7 +169,7 @@ function GetChapter(el) {
     NewChapter()
 }
 
-function NewChapter() {
+function NewChapter(el) {
     if (InCharge) {
         let pj = JSON.parse(localStorage.getItem(`Project : ${InCharge}`));
         let chaptersnb =  1;
@@ -161,7 +188,28 @@ function NewChapter() {
         } else {
             chaptersnb=1;
         }
-        document.getElementById('writingdisplayer').innerHTML = `
+        document.getElementById('Main').innerHTML = `
+        <div class="editorcontainer">
+            <div class="ChapterContainerBack">
+                <svg  id="writinghoverable" onclick="OpenAll()" xmlns="http://www.w3.org/2000/svg" fill="white" height="20" viewBox="0 96 960 960" width="20"><path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
+                <p id="writinghoverable" onclick="OpenEditor()">Writing</p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
+                <p id="writinghoverable" onclick="SetPJ()" >${InCharge}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
+                <p>${chapterincharge.name}</p>
+                <div class="numberinput">
+                    <input readonly type="text" onchange="CheckInt(this)" min="1" value="${!chapterincharge?chaptersnb:chapterincharge.number}" id="newchapternb" placeholder="x">
+                    <div class="plusless">
+                        <span class="material-symbols-outlined" onclick="MoreInt()">
+                        add
+                        </span>
+                        <span class="material-symbols-outlined" onclick="LessInt()">
+                        remove
+                        </span>
+                    </div>
+                </div>
+            </div>
             <div class="chaptermv">
                 <div class="chapternew">
                     <div class="infovocal">
@@ -170,68 +218,47 @@ function NewChapter() {
                         </span>
                         You can use your speech-to-text keyboard feature to write
                     </div>
-                    <div class="numberinput">
-                        <input readonly type="text" onchange="CheckInt(this)" min="1" value="${!chapterincharge?chaptersnb:chapterincharge.number}" id="newchapternb" placeholder="x">
-                        <div class="plusless">
-                            <span class="material-symbols-outlined" onclick="MoreInt()">
-                            add
-                            </span>
-                            <span class="material-symbols-outlined" onclick="LessInt()">
-                            remove
-                            </span>
-                        </div>
-                        </div>
-                    <input type="text" onchange="Save()" value="${!chapterincharge?"New chapter":chapterincharge.name}" id="newchaptername" placeholder="Chapter name">
+                    <input type="text" onchange="Save(false)" value="${!chapterincharge?"New chapter":chapterincharge.name}" id="newchaptername" placeholder="Chapter name">
                     <div class="chapternewopendesc" id="chapternewopendesc" onclick="OpenDesc()">
-                        <span class="material-symbols-outlined">
-                            description
-                        </span>
-                        View description
+                        Description
                     </div>
+
                     <div class="chapterdescription" id="newchapterdesc">
-                        <textarea onchange="Save()" placeholder="Chapter description" id="newchapterdescvalue">${chapterincharge?chapterincharge.desc:""}</textarea>
+                        <textarea onchange="Save(false)" placeholder="Chapter description" id="newchapterdescvalue">${chapterincharge?chapterincharge.desc:""}</textarea>
                     </div>
-                    <div class="itemact">
-                        <span class="material-symbols-outlined" onclick="Save()" style="position:relative;">
-                            save
-                            <div class="savebubble" id="savebubble" style="visibility:hidden">
-                                <span class="material-symbols-outlined">
-                                priority_high
-                                </span>
-                            </div>
-                        </span>
-                        <span class="material-symbols-outlined" onclick="StatusDone()" style="color:${chapterincharge?(chapterincharge.finished ? "green":"red"):"red"}" >
-                            inventory
-                        </span>
-                        <div class="removeChapter">
-                            <span class="material-symbols-outlined" id="removechapter">
-                                delete
-                                <input type="text" placeholder="Project password" onchange="CheckPassword(this)">
-                            </span>
+                    <button onclick="Save(false)" style="position:relative;">
+                        Save
+                        <div class="savebubble" id="savebubble" style="visibility:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M479.911 936Q451 936 430.5 915.411q-20.5-20.588-20.5-49.5Q410 837 430.589 816.5q20.588-20.5 49.5-20.5Q509 796 529.5 816.589q20.5 20.588 20.5 49.5Q550 895 529.411 915.5q-20.588 20.5-49.5 20.5ZM410 696V216h140v480H410Z"/></svg>
+
+
                         </div>
+                    </button>
+                    <button onclick="StatusDone()"  >
+                        Mark as ${chapterincharge.finished?"unfinished":"finished"}
+                    </button>
+                    <div class="removeChapter">
+                        <input type="text" placeholder="Project password" onchange="CheckPassword(this)">
                     </div>
                 </div>
                 <div class="chaptermvv">
                     <span class="material-symbols-outlined" onclick="AddSpaceBar()"">
-                        space_bar
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M180.001 675.999V456h45.384v174.615h509.23V456h45.384v219.999H180.001Z"/></svg>
                     </span>
                     <span class="material-symbols-outlined" onclick="Bold()">
-                        format_bold
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M295.771 840.999V311.001h199.536q61.769 0 106.423 39.692 44.653 39.692 44.653 98.692 0 35.692-20.038 67.115-20.039 31.423-56.193 47.654v4.461q44.154 12.846 69.116 48.462 24.961 35.615 24.961 77.923 0 61.076-47.307 103.537-47.307 42.462-114.23 42.462H295.771ZM356 787.693h142.461q39.923 0 72.347-26.731 32.423-26.731 32.423-70.501 0-42.769-32.231-69.5t-72.154-26.731H356v193.463Zm0-244.308h135.23q38.077 0 67.039-25.307 28.962-25.308 28.962-64.539 0-38.462-28.769-64.462-28.77-26.001-67.232-26.001H356v180.309Z"/></svg>
                     </span>
                     <span class="material-symbols-outlined" onclick="Italic()">
-                        format_italic
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M233.231 841.614v-57.69h133.616L510.463 363H358.386v-57.691h351.536V363H573.999L430.768 783.924h154v57.69H233.231Z"/></svg>
                     </span>
                     <span class="material-symbols-outlined" onclick="UnderLine()">
-                    format_underlined
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M213.847 886.382v-45.383h532.306v45.383H213.847ZM480 757.152q-92.307 0-145.153-53.499-52.846-53.5-52.846-145.422V232.54h59.537v324.921q0 65.693 36.692 104.462 36.693 38.77 101.77 38.77t101.77-38.77q36.692-38.769 36.692-104.462V232.54h59.537v325.691q0 91.922-52.846 145.422Q572.307 757.152 480 757.152Z"/></svg>
                     </span>
                     <span class="material-symbols-outlined" onclick="StyleText()" id="FormAlign">${document.getElementById('styletextalign') ? "format_align_"+document.getElementById('styletextalign').style.textAlign:"format_align_left"}</span>
-                        <span class="material-symbols-outlined" onclick="RemoveContent()" >
-                            remove
-                        </span>
-                        <input type="color" id="textcolor" value="#000000" oninput="ChangeTextBoxColor(this)">
-                        <span class="material-symbols-outlined" onclick="Before()">
-                        navigate_before
-                        </span>
+                    <span class="material-symbols-outlined" onclick="RemoveContent()" >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M278.309 915.999q-23.596 0-40.644-17.048-17.048-17.049-17.048-40.645V314.078h-40.616v-45.384h171.076v-28.077h257.846v28.077h171.076v45.384h-40.616v544.228q0 23.529-17.081 40.611-17.082 17.082-40.611 17.082H278.309ZM694 314.078H266v544.228q0 5.385 3.654 8.847 3.655 3.462 8.655 3.462h403.382q4.616 0 8.462-3.846 3.847-3.847 3.847-8.463V314.078ZM381.232 786.154h45.383V397.539h-45.383v388.615Zm152.153 0h45.383V397.539h-45.383v388.615ZM266 314.078V870.615 314.078Z"/></svg>
+                    </span>
+                    <input type="color" id="textcolor" oninput="ChangeTextBoxColor(this)">
                 </div>
             </div>
             <div id="editcontent" contentEditable="true" oninput="BubbleVisible()"></div>
@@ -241,17 +268,11 @@ function NewChapter() {
                 </span>
                 Saved
             </div>
+        </div>
         `;
 
         document.getElementById('newchapterdesc').style.visibility="hidden";
-        if (chapterincharge) {
-            document.getElementById('editcontent').innerHTML = chapterincharge.content;
-            let i = document.getElementsByClassName('goal-select-writing');
-            for (let p of i) {
-                p.style.backgroundColor=document.documentElement.style.getPropertyValue('--main-clear');
-            }
-            document.getElementById(chapterincharge.number).style.backgroundColor="rgba(255,255,255,0.2)";
-        }
+        document.getElementById("editcontent").innerHTML = chapterincharge.content;
     } else {
         alert('No pj selected')
     }
@@ -270,7 +291,7 @@ function MoreInt() {
         Calc(nb);
     }
     document.getElementById('newchapternb').value = nb;
-
+    Save(false)
 
 }
 
@@ -299,6 +320,8 @@ function LessInt() {
          }
         }
     }
+    Save(false)
+
 }
 
 
@@ -307,10 +330,10 @@ function BubbleVisible() {
     document.getElementById('savebubble').style.visibility='visible';
 }
 
-function Save() {
+function Save(d) {
     console.log('Saving content (Save())')
     if (CheckInt(document.getElementById('newchapternb')) === true) {
-        AutoSave();
+        AutoSave(d);
     }
 }
 
@@ -341,8 +364,7 @@ function StatusDone() {
     pj.chapters[chapterincharge.number].finished  = !pj.chapters[chapterincharge.number].finished ;
     localStorage.setItem(`Project : ${InCharge}`, JSON.stringify(pj));
     if (pj) {
-        document.getElementById('writingselectchap').innerHTML = "";
-        SetPJ({id:InCharge});
+        SetPJ();
         if (chapterincharge) {
             GetChapter({id:chapterincharge.number})
         }
@@ -355,15 +377,14 @@ function CheckPassword(el) {
     if (el.value == pj.password) {
         delete pj.chapters[chapterincharge.number];
 
-        document.getElementById('writingdisplayer').innerHTML="";
         localStorage.setItem(`Project : ${InCharge}`, JSON.stringify(pj));
         if (pj) {
-            SetPJ({id:InCharge});
+            SetPJ();
         }
     }
 }
 
-function AutoSave() {
+function AutoSave(doNew) {
     document.getElementById('savebubble').style.visibility="hidden";
     let name = document.getElementById('newchaptername').value;
     let nb = parseInt(document.getElementById('newchapternb').value);
@@ -388,18 +409,14 @@ function AutoSave() {
     chapterincharge = Chapter;
     localStorage.setItem(`Project : ${InCharge}`,JSON.stringify(pj))
 
-    if (pj) {
-        document.getElementById('writingselectchap').innerHTML="";
-        SetPJ({id:InCharge});
+    if (pj && doNew === true) {
+        SetPJ();
         if (chapterincharge) {
             GetChapter({id:nb})
         }
     }
-    document.getElementById('autosave').style.opacity = "1";
-    setTimeout(()=> {
-        document.getElementById('autosave').style.opacity = "0";
-    },1500);
 
+    
 }
 
 
@@ -409,9 +426,10 @@ function RemoveContent() {
         window.getSelection().deleteFromDocument();
     }
 }
-function ChangeTextBoxColor() {
+function ChangeTextBoxColor(el) {
     UserLOGS.before = document.getElementById('editcontent').innerHTML;
-    color = document.getElementById("textcolor").value;
+    let color = el.value;
+    console.log(color)
     document.execCommand('styleWithCSS', false, true);
     document.execCommand('foreColor', false, color);
     document.getElementById('savebubble').style.visibility="visible";
@@ -420,25 +438,10 @@ function ChangeTextBoxColor() {
 
 
 function OpenDesc() {
-    let i = document.getElementById('chapternewopendesc');
     let v = document.getElementById('newchapterdesc');
-    if (i.innerHTML.includes('View')) {
-        document.getElementById('chapternewopendesc').innerHTML = `
-            <span class="material-symbols-outlined">
-                description
-            </span>
-            Hide description
-        `;
-        v.style.visibility="visible";
-    } else {
-        i.innerHTML = `
-            <span class="material-symbols-outlined">
-                description
-            </span>
-            View description
-        `;
-        v.style.visibility="hidden";
-    }
+        v.style.visibility=v.style.visibility==="hidden"?"visible":"hidden";
+
+
 
 }
 function performAction(command) {
@@ -475,7 +478,7 @@ function StyleText() {
     document.getElementById('styletextalign').style.textAlign = `${a.replace('format_align_','')}`;
     console.log(document.getElementById('styletextalign').style.textAlign)
     document.getElementById('styletextalign').focus();
-    Save()
+    Save(false)
 
 }
 function getSelectionText() {
@@ -500,38 +503,36 @@ function replaceSelectedText(replacementText) {
         range = document.selection.createRange();
         range.text = replacementText;
     }
-    Save()
+    Save(false)
 
 }
 function AddSpaceBar() {
     UserLOGS.before = document.getElementById('editcontent').innerHTML;
     zzz="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     document.execCommand('insertHTML', false, bar.outerHTML);
-    Save()
+    Save(false)
 }
 
 let UserLOGS = {
     before: "",
 }
-function Before() {
-    document.getElementById('editcontent').innerHTML = UserLOGS.before;
-}
+
 
 function Italic() {
     UserLOGS.before = document.getElementById('editcontent').innerHTML;
     performAction("italic")
-    Save()
+    Save(false)
 }
 
 function UnderLine() {
     UserLOGS.before = document.getElementById('editcontent').innerHTML;
     performAction("underline")
-    Save()
+    Save(false)
 }
 function Bold() {
     UserLOGS.before = document.getElementById('editcontent').innerHTML;
     performAction("bold");
-    Save()
+    Save(false)
 
 }
 

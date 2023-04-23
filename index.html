@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="CSS Files/download.css">
     <link rel="stylesheet" href="CSS Files/welcome.css">
     <link rel="stylesheet" href="CSS Files/informations.css">
-    <link rel="stylesheet" href="CSS Files/inspiration.css">
     <link rel="stylesheet" href="CSS Files/todo.css">
     <link rel="stylesheet" href="CSS Files/notifications.css">
     <link rel="stylesheet" href="CSS Files/writing.css">
@@ -32,7 +31,6 @@
     <script type="text/javascript" src="Scripts/goal_management.js"></script>
     <script type="text/javascript" src="Scripts/menu.js"></script>
     <script type="text/javascript" src="Scripts/informations.js"></script>
-    <script type="text/javascript" src="Scripts/inspiration.js"></script>
     <script type="text/javascript" src="Scripts/todo.js"></script>
     <script type="text/javascript" src="Scripts/onclick.js"></script>
     <script type="text/javascript" src="Scripts/notifications.js"></script>
@@ -51,7 +49,7 @@
   </head>
   <body>
     <img id="custombackground" src="">
-    <div class="customize_app">
+    <div class="customize_app" id="customize_app">
       <div class="ca-b"  onclick="OpenContainer()">
         <span class="material-symbols-outlined">
           edit
@@ -142,106 +140,85 @@
           </span>
       </div>
     </div>
-    <div class="Title" id="p-title">
-      <img src="Images & Icons/Sprint+.jpg" id="logo">
-
-      <a id="p-p-title"></a>
-      <div class="logsandsupport">
-        <div class="Logs">
-          <a href="logs.html" target="_blank">
-            <span class="material-symbols-outlined">
-              help
-            </span>
-            Infos
-          </a>
+    <div class="menu" id="menu">
+      <div class="menuContainer">
+        <img src="Images & Icons/Sprint+ blank.png">
+        <div class="MC-i" onclick="Menu()">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/></svg>
+                <p>Home</p>
+            </div>
+            <div class="MC-i-d">
+                Home page
+            </div>
+        </div>  
+        <div class="MC-i" onclick="ProjectShowUp()">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
+                <p>Projects</p>
+            </div>
+            <div class="MC-i-d">
+                Manage your projects
+            </div>
+        </div>  
+        <div class="MC-i" onclick="OpenEditor()">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M200 936V271q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480 816 200 936Zm60-91 220-93 220 93V271H260v574Zm0-574h440-440Z"/></svg>
+                <p>Write</p>
+            </div>
+            <div class="MC-i-d">
+                Write your stories
+            </div>
+        </div>  
+        <div class="MC-i">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M368 976V438q-95-20-152.5-85.5T158 200h60q0 78 60.5 131T426 384h100q38 0 56 6.5t46 30.5l184 172-43 43-185-174v514h-60V721h-96v255h-60Zm108.08-654q-30.08 0-51.58-21.42-21.5-21.421-21.5-51.5 0-30.08 21.42-51.58 21.421-21.5 51.5-21.5 30.08 0 51.58 21.42 21.5 21.421 21.5 51.5 0 30.08-21.42 51.58-21.421 21.5-51.5 21.5Z"/></svg>
+                <p>Editor</p>
+            </div>
+            <div class="MC-i-d">
+                Manage your characters
+            </div>
+        </div>  
+        
+        <div class="MC-i">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M480 976q-27 0-47.5-13T406 927h-14q-24 0-42-18t-18-42V724q-66-43-104-110t-38-148q0-121 84.5-205.5T480 176q121 0 205.5 84.5T770 466q0 81-38 148T628 724v143q0 24-18 42t-42 18h-14q-6 23-26.5 36T480 976Zm-88-109h176v-44H392v44Zm0-84h176v-40H392v40Zm-9-100h74V546l-92-92 31-31 84 84 84-84 31 31-92 92v137h74q60-28 96.5-87T710 466q0-97-66.5-163.5T480 236q-97 0-163.5 66.5T250 466q0 71 36.5 130t96.5 87Zm97-176Zm0-48Z"/></svg>
+                <p>Ploting</p>
+            </div>
+            <div class="MC-i-d">
+                Plot your stories
+            </div>
+        </div>   
+        
+        <div class="MC-i" onclick="GoalsShowUp()">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M160 896V576h140v320H160Zm250 0V256h140v640H410Zm250 0V456h140v440H660Z"/></svg>
+                <p>Progress</p>
+            </div>
+            <div class="MC-i-d">
+                Manage your progress
+            </div>
+        </div>  
+        <div class="MC-i" onclick="ShowUpToDo()">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m434 801 229-229-39-39-190 190-103-103-39 39 142 142ZM220 976q-24 0-42-18t-18-42V236q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554V236H220v680h520V422H551ZM220 236v186-186 680-680Z"/></svg>
+                <p>To-Do</p>
+            </div>
+            <div class="MC-i-d">
+                Work time!
+            </div>
+        </div>  
+        <div class="MC-i" onclick="OpenInfos()">
+            <div class="MC-i-t">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M222 801q63-44 125-67.5T480 710q71 0 133.5 23.5T739 801q44-54 62.5-109T820 576q0-145-97.5-242.5T480 236q-145 0-242.5 97.5T140 576q0 61 19 116t63 109Zm257.814-195Q422 606 382.5 566.314q-39.5-39.686-39.5-97.5t39.686-97.314q39.686-39.5 97.5-39.5t97.314 39.686q39.5 39.686 39.5 97.5T577.314 566.5q-39.686 39.5-97.5 39.5Zm.654 370Q398 976 325 944.5q-73-31.5-127.5-86t-86-127.266Q80 658.468 80 575.734T111.5 420.5q31.5-72.5 86-127t127.266-86q72.766-31.5 155.5-31.5T635.5 207.5q72.5 31.5 127 86t86 127.032q31.5 72.532 31.5 155T848.5 731q-31.5 73-86 127.5t-127.032 86q-72.532 31.5-155 31.5ZM480 916q55 0 107.5-16T691 844q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480 916Zm0-370q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0-77Zm0 374Z"/></svg>
+                <p>Account</p>
+            </div>
+            <div class="MC-i-d">
+                Spooky place :O
+            </div>
+        </div>  
         </div>
-        <div class="Support">
-          <a href="https://discord.com/invite/72tACSk8Jd" target="_blank">
-            <span class="material-symbols-outlined">
-              supervisor_account
-            </span>
-            Support
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="all-contain" id="all-contain">
-      <div id="menutext">
-        Menu
-      </div>
-      <div class="all-c-p"  onclick="Menu()">
-        <span class="material-symbols-outlined">
-          home
-        </span>
-        <div class="all-c-p-d">
-          Home
-        </div>
-      </div>
-      <div class="all-c-p"  onclick="GoalsShowUp()">
-        <span class="material-symbols-outlined">
-          monitoring
-        </span>
-        <div class="all-c-p-d">
-          Progress
-        </div>
-      </div>
-      <div class="all-c-p" onclick="ProjectShowUp()">
-        <span class="material-symbols-outlined">
-          folder
-          </span>
-        <div class="all-c-p-d">
-          Projects
-        </div>
-      </div>
-      <div class="all-c-p"onclick="ShowUpToDo()">
-        <span class="material-symbols-outlined">
-          pending_actions
-          </span>
-        <div class="all-c-p-d">
-          To-Do
-        </div>
-      </div>
-      <div class="all-c-p" onclick="OpenInspiration()">
-        <span class="material-symbols-outlined">
-          tips_and_updates
-          </span>
-        <div class="all-c-p-d">
-          Inspiration
-        </div>
-      </div>
-      <div class="all-c-p">
-        <span class="material-symbols-outlined">
-          edit_note
-          </span>
-        <div class="all-c-p-d">
-          Writing
-        </div>
-      </div>
-      <div class="all-c-p" onclick="OpenInfos()">
-        <span class="material-symbols-outlined">
-          manage_accounts
-          </span>
-          <div class="all-c-p-d">
-            Account
-          </div>
-      </div>
-      <div class="all-c-p" onclick="Download()">
-        <span class="material-symbols-outlined">
-          download
-          </span>
-        <div class="all-c-p-d" >
-          Download
-        </div>
-      </div>
-      <div class="all-c-p" onclick="Merge()">
-        <span class="material-symbols-outlined">
-          upload
-          </span>
-        <div class="all-c-p-d" >
-          Merge
-        </div>
-      </div>
-    </div>
+  </div>
     <div class="Main" id="Main">
 
       <div class="img-content">
@@ -311,62 +288,293 @@
 
     <script>
       let itemToHelp;
+      const DESANIMATE = [
+            {
+                transform: "translateX(0px)",
+                display:"flex",
+            },
+            {
+                transform: "translateX(-1000px)",
+                display:"none",
+            }
+        ];
+        const DESANIMATETIMING = {
+            duration: 1000,
+            iterations: 1,
+        };
+        const animateboxt = {
+            duration: 1000,
+            iterations: 1,
+            delay:0
+        };
+        function CheckName(el,nb,checkpassword) {
+            if (checkpassword === true) {
+                let mdp1 = document.getElementById('password1').value;
+                let mdp2 = document.getElementById('password2').value;
+                if (mdp1 === mdp2 && mdp1.length>=nb && mdp2.length>=nb) {
+                    document.getElementById('inputviewer1').style.fill="green";
+                    document.getElementById('inputviewer1').innerHTML = `
+                    <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/>
+                    `;
+                    document.getElementById('inputviewer2').style.fill="green";
+                    document.getElementById('inputviewer2').innerHTML = `
+                    <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/>
+                    `;
+                } else {
+                    document.getElementById('inputviewer1').style.fill="red";
+                    document.getElementById('inputviewer1').innerHTML = `
+                    <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+                    `;
+                    document.getElementById('inputviewer2').style.fill="red";
+                    document.getElementById('inputviewer2').innerHTML = `
+                    <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+                    `;
+                }
+            } else {
+                if (el.value.length>=nb) {
+                document.getElementById('inputviewer').style.fill="green";
+                document.getElementById('inputviewer').innerHTML = `
+                <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/>
+                `;
+            } else {
+                document.getElementById('inputviewer').style.fill="red";
+                document.getElementById('inputviewer').innerHTML = `
+                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+                `;
+            }
+            }
+        }
+        let init;
 
+        let USER = {
+          display : {
+            "Enhanced":false,
+            "Projects":{},
+            "Characters":{},
+            "Plots":{}
+          },
+          bio:"",
+          pronun:""
+
+        };
+        function NextBox(c,el) {
+                if (init<=4 ) {
+                    if (init!=1 && el.className  != "boxarrowbefore") {
+                        if (init === 2 && document.getElementById('username').value && document.getElementById('username').value.length>=3) {
+                            USER.name = document.getElementById('username').value;
+
+                        } else {
+                            if (init === 3 && document.getElementById('email').value) {
+                                USER.mail = document.getElementById('email').value;
+                            } else {
+                                if (init === 4 && document.getElementById('password1').value === document.getElementById('password2').value) {
+                                    USER.password = document.getElementById('password1').value;
+                                } else {
+                                    console.log('AAAA');
+                                    return;
+                                }
+                            }
+                        }
+                    } else if (el.className === "boxarrowbefore" && init !=1) {
+                        if (init === 2 && document.getElementById('username').value && document.getElementById('username').value.length>=3) {
+                            if (USER.name) {
+                                document.getElementById('username').value = USER.name;
+                            }
+                        } else {
+                            if (init === 3 && document.getElementById('email').value) {
+                                if (USER.mail) {
+                                    document.getElementById('email').value = USER.name;
+                                }
+                            } else {
+                                if (init === 4 && document.getElementById('password1').value === document.getElementById('password2').value) {
+                                    if (USER.password) {
+                                        document.getElementById('password1').value = USER.password;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (c===false) {
+                        init--;
+                    } else {
+                        init++;
+                    }
+
+                    if (init != 5) {
+                        const animatebox = [
+                          {
+                          transform: "translateX(1000px)",
+                          display:"none",
+                          },
+                          {
+                              transform: "translateX(0px)",
+                              display:"flex",
+                          }
+                      ];
+                      document.getElementById(`box${init}`).animate(animatebox,animateboxt);
+
+                      document.getElementById(`box${init-(c?1:-1)}`).animate(DESANIMATE,DESANIMATETIMING);
+
+
+                      setTimeout(()=> {
+                          document.getElementById(`box${init-(c?1:-1)}`).style.display="none";
+                          document.getElementById(`box${init}`).style.display="flex";
+
+                      },900);
+
+                      document.getElementById('boxarrownext').innerHTML = `
+                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                      width="48px" height="48px" viewBox="0 0 48.000000 48.000000"
+                      preserveAspectRatio="xMidYMid meet">
+
+                      <g transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)"
+                      fill="white" stroke="none" >
+                      <path d="M175 350 c-5 -7 11 -31 41 -61 l48 -49 -49 -50 c-33 -33 -46 -53 -39
+                      -60 6 -6 30 10 69 50 l60 60 -61 61 c-42 42 -64 57 -69 49z"/>
+                      </g>
+                      </svg>
+                      `; 
+                      if (init > 1) {
+                          document.getElementById('boxarrowbefored').style.display="flex";
+                      } else {
+                          document.getElementById('boxarrowbefored').style.display="none";
+                      }
+                    }
+                    if (init === 5 ) {
+                      document.getElementById('boxarrownext').innerHTML = `
+                      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="white">
+                      <path d="M489 936v-60h291V276H489v-60h291q24 0 42 18t18 42v600q0 24-18 42t-42 18H489Zm-78-185-43-43 102-102H120v-60h348L366 444l43-43 176 176-174 174Z"/>
+                      </svg>
+                      `; 
+                      localStorage.setItem('user',JSON.stringify(USER));
+                      mainMenuShowUp();
+                      document.getElementById('menu').style.display="flex";
+                  }
+                }
+            }
 
       if (!localStorage.getItem('user')) {
-        document.getElementById('all-contain').style.visibility="hidden";
-        document.getElementById('p-p-title').innerHTML = "Welcome to Sprint+!"
+        document.getElementById('menu').style.visibility="hidden";
         document.getElementById('Main').innerHTML = `
-          <div class="welcome-f">
-            <div class="w-t">
-            Welcome, dear writer!
-            </div>
-            <div class="w-info">
-              You are about to register yourself into Sprint+.<br><br>
-              First, you must know that this website is a project made
-              by a private person.<br>
-              None of your datas are used by us or any other person.
-              All your datas are stored in your browser, and are 
-              known only by you and your browser.<br><br>We do not sell,
-              use, lookup, save, or see any of your datas.<br<br>In
-              this way, all the passwords you will set will have a 
-              minimal amount of security: anyone with a bit of coding 
-              experience will be able to find your passwords. However,
-              keep in mind that this doesn't change anything to the point
-              of the website, and will not affect in any way your use of 
-              Sprint+, because no one would steal your progress.
-              <br><br>
-              Sprint+ and our team are not responsible of any corruption
-              due to a tricky modification of your datas on your side. 
-              You are responsible of the way you modify your datas.
-              <br><br>
-              For more informations, click on the button at the right (top) of the main menu page.
-              <br><br>
-              Now, please, complete some informations about you, so we 
-              can setup your whole session.<br><br><br>
-              <div class="q">
-              <div class="q-q">
-                <div class="q-t">
-                  What is your name?
-                </div>
-                <input autocomplete="off" type="text" id="name" style="background-color:rgba(31, 48, 92, 0.7)">
+                  <div class="accountsetup">
+                  <div class="setuptitle">
+                      <img src="Images & Icons/Sprint+ logo blank.png" style="width:20px">
+                      Get started with Sprint+
+                  </div>
+                  <div class="setupcontainer">
+                      <div class="boxarrowbefore" id="boxarrowbefored" style="display:none" onclick="NextBox(false,this)" >
+                          <span id="boxarrowbefore" >
+                              <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="white" viewBox="0 96 960 960" width="48"><path d="M561 816 320 575l241-241 43 43-198 198 198 198-43 43Z"/></svg>
+                          </span>
+                        </div>
+                      <div class="boxContainer">
+                          <div class="box1" id="box1">
+                              <p class="bxt">
+                                  Privacy & Datas*
+                              </p>
+                              <p>
+                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="green" viewBox="0 96 960 960" width="20"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                                  Datas are stored on your browser only
+                              </p>
+                              <p>
+                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                                  Datas selling
+                              </p>
+                              <p>
+                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                                  Datas sharing
+                              </p>
+                              <p>
+                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                                  Datas saving on web servers
+                              </p>
+                              <p style="color:#ccc;font-size: 14px" id="basdesc">
+                                  <a href="#">Learn more</a>about our datas management.
+                              </p>
+                          </div>
+                          <div class="box2" id="box2">
+                              <p class="bxt">
+                                  Username*
+                              </p>
+                              <p style="color:#ccc;font-size: 14px;">
+                                  Your username is a public information for people to recognize you when 
+                                  Sprint+ will work with servers. It also allows Sprint+ to send you custom
+                                  messages. A username is currently one-use only.<br>You will be able to change 
+                                  it later, but once Sprint+ servers will be released, you will receive a custom
+                                  key that will be your identifier.
+                              </p>
+                              <div class="inputcontent" >
+                                  <input type="text" placeholder="Enter a name" id="username" oninput="CheckName(this,3)">
+                                  <svg id="inputviewer" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25"></svg>
+
+                              </div>
+                              <p style="color:#ccc;font-size: 14px" id="basdesc">
+                                  <a href="#">Learn more</a>about what's coming regarding usernames.
+                              </p>
+                          </div>
+                          <div class="box3" id="box3">
+                              <p class="bxt">
+                                  E-Mail adress*
+                              </p>
+                              <p style="color:#ccc;font-size: 14px;">
+                                  Your email adress is at the moment useless. However, it will be useful 
+                                  for upcoming updates. You will be able to change it later.
+                              </p>
+                              <div class="inputcontent">
+                                  <input type="text" placeholder="Enter an email adress" id="email">
+                                  <svg id="inputviewer" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25"></svg>
+
+                              </div>
+                              <p style="color:#ccc;font-size: 14px" id="basdesc">
+                                  <a href="#">Learn more</a>about what's coming regarding emails.
+                              </p>
+                          </div>
+                          <div class="box4" id="box4">
+                              <p class="bxt">
+                                  Password*
+                              </p>
+                              <p style="color:#ccc;font-size: 14px;">
+                                  Enter a secure password to enforce your account. You won't be able to 
+                                  find your password with your email adress for the moment. You will still be 
+                                  able to modify it. Write it somewhere, or keep it in mind.
+                              </p>
+                              <div class="inputcontent"  id="inputpassword">
+                                  <div class="input">
+                                      <input type="password" id="password1" placeholder="Enter a password - 9 characters minimum" oninput="CheckName(this,10,true)">
+                                      <svg id="inputviewer1" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25">
+
+                                      </svg>
+                                  </div>
+                                  <div class="input">
+                                      <input type="password" id="password2" placeholder="Enter the same password" oninput="CheckName(this,10,true)">
+                                      <svg id="inputviewer2" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25">
+
+                                      </svg>    
+                                  </div>
+                              </div>
+                              <p style="color:#ccc;font-size: 14px" id="basdesc">
+                                  <a href="#">Learn more</a>about passwords.
+                              </p>
+                          </div>
+                      </div>
+                      <div class="boxarrownext" onclick="NextBox(true,this)">
+                        <span id="boxarrownext">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="white" viewBox="0 96 960 960" width="48"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
+
+                        </span>
+                      </div>
+
+                  </div>
               </div>
-              <div class="q-q">
-                <div class="q-t" >
-                  Enter a secure password (6 characters min.)
-                </div>
-                <input autocomplete="off" type="text"id="password" style="background-color:rgba(31, 48, 92, 0.7)">
-              </div>
-              </div>
-            </div>
-            <button id="go" onclick="GoFor()">
-              Create a session
-              <span class="material-symbols-outlined">
-              login
-              </span>
-            </button>
-          </div>
         `;
+        init = 1;
+        for (let i = 1; i < 5;i++) {
+            if (i!=init) {
+                document.getElementById(`box${i}`).style.display="none";
+            }
+
+        }                
+        document.getElementById('customize_app').style.display="none";
       } else {
         mainMenuShowUp()
       }
@@ -392,6 +600,7 @@
       }
       function mainMenuShowUp() {
         let user = JSON.parse(localStorage.getItem('user'));
+        document.getElementById('customize_app').style.display="flex";
         /*
     --main-blue-dark: #19284d;
     --main-clear:#1d2d55;
@@ -438,27 +647,7 @@
         let NotifNB = 0;
         let goaled = false;
         document.getElementById('Main').innerHTML=Main;
-        document.getElementById('all-contain').innerHTML=`
-        <div id="menutext">
-          Menu
-        </div>
-        ${all_contain}
-        `;
-        document.getElementById('all-contain').style.visibility="visible";
-        let sentences = [
-          `Welcome back ${JSON.parse(localStorage.getItem('user')).name}. We were waiting for you!`,
-          `Nice to see you again ${JSON.parse(localStorage.getItem('user')).name}!`,
-          `We missed you, ${JSON.parse(localStorage.getItem('user')).name}. So cool for you to be there!`,
-          `Be confident, ${JSON.parse(localStorage.getItem('user')).name}!`,
-          `More people than what you think love you, ${JSON.parse(localStorage.getItem('user')).name}!`,
-          `Create great things, ${JSON.parse(localStorage.getItem('user')).name}!`,
-          `${JSON.parse(localStorage.getItem('user')).name}, you're a creator of worlds!`,
-          `It is time for you to make people dream big, ${JSON.parse(localStorage.getItem('user')).name}!`,
-          `You're the reason why people like to read, ${JSON.parse(localStorage.getItem('user')).name}!`,
-          `Be proud of you, because you deserve it, ${JSON.parse(localStorage.getItem('user')).name}!`,
-
-        ]
-        document.getElementById('p-p-title').innerHTML = sentences[Math.floor(Math.random()*sentences.length)];
+        document.getElementById('menu').style.visibility="visible";
         let items = {...localStorage};
 
         for (let [k,v] of Object.entries(items)) {
@@ -626,13 +815,13 @@
               }
             }
           }
-          if (NotifNB>0) {
+          /*if (NotifNB>0) {
             document.getElementById('notifnb').style.visibility = "visible";
             document.getElementById('notifnb').innerHTML = `
               ${NotifNB<=9 ? NotifNB : "9+"} 
             `;
 
-          }
+          }*/
         }
         checkIfGoals(goaled);
         console.log(NotifNB + " is amount of notifs")

@@ -58,35 +58,45 @@ function OpenFolder(el) {
     <div class="pj-b-g">
     <div class="pj-b-g-p">
       <div class="pj-b-g-param-title">
-      <span class="material-symbols-outlined"> info </span>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M453 776h60V536h-60v240Zm26.982-314q14.018 0 23.518-9.2T513 430q0-14.45-9.482-24.225-9.483-9.775-23.5-9.775-14.018 0-23.518 9.775T447 430q0 13.6 9.482 22.8 9.483 9.2 23.5 9.2Zm.284 514q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg>
+      
       <p>Project details</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeCover(this)">
-        <span class="material-symbols-outlined"> imagesmode </span><p> Edit cover</p>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M180 936q-24 0-42-18t-18-42V276q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600V276H180v600Zm56-97h489L578 583 446 754l-93-127-117 152Zm-56 97V276v600Z"/></svg>
+
+        <p> Edit cover</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeName(this)">
-        <span class="material-symbols-outlined"> edit </span> <p>Edit name</p>
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M180 876h44l443-443-44-44-443 443v44Zm614-486L666 262l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"/></svg>
+
+        <p>Edit name</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeDesc(this)">
-        <span class="material-symbols-outlined"> document_scanner </span> <p>Edit desc.</p>
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M319 806h322v-60H319v60Zm0-170h322v-60H319v60Zm-99 340q-24 0-42-18t-18-42V236q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554V236H220v680h520V422H551ZM220 236v186-186 680-680Z"/></svg>
+
+        <p>Edit desc.</p>
       </div>
       <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeFiles(this)">
-        <span class="material-symbols-outlined"> note </span> <p>Edit files</p>
-      </div>
-      <div class="pj-b-g-param" id="${pj.name}" onclick="ChangeTime(this)">
-        <span class="material-symbols-outlined"> all_inclusive </span> <p>Edit time</p>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M721 936V816H601v-80h120V616h80v120h120v80H801v120h-80Zm-492 20q-22 0-40-11t-29-29L65 751q-11-19-11-40t11-40l251-435q11-20 29.5-30t40.5-10h189q22 0 40 10t29 30l178 309q-15-5-30.5-7t-31.5-2h-17.5q-9.5 0-17.5 1L574 276H386L134 711l95 165h313q11 23 25.5 43.5T602 956H229Zm61-180-30-51 184-319h72l101 175q-19 14-33 28t-25 33l-79-137-110 191h165q-8 19-11 38.5t-3 41.5H290Z"/></svg>
+
+        <p>Edit files</p>
       </div>
     </div>
     <div class="pj-b-g-p">
       <div class="pj-b-g-param-title">
-      <span class="material-symbols-outlined"> warning </span>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m40 936 440-760 440 760H40Zm104-60h672L480 296 144 876Zm340.175-57q12.825 0 21.325-8.675 8.5-8.676 8.5-21.5 0-12.825-8.675-21.325-8.676-8.5-21.5-8.5-12.825 0-21.325 8.675-8.5 8.676-8.5 21.5 0 12.825 8.675 21.325 8.676 8.5 21.5 8.5ZM454 708h60V484h-60v224Zm26-122Z"/></svg>
+
       <p>Sensitive area</p>
       </div>
       <div class="pj-b-g-param" onclick="TriggerSecurity(this);" id="${pj.name}" style="color:#4DB399">
-        <span class="material-symbols-outlined"> security </span> <p>Security</p>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="#4DB399" viewBox="0 96 960 960" width="48"><path d="M480 976q-140-35-230-162.5T160 534V296l320-120 320 120v238q0 152-90 279.5T480 976Zm0-62q106-35 175.5-128.5T737 576H480V241l-260 97v196q0 12 .5 20.5T223 576h257v338Z"/></svg>
+
+        <p>Security</p>
       </div>
       <div onclick='DeleteProject(this);' class="pj-b-g-param" id="${pj.name}" style="color:#EA3C12">
-        <span class="material-symbols-outlined"> delete </span> <p>Delete</p>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="#EA3C12" viewBox="0 96 960 960" width="48"><path d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/></svg>
+              <p>Delete</p>
       </div>
     </div>
     </div>
@@ -947,11 +957,7 @@ function FilterProjects(type) {
                         </span>
                       </div>
 
-                      <div class="pj-open-desc-infos-d">
-                        Ends on ${Ends.getDate()>9?Ends.getDate():"0"+Ends.getDate()}/
-                        ${Ends.getMonth()+1>9?Ends.getMonth()+1:"0"+(Ends.getMonth()+1)}/
-                        ${Ends.getFullYear()}
-                      </div>
+
 
                       <div class="pj-open-desc-infos-d">
                         ${chapteramount} chapter${chapteramount>1?"s":""}

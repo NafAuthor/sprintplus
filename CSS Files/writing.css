@@ -134,7 +134,6 @@
     background-color: unset !important;
     padding: unset;
     margin:unset;
-    color:white;
     font-family: 'Bebas Neue', cursive;
     font-family: 'Comfortaa', cursive;
     font-family: 'Encode Sans SC', sans-serif;
@@ -180,20 +179,189 @@
 #styletextalign {
     display: block !important;
     width:100% !important;
-    
+    height: 100%;
+}
+.PJContainer,.ChapterContainer {
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.ChapterContainer svg {
+    fill:white;
+}
+.ChapterContainerBack {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+    background-color: var(--main-clear);
+    align-items: center;
+}
+.ChapterContainerBack svg {
+    fill:white;
 }
 
+.ChapterContainer p {
+    margin:0px;
+}
+.pjwriting img {
+    width: 50px !important;
+}
+.pjwritinginfoscontainer {
+    width: 140px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.PJContainerDesc {
+    font-size: 17px;
+}
+.PJContainerDesc p,.ChapterContainDesc {
+    font-size: 15px;
+    color:rgba(255,255,255,0.7)
+}
+.ChapterContainDesc {
+    display:flex;
+    flex-direction: row;
+    gap:5px;
+}
+.pjwritingname {
+    font-size: 14px;
+    color:rgba(255,255,255,0.7);
+    width: 100%;
+    overflow:hidden;
+    height: 19px;
+    white-space: nowrap;
+}
+.pjwriting,.chapterwriting {
+    width: 200px;
+    background-color: var(--main-clear);
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap:10px;
+    position:relative;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0)
+}
+.NewChapterButton {
+    width: fit-content;
+    
+}
+.NewChapterButton button {
+    background-color: var(--main-blue-dark);
+    color:white;
+    border:none;
+    height: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+.editorcontainer {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    gap:1px;
+}
+.NewChapterButton button:hover {
+    background-color: white;
+    color:var(--main-blue-dark)
+}
+.NewChapterButton button:hover  svg {
+    fill:var(--main-blue-dark)
+
+}
+.pjwriting:hover,.chapterwriting:hover {
+    border: 1px solid white;
+}
+#writinghoverable {
+    border-style: none none solid none;
+    border-color: rgba(0,0,0,0);
+    cursor: pointer;
+}
+#writinghoverable:hover {
+    border-color: white;
+}
+.pjwriting svg,.chapterwriting svg{
+    position:absolute;
+    right: 3;
+    bottom:3;
+}
+.chapterwriting svg {
+    top:0;
+    bottom:0;
+    margin:auto;
+    width: 20px;
+    height: 20px;
+}
+.chname {
+    width: 100%;
+    overflow: hidden;
+    color:rgba(255,255,255,0.7);
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+}
+.chdesc {
+    height: fit-content;
+    width: 100%;
+    font-size: 14px;
+    overflow-x: hidden;
+}
+.chapterwritingcontent {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.chapterwriting {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
+    padding: 10px;
+    width: 200px;
+    height: fit-content;
+}
+
+#PJContain, #ChapterContain {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    row-gap: 10px;
+    column-gap: 30px;
+    grid-auto-rows: fit-content(1px);    
+    overflow-y: auto;
+}
 @keyframes slidein {
     0% { opacity: 1; }
     50%   { opacity: 0; }
     100% { opacity: 1; }
   }
 
-.savebubble span {
+.savebubble svg {
     font-size: 10px;
+    height: 10px;
+    width: 10px;
     background-color: #ff0000 !important;
     padding: 0px !important;    color:white !important;
 animation: 3s linear infinite slidein;
+border-radius: 50%;
+fill:white;
 }
 
 .savebubble {
@@ -205,15 +373,15 @@ animation: 3s linear infinite slidein;
     justify-content: center;
     position:absolute;
     color:white !important;
-    right: 5;;
-    bottom:5;
+    right: 2;;
+    bottom:2;
     
 
 }
-#writingdisplayer #editcontent {
+#editcontent {
     padding: 10px;
     border-radius: 5px;
-    height: 100%;
+    height: 75%;
     border:none;
     outline:none;
     font-size: 15px;
@@ -221,8 +389,7 @@ animation: 3s linear infinite slidein;
     width: 100%;
     box-sizing: border-box;
     text-align: left;
-    color: white !important;
-    border: 2px solid var(--main-clear)
+    background-color: var(--main-clear);
 }
 
 .chaptermv {
@@ -238,7 +405,9 @@ animation: 3s linear infinite slidein;
     flex-direction: row;
     gap: 5px;
     position:relative;
-    justify-content: start;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
 }
 .autosave , .autosave span {
     font-size: 15px;
@@ -246,9 +415,9 @@ animation: 3s linear infinite slidein;
 .autosave {
     width: fit-content;
     position:absolute;
-    bottom:0;
+    top:0;
     right:0;
-    display: flex;
+    display: none ;
     flex-direction: row;
     align-items: center;
     padding: 5px;
@@ -275,6 +444,9 @@ animation: 3s linear infinite slidein;
     border-style: none none solid none;
     cursor: pointer;
 }
+#textcolor {
+    border:none;
+}
 .chaptermv input:hover, .chaptermv input:focus {
     border-color: white;
 }
@@ -283,15 +455,12 @@ animation: 3s linear infinite slidein;
 }
 .chapterdescription {
     position:absolute;
-    width: 300px;
+    width: 100%;
     height: 100px;
-    bottom:-108;
-    left:5;
+    bottom:-105;
     visibility: hidden;
 }
 .itemact {
-    position:absolute;
-    right:0;
     display: flex;
     flex-direction: row;
     gap:5px;
@@ -306,9 +475,11 @@ animation: 3s linear infinite slidein;
 .chaptermvv input{
     height: 100%;
     padding: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
+    border-radius: 5px;
+}
 
+#textcolor {
+    border-radius:5px !important;
 }
 
 .chaptermvv input::-webkit-color-swatch {
@@ -324,10 +495,15 @@ animation: 3s linear infinite slidein;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    width: 25px;
+    height: 25px;
 }
 .itemact span:hover, .chaptermvv span:hover {
     background-color: white;
     color:var(--main-blue-dark);
+}
+.chaptermvv span:hover  svg {
+    fill:var(--main-blue-dark)
 }
 #saveDesc {
     z-index:50;
@@ -356,7 +532,7 @@ animation: 3s linear infinite slidein;
     font-size: 15px;
 
 }
-.chapternewopendesc {
+.chapternewopendesc,.chapternew button {
     width: fit-content;
     padding-left: 15px;
     padding-right: 15px;
@@ -369,8 +545,11 @@ animation: 3s linear infinite slidein;
     background-color: var(--main-clear);
     border-radius: 5px;
     justify-content: center;
+    color:white;
+    border:none;
+    font-size: 15px !important;
 }
-.chapternewopendesc:hover {
+.chapternewopendesc:hover,.chapternew button:hover{
     background-color: white;
     color:var(--main-blue-dark);
 }
@@ -429,6 +608,15 @@ animation: 3s linear infinite slidein;
     display: flex;
     flex-direction: row;
 }
+.numberinput input {
+    background-color: unset;
+    color:white;border:none;
+}
+.chaptermvv svg {
+    width: 20px;
+    height: 20px;
+    fill:white;
+}
 .plusless {
     width: 20px;
     display: flex;
@@ -461,7 +649,13 @@ animation: 3s linear infinite slidein;
 .infovocal {
     display: none;
 }
-
+.chapternew input {
+    background-color: var(--main-clear);
+    border-radius: 5px;
+}
+.chapternew input:hover,.chapternew input:active, .chapternew input:focus {
+    border-radius: 5px 5px 0px 0px;
+}
 
 @media screen and (320px <= width <= 420px) {
     .infovocal {

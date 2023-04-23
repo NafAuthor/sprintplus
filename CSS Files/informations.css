@@ -1,12 +1,11 @@
 .ifo-m {
-    width: 90%;
+    width: 100%;
     height: 85%;
     background-color: var(--main-blue-dark);
     border-radius: 5px;
     padding: 10px;
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 50px;
+    padding-top: 0px;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -16,21 +15,59 @@
 }
 .ifo-m-t {
     display: flex;
+    position:fixed;
     flex-direction: row;
-    font-size: 30px;
-    gap: 10px;
-    width: 130px;
-    position:absolute;
+    font-size: 20px;
+    gap: 0px;
+    width: 100%;
     align-items: center;
     width: 100%;
-    justify-content: center;
-    left: 0; 
-    right: 0; 
-    top:25;
-    margin-left: auto; 
-    margin-right: auto; 
+    border-width: 2px;
+    border-style: none none solid none;
+    border-color: var(--main-clear);
+    padding: 10px;
+    border-radius: 0px;
+    top:0px;
+    left:0px;
+    z-index: 50;
+    background-color: var(--main-blue-dark);
 }
-
+.AcountContainer {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    height: 95%;
+}
+.ifo-m-t svg {
+    fill:white;
+    height: 23px;
+    width: 23px;
+}
+.param-title svg {
+    fill:white;
+    width: 30px;
+    height: 30px;
+}
+.ifo-m-t-home {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:5px;
+    cursor: pointer;
+    padding-bottom: 0px;
+    border-style: none none solid none;
+    border-color: rgba(0,0,0,0);
+}
+.ifo-m-t-home svg {
+    width: 25px;
+    height: 25px;
+}
+.ifo-m-t-home:hover {
+    border-style: none none solid none;
+    border-color: white;
+}
 .ifo-s {
     width: 90%;
     margin-left: auto;
@@ -100,7 +137,7 @@
 }
 .ifo-bx-d {
     padding: 5px;
-    font-size: 13px;
+    font-size: 15px;
     text-align: justify;
     color:rgba(255, 255, 255,0.7);
 }
@@ -108,10 +145,7 @@
     color:rgba(255, 255, 255,0.9);
 
 }
-#spt-ttl {
-    margin-top: 30px;
 
-}
 .sp-ttl {
     width: 100%;
     font-size: 20px;
@@ -123,83 +157,397 @@
 }
 .ifo-m-c {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: column-reverse;
     width: 100%;
+    height: fit-content;
     display: flex;
     text-align: center;
-    flex-direction: column;
-}
-
-
-
-.ifo-m-c-un,.ifo-m-c-ps,.ifo-m-c-em {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    padding: unset;
-}
-
-.ifo-m-c-un-t,.ifo-m-c-ps-t,.ifo-m-c-em-t {
-    font-size: 13px;
-    position: absolute;
-    top:-9;
-    left: 4;
-    background-color: var(--main-blue-dark);
-    padding: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 5px;
-}
-
-
-.ifo-m-c-u,.ifo-m-c-p,.ifo-m-c-e {
-    border: 1px solid white;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.ifo-m-c-u textarea,.ifo-m-c-p textarea,.ifo-m-c-e textarea {
-    width: 250px;
-    height: 30px;
-    border-radius: 5px;
-    background-color: var(--main-clear);
-    padding: 7px;
-}
-.ifo-m-c-u button,.ifo-m-c-p button,.ifo-m-c-e button {
-    width: 40px;
-    height: 30px;
-    background-color: var(--main-blue-dark);
-    color:white;
-    border:2px solid var(--main-blue-dark);
-    cursor: pointer;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
+    gap:80px;
     justify-content: center;
 }
 
 
-#premium {
-    border-color: yellow;
+#sprintplus {
+    border-color: #1d2d55;
+}
+#sprintplus svg {
+    fill:#1d2d55;
 }
 #datas {
     border-color: green;
 }
-#feat {
-    border-color:aqua;
-}
+
 
 .ifo-bt {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}        
+.MainContainInfos {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100% !important;
+    background-color: var(--main-clear);
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    border-radius: 5px;
 
+}
+.InfosContainer {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    padding: 20px;
+    height: 95%;
+    overflow:hidden;
+}
+.InfosContains {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap:50px
+}
+.VisualContain {
+    display: flex;
+    flex-direction: column;
+    gap:0px;
+    width: 100%;
+}
+.SecurityContain, .VisualContain {
+    background-color: var(--main-blue-dark);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+.ActiveContain {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    width: 60%;
+    height: 50%;
+    margin-bottom: auto;
+}
+.AccountContainer {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    align-items: center;
+    cursor: pointer;
+    position:relative;
+    padding: 10px;
+    border-radius: 5px;
+    gap:5px
+}
+.AccountContainer:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.AccountContainer svg {
+    position:absolute;
+    right:5;
+}
+.moreContainer {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+    position:absolute;
+    left:10;
+    bottom:10;
+    color:rgba(255,255,255,0.7);
+    font-size: 14px;
+}
+.ProfileViewContain {
+    width: 350px;
+    height: 320px;
+    background-color: var(--main-blue-dark);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    position:relative;
+}
+.DisplayChoose {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    margin-top: 10px;;
+}
+.DC {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    border: 4px solid var(--main-clear);
+    border-style: none none none solid;
+    padding-left:10px;;
+}
+.DC button {
+    width: fit-content;
+    background-color: var(--main-clear);
+    color:white;
+    border:none;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.DC button:hover {
+    color:var(--main-blue-dark);
+    background-color: white;
+}
+.DisplayContent {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+#PJSelect, #PJChoseParam {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    max-height:200px;
+    height: fit-content;
+    overflow-y: auto;
+}
+#DisplaySettings {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    height: fit-content;
+}
+#PJChoseParam {
+    height: 200px;
+}
+.PJCPB {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    position:relative;
+    font-size: 14px;
+    color:rgba(255, 255, 255,0.7);
+    align-items: center;
+}
+.PJCPB button {
+    position:absolute;
+    right:0;
+}
+.PJCP button {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right:auto;
+    max-width: 60%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap:10px;
+}
+.PJCP p {
+    font-size: 13px;
+    color:rgba(255, 255, 255,0.7);
+}
+.DisplayName p {
+    font-size: 13px;
+    color:rgba(255, 255, 255,0.7);
+}
+.pjshow {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    gap:5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--main-clear);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.pjshow:hover {
+    background-color: rgba(255, 255, 255,0.05);
+}
+.pjshow svg,.PJCP button svg,.PJCPB svg  {
+    fill:white;
+    width: 15px;
+    height: 15px;
+}
+.userandpfp {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+.imgContain {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    position:relative;
+}
+.ProfileViewContain img {
+    width: 100%;
+    height: 100%;
+}
+.pfp {
+    position:relative;
+    width: 60px;
+    height: 60px;
+}
+.pfp:hover .imgadd {
+    display: flex;
+}
+.imgadd {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    position:absolute;
+    top:0;right:0;left:0;bottom:0;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+}
+.ProfileViewContain {
+    padding-bottom: 60px;
+}
+.sprintenhanced {
+    position:absolute;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    height: fit-content;
+    left:0;
+    bottom:0;
+    padding: 2px;
+    background-color: var(--main-blue-dark);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap:5px;
+    border: 1px solid rgba(00,0,0,0);
+    overflow: hidden;
+    height: 30px;
+    box-shadow: 0px -1px 5px rgba(255, 255, 0,0.4);
+
+}
+.sprintenhanced img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.sprintenhanced p {
+    margin: 0px;
+    font-size: 13px;
+    display: inline;
+    position:relative;
+}
+.sprintenhancedanimationcontainer {
+    display: flex;
+    flex-direction: row;
+    gap:2px;
+    position:absolute;
+    left:0;
+    animation: 3s ease 0s infinite normal none running moveenhanced;
+}
+.sprintenhancedanimationcontainer div {
+    width: 5px;
+    height: 60px;
+    background-color: rgba(255, 255, 255,0.09);
+    transform: rotate(30deg);
+}
+.sprintenhanced:hover p {
+    display: inline;
+}
+
+
+.namepronum {
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+    justify-content: center;
+    width: 80%;
+    
+}
+.name {
+    display: flex;
+    flex-direction: row;
+    gap:0px;
+}
+.pronum {
+    color:rgba(255,255,255,0.7);
+    font-size:12px;
+}
+.aboutinterestsbio {
+    height: 80%;
+    display: flex;
+    gap:5px;
+    flex-direction: column;
+}
+.AIcontainer {
+    width: 95%;
+    height: fit-content;
+    max-height: 45%;
+    border-radius: 5px;
+    padding: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+.AIT {
+    color:rgba(255,255,255,0.7);
+    font-size: 14px
+}
+.AITC {
+    font-size: 14px;
+    overflow-y: scroll;
+    height: 95%;
+}
+.AI_interest {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,100px);
+    row-gap: 5px;
+    column-gap: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    grid-auto-rows: fit-content(1px);  
+}
+.interest {
+    background-color: var(--main-clear);
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    justify-content: center;
+}
+.interest {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.interest::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+#interests {
+    gap:5px;
+    display: flex;
+    flex-direction: column;
+    height: 45%;
+    min-height: 45%;
+    max-height: 45%;
+    overflow-y: hidden;
 }
 
 .ifo-bt-c {
@@ -211,10 +559,65 @@
     margin-right: auto;
     text-align: center;
 }
+.addPFP {
+    position:absolute;
+    width: 50%;
+    background-color: var(--main-clear);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.addPFP p {
+    font-size: 14px;
+    color:rgba(255, 255, 255,0.7);
 
+}
+.addPFP input {
+    width: 80%;
+    background-color: var(--main-blue-dark);
+    color:white;
+    padding: 5px;
+    border:none;
+    border-radius: 5px;
+    outline:none;
+}
+.addPFP svg {
+    position:absolute;
+    right:2;top:2;
+    cursor: pointer;
+}
+.addPFP button {
+    color:white;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: var(--main-blue-dark);
+    padding: 5px;
+    border:none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.addPFP button:hover {
+    background-color: white;
+    color:var(--main-blue-dark)
+}
 
+.ActInput {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap:10px;
+    align-items: center;
+    margin-top: auto;
+    justify-content: center;
+}
+.ifo-bt-b {
+    width: 95%;
+}
 .ifo-bt-b button {
-    width: 40%;
+    width: 80%;
     height: 50px;
     color:white;
     border-radius: 5px;
@@ -249,16 +652,264 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.ParameterContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--main-blue-dark);
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+.TagUser {
+    width: 90px;
+    padding: 5px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+    background-color: var(--main-clear);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:5px;
+}
+.TagUser svg {
+    display: none;
+    cursor: pointer;
+    width:12px;
+    height: 12px;
+
+}
+.SpriPlusBuy {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+@keyframes moveenhanced {
+    0% {
+        left:-50;
+    }
+    60% {
+        left:unset;
+        left:110%;
+    }
+    100% {
+        left:unset;
+        left:110%;
+    }
+}
+.divmove {
+    width: 50px;
+    height: 130%;
+    display: flex;
+    flex-direction: row;
+    gap:3px;
+    position:absolute;
+    left:-50;
+    animation: moveenhanced;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.divmove div {
+    width: 10px;
+    height: 100%;
+    background-color: rgba(255, 255, 255,0.05);
+    transform: rotate(30deg);
+}
+.SpriPlusBuy button {
+    position:relative;
+    width: fit-content;
+    background-color: var(--main-clear);
+    color:white;
+    border:none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px 5px 5px 5px;
+    border-style:none none solid none;
+    border-color: rgba(0,0,0,0);
+    padding-left: 30px;
+    overflow: hidden;
+    padding-right: 30px;
+}
+.SpriPlusBuy button img {
+    height: 20px;
+    width: 20px;
+}
+
+#Enhanced img {
+    width: 20px;
+    height: 20px;
+}
+#Enhanced {
+    gap:5px;
+}
+.TagUser:hover svg {
+    display: inline;
+}
+.TagUser svg:hover {
+    background-color: white;
+    fill:var(--main-blue-dark);
+    border-radius:5px;
+}
+.ParameterInput,.TagsInput {
+    width: 100%;
+    height: fit-content;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: center;
+    position:relative;
+    justify-content: center;
+}
+.PasswordInput {
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    text-align: center;
+    align-items: center;
+}
+.PasswordInput input,.ParameterInput input,.ParameterInput textarea, .TagsInput input{
+    width: 80%;
+    color:white;
+    padding: 5px;
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    border:2px solid white;
+    border-radius: 5px 5px 0px 0px;
+    height: 40px;
+    padding-bottom: 0px;
+    border-color: var(--main-clear);
+    border-style: none none solid none;
+    background-color:var(--main-blue-dark)
+}
+#CharCount {
+    position:absolute;
+    background-color: var(--main-clear);
+    font-size: 12px;
+    padding: 5px;
+    bottom:0;right:0;
+}
+body input::placeholder, .TagsInput input::placeholder,.ParameterInput textarea::placeholder {
+    font-style: italic;
+    color:rgba(255, 255, 255,0.7)
+}
+.ParameterInput textarea {
+    height: 90px;
+    width: 100%;
+}
+.TagsInputContain {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.whole-header-ch{
+    display: none;
+}
+#TagsContainer {
+    display: flex;
+    flex-direction: column;
+    gap:1px;
+    width: 95%;
+    height: fit-content;
+    max-height: 90px;
+    background-color: red;
+    border-radius: 5px;
+    background-color: var(--main-clear);
+    overflow-y: auto;
+}
+.Tag:hover {
+    background-color: rgba(255, 255, 255,0.1);
+
+
+}
+.Tag {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    width: 95%;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+.ParameterInput button, .TagsInput button,.PasswordInput button {
+    color:white;
+    cursor: pointer;
+    background-color: var(--main-clear);
+    border-radius: 5px;
+    border:none;
+    margin-top: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: fit-content;
+}
+.TagsInputContain {
+    width: 80%;
+}
+.ParameterInput button:hover, .PasswordInput button:hover, .TagsInput button:hover{
+    color:var(--main-blue-dark);
+    background-color: white;
+}
+.ParameterName {
+    font-weight: bold;
+}
+.ParameterDescription { 
+    color:rgba(255, 255, 255,0.7);
+    font-size: 13px;
+}
+.ParameterGoBack {
+    background-color: var(--main-blue-dark);
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    padding: 10px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    align-items: center;
+    border-radius: 5px;
+    padding-right: 10px;
+    font-size: 12px;
+}
+.ParameterGoBack:hover {
+    color: var(--main-blue-dark);
+    background-color: white;
+    cursor: pointer;
+}
+.ParameterGoBack:hover svg {
+    fill:var(--main-blue-dark);
+}
 @media screen and (320px <= width <= 420px) {
     .param-info-wh {
         width: 90%;
     }
     .ifo-m {
-        width: 90%;
+        width: 100%;
         margin:unset;
         padding: unset;
         padding-bottom: 20px;
-        padding-top: 20px;
         height: 100%;
     }
     .ifo-m-c-u button:hover, .ifo-m-c-p  button:hover{ 
@@ -268,12 +919,158 @@
         border-style: outset;
 
     }
+    .InfosContains {
+        flex-direction: column-reverse;
+        gap:5px;
+    }
+    .ActiveContain {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+        border-radius: 5px;
+        max-height: 55%;
+        height: fit-content !important;
+        background-color: var(--main-blue-dark);
+    }
+    .ParameterGoBack,.VisualContain,.SecurityContain {
+        background-color: var(--main-clear);
+    }
+    .VisualContain,.SecurityContain{
+        padding: unset;
+    }
+    .AccountContainer {
+        padding-left: 20px;
+    }
+    .MainContainInfos {
+        padding: 0px;
+        width: 95%;
+        border-radius: 5px;
+        padding-bottom: 10px;
+    }
+    .ifo-bt-b button span {
+        display: none;
+    }
+    .ifo-bt-b button {
+        width: 100%;
+        padding: 0px;
+    }
+    .ActInput {
+        gap:5px;
+    }
+    #Enhanced img {
+        display: none;
+    }
+    .aboutinterestsbio {
+        gap:10px;
+    }
+    #AITC {
+        height: 120px;
+        font-size: 13px;
+    }
+    .ProfileViewContain {
+        width: 99%;
+        margin-top: 1px;
+        padding: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        height: 320px;
+    }
+    .DisplayContent {
+        flex-direction: column;
+        gap:10px;
+        overflow-x: hidden;
+    }
+    .DC {
+        padding-bottom: 0px;
+    }
+    #PJSelect, #PJChoseParam {
+        width: 100%;
+
+    }
+    #PJChoseParam {
+        gap:20px;
+        padding-bottom: 0px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    
+    #ChangePJPublicy {
+        max-width: 100%;
+        white-space: nowrap;
+    }
+    .userandpfp {
+        margin-left: 10px;
+    }
+    #interests {
+        width: fit-content;
+    }
+    .pronum {
+        text-align: left;
+    }
+    .AIcontainer * {
+        text-align: left;
+    }
+    .InfosContainer {
+        padding: 0px;
+        width: 100%;
+    }
+
+    .TagUser svg {
+        display: inline;
+    }
+    .ParameterContainer * {
+        text-align: left;
+    }
+    .ParameterContainer {
+        padding: 10px;
+        margin-left: -10px;
+    }
+    .AI_interest {
+        display: flex;
+        flex-direction: row;
+        gap:3px;
+        width: 95%;
+        height: fit-content;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        overflow-x: scroll !important;
+        overflow-y: hidden;
+    }
+    #interests {
+        gap:5px;
+        display: flex;
+        width: 100%;
+    }
+    .TagUser svg {
+        fill: rgb(233, 118, 118);
+        stroke-width: 1px;
+        border-radius: 50%;
+    }
+    .TagUser {
+        min-width: fit-content !important;
+    }
+    .AI_interest::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+    .ifo-bx {
+        width: 90%;
+        border-radius:0px;
+        border-style: none none none solid;
+        border-width: 5px;
+        
+    }
     .ifo-m-t {
         width: 100%;
         text-align: center;
         align-items: center;
-        justify-content: center;
         height: fit-content;
+        background-color: var(--main-blue-dark);
+        border-style: none none solid none;
+        border-color: var(--main-clear);
+        border-width: 2px;
+        padding: 10px;
+        top:0px;
+        left:-5px;
     }
     .ifo-bt button {
         border-radius: 5px;        width:90%
@@ -295,7 +1092,8 @@
     .ifo-m-c-un-t,.ifo-m-c-ps-t, .ifo-m-c-ps-t {
         left: 80;
     }
-    #sp-ttl {
-        margin-top: 150px;
+    .AcountContainer {
+        width: 100%;
+        height: 100%;
     }
 }  

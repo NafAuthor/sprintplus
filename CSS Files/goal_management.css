@@ -217,6 +217,11 @@
 }
 .finishedtitle p {
     margin:unset;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    justify-content: center;
     font-size: 12px;
     margin-top: 10px;
     color:rgba(255, 255, 255,0.6);

@@ -1,7 +1,11 @@
-let password = JSON.parse(localStorage.getItem('user')).password;
+let password;
+if (JSON.parse(localStorage.getItem('user'))) {
+    password = JSON.parse(localStorage.getItem('user')).password;
+}
 
 function DownloadItem() {
     Pannel_Status=false;
+    let user = JSON.parse(localStorage.getItem('user'));
     const link = document.createElement("a");
     let items = {...localStorage};
     let content={};
@@ -23,22 +27,10 @@ function DownloadItem() {
             }
         }
     }
-    let informations = `
-        Welcome. You requested a download of your Sprint+ datas.
-        We found in your localstorage ${stats[0]} project(s) and ${stats[1]} goal(s). If this is incorrect, please try to download your datas again.
-        \n
-        To merge your datas on a new session (digital tool), follow the instructions:\n
-        - Copy the string below, without removing any characters\n
-        - On your new digital tool, click "Merge" (bottom-right of the screen)\n
-        - Paste the content in the prompt box at the top of your screen\n
-        \n
-        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        ${JSON.stringify(content)}
-        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            `;
+    let informations = JSON.stringify(content);
     const file = new Blob([informations], { type: 'text/plain' });
     link.href = URL.createObjectURL(file);
-    link.download = "DATAS - Sprint+";
+    link.download = `${user.name}'s datas - Sprint+`;
     link.click();
     URL.revokeObjectURL(link.href);
 }
@@ -58,7 +50,7 @@ function Download() {
                 about datas merging.
             </div>
             <div class="pj-p" >
-            <input type="text" id="dwps"autocomplete="off">
+            <input type="password" id="dwps"autocomplete="off">
             </div>
             <button onclick="DownloadConfirm()">
             Confirm the download
@@ -162,7 +154,7 @@ function DataMergingPasswords() {
                         ${JSON.parse(value).name}
                     </div>
                     <div class="pj-p" >
-                        <input type="text" id="${JSON.parse(value).name}"autocomplete="off">
+                        <input type="password" id="${JSON.parse(value).name}"autocomplete="off">
                     </div>
                 </div>
             `;
@@ -174,7 +166,7 @@ function DataMergingPasswords() {
             Session password:
         </div>
         <div class="pj-p" >
-            <input type="text" id="user"autocomplete="off">
+            <input type="password" id="user"autocomplete="off">
         </div>
     </div>
     `;
@@ -220,7 +212,7 @@ function DataConfirm() {
             
         </div>
         <div class="pj-p">
-        <input type="text" id="datas"autocomplete="off">
+        <input type="password" id="datas"autocomplete="off">
         </div>
         <button onclick="DataMerge()">
             Merge my datas
