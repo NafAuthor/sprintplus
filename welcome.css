@@ -79,3 +79,13 @@
 
     }
 }
+
+
+@media screen and (320px <= width <= 420px) {
+    .infosforuser {
+        display: none;
+    }
+    .SprintCenter {
+
+    }
+}
