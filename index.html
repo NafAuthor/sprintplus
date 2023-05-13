@@ -5,6 +5,10 @@
     <meta name="google-site-verification" content="wtUcjNamkj0qWMEslX60K2mY9X0Hb98Po90VApiGiCA" />
     <link href="https://fonts.cdnfonts.com/css/garet" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script>var exports = {};</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/mongodb@5.3.0/lib/operations/distinct.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +41,8 @@
     <script type="text/javascript" src="Scripts/writing.js"></script>
     <script type="text/javascript" src="Scripts/createPassword.js"></script>
     <script type="text/javascript" src="Scripts/palette.js"></script>
+    <script type="text/javascript" src="Scripts/index.js"></script>
+    <script type="text/javascript" src="Scripts/Sprint modules/projects.js"></script>
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -48,7 +54,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,700,0,0" />
   </head>
   <body>
-    <img id="custombackground" src="">
+    <img id="custombackground" src="Images & Icons/Sprint+ blank.png">
     <div class="customize_app" id="customize_app">
       <div class="ca-b"  onclick="OpenContainer()">
         <span class="material-symbols-outlined">
@@ -59,41 +65,6 @@
     </div>
     <div class="customize_container" id="customize_container">
       <h2>Customize your Sprint+ interface</h2>
-      <div class="cc-b" id="backgroundcustom">
-        <p>
-          Customize Sprint+ with a personalized background image
-        </p>
-        <div class="cc-i">
-          <span class="material-symbols-outlined">
-            image
-          </span>
-          <input type="text" placeholder="Enter a link" oninput="ChangeBackground(this)">
-          <input type="number" id="backgroundopacity" value="0.5" step="0.05" min="0" max="1" oninput="ChangeOpacity(this)">
-        </div>
-      </div>
-      <div class="cc-b" id="backgroundcustomw">
-        <p>
-          Style the width of your image (1% to 100% of the screen)
-        </p>
-        <div class="cc-i">
-          <span class="material-symbols-outlined">
-            fullscreen
-          </span>
-          <input type="range" id="width" min="1" max="100" class="custom-slider" oninput="changeWidth(this)">
-          <p id="widthsize"></p>      
-          </div>
-        </div>
-        <div class="cc-b">
-        <p>
-          Change text color
-        </p>
-        <div class="cc-i">
-          <span class="material-symbols-outlined">
-            palette
-          </span>
-          <input type="color" value="#ffffff" id="textcolor" oninput="ChangeColor(this)">
-        </div>
-      </div>
       <div class="cc-b">
         <p>
           Change dark-blue variant
@@ -130,7 +101,7 @@
           Light mode
         </button>
         <button onclick="ResetCustom()">
-          <img style="height:20px;background-color:var(--main-clear);border-radius:50%;padding:3px" src="Images & Icons/Sprint+ logo blank.png">
+          <img style="height:20px;background-color:var(--main-clear);border-radius:50%;padding:3px" src="Images & Icons/Sprint+ blank.png">
           Normal theme
         </button>
       </div>
@@ -220,10 +191,6 @@
         </div>
   </div>
     <div class="Main" id="Main">
-
-      <div class="img-content">
-        <img src = "Images & Icons/Page d'accueil/Important informations.png" style="height:100%">
-      </div>
       <div class="main-more-content">
         <div class="utilities">
           <div class="featuring">
@@ -285,296 +252,26 @@
         </div>
       </div>
     </div>
+    <div class="info_related">
+      <div class="social">
+        <div class="socialb" onclick="window.open('https://twitter.com/sprintplusapp')">
+          <svg xmlns="http://www.w3.org/2000/svg"  fill="white" width="30" height="30" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+          <p>Sprint+ on Twitter</p>
+        </div>
+        <div class="socialb" onclick="window.open('https://www.instagram.com/sprintplus_app/')">
+          <svg width="30" height="30" fill="white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 6C2 3.79086 3.79086 2 6 2H18C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6ZM6 4C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V6C20 4.89543 19.1046 4 18 4H6ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9ZM7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM17.5 8C18.3284 8 19 7.32843 19 6.5C19 5.67157 18.3284 5 17.5 5C16.6716 5 16 5.67157 16 6.5C16 7.32843 16.6716 8 17.5 8Z"/></svg>
+          <p>Sprint+ on Instagram</p>
+        </div>
+        <div class="socialb" onclick="window.open('https://discord.gg/72tACSk8Jd')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 50 50" width="30" height="30"><path d="M 41.625 10.769531 C 37.644531 7.566406 31.347656 7.023438 31.078125 7.003906 C 30.660156 6.96875 30.261719 7.203125 30.089844 7.589844 C 30.074219 7.613281 29.9375 7.929688 29.785156 8.421875 C 32.417969 8.867188 35.652344 9.761719 38.578125 11.578125 C 39.046875 11.867188 39.191406 12.484375 38.902344 12.953125 C 38.710938 13.261719 38.386719 13.429688 38.050781 13.429688 C 37.871094 13.429688 37.6875 13.378906 37.523438 13.277344 C 32.492188 10.15625 26.210938 10 25 10 C 23.789063 10 17.503906 10.15625 12.476563 13.277344 C 12.007813 13.570313 11.390625 13.425781 11.101563 12.957031 C 10.808594 12.484375 10.953125 11.871094 11.421875 11.578125 C 14.347656 9.765625 17.582031 8.867188 20.214844 8.425781 C 20.0625 7.929688 19.925781 7.617188 19.914063 7.589844 C 19.738281 7.203125 19.34375 6.960938 18.921875 7.003906 C 18.652344 7.023438 12.355469 7.566406 8.320313 10.8125 C 6.214844 12.761719 2 24.152344 2 34 C 2 34.175781 2.046875 34.34375 2.132813 34.496094 C 5.039063 39.605469 12.972656 40.941406 14.78125 41 C 14.789063 41 14.800781 41 14.8125 41 C 15.132813 41 15.433594 40.847656 15.621094 40.589844 L 17.449219 38.074219 C 12.515625 36.800781 9.996094 34.636719 9.851563 34.507813 C 9.4375 34.144531 9.398438 33.511719 9.765625 33.097656 C 10.128906 32.683594 10.761719 32.644531 11.175781 33.007813 C 11.234375 33.0625 15.875 37 25 37 C 34.140625 37 38.78125 33.046875 38.828125 33.007813 C 39.242188 32.648438 39.871094 32.683594 40.238281 33.101563 C 40.601563 33.515625 40.5625 34.144531 40.148438 34.507813 C 40.003906 34.636719 37.484375 36.800781 32.550781 38.074219 L 34.378906 40.589844 C 34.566406 40.847656 34.867188 41 35.1875 41 C 35.199219 41 35.210938 41 35.21875 41 C 37.027344 40.941406 44.960938 39.605469 47.867188 34.496094 C 47.953125 34.34375 48 34.175781 48 34 C 48 24.152344 43.785156 12.761719 41.625 10.769531 Z M 18.5 30 C 16.566406 30 15 28.210938 15 26 C 15 23.789063 16.566406 22 18.5 22 C 20.433594 22 22 23.789063 22 26 C 22 28.210938 20.433594 30 18.5 30 Z M 31.5 30 C 29.566406 30 28 28.210938 28 26 C 28 23.789063 29.566406 22 31.5 22 C 33.433594 22 35 23.789063 35 26 C 35 28.210938 33.433594 30 31.5 30 Z"/></svg>
 
+          <p>Sprint+ on Discord</p>
+        </div>
+      </div>   
+   </div>
     <script>
-      let itemToHelp;
-      const DESANIMATE = [
-            {
-                transform: "translateX(0px)",
-                display:"flex",
-            },
-            {
-                transform: "translateX(-1000px)",
-                display:"none",
-            }
-        ];
-        const DESANIMATETIMING = {
-            duration: 1000,
-            iterations: 1,
-        };
-        const animateboxt = {
-            duration: 1000,
-            iterations: 1,
-            delay:0
-        };
-        function CheckName(el,nb,checkpassword) {
-            if (checkpassword === true) {
-                let mdp1 = document.getElementById('password1').value;
-                let mdp2 = document.getElementById('password2').value;
-                if (mdp1 === mdp2 && mdp1.length>=nb && mdp2.length>=nb) {
-                    document.getElementById('inputviewer1').style.fill="green";
-                    document.getElementById('inputviewer1').innerHTML = `
-                    <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/>
-                    `;
-                    document.getElementById('inputviewer2').style.fill="green";
-                    document.getElementById('inputviewer2').innerHTML = `
-                    <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/>
-                    `;
-                } else {
-                    document.getElementById('inputviewer1').style.fill="red";
-                    document.getElementById('inputviewer1').innerHTML = `
-                    <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
-                    `;
-                    document.getElementById('inputviewer2').style.fill="red";
-                    document.getElementById('inputviewer2').innerHTML = `
-                    <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
-                    `;
-                }
-            } else {
-                if (el.value.length>=nb) {
-                document.getElementById('inputviewer').style.fill="green";
-                document.getElementById('inputviewer').innerHTML = `
-                <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/>
-                `;
-            } else {
-                document.getElementById('inputviewer').style.fill="red";
-                document.getElementById('inputviewer').innerHTML = `
-                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
-                `;
-            }
-            }
-        }
-        let init;
-
-        let USER = {
-          display : {
-            "Enhanced":false,
-            "Projects":{},
-            "Characters":{},
-            "Plots":{}
-          },
-          bio:"",
-          pronun:""
-
-        };
-        function NextBox(c,el) {
-                if (init<=4 ) {
-                    if (init!=1 && el.className  != "boxarrowbefore") {
-                        if (init === 2 && document.getElementById('username').value && document.getElementById('username').value.length>=3) {
-                            USER.name = document.getElementById('username').value;
-
-                        } else {
-                            if (init === 3 && document.getElementById('email').value) {
-                                USER.mail = document.getElementById('email').value;
-                            } else {
-                                if (init === 4 && document.getElementById('password1').value === document.getElementById('password2').value) {
-                                    USER.password = document.getElementById('password1').value;
-                                } else {
-                                    console.log('AAAA');
-                                    return;
-                                }
-                            }
-                        }
-                    } else if (el.className === "boxarrowbefore" && init !=1) {
-                        if (init === 2 && document.getElementById('username').value && document.getElementById('username').value.length>=3) {
-                            if (USER.name) {
-                                document.getElementById('username').value = USER.name;
-                            }
-                        } else {
-                            if (init === 3 && document.getElementById('email').value) {
-                                if (USER.mail) {
-                                    document.getElementById('email').value = USER.name;
-                                }
-                            } else {
-                                if (init === 4 && document.getElementById('password1').value === document.getElementById('password2').value) {
-                                    if (USER.password) {
-                                        document.getElementById('password1').value = USER.password;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (c===false) {
-                        init--;
-                    } else {
-                        init++;
-                    }
-
-                    if (init != 5) {
-                        const animatebox = [
-                          {
-                          transform: "translateX(1000px)",
-                          display:"none",
-                          },
-                          {
-                              transform: "translateX(0px)",
-                              display:"flex",
-                          }
-                      ];
-                      document.getElementById(`box${init}`).animate(animatebox,animateboxt);
-
-                      document.getElementById(`box${init-(c?1:-1)}`).animate(DESANIMATE,DESANIMATETIMING);
-
-
-                      setTimeout(()=> {
-                          document.getElementById(`box${init-(c?1:-1)}`).style.display="none";
-                          document.getElementById(`box${init}`).style.display="flex";
-
-                      },900);
-
-                      document.getElementById('boxarrownext').innerHTML = `
-                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                      width="48px" height="48px" viewBox="0 0 48.000000 48.000000"
-                      preserveAspectRatio="xMidYMid meet">
-
-                      <g transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)"
-                      fill="white" stroke="none" >
-                      <path d="M175 350 c-5 -7 11 -31 41 -61 l48 -49 -49 -50 c-33 -33 -46 -53 -39
-                      -60 6 -6 30 10 69 50 l60 60 -61 61 c-42 42 -64 57 -69 49z"/>
-                      </g>
-                      </svg>
-                      `; 
-                      if (init > 1) {
-                          document.getElementById('boxarrowbefored').style.display="flex";
-                      } else {
-                          document.getElementById('boxarrowbefored').style.display="none";
-                      }
-                    }
-                    if (init === 5 ) {
-                      document.getElementById('boxarrownext').innerHTML = `
-                      <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="white">
-                      <path d="M489 936v-60h291V276H489v-60h291q24 0 42 18t18 42v600q0 24-18 42t-42 18H489Zm-78-185-43-43 102-102H120v-60h348L366 444l43-43 176 176-174 174Z"/>
-                      </svg>
-                      `; 
-                      localStorage.setItem('user',JSON.stringify(USER));
-                      mainMenuShowUp();
-                      document.getElementById('menu').style.display="flex";
-                  }
-                }
-            }
-
       if (!localStorage.getItem('user')) {
-        document.getElementById('menu').style.visibility="hidden";
-        document.getElementById('Main').innerHTML = `
-                  <div class="accountsetup">
-                  <div class="setuptitle">
-                      <img src="Images & Icons/Sprint+ logo blank.png" style="width:20px">
-                      Get started with Sprint+
-                  </div>
-                  <div class="setupcontainer">
-                      <div class="boxarrowbefore" id="boxarrowbefored" style="display:none" onclick="NextBox(false,this)" >
-                          <span id="boxarrowbefore" >
-                              <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="white" viewBox="0 96 960 960" width="48"><path d="M561 816 320 575l241-241 43 43-198 198 198 198-43 43Z"/></svg>
-                          </span>
-                        </div>
-                      <div class="boxContainer">
-                          <div class="box1" id="box1">
-                              <p class="bxt">
-                                  Privacy & Datas*
-                              </p>
-                              <p>
-                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="green" viewBox="0 96 960 960" width="20"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-                                  Datas are stored on your browser only
-                              </p>
-                              <p>
-                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-                                  Datas selling
-                              </p>
-                              <p>
-                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-                                  Datas sharing
-                              </p>
-                              <p>
-                                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-                                  Datas saving on web servers
-                              </p>
-                              <p style="color:#ccc;font-size: 14px" id="basdesc">
-                                  <a href="#">Learn more</a>about our datas management.
-                              </p>
-                          </div>
-                          <div class="box2" id="box2">
-                              <p class="bxt">
-                                  Username*
-                              </p>
-                              <p style="color:#ccc;font-size: 14px;">
-                                  Your username is a public information for people to recognize you when 
-                                  Sprint+ will work with servers. It also allows Sprint+ to send you custom
-                                  messages. A username is currently one-use only.<br>You will be able to change 
-                                  it later, but once Sprint+ servers will be released, you will receive a custom
-                                  key that will be your identifier.
-                              </p>
-                              <div class="inputcontent" >
-                                  <input type="text" placeholder="Enter a name" id="username" oninput="CheckName(this,3)">
-                                  <svg id="inputviewer" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25"></svg>
-
-                              </div>
-                              <p style="color:#ccc;font-size: 14px" id="basdesc">
-                                  <a href="#">Learn more</a>about what's coming regarding usernames.
-                              </p>
-                          </div>
-                          <div class="box3" id="box3">
-                              <p class="bxt">
-                                  E-Mail adress*
-                              </p>
-                              <p style="color:#ccc;font-size: 14px;">
-                                  Your email adress is at the moment useless. However, it will be useful 
-                                  for upcoming updates. You will be able to change it later.
-                              </p>
-                              <div class="inputcontent">
-                                  <input type="text" placeholder="Enter an email adress" id="email">
-                                  <svg id="inputviewer" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25"></svg>
-
-                              </div>
-                              <p style="color:#ccc;font-size: 14px" id="basdesc">
-                                  <a href="#">Learn more</a>about what's coming regarding emails.
-                              </p>
-                          </div>
-                          <div class="box4" id="box4">
-                              <p class="bxt">
-                                  Password*
-                              </p>
-                              <p style="color:#ccc;font-size: 14px;">
-                                  Enter a secure password to enforce your account. You won't be able to 
-                                  find your password with your email adress for the moment. You will still be 
-                                  able to modify it. Write it somewhere, or keep it in mind.
-                              </p>
-                              <div class="inputcontent"  id="inputpassword">
-                                  <div class="input">
-                                      <input type="password" id="password1" placeholder="Enter a password - 9 characters minimum" oninput="CheckName(this,10,true)">
-                                      <svg id="inputviewer1" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25">
-
-                                      </svg>
-                                  </div>
-                                  <div class="input">
-                                      <input type="password" id="password2" placeholder="Enter the same password" oninput="CheckName(this,10,true)">
-                                      <svg id="inputviewer2" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25">
-
-                                      </svg>    
-                                  </div>
-                              </div>
-                              <p style="color:#ccc;font-size: 14px" id="basdesc">
-                                  <a href="#">Learn more</a>about passwords.
-                              </p>
-                          </div>
-                      </div>
-                      <div class="boxarrownext" onclick="NextBox(true,this)">
-                        <span id="boxarrownext">
-                          <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="white" viewBox="0 96 960 960" width="48"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
-
-                        </span>
-                      </div>
-
-                  </div>
-              </div>
-        `;
-        init = 1;
-        for (let i = 1; i < 5;i++) {
-            if (i!=init) {
-                document.getElementById(`box${i}`).style.display="none";
-            }
-
-        }                
-        document.getElementById('customize_app').style.display="none";
+        window.location='setup.html';
       } else {
         mainMenuShowUp()
       }
@@ -607,7 +304,7 @@
     --main-background-color: #19284d;
         */
         if (!user.background) {
-          user.background="Images & Icons/Sprint+ logo blank.png";
+          user.background="Images & Icons/Sprint+ blank.png";
         }
         if (!user.colorcustom) {
           user.colorcustom="white";
@@ -623,24 +320,8 @@
           if (user.backgroundopacity) {
               opacity = user.backgroundopacity;
           }
-          document.getElementById('custombackground').src = user.background;
-          document.getElementById('custombackground').style=`
-                  position:absolute;
-                  top:0;
-                  left:0;
-                  bottom:0;
-                  right:0;
-                  margin:auto;
-                  width:${user.backgroundwidth+"%"};
-                  opacity:${opacity};
-                  z-index:0;
-          `;
-        document.getElementById('width').value = user.backgroundwidth;
-        document.getElementById('widthsize').innerHTML = user.backgroundwidth+"%";
-        document.getElementById('textcolor').value = user.colorcustom;
         document.getElementById('darkvariant').value = user.darkvariant;
         document.getElementById('lightvariant').value = user.lightvariant;
-        document.getElementById('backgroundopacity').value = opacity;
         document.documentElement.style.setProperty('--main-blue-dark', user.darkvariant);
         document.documentElement.style.setProperty('--main-clear', user.lightvariant);
 
