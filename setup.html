@@ -1,16 +1,18 @@
 <html>
   <head>
-    <title>Sprint+</title>
+    <title>Sprint+ home</title>
     <link rel="icon" href="Images & Icons/Logo.ico">
     <meta name="google-site-verification" content="wtUcjNamkj0qWMEslX60K2mY9X0Hb98Po90VApiGiCA" />
     <link href="https://fonts.cdnfonts.com/css/garet" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@500&family=Encode+Sans+SC:wght@600&family=Fira+Sans:wght@500&family=Heebo&family=Josefin+Sans:wght@600&family=Kanit:wght@300&family=Lato:wght@700&family=Poppins&family=Roboto:wght@300;400&family=Rubik+Distressed&family=Source+Sans+Pro&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="setup.css">
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -19,445 +21,272 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Encode+Sans+SC:wght@600&family=Fira+Sans:wght@500&family=Kanit:wght@300&family=Poppins&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,700,0,0" />
-    <style>
-        :root {
-            --main-blue-dark: #19284d;
-        --main-clear:#1d2d55;
-        --main-background-color: #19284d;
-        }
-        body {
-            color:black;
-            width: 100%;
-            height: 100%;
-            color:white;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--main-blue-dark);
-            font-family: 'Bebas Neue', cursive;
-            font-family: 'Comfortaa', cursive;
-            font-family: 'Encode Sans SC', sans-serif;
-            font-family: 'Fira Sans', sans-serif;
-            font-family: 'Heebo', sans-serif;
-            font-family: 'Josefin Sans', sans-serif;
-            font-family: 'Kanit', sans-serif;
-            font-family: 'Lato', sans-serif;
-            font-family: 'Poppins', sans-serif;
-            font-family: 'Roboto', sans-serif;
-            font-family: 'Rubik Distressed', cursive;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-family: 'Ubuntu', sans-serif;
-        }
-        .accountsetup {
-            border: 2px solid var(--main-blue-dark);
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            height: 300px;
-            width: 60%;
-            margin:auto;
-            gap:20px;
-
-
-        }
-        .setuptitle {
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            flex-direction: row;
-            gap:10px;
-        }
-        .setupcontainer {
-            width: 95%;
-            height: 80%;
-            border: 2px solid var(--main-blue-dark);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: row;
-            position:relative;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .boxarrownext, .boxarrowbefore {
-            width: 10%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            cursor: pointer;
-            border: 2px solid var(--main-blue-dark);
-            border-style: none none none solid;
-            border-radius: 0px 10px 10px 0px;
-        }
-        .boxarrowbefore {
-            border-style: none solid none none;
-            border-radius:10px 0px 0px 10px;
-        }
-        .boxarrownext:hover,.boxarrowbefore:hover {
-            background-color: rgba(255,255,255,0.05);
-        }
-        .boxContainer {
-            width: 80%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-
-        .boxContainer div:not(.inputcontent) {
-            width: 100%;
-            height: 100%;
-            
-            padding: 5px;
-            padding-left: 10px;
-            padding-right: 10px;
-            display: flex;
-            flex-direction: column;
-            gap:5px;
-        }
-        .boxContainer div p {
-            width: 95%;
-        }
-        body p {
-            margin:unset;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 5px;
-        }
-        body a {
-            color:#ccc;
-            padding: none;
-            width: fit-content;
-        }
-        .bxt {
-            font-weight: bold;
-            padding-bottom: 5px;
-        }
-        .inputcontent,.input {
-            width: 70% !important;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            gap:5px;
-            border: 2px solid white;
-            border-style: none none solid none;
-            height: 30px;
-            transition: 0.5s;
-            margin-left:auto;
-            margin-right: auto;
-            margin-top: auto;
-            position:relative;
-        }
-        .input {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap:5px;
-            width: 100%;
-            padding: 5px !important;
-            position:relative;
-        }
-        .input svg, #inputviewer {
-            position:absolute;
-            right:0;
-            top:0;
-            bottom:0;
-            margin:auto;
-        }
-
-        .inputcontent input::placeholder {
-            font-style: italic;
-            color:#ccc;
-        }
-        .inputcontent input {
-            width: 100%;
-            border:none;
-            background-color: var(--main-blue-dark);
-            height: 100%;
-            color:white;
-            outline:none;
-        }
-        .input input {
-            width: 80%;
-            margin-right:auto;
-
-        }
-
-
-        #basdesc {
-            margin-top: auto;
-            margin-bottom: 20px;
-        }
-        #inputpassword {
-            margin-bottom: 0px;
-            height: fit-content;
-            gap:5px;
-            border:none;
-            width:80%;
-        }
-
-        .menu svg {
-            fill:white;
-            width:25px;
-            height: 25px;
-        }
-        .menu {
-            position:fixed;
-            width: 100%;
-            background-color: var(--main-blue-dark);
-            padding: 10px;
-            border-radius: 0px;
-            left:0px;
-            gap:10px;
-            height: 50px;
-            top:0px;
-            z-index:800;
-            display: flex;
-            flex-direction: row;
-        }       
-        .menuContainer {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            gap:10px;
-            justify-content: center;
-            align-items: center;
-        }
-        .MC-i {
-            position:relative;
-            width: 110px;
-            height: 30px;
-            background-color: var(--main-clear);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .MC-i-t {
-            display: flex;
-            flex-direction: row;
-            gap:10px;
-            align-items: center;
-        }
-        .MC-i-d {
-            position:absolute;
-            padding: 5px;
-            border-radius: 5px;
-            width: fit-content;
-            bottom:-30;
-            left:0;right:0;
-            margin:auto;
-            display: none;
-            background-color: var(--main-clear);
-            font-size: 14px;
-            color:rgba(255,255,255,0.7);
-            white-space: nowrap;
-            display: none;
-        }
-        .MC-i:hover {
-            background-color: rgba(255,255,255,0.05);
-        }
-   
-        </style>    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,700,0,0" />  
     </head>
   <body>
-    <div class="menu">
-        <div class="menuContainer">
-            <div class="MC-i" onclick="Menu()">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25"><path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/></svg>
-                    Home
-                </div>
-                <div class="MC-i-d">
-                    Home page
-                </div>
-            </div>  
-            <div class="MC-i" onclick="ProjectShowUp()">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
-                    Projects
-                </div>
-                <div class="MC-i-d">
-                    Manage your projects
-                </div>
-            </div>  
-            <div class="MC-i" onclick="OpenEditor()">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M200 936V271q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480 816 200 936Zm60-91 220-93 220 93V271H260v574Zm0-574h440-440Z"/></svg>
-                    Write
-                </div>
-                <div class="MC-i-d">
-                    Write your stories
-                </div>
-            </div>  
-            <div class="MC-i">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M368 976V438q-95-20-152.5-85.5T158 200h60q0 78 60.5 131T426 384h100q38 0 56 6.5t46 30.5l184 172-43 43-185-174v514h-60V721h-96v255h-60Zm108.08-654q-30.08 0-51.58-21.42-21.5-21.421-21.5-51.5 0-30.08 21.42-51.58 21.421-21.5 51.5-21.5 30.08 0 51.58 21.42 21.5 21.421 21.5 51.5 0 30.08-21.42 51.58-21.421 21.5-51.5 21.5Z"/></svg>
-                    Editor
-                </div>
-                <div class="MC-i-d">
-                    Manage your characters
-                </div>
-            </div>  
-
-            <div class="MC-i">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M480 976q-27 0-47.5-13T406 927h-14q-24 0-42-18t-18-42V724q-66-43-104-110t-38-148q0-121 84.5-205.5T480 176q121 0 205.5 84.5T770 466q0 81-38 148T628 724v143q0 24-18 42t-42 18h-14q-6 23-26.5 36T480 976Zm-88-109h176v-44H392v44Zm0-84h176v-40H392v40Zm-9-100h74V546l-92-92 31-31 84 84 84-84 31 31-92 92v137h74q60-28 96.5-87T710 466q0-97-66.5-163.5T480 236q-97 0-163.5 66.5T250 466q0 71 36.5 130t96.5 87Zm97-176Zm0-48Z"/></svg>
-                    Ploting
-                </div>
-                <div class="MC-i-d">
-                    Plot your stories
-                </div>
-            </div>   
-
-            <div class="MC-i" onclick="GoalsShowUp()">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M160 896V576h140v320H160Zm250 0V256h140v640H410Zm250 0V456h140v440H660Z"/></svg>
-                    Progress
-                </div>
-                <div class="MC-i-d">
-                    Manage your progress
-                </div>
-            </div>  
-            <div class="MC-i" onclick="ShowUpToDo()">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m434 801 229-229-39-39-190 190-103-103-39 39 142 142ZM220 976q-24 0-42-18t-18-42V236q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554V236H220v680h520V422H551ZM220 236v186-186 680-680Z"/></svg>
-                    To-Do
-                </div>
-                <div class="MC-i-d">
-                    Work time!
-                </div>
-            </div>  
-            <div class="MC-i" onclick="OpenInfos()">
-                <div class="MC-i-t">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M222 801q63-44 125-67.5T480 710q71 0 133.5 23.5T739 801q44-54 62.5-109T820 576q0-145-97.5-242.5T480 236q-145 0-242.5 97.5T140 576q0 61 19 116t63 109Zm257.814-195Q422 606 382.5 566.314q-39.5-39.686-39.5-97.5t39.686-97.314q39.686-39.5 97.5-39.5t97.314 39.686q39.5 39.686 39.5 97.5T577.314 566.5q-39.686 39.5-97.5 39.5Zm.654 370Q398 976 325 944.5q-73-31.5-127.5-86t-86-127.266Q80 658.468 80 575.734T111.5 420.5q31.5-72.5 86-127t127.266-86q72.766-31.5 155.5-31.5T635.5 207.5q72.5 31.5 127 86t86 127.032q31.5 72.532 31.5 155T848.5 731q-31.5 73-86 127.5t-127.032 86q-72.532 31.5-155 31.5ZM480 916q55 0 107.5-16T691 844q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480 916Zm0-370q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0-77Zm0 374Z"/></svg>
-                    Account
-                </div>
-                <div class="MC-i-d">
-                    Spooky place :O
-                </div>
-            </div>  
+    <img id="NoSelectIMG" src="../Images & Icons/Designs/Design sans titre.png">
+    <div class="ArrowUnder" onclick="document.getElementById('viewinfos').scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });;">
+        <p>Our tools</p>
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M480 711 240 471l43-43 197 198 197-197 43 43-240 239Z"/></svg>
+    </div>
+    <div class="SprintHeader">
+        <img src="Images & Icons/Sprint+ blank.png" id="SprintICO">
+        <div class="HeaderTitle">
+            <p style="font-size:40px;">Sprint+</p>
+            <div style="height: 30px;width:fit-content;overflow:hidden;">
+                <p id="contentcustom" style="font-size: 20px;color:var(--main-colorful)">A writing home</p>
+            </div>
         </div>
     </div>
-    <div class="accountsetup">
-        <div class="setuptitle">
-            <img src="Images & Icons/Sprint+ logo blank.png" style="width:20px">
-            Get started with Sprint+
-        </div>
-        <div class="setupcontainer">
-            <div class="boxarrowbefore" id="boxarrowbefored" style="display:none" onclick="NextBox(false,this)" >
-                <span id="boxarrowbefore" >
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="white" viewBox="0 96 960 960" width="48"><path d="M561 816 320 575l241-241 43 43-198 198 198 198-43 43Z"/></svg>
-                </span>
-              </div>
-            <div class="boxContainer">
-                <div class="box1" id="box1">
-                    <p class="bxt">
-                        Privacy & Datas*
-                    </p>
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="green" viewBox="0 96 960 960" width="20"><path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-                        Datas are stored on your browser only
-                    </p>
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-                        Datas selling
-                    </p>
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-                        Datas sharing
-                    </p>
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" fill="red" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-                        Datas saving on web servers
-                    </p>
-                    <p style="color:#ccc;font-size: 14px" id="basdesc">
-                        <a href="#">Learn more</a>about our datas management.
-                    </p>
+    <div class="SprintCenter">
+        <div class="gridaction">
+            <div class="a">
+                <div class="img">
+                    <img src="Images & Icons/Designs/Booster.png" style="width:50px;height:50px">
                 </div>
-                <div class="box2" id="box2">
-                    <p class="bxt">
-                        Username*
-                    </p>
-                    <p style="color:#ccc;font-size: 14px;">
-                        Your username is a public information for people to recognize you when 
-                        Sprint+ will work with servers. It also allows Sprint+ to send you custom
-                        messages. A username is currently one-use only.<br>You will be able to change 
-                        it later, but once Sprint+ servers will be released, you will receive a custom
-                        key that will be your identifier.
-                    </p>
-                    <div class="inputcontent" >
-                        <input type="text" placeholder="Enter a name" id="username" oninput="CheckName(this,3)">
-                        <svg id="inputviewer" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25"></svg>
-
-                    </div>
-                    <p style="color:#ccc;font-size: 14px" id="basdesc">
-                        <a href="#">Learn more</a>about what's coming regarding usernames.
-                    </p>
+                <div class="title">
+                    Sign up
                 </div>
-                <div class="box3" id="box3">
-                    <p class="bxt">
-                        E-Mail adress*
-                    </p>
-                    <p style="color:#ccc;font-size: 14px;">
-                        Your email adress is at the moment useless. However, it will be useful 
-                        for upcoming updates. You will be able to change it later.
-                    </p>
-                    <div class="inputcontent">
-                        <input type="text" placeholder="Enter an email adress" id="email">
-                        <svg id="inputviewer" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25"></svg>
-
-                    </div>
-                    <p style="color:#ccc;font-size: 14px" id="basdesc">
-                        <a href="#">Learn more</a>about what's coming regarding emails.
-                    </p>
+                <div class="descbt">
+                    Access all functionnalities Sprint+ can offer you.<br>
+                    Our team cannot see any of your datas.<br>
+                    We heavily suggest you to join one of our social medias 
+                    to keep tuned about privacy & news.
                 </div>
-                <div class="box4" id="box4">
-                    <p class="bxt">
-                        Password*
-                    </p>
-                    <p style="color:#ccc;font-size: 14px;">
-                        Enter a secure password to enforce your account. You won't be able to 
-                        find your password with your email adress for the moment. You will still be 
-                        able to modify it. Write it somewhere, or keep it in mind.
-                    </p>
-                    <div class="inputcontent"  id="inputpassword">
-                        <div class="input">
-                            <input type="password" id="password1" placeholder="Enter a password - 9 characters minimum" oninput="CheckName(this,10,true)">
-                            <svg id="inputviewer1" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25">
-
-                            </svg>
-                        </div>
-                        <div class="input">
-                            <input type="password" id="password2" placeholder="Enter the same password" oninput="CheckName(this,10,true)">
-                            <svg id="inputviewer2" xmlns="http://www.w3.org/2000/svg" height="25"viewBox="0 96 960 960" width="25">
-
-                            </svg>    
-                        </div>
-                    </div>
-                    <p style="color:#ccc;font-size: 14px" id="basdesc">
-                        <a href="#">Learn more</a>about passwords.
-                    </p>
+                <div class="button" onclick="AccountSetUp('flex')">
+                    Connect
                 </div>
             </div>
-            <div class="boxarrownext" onclick="NextBox(true,this)">
-              <span id="boxarrownext">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48" fill="white" viewBox="0 96 960 960" width="48"><path d="m375 816-43-43 198-198-198-198 43-43 241 241-241 241Z"/></svg>
-
-              </span>
+            <div class="a">
+                <div class="img" title="SVG Icon by Garuda Technology">
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg width="50px" height="50px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint0_radial_87_7153)"/>
+                    <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint1_radial_87_7153)"/>
+                    <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint2_radial_87_7153)"/>
+                    <path d="M23 10.5C23 11.3284 22.3284 12 21.5 12C20.6716 12 20 11.3284 20 10.5C20 9.67157 20.6716 9 21.5 9C22.3284 9 23 9.67157 23 10.5Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21ZM16 19C17.6569 19 19 17.6569 19 16C19 14.3431 17.6569 13 16 13C14.3431 13 13 14.3431 13 16C13 17.6569 14.3431 19 16 19Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6 15.6C6 12.2397 6 10.5595 6.65396 9.27606C7.2292 8.14708 8.14708 7.2292 9.27606 6.65396C10.5595 6 12.2397 6 15.6 6H16.4C19.7603 6 21.4405 6 22.7239 6.65396C23.8529 7.2292 24.7708 8.14708 25.346 9.27606C26 10.5595 26 12.2397 26 15.6V16.4C26 19.7603 26 21.4405 25.346 22.7239C24.7708 23.8529 23.8529 24.7708 22.7239 25.346C21.4405 26 19.7603 26 16.4 26H15.6C12.2397 26 10.5595 26 9.27606 25.346C8.14708 24.7708 7.2292 23.8529 6.65396 22.7239C6 21.4405 6 19.7603 6 16.4V15.6ZM15.6 8H16.4C18.1132 8 19.2777 8.00156 20.1779 8.0751C21.0548 8.14674 21.5032 8.27659 21.816 8.43597C22.5686 8.81947 23.1805 9.43139 23.564 10.184C23.7234 10.4968 23.8533 10.9452 23.9249 11.8221C23.9984 12.7223 24 13.8868 24 15.6V16.4C24 18.1132 23.9984 19.2777 23.9249 20.1779C23.8533 21.0548 23.7234 21.5032 23.564 21.816C23.1805 22.5686 22.5686 23.1805 21.816 23.564C21.5032 23.7234 21.0548 23.8533 20.1779 23.9249C19.2777 23.9984 18.1132 24 16.4 24H15.6C13.8868 24 12.7223 23.9984 11.8221 23.9249C10.9452 23.8533 10.4968 23.7234 10.184 23.564C9.43139 23.1805 8.81947 22.5686 8.43597 21.816C8.27659 21.5032 8.14674 21.0548 8.0751 20.1779C8.00156 19.2777 8 18.1132 8 16.4V15.6C8 13.8868 8.00156 12.7223 8.0751 11.8221C8.14674 10.9452 8.27659 10.4968 8.43597 10.184C8.81947 9.43139 9.43139 8.81947 10.184 8.43597C10.4968 8.27659 10.9452 8.14674 11.8221 8.0751C12.7223 8.00156 13.8868 8 15.6 8Z" fill="white"/>
+                    <defs>
+                    <radialGradient id="paint0_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 23) rotate(-55.3758) scale(25.5196)">
+                    <stop stop-color="#B13589"/>
+                    <stop offset="0.79309" stop-color="#C62F94"/>
+                    <stop offset="1" stop-color="#8A3AC8"/>
+                    </radialGradient>
+                    <radialGradient id="paint1_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11 31) rotate(-65.1363) scale(22.5942)">
+                    <stop stop-color="#E0E8B7"/>
+                    <stop offset="0.444662" stop-color="#FB8A2E"/>
+                    <stop offset="0.71474" stop-color="#E2425C"/>
+                    <stop offset="1" stop-color="#E2425C" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient id="paint2_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.500002 3) rotate(-8.1301) scale(38.8909 8.31836)">
+                    <stop offset="0.156701" stop-color="#406ADC"/>
+                    <stop offset="0.467799" stop-color="#6A45BE"/>
+                    <stop offset="1" stop-color="#6A45BE" stop-opacity="0"/>
+                    </radialGradient>
+                    </defs>
+                    </svg>
+                </div>
+                <div class="title">
+                    Instagram
+                </div>
+                <div class="descbt">
+                    Stay tuned for updates, regular sneak pics, and legal informations related to 
+                    Sprint+.
+                </div>
+                <div class="button" onclick="window.open('https://www.instagram.com/sprintplus_app/')">
+                    Open in browser
+                </div>
             </div>
+            <div class="a">
+                <div class="img" title="SVG Icon by Garuda Technology">
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg width="50px" height="50px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 11.6C2 8.23969 2 6.55953 2.65396 5.27606C3.2292 4.14708 4.14708 3.2292 5.27606 2.65396C6.55953 2 8.23969 2 11.6 2H20.4C23.7603 2 25.4405 2 26.7239 2.65396C27.8529 3.2292 28.7708 4.14708 29.346 5.27606C30 6.55953 30 8.23969 30 11.6V20.4C30 23.7603 30 25.4405 29.346 26.7239C28.7708 27.8529 27.8529 28.7708 26.7239 29.346C25.4405 30 23.7603 30 20.4 30H11.6C8.23969 30 6.55953 30 5.27606 29.346C4.14708 28.7708 3.2292 27.8529 2.65396 26.7239C2 25.4405 2 23.7603 2 20.4V11.6Z" />
+                    <path d="M23.6361 9.33998C22.212 8.71399 20.6892 8.25903 19.0973 8C18.9018 8.33209 18.6734 8.77875 18.5159 9.13408C16.8236 8.89498 15.1469 8.89498 13.4857 9.13408C13.3283 8.77875 13.0946 8.33209 12.8974 8C11.3037 8.25903 9.77927 8.71565 8.35518 9.3433C5.48276 13.4213 4.70409 17.3981 5.09342 21.3184C6.99856 22.6551 8.84487 23.467 10.66 23.9983C11.1082 23.4189 11.5079 22.8029 11.8523 22.1536C11.1964 21.9195 10.5683 21.6306 9.9748 21.2951C10.1323 21.1856 10.2863 21.071 10.4351 20.9531C14.0551 22.5438 17.9881 22.5438 21.5649 20.9531C21.7154 21.071 21.8694 21.1856 22.0251 21.2951C21.4299 21.6322 20.8 21.9211 20.1442 22.1553C20.4885 22.8029 20.8865 23.4205 21.3364 24C23.1533 23.4687 25.0013 22.6567 26.9065 21.3184C27.3633 16.7738 26.1261 12.8335 23.6361 9.33998ZM12.3454 18.9075C11.2587 18.9075 10.3676 17.9543 10.3676 16.7937C10.3676 15.6331 11.2397 14.6783 12.3454 14.6783C13.4511 14.6783 14.3422 15.6314 14.3232 16.7937C14.325 17.9543 13.4511 18.9075 12.3454 18.9075ZM19.6545 18.9075C18.5678 18.9075 17.6767 17.9543 17.6767 16.7937C17.6767 15.6331 18.5488 14.6783 19.6545 14.6783C20.7602 14.6783 21.6514 15.6314 21.6323 16.7937C21.6323 17.9543 20.7602 18.9075 19.6545 18.9075Z" fill="#5865F2"/>
+                    </svg>
+                </div>
+                <div class="title">
+                    Discord
+                </div>
+                <div class="descbt">
+                    This Discord server is the only official Sprint+ Discord server, providing a place 
+                    for help, writing, and sneak pics.<br>This server also is a way for you to contact
+                    our team.
+                </div>
+                <div class="button" onclick="window.open('https://discord.gg/72tACSk8Jd')">
+                    Join
+                </div>
+            </div>
+            <div class="a">
+                <div class="img" title="SVG Icon by Garuda Technology">
+                    <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 50 50" width="50px" height="50px">    <path d="M17.791,46.836C18.502,46.53,19,45.823,19,45v-5.4c0-0.197,0.016-0.402,0.041-0.61C19.027,38.994,19.014,38.997,19,39 c0,0-3,0-3.6,0c-1.5,0-2.8-0.6-3.4-1.8c-0.7-1.3-1-3.5-2.8-4.7C8.9,32.3,9.1,32,9.7,32c0.6,0.1,1.9,0.9,2.7,2c0.9,1.1,1.8,2,3.4,2 c2.487,0,3.82-0.125,4.622-0.555C21.356,34.056,22.649,33,24,33v-0.025c-5.668-0.182-9.289-2.066-10.975-4.975 c-3.665,0.042-6.856,0.405-8.677,0.707c-0.058-0.327-0.108-0.656-0.151-0.987c1.797-0.296,4.843-0.647,8.345-0.714 c-0.112-0.276-0.209-0.559-0.291-0.849c-3.511-0.178-6.541-0.039-8.187,0.097c-0.02-0.332-0.047-0.663-0.051-0.999 c1.649-0.135,4.597-0.27,8.018-0.111c-0.079-0.5-0.13-1.011-0.13-1.543c0-1.7,0.6-3.5,1.7-5c-0.5-1.7-1.2-5.3,0.2-6.6 c2.7,0,4.6,1.3,5.5,2.1C21,13.4,22.9,13,25,13s4,0.4,5.6,1.1c0.9-0.8,2.8-2.1,5.5-2.1c1.5,1.4,0.7,5,0.2,6.6c1.1,1.5,1.7,3.2,1.6,5 c0,0.484-0.045,0.951-0.11,1.409c3.499-0.172,6.527-0.034,8.204,0.102c-0.002,0.337-0.033,0.666-0.051,0.999 c-1.671-0.138-4.775-0.28-8.359-0.089c-0.089,0.336-0.197,0.663-0.325,0.98c3.546,0.046,6.665,0.389,8.548,0.689 c-0.043,0.332-0.093,0.661-0.151,0.987c-1.912-0.306-5.171-0.664-8.879-0.682C35.112,30.873,31.557,32.75,26,32.969V33 c2.6,0,5,3.9,5,6.6V45c0,0.823,0.498,1.53,1.209,1.836C41.37,43.804,48,35.164,48,25C48,12.318,37.683,2,25,2S2,12.318,2,25 C2,35.164,8.63,43.804,17.791,46.836z"/></svg>
 
+                </div>
+                <div class="title">
+                    Source code
+                </div>
+                <div class="descbt">
+                    Sprint+ source code currently is available on Github.<br>
+                    It can be removed anytime, and will not be available anymore when
+                    the server connection will be established.
+                </div>
+                <div class="button" onclick="window.open('https://github.com/NafAuthor/sprintplus')">
+                    Lookup
+                </div>
+            </div>
         </div>
     </div>
+    <div class="infosforuser" id="viewinfos">
+        <div class="fromright" id="from">
+            <img src="Images & Icons/ProjectViewWelcome.PNG">
+            <div class="infodesc">
+                <p id="desctitle">A unique way of creating</p>
+                <p id="desc">Discover unique tools for you to customize
+                    your project just as you want it to be.<br>Unique, simple,
+                    beautiful: we've got your back.
+                </p>
+            </div>
+        </div>
+        <div class="fromleft" id="from">
+            <img src="Images & Icons/WelcomeStatsView.PNG">
+            <div class="infodesc">
+                <p id="desctitle">Tons of stats and graphs</p>
+                <p id="desc">
+                    We know you want to do your best while writing.<br>
+                    The best way to see your progress in less than three clicks!<br>
+                    Discover a large amount of stats and graphs related to your objectives.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="MainCache" id="MainCache" style="display:none">
+        <div class="Register">
+            <div class="registerinformations">
+                <div class="close" onclick="AccountSetUp('none')">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                </div>
+                <div class="case">
+                    <div class="casename">
+                        Username
+                    </div>
+                    <div class="caseinfos">
+                        Your username is a public information displayed on all Sprint+ products.<br>
+                        The username is not unique and must follow our guidelines.
+                    </div>
+                    <div class="caseinput">
+                        <input type="text"  id="name" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" >
+                    </div>
+                </div>
+                <div class="case">
+                    <div class="casename">
+                        Email
+                    </div>
+                    <div class="caseinfos">
+                    </div>
+                    <div class="caseinput">
+                        <input type="text" id="mail" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" >
+                    </div>
+                </div>
+                <div class="case">
+                    <div class="casename" readonly onfocus="this.removeAttribute('readonly');" >
+                        Password
+                    </div>
+                    <div class="caseinfos">
+                        You will not be able to view your password again: make sure to note it somewhere
+                        or to save it.<br>Our services are not able to help you recover it for the moment.
+                    </div>
+                    <div class="caseinput">
+                        <input type="Password"  id="password" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');" >
+                    </div>
+                </div>
+                <div class="accessbutton" onclick="LogIn()">
+                    Access Sprint+ services
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
+        function AccountSetUp(t) {
+            document.getElementById('MainCache').style.display=t;
+        }
+
+        function LogIn() {
+            let user = {
+                name : document.getElementById('name').value,
+                email : document.getElementById('mail').value,
+                password : document.getElementById('password').value,
+                display : {
+                    "Enhanced":false,
+                    "Projects":{},
+                    "Characters":{},
+                    "Plots":{}
+                },
+                bio:"",
+                pronun:""
+            }
+            console.log(user)
+            if (user.name.split('').length >= 3 && user.email.includes('@') && user.password.split('').length >= 9) {
+                localStorage.setItem('user',JSON.stringify(user));
+                window.location='welcome.html';
+            }
+        }
+
+
+        let S = [
+            "A new way to create your projects",
+            "A writing revolution",
+            "Tools here and there",
+            "Explore a world of words",
+            "A writing home",
+            "A listening team",
+            "Constant development",
+            "Enhance your creativity"
+        ]
+        setInterval(() => {
+            let s;
+            let Pick = function() {
+                console.log('call')
+                let _s = S[Math.floor(Math.random() * S.length)];
+                if (_s === document.getElementById('contentcustom').innerHTML) {
+                    Pick();
+                } else {
+                    s = _s;
+                }
+            }
+            Pick()
+            document.getElementById('contentcustom').animate(
+                [
+                    {transform:'translateY(0px)'},
+                    {transform:'translateY(-60px)',visibility:"hidden"},
+                ],
+                {
+                    duration:500,
+                    iterations:1
+                }
+            )
+            setTimeout(() => {
+                document.getElementById('contentcustom').style.visibility  = "hidden";
+            }, 450);
+            setTimeout(() => {
+                document.getElementById('contentcustom').innerHTML = s;
+                document.getElementById('contentcustom').style.transform  = "translateY(60)";
+                document.getElementById('contentcustom').style.visibility  = "visible";
+                document.getElementById('contentcustom').animate(
+                [
+                    {transform:'translateY(60px)'},
+                    {transform:'translateY(0px)'},
+                ],
+                {
+                    duration:500,
+                    iterations:1
+                }
+            )
+            }, 500);
+        }, 5*1000);
+
         const DESANIMATE = [
             {
                 transform: "translateX(0px)",
@@ -515,111 +344,8 @@
             }
         }
 
-        let init = 1;
-        for (let i = 1; i < 5;i++) {
-            if (i!=init) {
-                document.getElementById(`box${i}`).style.display="none";
-            }
-
-        }                
-
-        let USER = {};
-        let finished = false;
-        function NextBox(c,el) {
-            if (finished === false) {
-                if (init<=4 ) {
-                    if (init!=1 && el.className  != "boxarrowbefore") {
-                        if (init === 2 && document.getElementById('username').value && document.getElementById('username').value.length>=3) {
-                            USER.name = document.getElementById('username').value;
-
-                        } else {
-                            if (init === 3 && document.getElementById('email').value) {
-                                USER.mail = document.getElementById('email').value;
-                            } else {
-                                if (init === 4 && document.getElementById('password1').value === document.getElementById('password2').value) {
-                                    USER.password = document.getElementById('password1').value;
-                                } else {
-                                    console.log('AAAA');
-                                    return;
-                                }
-                            }
-                        }
-                    } else if (el.className === "boxarrowbefore" && init !=1) {
-                        if (init === 2 && document.getElementById('username').value && document.getElementById('username').value.length>=3) {
-                            if (USER.name) {
-                                document.getElementById('username').value = USER.name;
-                            }
-                        } else {
-                            if (init === 3 && document.getElementById('email').value) {
-                                if (USER.mail) {
-                                    document.getElementById('email').value = USER.name;
-                                }
-                            } else {
-                                if (init === 4 && document.getElementById('password1').value === document.getElementById('password2').value) {
-                                    if (USER.password) {
-                                        document.getElementById('password1').value = USER.password;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (c===false) {
-                        init--;
-                    } else {
-                        init++;
-                    }
-
-                    const animatebox = [
-                        {
-                        transform: "translateX(1000px)",
-                        display:"none",
-                        },
-                        {
-                            transform: "translateX(0px)",
-                            display:"flex",
-                        }
-                    ];
-                    document.getElementById(`box${init}`).animate(animatebox,animateboxt);
-
-                    document.getElementById(`box${init-(c?1:-1)}`).animate(DESANIMATE,DESANIMATETIMING);
-
-
-                    setTimeout(()=> {
-                        document.getElementById(`box${init-(c?1:-1)}`).style.display="none";
-                        document.getElementById(`box${init}`).style.display="flex";
-
-                    },900);
-
-                    document.getElementById('boxarrownext').innerHTML = `
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                    width="48px" height="48px" viewBox="0 0 48.000000 48.000000"
-                    preserveAspectRatio="xMidYMid meet">
-
-                    <g transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)"
-                    fill="white" stroke="none" >
-                    <path d="M175 350 c-5 -7 11 -31 41 -61 l48 -49 -49 -50 c-33 -33 -46 -53 -39
-                    -60 6 -6 30 10 69 50 l60 60 -61 61 c-42 42 -64 57 -69 49z"/>
-                    </g>
-                    </svg>
-                    `; 
-                    if (init > 1) {
-                        document.getElementById('boxarrowbefored').style.display="flex";
-                    } else {
-                        document.getElementById('boxarrowbefored').style.display="none";
-                    }
-                }
-                if (init === 4 ) {
-                    document.getElementById('boxarrownext').innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="white">
-                    <path d="M489 936v-60h291V276H489v-60h291q24 0 42 18t18 42v600q0 24-18 42t-42 18H489Zm-78-185-43-43 102-102H120v-60h348L366 444l43-43 176 176-174 174Z"/>
-                    </svg>
-                    `; 
-                }
-            } else {
-                localStorage.setItem('user',JSON.parse(USER));
-            }
         
-        }
+
     </script>
   </body>
 
