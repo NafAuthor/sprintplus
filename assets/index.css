@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text&display=swap');
+:root {
+    --main-blue-dark: #000000;
+    --main-clear:#161616;
+    --main-background-color: #0f1c3d;
+    --main-colorful : #8f91d7;
+    --main-colorful-clear : rgb(209, 210, 235,0.3);
+    --objglobal-height : 100px;
+  }
+  
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+
+    background: linear-gradient(45deg, var(--main-clear) 20%,#2b2b2b 90%);
+
+    background-attachment: fixed;
+}
+
+#no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@keyframes header-title {
+    0% {
+        transform: translateY(-400px);
+    }
+    100% {
+        transform: translateY(0px);
+
+    }
+}
+
+.header-title {
+    animation:header-title;
+    animation-duration: 1s;
+    position:absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    width: fit-content;
+    font-size: 50px;
+    font-weight: bold;
+}
+.content-img {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content-img img {
+    width: 100px;
+}
+
+@keyframes content-welcome {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.content-welcome {
+    opacity: 0;
+    animation:content-welcome;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    gap: 20px;
+    background-color: var(--main-clear);
+    padding: 20px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+body p {
+    margin:unset;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.content p:nth-child(1) {
+    font-weight: bold;
+    font-size: 20px;
+}
+#colorful {
+    color:var(--main-colorful)
+}
+
+.parts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Wix Madefor Text', sans-serif;
+}
+
+.contact-container{
+    display: grid;
+    gap: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
+
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.contact {
+    padding: 10px;
+    background-color: var(--main-clear);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    border-radius: 5px;
+    justify-content: center;
+    cursor: pointer;
+}
+.join-adventure {
+    opacity: 0;
+    animation:content-welcome;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    width: 80%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    gap:10px
+
+}
+.title {
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: bold;
+}
+.contact .img svg {
+    width: 40px;
+    height: 40px;
+}
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: unset;
+        cursor: pointer;
+        padding: 1px;  
+        cursor: pointer;
+  
+      }
+      ::-webkit-scrollbar {
+          background-color: #2b2b2b;
+      }
+      
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+          background: linear-gradient(20deg, var(--main-colorful-clear), #2b2b2b 75%);
+          cursor: pointer;
+          border-radius:5px;;
+          cursor: pointer;
+  
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(20deg, var(--main-colorful), #2b2b2b 75%);
+          cursor: pointer;
+          border:unset;
+          border-radius:5px;;
+      }
+      
+@media screen and ( width <= 600px) {
+    .header-title {
+        font-size: 30px;
+        top:15px;
+    }
+    .content-img {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .content-welcome {
+        flex-direction: column;
+        margin-top: 60px;
+        width: calc(95% - 20px);
+        background-color: rgba(22, 22, 22,0.5);
+    }
+    .title {
+        width: 100%;
+        font-size: 15px;
+    }
+    .contact-container {
+        width: 80%;
+    }
+    #colorful {
+        font-weight: bold;
+    }
+    .contact {
+        background: linear-gradient(50deg, var(--main-clear) 20%,#2b2b2b 90%);
+
+    }
+}
